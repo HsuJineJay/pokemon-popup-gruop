@@ -1,0 +1,167 @@
+/* -----------google字型嵌入 開始----------- */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Noto+Sans+TC:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.gstatic.com');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+/* -----------google字型嵌入 結束----------- */
+
+    /* 全頁字型 */
+    body {  
+    font-family: "Noto Sans TC", sans-serif;
+    }
+
+    /* ------------------------商品分類------------------------ */
+    /* 商品分類側邊 */
+    .categoryA{
+        max-width: 20%;
+        min-width: 200px;
+        background-color: #FF6542;
+        color: #3F3A3A;
+        padding: 50px 15px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: 1 0 0;
+    }
+
+    /* 商品大類 */
+    .categoryB{
+        width: 80%;
+        padding: 15px;
+        border-style: none;
+        border-radius: 5px;
+        color: #3F3A3A;
+
+        /* 電腦_內文_粗_中文 */
+        font-family: "Noto Sans TC";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px; /* 142.857% */
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+    }
+
+    /* 大類被選擇時 變皮卡丘黃 */
+    .categoryB:hover{
+        background-color: #FFE050;
+    }
+
+    /* 商品小類 */
+    .category_li {
+        color: white;
+        padding: 5px;
+        list-style-image: url('/public/goods/images/Vector.svg');
+    }
+
+    /* 小類被選擇時 變皮卡丘黃 */
+    .category_li:hover{
+        color: #FFE050;
+        list-style-image: url('/public/goods/images/VectorV2.svg');
+    }
+
+    /* ------------------------商品卡片------------------------ */
+
+    .card{
+
+        min-width: 200px;
+        height: 400px;
+        margin: 10px 0px;
+    }
+
+    .card-body{
+        padding: 25px 10px 30px;
+        border-radius: 0px 0px 15px 15px;
+        background-color: #3F3A3A;
+        color: white;
+    }
+
+    .card-img-top{
+        max-width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 15px 15px 0px 0px;
+        object-fit: cover;
+    }
+
+    /* 特殊標籤 */
+    .product_div{
+        height: 40px;
+    }
+
+    .product_tag{
+        font-size: 14px;
+        padding: 5px 15px;
+        color: #FF6542;
+        border: 1px solid #FF6542;
+        border-radius: 1000px;
+    }
+
+    /* 購物車 icon */
+    .products .cart-icon {
+        display: inline-block;
+        width: 40px; 
+        height: 40px; 
+        background-image: url('/public/goods/images/Cart3.png');
+        background-size: contain; 
+        background-repeat: no-repeat;
+    }
+
+    .products .card-title{
+        color: white;
+    }
+
+    .products .card-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        color: white;
+    }
+
+    /* 響應式 */
+    /* 商品類別-左側 在765px以下消失 */
+
+    @media (max-width: 765px) {
+        .categoryA {
+            display: none;    }    
+    }
+
+    @media (max-width: 765px) {
+
+    .card{
+        min-width: 170px;
+        height: auto;
+        margin: 5px 0px;
+    }
+
+    .card-body{
+        padding: 15px 10px 20px;
+    }
+
+    .card-img-top{
+        max-width: 350px;
+        aspect-ratio: 1 / 1;
+        border-radius: 15px 15px 0px 0px;
+        object-fit: cover;
+    }
+    
+    p span {
+        font-size: 11px;    }
+
+    .cart-icon {
+        width: 35px; 
+        height: 35px; 
+    }
+
+    .product_div{
+        height: 30px;
+    }
+
+    .product_tag{
+        font-size: 10px;
+        padding: 0px 5px;
+    }
+    
+    }

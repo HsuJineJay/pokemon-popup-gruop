@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../_js/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <link rel="stylesheet" href="./_css/set.css">
+    <link rel="stylesheet" href="./_css/nav.css">
+    <link rel="stylesheet" href="./_css/manage.css">
+    <link rel="stylesheet" href="./_css/orderList.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bc_yellow_l2 row" id="container" >
+        <div class="col-2 bc_yellow navContent"  >
+            <div class="" id="nav">
+                <div id="logoDiv">
+                    <img id="logo" src="./image/logo.png" alt="">
+                </div>
+                <div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navOverAll">總覽</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navProduct">商品管理</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navOrder">交易紀錄管理</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navMenu">咖啡廳品項管理</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navCafeBooking">咖啡廳預定管理</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navStoreBooking">快閃店預定管理</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navAccount">帳號管理</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-10" style="height: 100%;">
+
+            <div class="f_h4 c_white" id="title">交易紀錄管理</div>
+
+            <article class="tabs">
+                <div class="selectDiv">
+                    <select class="selectSomething" name="" id="">
+                        <option class="selectOption" value="">訂單編號</option>
+                        <option class="selectOption" value="">商品名稱</option>
+                        <option class="selectOption" value="">商品數量</option>
+                        <option class="selectOption" value="">買家姓名</option>
+                        <option class="selectOption" value="">信箱</option>
+                        <option class="selectOption" value="">電話</option>
+                        <option class="selectOption" value="">地址</option>
+                        <option class="selectOption" value="">訂單日期</option>
+                        <option class="selectOption" value="">付款方式</option>
+                        <option class="selectOption" value="">發票類別</option>
+                        <option class="selectOption" value="">公司名稱</option>
+                        <option class="selectOption" value="">統一編號</option>
+                        <option class="selectOption" value="">訂單狀態</option>
+                        <option class="selectOption" value="">物流備註</option>
+                    </select>
+                    <input class="selectInput" type="text" name="" id="" placeholder="請輸入值">
+                </div>
+
+                <input class="bookmark" checked id="one" name="tabs" type="radio">
+                <label class="bookMarkLabel" for="one">有效訂單</label>
+
+                <input class="bookmark" id="two" name="tabs" type="radio" value="Two">
+                <label class="bookMarkLabel" for="two">無效訂單</label>
+
+                <div class="panels">
+
+                    <div class="panel">
+                        <table class="panelTable">
+                            <thead>
+                                <tr class="bc_yellow">
+                                    <td>
+                                        <span class="orderTHead">訂單編號</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">商品名稱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">商品數量</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">買家姓名</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">信箱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">電話</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">地址</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">訂單日期</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">付款方式</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">發票類別</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">公司名稱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">統一編號</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">訂單狀態</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">物流備註</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">編輯</span>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody class="noto-sans-tc_r c_black ">
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel">
+                        <table class="panelTable">
+                            <thead>
+                                <tr class="bc_yellow">
+                                    <td>
+                                        <span class="orderTHead">訂單編號</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">商品名稱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">商品數量</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">買家姓名</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">信箱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">電話</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">地址</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">訂單日期</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">付款方式</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">發票類別</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">公司名稱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">統一編號</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">訂單狀態</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">物流備註</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">編輯</span>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody class="noto-sans-tc_r c_black ">
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="orderTHead">
+                                        1
+                                    </td>
+                                    <td class="orderTHead">
+                                        草泥馬
+                                    </td>
+                                    <td class="orderTHead">
+                                        10
+                                    </td>
+                                    <td class="orderTHead">
+                                        錢智障
+                                    </td>
+                                    <td class="orderTHead">
+                                        wolfgang.chien@gmail.com
+                                    </td>
+                                    <td class="orderTHead">
+                                        0911111111
+                                    </td>
+                                    <td class="orderTHead">
+                                        408台中市南屯區公益路二段51號18樓
+                                    </td>
+                                    <td class="orderTHead">
+                                        2024-08-12 09:10:24
+                                    </td>
+                                    <td class="orderTHead">
+                                        貨到付款
+                                    </td>
+                                    <td class="orderTHead">
+                                        三聯式發票
+                                    </td>
+                                    <td class="orderTHead">
+                                        人生魯蛇有限公司
+                                    </td>
+                                    <td class="orderTHead">
+                                        89640101
+                                    </td>
+                                    <td class="orderTHead">
+                                        送貨中
+                                    </td>
+                                    <td class="orderTHead">
+                                        玻璃心物品
+                                    </td>
+                                    <td>
+                                        <button class="add tableBn"></button>
+                                        <button class="edit tableBn"></button>
+                                        <button  class="delete tableBn" ></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </article>
+        </div>
+        <div id="editContainer" >
+            <div id="createUI" >
+                <div class="UITitle f_h6 c_black">新增資料</div>
+                <div class="UIInputDiv f_p c_black">
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單狀況</div>
+                        <div class="col-9">
+                            <select class="selectOption" name="" id="">
+                                <option value="1">有效訂單</option>
+                                <option value="0">無效訂單</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">產品ID</div>
+                        <div class="col-9">
+                            <input class="UIInput" type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">產品數量</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶名稱</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶Mail</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶電話</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶地址</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">物流備註</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單日期</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="date" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單時間</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="time" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">付款方式</div>
+                        <div class="col-9">
+                            <input id="payment" class="UIRadio" type="radio" >
+                            <label for="payment">貨到付款</label>
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">發票類型</div>
+                        <div class="col-9">
+                            <select class="selectOption" name="" id="">
+                                <option value="">二聯式</option>
+                                <option value="">三聯式</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">公司抬頭</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">統一編號</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單狀態</div>
+                        <div class="col-9">
+                            <select class="selectOption" name="" id="">
+                                <option value="">訂單已接收</option>
+                                <option value="">待出貨</option>
+                                <option value="">已出貨</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="UIBNDiv" >
+                        <button class="UICancelBN c_white">取消</button>
+                        <button class="UISubmitBN c_white">送出</button>
+                    </div>
+ 
+                    
+             
+                </div>
+
+            </div >
+            <div id="editUI">
+                <div class="UITitle f_h6 c_black">新增資料</div>
+                <div class="UIInputDiv f_p c_black">
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單狀況</div>
+                        <div class="col-9">
+                            <select class="selectOption" name="" id="">
+                                <option value="1">有效訂單</option>
+                                <option value="0">無效訂單</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">產品ID</div>
+                        <div class="col-9">
+                            <input class="UIInput" type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">產品數量</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶名稱</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶Mail</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶電話</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶地址</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">物流備註</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單日期</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="date" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單時間</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="time" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">付款方式</div>
+                        <div class="col-9">
+                            <input id="payment" class="UIRadio" type="radio" >
+                            <label for="payment">貨到付款</label>
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">發票類型</div>
+                        <div class="col-9">
+                            <select class="selectOption" name="" id="">
+                                <option value="">二聯式</option>
+                                <option value="">三聯式</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">公司抬頭</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">統一編號</div>
+                        <div class="col-9">
+                            <input class="UIInput " type="text" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單狀態</div>
+                        <div class="col-9">
+                            <select class="selectOption" name="" id="">
+                                <option value="">訂單已接收</option>
+                                <option value="">待出貨</option>
+                                <option value="">已出貨</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="UIBNDiv" >
+                        <button class="UICancelBN c_white">取消</button>
+                        <button class="UISubmitBN c_white">送出</button>
+                    </div>
+ 
+                    
+             
+                </div>
+            </div>
+            <div id="deleteUI">
+                <div id="deleteUIDiv">
+                    <div id="deleteUIText">確定刪除該筆資料？</div>
+                    <div id="deleteUIBnDiv">
+                        <button id="deleteUICancelBn">取消</button>
+                        <button id="deleteUIComfirmBn">確定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

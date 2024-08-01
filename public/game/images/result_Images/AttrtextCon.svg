@@ -1,0 +1,19 @@
+<svg width="382" height="44" viewBox="0 0 382 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="382" height="44" rx="22" fill="#3F3A3A"/>
+<circle cx="27.5" cy="21.5" r="11.5" transform="rotate(-180 27.5 21.5)" fill="white"/>
+<mask id="mask0_6135_299" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="16" y="10" width="23" height="23">
+<circle cx="27.5" cy="21.5" r="11.5" transform="rotate(-180 27.5 21.5)" fill="white"/>
+</mask>
+<g mask="url(#mask0_6135_299)">
+<rect x="41.5913" y="21.6616" width="29.1549" height="19.7606" transform="rotate(-180 41.5913 21.6616)" fill="#FF6542" stroke="#3F3A3A" stroke-width="2"/>
+</g>
+<circle cx="27.5" cy="21.5" r="4.40141" transform="rotate(-180 27.5 21.5)" fill="white" stroke="#3F3A3A" stroke-width="2"/>
+<circle cx="354.5" cy="21.5" r="11.5" transform="rotate(-180 354.5 21.5)" fill="white"/>
+<mask id="mask1_6135_299" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="343" y="10" width="23" height="23">
+<circle cx="354.5" cy="21.5" r="11.5" transform="rotate(-180 354.5 21.5)" fill="white"/>
+</mask>
+<g mask="url(#mask1_6135_299)">
+<rect x="368.591" y="21.6616" width="29.1549" height="19.7606" transform="rotate(-180 368.591 21.6616)" fill="#FF6542" stroke="#3F3A3A" stroke-width="2"/>
+</g>
+<circle cx="354.5" cy="21.5" r="4.40141" transform="rotate(-180 354.5 21.5)" fill="white" stroke="#3F3A3A" stroke-width="2"/>
+</svg>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../_js/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <link rel="stylesheet" href="./_css/set.css">
+    <link rel="stylesheet" href="./_css/nav.css">
+    <link rel="stylesheet" href="./_css/manage.css">
+    <link rel="stylesheet" href="./_css/orderList.css">
+    <script src="./_js/orderList.js"></script>
+    <script src="./_js/manage.js"></script>
+    <script src="./_js/checkAccount.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bc_yellow_l2 row" id="container" >
+        <div class="col-2 bc_yellow navContent"  >
+            <div class="" id="nav">
+                <div id="logoDiv">
+                    <img id="logo" src="./image/logo.png" alt="">
+                </div>
+                <div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navOverAll">總覽</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navProduct">商品管理</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navOrder">交易紀錄管理</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navMenu">咖啡廳品項管理</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navCafeBooking">咖啡廳預定管理</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navStoreBooking">快閃店預定管理</div>
+                    <div class="navTextDiv noto-sans-tc_r" id="navAccount">帳號管理</div>
+                    <button id="logout">LOGOUT</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-10" style="height: 100%;">
+
+            <div class="f_h4 c_white" id="title">交易紀錄管理</div>
+
+            <article class="tabs">
+                <div class="selectDiv">
+                    <select class="selectSomething" name="" id="condition">
+                        <option class="selectOption" value="orderID">訂單編號</option>
+                        <option class="selectOption" value="productName">商品名稱</option>
+                        <option class="selectOption" value="productQ">商品數量</option>
+                        <option class="selectOption" value="buyerName">買家姓名</option>
+                        <option class="selectOption" value="buyerEmail">信箱</option>
+                        <option class="selectOption" value="buyerTel">電話</option>
+                        <option class="selectOption" value="buyerAddr">地址</option>
+                        <option class="selectOption" value="orderDate">訂單日期</option>
+                        <option class="selectOption" value="payment">付款方式</option>
+                        <option class="selectOption" value="receiptType">發票類別</option>
+                        <option class="selectOption" value="companyTitle">公司名稱</option>
+                        <option class="selectOption" value="taxIDNumber">統一編號</option>
+                        <option class="selectOption" value="orderStatus">訂單狀態</option>
+                        <option class="selectOption" value="transportNote">物流備註</option>
+                    </select>
+                    <input class="selectInput" type="text" name="" id="conditionInput" placeholder="請輸入值">
+                    <select class="selectInput selectSomething" name="" id="conditionSelect">
+                        <option value=""  selected>不分類</option>
+                        <option value="0">已接收訂單</option>
+                        <option value="1">待出貨</option>
+                        <option value="2">已出貨</option>
+                    </select>
+                </div>
+
+                <input class="bookmark" checked id="one" name="tabs" type="radio">
+                <label class="bookMarkLabel" for="one">有效訂單</label>
+
+                <input class="bookmark" id="two" name="tabs" type="radio" value="Two">
+                <label class="bookMarkLabel" for="two">無效訂單</label>
+
+                <div class="panels">
+
+                    <div class="panel">
+                        <table class="panelTable">
+                            <thead>
+                                <tr class="bc_yellow">
+                                    <td>
+                                        <span class="orderTHead">訂單編號</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">商品名稱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">商品數量</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">買家姓名</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">信箱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">電話</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">地址</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">訂單日期</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">付款方式</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">發票類別</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">公司名稱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">統一編號</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">訂單狀態</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">物流備註</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">編輯</span>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody class="noto-sans-tc_r c_black " id="existTBody">
+
+                            </tbody>
+                 
+                        </table>
+                    </div>
+
+                    <div class="panel">
+                        <table class="panelTable">
+                            <thead>
+                                <tr class="bc_yellow">
+                                    <td>
+                                        <span class="orderTHead">訂單編號</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">商品名稱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">商品數量</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">買家姓名</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">信箱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">電話</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">地址</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">訂單日期</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">付款方式</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">發票類別</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">公司名稱</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">統一編號</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">訂單狀態</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">物流備註</span>
+                                    </td>
+                                    <td>
+                                        <span class="orderTHead">編輯</span>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody class="noto-sans-tc_r c_black " id="noExistTBody">
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+                <div class="addDiv">
+                    <button title="新增資料" class="add" onclick='add()'></button>
+                </div>
+            </article>
+        </div>
+        <div id="editContainer" >
+            <div id="editBlack"></div>
+            <div id="createUI" >
+                <div class="UITitle f_h6 c_black">新增資料</div>
+                <div class="UIInputDiv f_p c_black">
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3" >訂單狀況</div>
+                        <div class="col-9">
+                            <select class="selectOption TESTorderExist" name="" id="orderExistCreate">
+                                <option value="1">有效訂單</option>
+                                <option value="0">無效訂單</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">產品ID</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTorderProductID" type="text" id="orderProductIDCreate" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">產品數量</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTproductQ" type="text" id="productQCreate">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶名稱</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTbuyerName" type="text" id="buyerNameCreate">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶信箱</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTbuyerEmail" type="email" id="buyerEmailCreate">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶電話</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTbuyerTel" type="text" id="buyerTelCreate">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶地址</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTbuyerAddr" type="text" id="buyerAddrCreate">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">物流備註</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTtransportNote " type="text" id="transportNoteCreate">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單日期</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTorderDate_date" type="date" id="orderDate_dateCreate">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單時間</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTorderDate_time" type="time" id="orderDate_timeCreate">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">付款方式</div>
+                        <div class="col-9">
+                            <input id="payment" class="UIRadio TESTpayment" type="radio" id="paymentCreate">
+                            <label for="payment">貨到付款</label>
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">發票類型</div>
+                        <div class="col-9">
+                            <select class="selectOption TESTreceiptType" name="" id="receiptTypeCreate">
+                                <option value="二聯式">二聯式</option>
+                                <option value="三聯式">三聯式</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">公司名稱</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTcompanyTitle" type="text" id="companyTitleCreate">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">統一編號</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTtaxIDNumber" type="text" id="taxIDNumberCreate">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單狀態</div>
+                        <div class="col-9">
+                            <select class="selectOption TESTorderStatus" name="" id="orderStatusCreate">
+                                <option value="0">訂單已接收</option>
+                                <option value="1">待出貨</option>
+                                <option value="2">已出貨</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="UIBNDiv" >
+                        <button class="UICancelBN c_white">取消</button>
+                        <button class="UISubmitBN c_white" id="createUISubmit">送出</button>
+                    </div>
+ 
+                    
+             
+                </div>
+
+            </div >
+            <div id="editUI">
+                <input class="editUIID" type="hidden" name=""  >
+                <div class="UITitle f_h6 c_black">修改資料</div>
+                <div class="UIInputDiv f_p c_black">
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3" >訂單狀況</div>
+                        <div class="col-9">
+                            <select class="selectOption TESTorderExist" name="" id="orderExistEdit">
+                                <option value="1">有效訂單</option>
+                                <option value="0">無效訂單</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">產品ID</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTorderProductID" type="text" id="orderProductIDEdit" >
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">產品數量</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTproductQ" type="text" id="productQEdit">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶名稱</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTbuyerName" type="text" id="buyerNameEdit">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶信箱</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTbuyerEmail" type="email" id="buyerEmailEdit">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶電話</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTbuyerTel" type="text" id="buyerTelEdit">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">客戶地址</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTbuyerAddr" type="text" id="buyerAddrEdit">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">物流備註</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTtransportNote " type="text" id="transportNoteEdit">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單日期</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTorderDate_date" type="date" id="orderDate_dateEdit">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單時間</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTorderDate_time" type="time" id="orderDate_timeEdit">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">付款方式</div>
+                        <div class="col-9">
+                            <input class="UIRadio TESTpayment" type="radio" id="paymentEdit">
+                            <label for="payment">貨到付款</label>
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">發票類型</div>
+                        <div class="col-9">
+                            <select class="selectOption TESTreceiptType" name="" id="receiptTypeEdit">
+                                <option value="二聯式">二聯式</option>
+                                <option value="三聯式">三聯式</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">公司名稱</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTcompanyTitle" type="text" id="companyTitleEdit">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">統一編號</div>
+                        <div class="col-9">
+                            <input class="UIInput TESTtaxIDNumber" type="text" id="taxIDNumberEdit">
+                        </div>
+                    </div>
+                    <div class="UILittleDiv row">
+                        <div class="UISpan col-3">訂單狀態</div>
+                        <div class="col-9">
+                            <select class="selectOption TESTorderStatus" name="" id="orderStatusEdit">
+                                <option value="0">訂單已接收</option>
+                                <option value="1">待出貨</option>
+                                <option value="2">已出貨</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="UIBNDiv" >
+                        <button class="UICancelBN c_white">取消</button>
+                        <button class="UISubmitBN c_white" id="editUISubmit">送出</button>
+                    </div>
+ 
+                    
+             
+                </div>
+            </div>
+            <div id="deleteUI">
+                <div class="UIDiv">
+                    <input class="deleteUIID" type="hidden" name="" id="" >
+                    <div class="UIText">確定刪除該筆資料？</div>
+                    <div id="deleteUIBnDiv">
+                        <button id="deleteUICancelBn">取消</button>
+                        <button id="deleteUISubmit">確定</button>
+                    </div>
+                </div>
+            </div>
+            <div id="removeUI">
+                <div class="UIDiv">
+                    <input class="removeUIID" type="hidden" name="" >
+                    <div class="UIText">確定使該筆資料無效？</div>
+                    <div id="removeUIBnDiv">
+                        <button id="removeUICancelBn">取消</button>
+                        <button id="removeUISubmit">確定</button>
+                    </div>
+                </div>
+            </div>
+            <div id="onUI">
+                <div class="UIDiv">
+                    <input class="onUIID" type="hidden" name="" >
+                    <div class="UIText">確定使該筆資料有效？</div>
+                    <div id="onUIBnDiv">
+                        <button id="onUICancelBn">取消</button>
+                        <button id="onUISubmit">確定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

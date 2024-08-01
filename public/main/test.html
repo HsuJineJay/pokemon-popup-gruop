@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <style>
+    [data-slide] {
+      background-color: rgba(51, 170, 51, 0.4);
+    }
+
+    @media (min-width: 768px) {
+
+      /* show 3 items */
+      .carousel-inner .active,
+      .carousel-inner .active+.carousel-item,
+      .carousel-inner .active+.carousel-item+.carousel-item {
+        display: block;
+      }
+
+      .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+      .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item,
+      .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item {
+        transition: none;
+      }
+
+      .carousel-inner .carousel-item-next,
+      .carousel-inner .carousel-item-prev {
+        position: relative;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+
+      .carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+      }
+
+      /* left or forward direction */
+      .active.carousel-item-left+.carousel-item-next.carousel-item-left,
+      .carousel-item-next.carousel-item-left+.carousel-item,
+      .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item,
+      .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item {
+        position: relative;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+      }
+
+      /* farthest right hidden item must be abso position for animations */
+      .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+      }
+
+      /* right or prev direction */
+      .active.carousel-item-right+.carousel-item-prev.carousel-item-right,
+      .carousel-item-prev.carousel-item-right+.carousel-item,
+      .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item,
+      .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item {
+        position: relative;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+      }
+    }
+
+
+    @media (min-width: 768px) {
+  .carousel-inner .carousel-item-end.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(33.33%);
+  }
+  
+  .carousel-inner .carousel-item-start.active, 
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-33.33%);
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+  transform: translateX(0);
+}
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h1 class="text-center mb-3">Bootstrap 4 Multi-Card Carousel Without Plugin</h1>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner row w-100 mx-auto">
+        <div class="carousel-item  active">
+          <div class="col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="https://via.placeholder.com/800x600/f44242/fff"
+                alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card 1</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item  active">
+          <div class="col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="https://via.placeholder.com/800x600/f44242/fff"
+                alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card 1</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item  active">
+          <div class="col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="https://via.placeholder.com/800x600/f44242/fff"
+                alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card 1</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <!--prev-->
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <!--next-->
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+  
+
+</body>
+<script>
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    let items = document.querySelectorAll('.carousel .carousel-item');
+
+    items.forEach((el) => {
+      const minPerSlide = 3;
+      let next = el.nextElementSibling;
+      for (var i = 1; i < minPerSlide; i++) {
+        if (!next) {
+          // wrap carousel by using first child
+          next = items[0];
+        }
+        let cloneChild = next.cloneNode(true);
+        el.appendChild(cloneChild.children[0]);
+        next = next.nextElementSibling;
+      }
+    });
+
+    var myCarousel = document.querySelector('#myCarousel');
+    var carousel = new bootstrap.Carousel(myCarousel, {
+      interval: 2000,
+      wrap: false
+    });
+  });
+</script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 商品卡片1 -->
+<div class="carousel_item item1">
+  <div class="product_card d-flex flex-column gap-3">
+    <!-- 圖片 -->
+    <img id="productImg1" src="">
+    <!-- 內容 -->
+    <div class="d-flex flex-column gap-2">
+      <div class="product_tag d-flex">
+        <h6 class="font-chin m-0">會場限定</h6>
+      </div>
+
+      <div class="d-flex flex-column text-start gap-0">
+        <h4 class="font-chin m-0">果然翁玩偶</h4>
+        <h5 class="font-chin">350元</h5>
+      </div>
+    </div>
+    <!-- 右下更多按鈕 -->
+    <button class="more_product_bn">
+
+    </button>
+  </div>
+</div>
+
+<!-- 商品卡片2 -->
+<div class="carousel_item item2">
+  <div class="product_card d-flex flex-column gap-3">
+    <!-- 圖片 -->
+    <img id="productImg2" src="">
+    <!-- 內容 -->
+    <div class="d-flex flex-column gap-2">
+      <div class="product_tag d-flex">
+        <h6 class="font-chin m-0">會場限定</h6>
+      </div>
+
+      <div class="d-flex flex-column text-start gap-0">
+        <h4 class="font-chin m-0">果然翁玩偶</h4>
+        <h5 class="font-chin">350元</h5>
+      </div>
+    </div>
+    <!-- 右下更多按鈕 -->
+    <button class="more_product_bn"></button>
+  </div>
+</div>
+
+<!-- 商品卡片3 -->
+<div class="carousel_item item3">
+  <div class="product_card d-flex flex-column gap-3">
+    <!-- 圖片 -->
+    <img id="productImg3" src="">
+    <!-- 內容 -->
+    <div class="d-flex flex-column gap-2">
+      <div class="product_tag d-flex">
+        <h6 class="font-chin m-0">會場限定</h6>
+      </div>
+
+      <div class="d-flex flex-column text-start gap-0">
+        <h4 class="font-chin m-0">果然翁玩偶</h4>
+        <h5 class="font-chin">350元</h5>
+      </div>
+    </div>
+    <!-- 右下更多按鈕 -->
+    <button class="more_product_bn"></button>
+  </div>
+</div>
+
+<!-- 商品卡片4 -->
+<div class="carousel_item item4">
+  <div class="product_card d-flex flex-column gap-3">
+    <!-- 圖片 -->
+    <img id="productImg4" src="">
+    <!-- 內容 -->
+    <div class="d-flex flex-column gap-2">
+      <div class="product_tag d-flex">
+        <h6 class="font-chin m-0">會場限定</h6>
+      </div>
+
+      <div class="d-flex flex-column text-start gap-0">
+        <h4 class="font-chin m-0">果然翁玩偶</h4>
+        <h5 class="font-chin">350元</h5>
+      </div>
+    </div>
+    <!-- 右下更多按鈕 -->
+    <button class="more_product_bn"></button>
+  </div>
+</div>
+
+<!-- 商品卡片5 -->
+<div class="carousel_item item5">
+  <div class="product_card d-flex flex-column gap-3">
+    <!-- 圖片 -->
+    <img id="productImg5" src="">
+    <!-- 內容 -->
+    <div class="d-flex flex-column gap-2">
+      <div class="product_tag d-flex">
+        <h6 class="font-chin m-0">會場限定</h6>
+      </div>
+
+      <div class="d-flex flex-column text-start gap-0">
+        <h4 class="font-chin m-0">果然翁玩偶</h4>
+        <h5 class="font-chin">350元</h5>
+      </div>
+    </div>
+    <!-- 右下更多按鈕 -->
+    <button class="more_product_bn"></button>
+  </div>
+</div>
+
+<!-- 商品卡片6 -->
+<div class="carousel_item item6">
+  <div class="product_card d-flex flex-column gap-3">
+    <!-- 圖片 -->
+    <img id="productImg6" src="">
+    <!-- 內容 -->
+    <div class="d-flex flex-column gap-2">
+      <div class="product_tag d-flex">
+        <h6 class="font-chin m-0">會場限定</h6>
+      </div>
+
+      <div class="d-flex flex-column text-start gap-0">
+        <h4 class="font-chin m-0">果然翁玩偶</h4>
+        <h5 class="font-chin">350元</h5>
+      </div>
+    </div>
+    <!-- 右下更多按鈕 -->
+    <button class="more_product_bn"></button>
+  </div>
+</div>
