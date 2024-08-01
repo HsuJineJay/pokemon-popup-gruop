@@ -57,6 +57,7 @@ body{
         visibility: hidden;
     }
     
+    
 }
 
 @media (max-width:451px){
@@ -251,7 +252,7 @@ input {
     flex-direction: column;
     align-items: center;
     margin-top: -25%;
-   
+   z-index: 1;
     position: absolute;
     width: 100%;
    
@@ -282,7 +283,7 @@ input {
     font-family: "Fredoka", sans-serif;
     font-weight: 600;
     text-align: center;
-
+    z-index: 2;
 }
 /* hover換綠色圖片 */
 #startButtonContainer:hover{
@@ -317,7 +318,22 @@ input {
 
     width: 100vw;
     max-width: 250px;
+ /* 寶可夢自轉 ========= */
+    animation-name: pokeballRotate ;
+    transform: rotateX(0deg);
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count:infinite;
+   
     
+}
+/* 寶可夢自轉動畫 ========= */
+@keyframes pokeballRotate {
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
 }
 
 /* 所有雲朵的容器 */
@@ -328,7 +344,21 @@ input {
     top: 0;
     left: 0;
     overflow: hidden;
+    /* animation-name: cloundAni;
+    animation-duration: 40s;
+    animation-timing-function: linear;
+    animation-iteration-count:infinite; */
 }
+
+/* @keyframes cloundAni{
+    0%{
+        left: 0%;
+    }50%{
+        left: 5%;
+    }100%{
+        left: 0%;
+    }
+} */
 
 /* 雲朵定位 */
 .cloud1container {
