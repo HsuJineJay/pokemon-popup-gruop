@@ -31,7 +31,7 @@ body{
         max-width: 1920px;
         margin: 0 auto;
         /* background-color:#FFE050 ; */
-        background-image: url(./images/publicImg/bg_comic.png);
+        background-image: url(../images/publicImg/bg_comic.png);
         background-size: contain;
         
     }
@@ -272,7 +272,7 @@ input {
     max-height: 90px;
     width: 15vmax;
     height: 15vmax;
-    background-image: url(./images/firstPageImg/ballButtonNormal.svg);
+    background-image: url(../images/firstPageImg/ballButtonNormal.svg);
     background-size: contain;
     background-repeat: no-repeat;
     margin: 0;
@@ -286,7 +286,7 @@ input {
 }
 /* hover換綠色圖片 */
 #startButtonContainer:hover{
-    background-image: url(./images/firstPageImg/ballButtonShine.svg);
+    background-image: url(../images/firstPageImg/ballButtonShine.svg);
     transition: ease-in-out 0.5s;
 }
 
@@ -471,7 +471,7 @@ input {
     height: 20vw;
     /* max-width: 100px; */
     /* max-width: 100px; */
-    background-image: url(./images/publicImg/questionIcon.svg);
+    background-image: url(../images/publicImg/questionIcon.svg);
     background-size: contain;
     background-repeat: no-repeat;
     margin: 0;
@@ -594,7 +594,7 @@ input {
     width: 80%;
     max-width: 400px;
     height: 9vw;
-    background-image: url(./images/publicImg/talkContent.svg);
+    background-image: url(../images/publicImg/talkContent.svg);
     background-repeat: no-repeat;
     background-size: contain;
     margin: 0;
@@ -674,7 +674,7 @@ input {
 .musicIcon1 {
     width: 10%;
     height: 10%;
-    background-image: url(./images/thirdPageImg/Musical.svg);
+    background-image: url(../images/thirdPageImg/Musical.svg);
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
@@ -687,7 +687,7 @@ input {
 .musicIcon2 {
     width: 10%;
     height: 10%;
-    background-image: url(./images/thirdPageImg/Musical.svg);
+    background-image: url(../images/thirdPageImg/Musical.svg);
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
@@ -794,7 +794,7 @@ input {
     top: 0;
     left: 40;
     overflow: hidden;
-    background-image: url(./images/fourthPageImg/cakebg.svg);
+    background-image: url(../images/fourthPageImg/cakebg.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 0 30vh;
@@ -1213,7 +1213,7 @@ input {
     max-width: 600px;
     max-height: 600px;
     
-    background-image: url(./images/guessWhoPage/guessWhoNoshadow.svg);
+    background-image: url(../images/guessWhoPage/guessWhoNoshadow.svg);
     background-size: contain;
     background-repeat: no-repeat;
     margin: 0;
@@ -1347,7 +1347,7 @@ input {
     height: 33vw;
     max-width: 300px;
     max-height: 105px;
-    background-image: url(./images/result_Images/nameCon.svg);
+    background-image: url(../images/result_Images/nameCon.svg);
     background-size: contain;
     background-repeat: no-repeat;
     margin: 0;
@@ -1391,7 +1391,7 @@ input {
     height: 15vw;
     max-width: 380px;
     max-height: 45px;
-    background-image: url(./images/result_Images/AttrtextCon.svg);
+    background-image: url(../images/result_Images/AttrtextCon.svg);
     background-size: contain;
     background-repeat: no-repeat;
     margin: 0;
@@ -1459,7 +1459,7 @@ input {
     border: #3F3A3A 8px solid;
     width: 55vw;
     height: 55vw;
-    background-image: url(./images/publicImg/bg_comic.png);
+    background-image: url(../images/publicImg/bg_comic.png);
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0;
@@ -1578,7 +1578,7 @@ input {
 .friend_figure_container {
     display: flex;
     align-items: center;
-    background-image: url(./images/publicImg/bg_comic.png);
+    background-image: url(../images/publicImg/bg_comic.png);
     background-size: contain;
 
 }
