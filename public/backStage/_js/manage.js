@@ -22,7 +22,7 @@ window.addEventListener('load',function(){
     })
     $('#logout').click(async function () {
         console.log('Logout button clicked');
-        let apiUrl = 'http://localhost/frontend/bigProject/root/public/backStage/login/logout.php';
+        let apiUrl = 'http://localhost/pokemon-popup-gruop/public/backStage/login/logout.php';
         
         try {
             let response = await $.ajax({

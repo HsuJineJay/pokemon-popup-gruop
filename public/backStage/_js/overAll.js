@@ -2,8 +2,8 @@
 
 
 function getDataCreateTable() {
-    let apiUrlWebStatus = 'http://localhost/frontend/bigProject/root/backEnd/api/webStatus/webStatus.php'
-    let apiUrlOverAll = 'http://localhost/frontend/bigProject/root/backEnd/api/overAll/overAll.php'
+    let apiUrlWebStatus = 'http://localhost/pokemon-popup-gruop/backEnd/api/webStatus/webStatus.php'
+    let apiUrlOverAll = 'http://localhost/pokemon-popup-gruop/backEnd/api/overAll/overAll.php'
     let result = '';
 
     let request1 = $.ajax({
@@ -58,7 +58,7 @@ function getDataCreateTable() {
 }
 
 function changeWebStatus() {
-    let apiUrlWebStatus = 'http://localhost/frontend/bigProject/root/backEnd/api/webStatus/webStatus.php';
+    let apiUrlWebStatus = 'http://localhost/pokemon-popup-gruop/backEnd/api/webStatus/webStatus.php';
 
     // 先獲取當前的 webStatus
     return $.ajax({

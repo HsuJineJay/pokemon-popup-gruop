@@ -1,5 +1,5 @@
 //change here
-let apiUrl = 'http://localhost/root/backEnd/api/account/account.php'
+let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/account/account.php'
 let col = ['userID','userName','userAccount','userPassword','userTitle','userEmail']
 let colTW = ['管理者編號','姓名','帳號','密碼','職稱','信箱']
 let colExist = 'userExist'

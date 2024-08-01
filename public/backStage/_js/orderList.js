@@ -1,6 +1,6 @@
 
 
-let apiUrl = 'http://localhost/frontend/bigProject/root/backEnd/api/orderList/orderList.php'
+let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/orderList/orderList.php'
 
 function getDataCreateTable(condition, place) {
     let apiUrl2 = apiUrl + condition

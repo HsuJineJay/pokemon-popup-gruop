@@ -1,5 +1,5 @@
 window.onload = function(){
-    let loginUrl = 'http://localhost/frontend/bigProject/root/public/backStage/login/login.php'
+    let loginUrl = 'http://localhost/pokemon-popup-gruop/public/backStage/login/login.php'
     
     $('#forgetBN').click(function(){
         window.location.href = './loginForget.html';
@@ -10,7 +10,7 @@ window.onload = function(){
         const account = document.getElementById('account').value;
         const password = document.getElementById('password').value;
         
-        const response = await fetch('http://localhost/frontend/bigProject/root/public/backStage/login/login.php', {
+        const response = await fetch(loginUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    let protectedUrl = 'http://localhost/frontend/bigProject/root/public/backStage/login/protected.php';
+    let protectedUrl = 'http://localhost/pokemon-popup-gruop//public/backStage/login/protected.php';
     const response = await fetch(protectedUrl, {
         method: 'GET',
         // credentials: 'include'
