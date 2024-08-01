@@ -1,0 +1,8 @@
+cafeBookingD,bookingDate,bookingTimePeriod,bookingNumber,bookingName,bookingEmail,bookingTel,
+itemID,itemName,itemMain,itemPrice,itemDiscount,itemDiscountPersent,itemDiscountStart,itemDiscountEnd
+orderID,productID,productQ,buyerName,buyerEmail,buyerTel,buyerAddr,orderStatus
+productID,productName,productDescribe,productImg,productPrice,productInStock,productMain,
+discountID,productID,productDiscountBool,productDiscountStart,productDiscountEnd,productDiscountPrice,productDiscountPercent,
+storeBookingID,bookingDate,bookingTimePeriod,bookingNumber,bookingName,bookingEmail,bookingTel,
+productID,productName,productDescribe,productImg,productPrice,productInStock,productMain,
+userID,userName,userAccount,userPassword,userTitle,,,
