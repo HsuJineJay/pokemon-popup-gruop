@@ -1,9 +1,14 @@
 $(document).ready(function () {
 
+
+    bgmusic.volume = 0.7; 
+
     //控制聲音開關 預設關閉
     let CtrlSound =function(){
         $('#soundContainer').on('click',function(){
             if($('#soundIcon').attr('src') === './images/publicImg/soundOn.svg'){
+                // 確認是否加載音樂
+                bgmusic.play().catch(e => console.log("播放失敗:", e))
                 bgmusic.muted =false
                $('#soundIcon').attr('src','./images/publicImg/soundOff.svg')
                
