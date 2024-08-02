@@ -284,33 +284,41 @@ button {
   }
 
   100% {
-    transform: translateY(-20px);
+    /* transform: translateY(-20px); */
+    transform: translateY(-2.8vmin);
   }
 }
 
 @keyframes headerNavHoverDown {
   0% {
-    transform: translateY(-20px);
+    /* transform: translateY(-20px); */
+    /* transform: translateY(-2.5vmin); */
+    transform: translateY(-2.8vmin);
   }
 
   100% {
-    transform: translateY(-17px);
+    /* transform: translateY(-17px); */
+    transform: translateY(-2.5vmin);
   }
 }
 
 @keyframes headerNavHoverOff {
   0% {
-    transform: translateY(-17px);
+    /* transform: translateY(-17px); */
+    /* transform: translateY(-2vmin); */
+    transform: translateY(-2.5vmin);
   }
 
   100% {
-    transform: translateY(3px);
+    /* transform: translateY(3px); */
+    transform: translateY(0.3vmin);
   }
 }
 
 @keyframes headerNavHoverDownOff {
   0% {
-    transform: translateY(3px);
+    /* transform: translateY(3px); */
+    transform: translateY(0.3vmin);
   }
 
   100% {
@@ -920,7 +928,8 @@ button {
 }
 
 .card_lg_detail p {
-  font-size: 1.3vmin;
+  /* font-size: 1.3vmin; */
+  font-size: 1.5vmin;
   font-weight: 400;
   color: var(--pk--black);
   letter-spacing: 0.1vmin;
@@ -970,7 +979,8 @@ button {
 }
 
 .card_notice li {
-  font-size: 1.3vmin;
+  /* font-size: 1.3vmin; */
+  font-size: 1.5vmin;
   color: var(--pk--black);
   letter-spacing: 0.1vmin;
 }
@@ -1278,7 +1288,8 @@ button {
   border-radius: 1000px;
   border: 1px solid var(--pk--black);
 
-  font-size: 1.3vmin;
+  /* font-size: 1.3vmin; */
+  font-size: 1.5vmin;
   color: var(--pk--black);
   letter-spacing: 0.1vmin;
 }
@@ -1510,7 +1521,8 @@ button {
 .menu_card_detail p {
   text-align: center;
   font-weight: 400;
-  font-size: 1.3vmin;
+  /* font-size: 1.3vmin; */
+  font-size: 1.8vmin;
   letter-spacing: 0.1vmin;
   border-top: 1px dashed var(--pk--black);
   border-bottom: 1px dashed var(--pk--black);
@@ -1587,7 +1599,8 @@ button {
   .menu_card_detail p {
     text-align: center;
     font-weight: 400;
-    font-size: 1.3vmin;
+    /* font-size: 1.3vmin; */
+    font-size: 1.8vmin;
     letter-spacing: 0.1vmin;
     border-top: 1px dashed var(--pk--black);
     border-bottom: 1px dashed var(--pk--black);
