@@ -1,5 +1,5 @@
 //change here
-let apiUrl = 'http://localhost/frontend/bigProject/root/backEnd/api/menuItem/menuItem.php'
+let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php'
 let col = ['itemID', 'itemName', 'itemType', 'itemDescribe', 'itemMain', 'itemPrice', 'itemImg']
 let colTW = ['餐點編號', '餐點名稱', '餐點類型', '餐點描述', '主打品項', '餐點價格', '餐點圖片']
 let colExist = 'menuExist'

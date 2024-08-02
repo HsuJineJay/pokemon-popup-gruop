@@ -1,5 +1,5 @@
 //change here
-let apiUrl = 'http://localhost/frontend/bigProject/root/backEnd/api/cafeBooking/cafeBooking.php'
+let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/cafeBooking/cafeBooking.php'
 let col = ['cafeBookingID','bookingDate','bookingTimePeriod','bookingNumber','bookingName','bookingEmail','bookingTel']
 let colTW = ['預定編號','下訂日期','預定時段','預定人數','預約姓名','信箱','電話']
 let colExist = 'bookingExist'
