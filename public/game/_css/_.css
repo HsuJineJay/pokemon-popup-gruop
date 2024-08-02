@@ -632,7 +632,7 @@ input {
     /* font-size: 90%; */
     justify-content: center;
     font-family: "Fredoka", "Noto Sans TC", sans-serif;
-    font-weight: 600;
+    /* font-weight: 800; */
     text-align: center;
     background-size: contain;
     display: flex;
@@ -643,6 +643,8 @@ input {
 
 .storyText h4{
     font-size: 92%;
+    font-family: "Fredoka", "Noto Sans TC", sans-serif;
+    font-weight: bold;
     margin: 0;
 }
 
