@@ -1,7 +1,7 @@
 //change here
 let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php'
 let col = ['productID','productName','productType','productDescribe','productPrice','productInStock','storeOnly','productMain']
-let colTW = ['商品編號','商品名稱','商品類型','商品描述','商品價格','庫存','快閃店限定','主打商品']
+let colTW = ['商品編號','商品名稱','商品類型','商品描述','商品價格','庫存','會場限定','首頁呈現商品']
 let colExist = 'productExist'
 function setUp(){
     for(i in col){
