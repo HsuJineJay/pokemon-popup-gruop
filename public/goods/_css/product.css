@@ -6,6 +6,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 /* -----------google字型嵌入 結束----------- */
 
+    .container{
+        display: flex;
+    }
+
     /* 商品說明頁縮圖 - 框架 */
     .column{
         margin: 10px 0px;
@@ -35,7 +39,6 @@
 
     /* 主圖 */
     .MainProduct{
-        width: 100%;
         aspect-ratio: 1/1;
         padding: 0px;
         margin-right: 50px;
@@ -53,7 +56,6 @@
 
     /* 商品說明 */
     .ProductDescription{
-        width: 100%;
         color: white;
         background-color: #3F3A3A;
         border-radius: 30px;
