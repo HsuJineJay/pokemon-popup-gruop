@@ -421,6 +421,17 @@ main {
   justify-items: center;
 }
 
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+
+  #btn:hover {
+    background-color: var(--pika--yellow);
+    color: var(--pk--black);
+    filter:drop-shadow(3px 2px 0px var(--pika--red));
+    transform: scale(1.03) translate(-3px, -2px);
+  }
+}
+
+
 #btn a {
   text-decoration: none;
   color:var(--pk--white);
@@ -468,6 +479,16 @@ main {
 .footer-logo img {
   max-width: 70vmin;
   transition: .08s ease-in-out;
+}
+
+/* footer logo hover動畫效果 待確認是否可行 */
+
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+
+  .footer-logo>img:hover {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%) drop-shadow(3px 2px 0px var(--pika--red));
+    transform: scale(1.03) translate(-3px, -2px);
+  }
 }
 
 .footer-item {
