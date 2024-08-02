@@ -529,7 +529,7 @@ input {
  width: 100%;
  max-width: 400px;
  max-height: 120px;
-
+visibility: hidden;
 }
 
 /* 問題容器 */
@@ -578,6 +578,7 @@ input {
     margin-top: 2vh;
     width: 100%;
     /* height: 100%; */
+    visibility: hidden;
 }
 
 /* 選項按鈕 */
@@ -602,6 +603,7 @@ input {
     margin-bottom: 5vh;
     width: 100%;
     margin-top: 2%;
+    visibility: hidden;
 }
 
 /* 寶貝球圖片 */
@@ -617,9 +619,18 @@ input {
     flex-direction: column;
     gap: 1vh;
     align-items: center;
+    
+}
+/* 旁白框控制容器 */
+.storyTextCtrl{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 /* 旁白文字 */
+/* 動態設計 */
 .storyText {
     width: 80%;
     max-width: 400px;
@@ -638,7 +649,29 @@ input {
     display: flex;
     align-items: center;
     background-position: center;
+    visibility: visible;
+    animation-name:storyTextFade;
+    opacity: 0;
+    animation-duration: 3s;
+    animation-delay: 0.3s;
+    /* animation-fill-mode:forwards; */
+    animation-timing-function: ease-in-out;
 
+}
+
+/*storyTextFade 動態 ========== */
+
+@keyframes storyTextFade{
+    0%{
+        opacity: 0
+    }25%{
+        opacity: 1
+    }90%{
+        opacity: 1
+        
+    }100%{
+        opacity: 0
+    }
 }
 
 .storyText h4{

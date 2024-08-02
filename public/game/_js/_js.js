@@ -62,9 +62,10 @@ $(document).ready(function () {
             <div class="questionAndbuttonCon">
                 <!-- 題目 -->
                  <!-- .questionContainer換成圖片跟文字 -->
+                 <div class="storyTextCtrl">
                     <div class="storyText"><h4 ></h4></div>
-
-              <!--    <div class="questionContainer">
+                </div>
+                 <div class="questionContainer">
                     <div class="questionIcon"></div>
                     <div class="questionTextCon">
                         <h4 id="questionline1" class="textContent"></h4>
@@ -72,11 +73,11 @@ $(document).ready(function () {
 
                     </div>
 
-                </div> -->
+                </div> 
                 <!-- 選項按鈕 -->
                   
-                <!--<div class="btnContainer">
-                </div>-->
+                <div class="btnContainer">
+                </div>
             </div>
 
             <div >
@@ -173,9 +174,22 @@ $(document).ready(function () {
         $('#process').attr('src',`./images/publicImg/process${currentQuestion}.svg`)
        
         //印出旁白文字=========
-        // 透明度進入 持續2.5秒 消失
+        // 透明度進入 持續2.5秒 消失 css控制
         $('.storyText h4').html(`${questionData.text}`)
-       
+        
+        
+        // 3秒後清空旁白文字框=====
+        const emptyStoryText = function(){
+            $('.storyTextCtrl').empty()}
+
+        setTimeout(emptyStoryText,4000)
+
+        //========= 3.5秒後改變問題框跟選項框動畫框visibility hidden=>visable
+        const showQuestionandbutton = function(){
+            $('.pokeaniCon,.btnContainer,.questionContainer').css('visibility','visible')
+        }
+        setTimeout(showQuestionandbutton,4200)
+        
         //印出題數============
        $('.questionIcon').html(`${questionData.quesNumber}`)
         
