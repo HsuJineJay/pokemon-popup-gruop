@@ -82,7 +82,6 @@ function getDataCreateTable(condition, place) {
                         <td>
                             <button title='改成有效資料' class='on tableBn' onclick='on(this)'></button>
                             <button title='編輯資料' class='edit tableBn' onclick='edit(this)'></button>
-                            <button title='刪除該筆資料' class='delete tableBn' onclick='deleteBN(this)'></button>
                         </td>
                     `;
                     
@@ -519,9 +518,9 @@ window.onload = function () {
     $('#onUISubmit').click(function () {
         patchData(1)
     })
-    $('#deleteUISubmit').click(function () {
-        deleteData()
-    })
+    // $('#deleteUISubmit').click(function () {
+    //     deleteData()
+    // })
 
 
 }
