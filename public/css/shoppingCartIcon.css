@@ -1,0 +1,224 @@
+    /* 文字-可刪除 */
+    /* body {  
+    font-family: "Noto Sans TC", sans-serif;
+    } */
+
+    /* 背景牆 */
+    .backgroundOverlay{
+        position: fixed;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2); 
+        z-index: 1 ;
+    }
+
+
+    /* 側邊 */
+    .sidenav {
+        height: 100%;
+        width: 0px;
+        gap: 30px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: #FF6542;
+        border-radius: 30px 0px 0px 30px;
+        overflow-x: hidden;
+        transition: 0.5s;
+        z-index: 2; 
+
+    }
+
+    /* XX 圖示 */
+   .sidenav>a {
+        text-decoration: none;
+        color: #FFFFFF;
+        background-color: #3F3A3A;
+        transition: 0.3s;
+        border-radius: 50%; /* 圓形邊框 */
+        font-size: 50px;
+        padding: 0px 10px;
+
+    } 
+
+    /* 商品名稱 - 滑鼠移過變白色 */
+    .sidenav>span:hover {
+        color: #f1f1f1;
+    }
+
+    /* XX 圖示 */
+    .sidenav .closebtn {
+        position: absolute;
+        top: 75px;
+        right: 25px;
+        font-size: 30px;
+        margin-left: 50px;
+    }
+
+    @media screen and (max-height: 300px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    }
+
+    /* 商品小卡 */
+    .image-container {
+        max-width: 100px;
+        max-height: 100px;
+        display: flex;
+        justify-content: flex-start; /* 這會讓圖片飄向左邊 */
+        align-items: center;
+        float: left;    /* 修改圖片位置 */
+        margin-right: 10px;
+        border-radius: 5px;
+        object-fit: contain;
+
+    }
+
+    .result_goodslist {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        gap:10px
+    }
+    .result_goodslist li {
+        margin-bottom: 20px;
+
+    }
+
+    .result_goodslist>li>div{
+        padding: 5px 0px;
+    }
+
+    .texr1{
+        color: #3F3A3A;
+
+        /* 電腦_重要資訊_中文 */
+        font-family: "Noto Sans TC";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        white-space: nowrap; /* 防止文字換行 */
+        overflow: hidden; /* 隱藏超出部分 */
+        text-overflow: ellipsis; /* 使用省略號表示被截斷的文字 */
+
+    }
+
+    .texr2{
+        color: #3F3A3A;
+
+        /* 電腦_卡片商品價格_中文 */
+        font-family: "Noto Sans TC";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+    }
+
+    .text3{
+        color: var(--, #3F3A3A);
+        text-align: center;
+
+        /* 電腦_商品標題_中文 */
+        font-family: "Noto Sans TC";
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 1.3px;
+        text-transform: uppercase;
+    }
+
+    /* 購物車 + - 按鈕 */
+    .btn-decrement-sm, .btn-increment-sm {
+        background-color: #333;
+        color: #fff;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+    }
+
+    /* 數量 */
+    .quantity-sm {
+        color: white;
+        margin: 0px 20px;
+        min-width: 40px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    /* 小計卡片 */
+    .SubtotalCard{
+        /* display: flex; */
+        display: none;
+        padding: 35px 15px 15px 15px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        align-self: stretch;
+        border-radius: 15px;
+        background-color: #FFFF;
+    }
+
+    .Checkout {
+        display: flex;
+        padding: 15px 30px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+        border-radius: 100px;
+        background-color: #FFE050;
+        color: #3F3A3A;
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    .Checkout:hover{
+        color: #FFFF;
+        text-decoration: none; 
+        transition: color 0.3s ease; 
+    }
+
+    .CleargoodsList{
+        display: flex;
+        padding: 15px 30px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+        border-radius: 100px;
+        background-color: #FF6542;
+        color: #3F3A3A;
+        font-size: 20px;
+        border: none;
+    }
+
+    .CleargoodsList:hover{
+        color: #FFFF;
+        text-decoration: none; 
+        transition: color 0.3s ease; 
+    }
+
+    .d1{
+        background-color: aqua;
+        color: red;
+    }

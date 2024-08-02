@@ -1,3 +1,5 @@
+<!-- wbe3 訂單無法在該頁面更改 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +34,7 @@
 
 
 
+<!-- <body> -->
 <body onload="sc_checkoutlist()">
     <!-- ==========header 開始========== -->
     <header class="nav-header header d-flex align-items-center fixed-top py-4 px-3">
@@ -129,19 +132,22 @@
   
       <!-- ==========header 結束========== -->
 
-    <!-- 標題 -->
-    <div class="order-title"  style="margin-top: 150px;">order</div>
-    <div class="order-title2">訂單明細</div>
+<!-- 標題 -->
+  <div class="order-title"  style="margin-top: 150px;">order</div>
+  <div class="order-title2">訂單明細</div>
 
-    <!-- 訂單明細 -->
-     <div class="container-md" style="max-width: 1200px;">
-     <table  class="table table-hover table-rounded">
+<!-- 訂單明細 -->
+<div class="container-md" style="max-width: 1200px;">
+    <div class="row order-list">
+        <div class="col-6 order-text1">訂單明細 +</div>
+    </div>
+     <table  id="orderTable" class="table table-hover table-rounded table-hidden">
         <thead>
         <tr>
             <th scope="col">商品</th>
             <th scope="col">價格</th>
             <th scope="col">數量</th>
-            <th scope="col">刪除</th>
+            <th scope="col">小計</th>
         </tr>
         </thead>
 
@@ -149,36 +155,6 @@
         <tbody id="result_checkoutlist"></tbody>
 
      </table>
-    </div>
-
-    <!-- 小計區塊 -->
-    <div class="container-md" style="max-width: 1200px;">
-        <div class="row Subtotal-card">
-
-            <!-- 按鈕 -->
-            <div class="col-md-4">
-                <button class="GoShoppingbtn" id="GoShoppingbtn">再去逛逛</button><br>
-                <button class="Checkoutbtn">我要買單</button>
-            </div>
-
-            <!-- 價格 -->
-            <div class="col-md-6  CheckoutBox1">
-                <div class="CheckoutBox2 ">
-                    <span class="MyText1">商品小計</span>
-                    <span class="MyText2">$99999</span>
-                </div>
-                <div class="CheckoutBox2">
-                    <span class="MyText1">運費</span>
-                    <span class="MyText2">$0</span>
-                </div>
-                <div class="CheckoutBox2">
-                    <span class="MyText1">總計</span>
-                    <span class="MyText2">$9999999</span>
-                </div>
-
-            </div>
-
-        </div>
     </div>
 
 
