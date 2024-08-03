@@ -164,9 +164,9 @@ video::-webkit-media-controls-enclosure {
     background-color: transparent;
     position: absolute;
     /* margin-top: 3vh; */
-    z-index: 1;
+    z-index: 100;
     width: fit-content;
-    left: 88%;
+    left: 90%;
     top:3vh;
     border: none;
 
@@ -652,11 +652,11 @@ visibility: hidden;
     visibility: visible;
     animation-name:storyTextFade;
     opacity: 0;
-    animation-duration: 4s;
+    animation-duration: 3.5s;
     animation-delay: 0.2s;
-    /* animation-fill-mode:forwards; */
+   
     animation-timing-function: ease-in-out;
-
+   
 }
 
 /*storyTextFade 動態 ========== */
@@ -666,7 +666,7 @@ visibility: hidden;
         opacity: 0
     }25%{
         opacity: 1
-    }90%{
+    }85%{
         opacity: 1
         
     }100%{
@@ -717,6 +717,7 @@ visibility: hidden;
     justify-content: center;
     width: 100%;
     margin-left: 10%;
+    visibility: hidden;
 
 
 }

@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
+    chubbySong.volume =1;
+    bgmusic.volume = 0.4; 
 
-    bgmusic.volume = 0.7; 
-
-    //控制聲音開關 預設關閉
-    let CtrlSound =function(){
+    //控制聲音總開關 預設關閉
+    let CtrlSound = async function(){
         $('#soundContainer').on('click',function(){
             if($('#soundIcon').attr('src') === './images/publicImg/soundOn.svg'){
                 // 確認是否加載音樂
@@ -14,6 +14,7 @@ $(document).ready(function () {
                
             }else{
                 bgmusic.muted =true
+                chubbySong.muted = true
                 $('#soundIcon').attr('src','./images/publicImg/soundOn.svg')
                 
             }
@@ -25,7 +26,7 @@ $(document).ready(function () {
     CtrlSound()
     //把題目裝到陣列裡
     const allQuestion = [{quesNumber:"Q1", questionLine1: '有一顆寶貝球滾到你面前不斷閃爍....',questionLine2:'你會...', text: 'WELCOME TO THE POKEMON ADVENTURE', option: ['默默把它撿起來帶走', '當作沒看到經過它', '站在原地觀察它'] }
-        , { quesNumber:"Q2",questionLine1: '突然前方傳來熟悉的’美妙’旋律....',questionLine2:'你會...', text: 'BOBOROROBOBOLIBO~~', option: ['看來胖丁又在禍害人間了', '不錯喔 胖丁的歌藝越來越精湛了', '我不要聽！拿出耳塞 塞好塞滿', '最近都失眠 聽完睡著剛剛好'] }
+        , { quesNumber:"Q2",questionLine1: '突然前方傳來熟悉的美妙旋律....',questionLine2:'你會...', text: 'BOBOROROBOBOLIBO~~', option: ['看來胖丁又在禍害人間了', '不錯喔 胖丁的歌藝越來越精湛了', '我不要聽！拿出耳塞 塞好塞滿', '最近都失眠 聽完睡著剛剛好'] }
         , { quesNumber:"Q3",questionLine1: '碰！極巨肥化皮卡丘掉到了你面前....',questionLine2:'你會...', text: '走著走著天空突然下起蛋糕雨', option: ['摸摸看他的大肚子', '餵他吃更多蛋糕', '警告他吃太胖會被殺掉'] }
         , { quesNumber:"Q4",questionLine1: '你在天空看見了喵喵熱氣球飄向你....',questionLine2:'你會....', text: '皮卡丘一巴掌把你拍上了天空', option: ['進到熱氣球裡一探究竟', '趕快拿手機拍下來留念', '不想被發現 躲到雲後面'] }
         , { quesNumber:"Q5",questionLine1: '你發現睡著的耿鬼....',questionLine2:'你認為....', text: '喵喵突然把你抓進熱氣球裡', option: ['他一定是被火箭隊抓住了', '一定有詐 他可是耿鬼', '太可愛了吧 反差萌', '大好機會 我要收服耿鬼'] }
@@ -42,15 +43,14 @@ $(document).ready(function () {
         "./images/publicImg/process6.svg",
         "./images/publicImg/process7.svg",]
     
-    // 每一頁背景裝到陣列
+    // 每一頁背景裝到陣列========
     const allBackground =[
+        //第一題 陣列索引0
         [` <section class="webBgContainerSec">
 
         <div class="sec_bgContainer" style="z-index: 1; ">
 
 
-            <!-- soundON OFF icon -->
-            <button id="soundContainer"><img id="soundIcon" src="./images/publicImg/soundOn.svg" alt=""></button>
 
 
             <!-- process -->
@@ -107,8 +107,76 @@ $(document).ready(function () {
         </div>
 
     </section>
-`]
-    ]
+`],
+//第二題 陣列索引1
+  [`        <div class="superBigWebCon">
+    <!-- 網頁版bg容器 -->
+    <section class="webBgContainerSec">
+
+        <div class="thir_bgContainer" style="z-index: 1; ">
+
+
+
+            <!-- process -->
+            <div class="bigprocessCon">
+                <!-- 換進度條圖片src -->
+                <div class="processContainer"><img id="process" src="./images/publicImg/process1.svg" alt=""></div>
+            </div>
+            <!-- 題目選項按鈕區 -->
+            <div class="questionAndbuttonCon">
+                <!-- 題目 -->
+                 <!-- .questionContainer換成圖片跟文字 -->
+                 <div class="storyTextCtrl">
+                    <div class="storyText"><h4 ></h4></div>
+                </div>
+                <div class="questionContainer">
+                    <div class="questionIcon"></div>
+                    <div class="questionTextCon">
+                        <h4 id="questionline1"  class="textContent">有一顆寶貝球滾到你面前不斷閃爍.... </h4>
+                        <h4 id="questionline2"  class="textContent">你會...？</h4>
+
+                    </div>
+
+                </div>
+                <!-- 選項按鈕 -->
+                <div class="btnContainer">
+                    
+                </div>
+            </div>
+            <div style="overflow: hidden;">
+
+                <!-- 動畫區 -->
+                <div class="chubbyaniCon">
+                    <img class="micImg" src="./images/thirdPageImg/mic.svg" alt="">
+                    <video class="chubbySing" src="./images/animation/chubbySing.webm"  autoplay loop muted></video>
+                    
+                </div>
+                
+            </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- 雲朵 -->
+        <div class="thir_cloudscontainer">
+            <div class="sec_cloud1container"><img width="100vw" src="./images/secondPageImg/cloudWhite1.svg" alt="">
+            </div>
+            <div class="sec_cloud2container"><img width="90vw" src="./images/secondPageImg/cloudWhite1.svg" alt="">
+            </div>
+            <div class="sec_cloud3container"><img width="110vw" src="./images/secondPageImg/cloudWhite2.svg" alt="">
+            </div>
+            <div class="sec_cloud4container"><img width="75vw" src="./images/secondPageImg/cloudWhite2.svg" alt="">
+            </div>
+            <!-- 草皮 -->
+            <div class="grassContainer"><img src="./images/secondPageImg/grass.svg" alt=""></div>
+            <!-- 音符 -->
+             <div class="musicIcon1"></div>
+             <div class="musicIcon2"></div>
+        </div>
+
+`]  ]
 
     //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
     let currentQuestion = 0
@@ -138,13 +206,14 @@ $(document).ready(function () {
             //true-> 清空div #testStart內容 動態生成第一題
             $('.superBigWebCon').empty()
             // console.log('清空#testStart裡的東西 ', 'empty is ok')
+            //印出題目
             renderQuestion(currentQuestion)
 
         }
     })
 
     //
-    //函數渲染出題目跟結果
+    //函數渲染出題目跟結果=========================
 
     function renderQuestion(currentQuestion) {
         //所有題目陣列索引裝到questionData
@@ -152,43 +221,57 @@ $(document).ready(function () {
         //如果currentQuestion小於allQuestion陣列的長度就印出題目
         if (currentQuestion < allQuestion.length) {
             // console.log(questionData)
+
+            // ==============測試時初版題目印出
             //印出題目跟對話框
             // $('#questionContainer').append(`<p>${questionData.text}</p><p>${questionData.question}</p>`)
             //暫時印出皮卡丘
-//             $('#questionContainer').append(`<video width="400px" src="./images/animation/pikaWalk.webm" autoplay loop muted>
-// </video>`)
-// $('#questionContainer').append(` <img style="border:2px solid black" src="./images/question1Img/cloudWhite.svg" alt="">`)
+                //             $('#questionContainer').append(`<video width="400px" src="./images/animation/pikaWalk.webm" autoplay loop muted>
+            // </video>`)
+            // $('#questionContainer').append(` <img style="border:2px solid black" src="./images/question1Img/cloudWhite.svg" alt="">`)
 
-//             // 尋訪每一個選項 印出每一個選項
-//             for (let i = 0; i < questionData.option.length; i++) {
-//                 $('#questionContainer').append(`<button class="option${i}">${questionData.option[i]}</button>`)
-//             }
+            //             // 尋訪每一個選項 印出每一個選項
+                //             for (let i = 0; i < questionData.option.length; i++) {
+                //                 $('#questionContainer').append(`<button class="option${i}">${questionData.option[i]}</button>`)
+                //             }
+
+
+
 
         //迴圈長出大背景=======
         $('.superBigWebCon').append(
             allBackground[currentQuestion]
         )
-        //呼叫控制聲音
+        //呼叫控制bgm聲音
         CtrlSound()
         // 印出進度條============
         $('#process').attr('src',`./images/publicImg/process${currentQuestion}.svg`)
        
         //印出旁白文字=========
-        // 透明度進入 持續2.5秒 消失 css控制
+        // 透明度進入  消失 css控制
         $('.storyText h4').html(`${questionData.text}`)
         
+        //播放胖丁音樂===========
+        // 題目索引為1並且#soundIcon是Off的時候 把靜音打開 然後播放音樂
+        if(currentQuestion ===1 && $('#soundIcon').attr('src')==='./images/publicImg/soundOff.svg'){
+            $('#chubbySong').prop('muted', false)
+            chubbySong.play().catch(e => console.log("胖丁播放失敗:", e))
+
+        }
+        //再次呼叫控制音樂========
+        CtrlSound()
         
-        // 3秒後清空旁白文字框=====
+        // 3.5秒後清空旁白文字框=====
         const emptyStoryText = function(){
             $('.storyTextCtrl').empty()}
 
-        setTimeout(emptyStoryText,4000)
+        setTimeout(emptyStoryText,3700)
 
-        //========= 3.5秒後改變問題框跟選項框動畫框visibility hidden=>visable
+        //========= 4秒後改變問題框跟選項框動畫框visibility hidden=>visable
         const showQuestionandbutton = function(){
-            $('.pokeaniCon,.btnContainer,.questionContainer').css('visibility','visible')
+            $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer').css('visibility','visible')
         }
-        setTimeout(showQuestionandbutton,4200)
+        setTimeout(showQuestionandbutton,4000)
         
         //印出題數============
        $('.questionIcon').html(`${questionData.quesNumber}`)
@@ -202,8 +285,17 @@ $(document).ready(function () {
 
         //印出選項=============
         for (let i = 0; i < questionData.option.length; i++) {
-                         $('.btnContainer').append(`
-                            <button class="btn1 option${i}">${questionData.option[i]}</button>`)
+            // 1到7題印出不同按鈕class
+            switch(currentQuestion){
+                case 0:
+                    $('.btnContainer').append(`
+                        <button class="btn1 option${i}">${questionData.option[i]}</button>`);
+                break;
+                case 1:
+                    $('.btnContainer').append(`
+                        <button class="btn2 option${i}">${questionData.option[i]}</button>`);
+                break;
+            }
                        }
 
 
