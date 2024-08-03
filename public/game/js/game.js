@@ -1,40 +1,52 @@
 $(document).ready(function () {
 
-    chubbySong.volume =1;
-    bgmusic.volume = 0.4; 
+    chubbySong.volume = 1;
+    bgmusic.volume = 0.4;
 
     //控制聲音總開關 預設關閉
-    let CtrlSound = async function(){
-        $('#soundContainer').on('click',function(){
-            if($('#soundIcon').attr('src') === './images/publicImg/soundOn.svg'){
+    let CtrlSound = async function () {
+        $('#soundContainer').on('click', function () {
+            if ($('#soundIcon').attr('src') === './images/publicImg/soundOn.svg') {
                 // 確認是否加載音樂
                 bgmusic.play().catch(e => console.log("播放失敗:", e))
-                bgmusic.muted =false
-               $('#soundIcon').attr('src','./images/publicImg/soundOff.svg')
-               
-            }else{
-                bgmusic.muted =true
+                bgmusic.muted = false
+                $('#soundIcon').attr('src', './images/publicImg/soundOff.svg')
+
+            } else {
+                bgmusic.muted = true
                 chubbySong.muted = true
-                $('#soundIcon').attr('src','./images/publicImg/soundOn.svg')
-                
+                $('#soundIcon').attr('src', './images/publicImg/soundOn.svg')
+
             }
-            
-     
-            
-        })    
+
+
+
+        })
     }
+
+
+    //功能 播放胖丁音樂===========
+    // 題目索引為1並且#soundIcon是Off的時候 把靜音打開 然後播放音樂
+    let chubbysongCtrl = async function () {
+        if (currentQuestion === 1 && $('#soundIcon').attr('src') === './images/publicImg/soundOff.svg') {
+            $('#chubbySong').prop('muted', false)
+            chubbySong.play().catch(e => console.log("胖丁播放失敗:", e))
+
+        }
+    }
+    //初始就呼叫控制音樂
     CtrlSound()
     //把題目裝到陣列裡
-    const allQuestion = [{quesNumber:"Q1", questionLine1: '有一顆寶貝球滾到你面前不斷閃爍....',questionLine2:'你會...', text: 'WELCOME TO THE POKEMON ADVENTURE', option: ['默默把它撿起來帶走', '當作沒看到經過它', '站在原地觀察它'] }
-        , { quesNumber:"Q2",questionLine1: '突然前方傳來熟悉的美妙旋律....',questionLine2:'你會...', text: 'BOBOROROBOBOLIBO~~', option: ['看來胖丁又在禍害人間了', '不錯喔 胖丁的歌藝越來越精湛了', '我不要聽！拿出耳塞 塞好塞滿', '最近都失眠 聽完睡著剛剛好'] }
-        , { quesNumber:"Q3",questionLine1: '碰！極巨肥化皮卡丘掉到了你面前....',questionLine2:'你會...', text: '走著走著天空突然下起蛋糕雨', option: ['摸摸看他的大肚子', '餵他吃更多蛋糕', '警告他吃太胖會被殺掉'] }
-        , { quesNumber:"Q4",questionLine1: '你在天空看見了喵喵熱氣球飄向你....',questionLine2:'你會....', text: '皮卡丘一巴掌把你拍上了天空', option: ['進到熱氣球裡一探究竟', '趕快拿手機拍下來留念', '不想被發現 躲到雲後面'] }
-        , { quesNumber:"Q5",questionLine1: '你發現睡著的耿鬼....',questionLine2:'你認為....', text: '喵喵突然把你抓進熱氣球裡', option: ['他一定是被火箭隊抓住了', '一定有詐 他可是耿鬼', '太可愛了吧 反差萌', '大好機會 我要收服耿鬼'] }
-        , { quesNumber:"Q6",questionLine1: '你掉在一群移動中的可達鴨裡....',questionLine2:'你想....', text: '耿鬼突然驚醒 嚇得你掉出熱氣球', option: ['跟著他們繼續走', '趁亂抱走一隻', '敲敲看他們的腦殼'] }
-        , { quesNumber:"Q7",questionLine1: ' 可達鴨對你使出念力抬起你....',questionLine2:'你認為你會被送去....', text: '(可達鴨發現你了！)', option: ['真新鎮 ', '大木博士的研究所', '探望常磐森林的比雕'] }]
+    const allQuestion = [{ quesNumber: "Q1", questionLine1: '有一顆寶貝球滾到你面前不斷閃爍....', questionLine2: '你會...', text: 'WELCOME TO THE POKEMON ADVENTURE', option: ['默默把它撿起來帶走', '當作沒看到經過它', '站在原地觀察它'] }
+        , { quesNumber: "Q2", questionLine1: '突然前方傳來熟悉的美妙旋律....', questionLine2: '你會...', text: 'BOBOROROBOBOLIBO~~', option: ['看來胖丁又在禍害人間了', '不錯喔 胖丁的歌藝越來越精湛了', '我不要聽！拿出耳塞 塞好塞滿', '最近都失眠 聽完睡著剛剛好'] }
+        , { quesNumber: "Q3", questionLine1: '碰！極巨肥化皮卡丘掉到了你面前....', questionLine2: '你會...', text: '走著走著天空突然下起蛋糕雨', option: ['摸摸看他的大肚子', '餵他吃更多蛋糕', '警告他吃太胖會被殺掉'] }
+        , { quesNumber: "Q4", questionLine1: '你在天空看見了喵喵熱氣球飄向你....', questionLine2: '你會....', text: '皮卡丘一巴掌把你拍上了天空', option: ['進到熱氣球裡一探究竟', '趕快拿手機拍下來留念', '不想被發現 躲到雲後面'] }
+        , { quesNumber: "Q5", questionLine1: '你發現睡著的耿鬼....', questionLine2: '你認為....', text: '喵喵突然把你抓進熱氣球裡', option: ['他一定是被火箭隊抓住了', '一定有詐 他可是耿鬼', '太可愛了吧 反差萌', '大好機會 我要收服耿鬼'] }
+        , { quesNumber: "Q6", questionLine1: '你掉在一群移動中的可達鴨裡....', questionLine2: '你想....', text: '耿鬼突然驚醒 嚇得你掉出熱氣球', option: ['跟著他們繼續走', '趁亂抱走一隻', '敲敲看他們的腦殼'] }
+        , { quesNumber: "Q7", questionLine1: ' 可達鴨對你使出念力抬起你....', questionLine2: '你認為你會被送去....', text: '(可達鴨發現你了！)', option: ['真新鎮 ', '大木博士的研究所', '探望常磐森林的比雕'] }]
 
     //把進度條裝到陣列裡
-    const allProcess =[
+    const allProcess = [
         "./images/publicImg/process1.svg",
         "./images/publicImg/process2.svg",
         "./images/publicImg/process3.svg",
@@ -42,9 +54,9 @@ $(document).ready(function () {
         "./images/publicImg/process5.svg",
         "./images/publicImg/process6.svg",
         "./images/publicImg/process7.svg",]
-    
+
     // 每一頁背景裝到陣列========
-    const allBackground =[
+    const allBackground = [
         //第一題 陣列索引0
         [` <section class="webBgContainerSec">
 
@@ -108,8 +120,8 @@ $(document).ready(function () {
 
     </section>
 `],
-//第二題 陣列索引1
-  [`        <div class="superBigWebCon">
+        //第二題 陣列索引1
+        [`        <div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainerSec">
 
@@ -176,7 +188,7 @@ $(document).ready(function () {
              <div class="musicIcon2"></div>
         </div>
 
-`]  ]
+`]]
 
     //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
     let currentQuestion = 0
@@ -226,77 +238,72 @@ $(document).ready(function () {
             //印出題目跟對話框
             // $('#questionContainer').append(`<p>${questionData.text}</p><p>${questionData.question}</p>`)
             //暫時印出皮卡丘
-                //             $('#questionContainer').append(`<video width="400px" src="./images/animation/pikaWalk.webm" autoplay loop muted>
+            //             $('#questionContainer').append(`<video width="400px" src="./images/animation/pikaWalk.webm" autoplay loop muted>
             // </video>`)
             // $('#questionContainer').append(` <img style="border:2px solid black" src="./images/question1Img/cloudWhite.svg" alt="">`)
 
             //             // 尋訪每一個選項 印出每一個選項
-                //             for (let i = 0; i < questionData.option.length; i++) {
-                //                 $('#questionContainer').append(`<button class="option${i}">${questionData.option[i]}</button>`)
-                //             }
+            //             for (let i = 0; i < questionData.option.length; i++) {
+            //                 $('#questionContainer').append(`<button class="option${i}">${questionData.option[i]}</button>`)
+            //             }
 
 
 
 
-        //迴圈長出大背景=======
-        $('.superBigWebCon').append(
-            allBackground[currentQuestion]
-        )
-        //呼叫控制bgm聲音
-        CtrlSound()
-        // 印出進度條============
-        $('#process').attr('src',`./images/publicImg/process${currentQuestion}.svg`)
-       
-        //印出旁白文字=========
-        // 透明度進入  消失 css控制
-        $('.storyText h4').html(`${questionData.text}`)
-        
-        //播放胖丁音樂===========
-        // 題目索引為1並且#soundIcon是Off的時候 把靜音打開 然後播放音樂
-        if(currentQuestion ===1 && $('#soundIcon').attr('src')==='./images/publicImg/soundOff.svg'){
-            $('#chubbySong').prop('muted', false)
-            chubbySong.play().catch(e => console.log("胖丁播放失敗:", e))
+            //迴圈長出大背景=======
+            $('.superBigWebCon').append(
+                allBackground[currentQuestion]
+            )
+            //呼叫控制bgm聲音
+            CtrlSound()
+            // 印出進度條============
+            $('#process').attr('src', `./images/publicImg/process${currentQuestion}.svg`)
 
-        }
-        //再次呼叫控制音樂========
-        CtrlSound()
-        
-        // 3.5秒後清空旁白文字框=====
-        const emptyStoryText = function(){
-            $('.storyTextCtrl').empty()}
+            //印出旁白文字=========
+            // 透明度進入  消失 css控制
+            $('.storyText h4').html(`${questionData.text}`)
 
-        setTimeout(emptyStoryText,3700)
+            //功能 播放胖丁音樂===========
+            CtrlSound()
+            chubbysongCtrl()
 
-        //========= 4秒後改變問題框跟選項框動畫框visibility hidden=>visable
-        const showQuestionandbutton = function(){
-            $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer').css('visibility','visible')
-        }
-        setTimeout(showQuestionandbutton,4000)
-        
-        //印出題數============
-       $('.questionIcon').html(`${questionData.quesNumber}`)
-        
-        //印出題目=============
-        //第一行
-        $('#questionline1').html(`${questionData.questionLine1}`)
-        //第二行
-        $('#questionline2').html(`${questionData.questionLine2}`)
-
-
-        //印出選項=============
-        for (let i = 0; i < questionData.option.length; i++) {
-            // 1到7題印出不同按鈕class
-            switch(currentQuestion){
-                case 0:
-                    $('.btnContainer').append(`
-                        <button class="btn1 option${i}">${questionData.option[i]}</button>`);
-                break;
-                case 1:
-                    $('.btnContainer').append(`
-                        <button class="btn2 option${i}">${questionData.option[i]}</button>`);
-                break;
+            // 3.5秒後清空旁白文字框=====
+            const emptyStoryText = function () {
+                $('.storyTextCtrl').empty()
             }
-                       }
+
+            setTimeout(emptyStoryText, 3700)
+
+            //========= 4秒後改變問題框跟選項框動畫框visibility hidden=>visable
+            const showQuestionandbutton = function () {
+                $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer').css('visibility', 'visible')
+            }
+            setTimeout(showQuestionandbutton, 4000)
+
+            //印出題數============
+            $('.questionIcon').html(`${questionData.quesNumber}`)
+
+            //印出題目=============
+            //第一行
+            $('#questionline1').html(`${questionData.questionLine1}`)
+            //第二行
+            $('#questionline2').html(`${questionData.questionLine2}`)
+
+
+            //印出選項=============
+            for (let i = 0; i < questionData.option.length; i++) {
+                // 1到7題印出不同按鈕class
+                switch (currentQuestion) {
+                    case 0:
+                        $('.btnContainer').append(`
+                        <button class="btn1 option${i}">${questionData.option[i]}</button>`);
+                        break;
+                    case 1:
+                        $('.btnContainer').append(`
+                        <button class="btn2 option${i}">${questionData.option[i]}</button>`);
+                        break;
+                }
+            }
 
 
 
