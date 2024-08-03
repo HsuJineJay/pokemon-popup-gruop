@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POKEMON_POPUP</title>
+
+    <link rel="stylesheet" href="/public/reservation/cafe step.5/cafe step.5.css">
+    <!-- <script src="/main/_js/home.js"></script> -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <!-- 購物車引用 JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="/public/shoppingCartIcon.js"></script>
+    <link rel="stylesheet" href="/public/shoppingCartIcon.css">
+
+</head>
+
+<body>
+    <!-- ==========header 開始========== -->
+    <header class="nav-header header d-flex align-items-center fixed-top py-4 px-3">
+        <div class="container-fluid  position-relative d-flex align-items-center justify-content-between">
+
+            <a href="#" class="navbar-brand col-5 col-md-3 nav-logo ">
+                <img src="/public/reservation/雲端/icon/快閃店logoz_h100.png" />
+            </a>
+
+            <div class="d-flex ">
+                <!-- 電腦版菜單 -->
+                <div class="header-navibar px-4 d-none d-md-flex">
+                    <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+                        <a href="/reservation/reservation.html">
+                            <span class="nav-button-text"><span>&nbsp;RESERVATION&nbsp;<span>預約入場</span></span>
+                        </a>
+                    </button>
+                    <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+                        <a href="/goods/goods.html">
+                            <span class="nav-button-text"><span>&nbsp;GOODS&nbsp;<span>快閃商品</span></span>
+                        </a>
+                    </button>
+                    <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+                        <a href="/menu/menu.html">
+                            <span class="nav-button-text"><span>&nbsp;MENU&nbsp;<span>餐點菜單</span></span>
+                        </a>
+                    </button>
+                    <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+                        <a href="/game/game.html">
+                            <span class="nav-button-text"><span>&nbsp;GAME&nbsp;<span>大冒險</span></span>
+                        </a>
+                    </button>
+                </div>
+
+                <!-- 購物車按鈕 -->
+                <div class="navbar-cart" id="openNav" onclick="openNav()">
+                    <img src="/public/reservation/雲端/icon/cart_icon.svg" alt="購物車圖示">
+                </div>
+                <!-- 購物車導覽列小圖片 -->
+                <div id="mySidenav" class="sidenav">
+                    <!-- 關閉標籤 -->
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
+                    <!-- 提示訊息 -->
+                    <div id="buyprompt_message"></div>
+                    <!-- 商品小卡 -->
+                    <ul id="result_goodslist" class="result_goodslist"></ul><br><br>
+                </div>
+                <div id="backgroundOverlay" onclick="closeNav()"></div>
+            </div>
+
+        </div>
+    </header>
+    <!-- ==========header 結束========== -->
+
+    <main>
+        <section>
+            <div class="reserve">
+                <h1 style="font-weight: bold;">DONE</h1>
+                <h5 style="margin-top: -10px;color: #FF6542;letter-spacing: 2px;">預約完成</h5>
+            </div>
+            <div id="store-info">
+                <div class="circle" style="color: #FFE050;">
+                    <h3 style="letter-spacing: 2px;padding-top: 35px;">咖啡廳</h3>
+                    <h6 style="margin-top: -10px;letter-spacing: 1px;">CAFE</h6>
+                </div>
+                <div>
+                    <div class="orderInfo">
+                        <h6 style="padding-top: 5px;">曾淑敏</h6>
+                        <h6>13:00~14:00</h6>
+                        <h6>7/16 週三</h6>
+                        <h6>5位</h6>
+                    </div>
+                </div>
+            </div>
+            <a style="font-size: 9px;letter-spacing: 1px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 27 20" fill="none">
+                    <path
+                        d="M25.9174 0.0635851C25.1659 -0.418822 20.2602 1.80953 17.2823 7.9194C16.1542 7.32382 14.7218 7.10302 13.4787 7.10302C12.2355 7.10302 10.8124 7.34794 9.7196 7.92312C6.74167 1.80953 1.8341 -0.416967 1.08266 0.0635851C0.57984 0.384572 1.66711 5.26616 7.05894 9.75626C7.05894 9.75626 7.05709 9.75812 7.05523 9.75997C6.18319 10.632 5.24806 12.3446 5.2629 14.1276C5.29073 17.2596 8.44122 20 13.4638 20C18.7573 20 21.5868 17.2484 21.674 14.1684C21.7241 12.3798 21.0636 10.9307 19.9262 9.7674C25.331 5.27544 26.4202 0.384572 25.9174 0.0635851Z"
+                        fill="#3F3A3A" />
+                </svg>
+                請於預約時段前10分鐘攜帶證件報到及排隊入場
+            </a>
+            <br>
+
+            <a style="font-size: 9px;letter-spacing: 1px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 27 20" fill="none">
+                    <path
+                        d="M25.9174 0.0635851C25.1659 -0.418822 20.2602 1.80953 17.2823 7.9194C16.1542 7.32382 14.7218 7.10302 13.4787 7.10302C12.2355 7.10302 10.8124 7.34794 9.7196 7.92312C6.74167 1.80953 1.8341 -0.416967 1.08266 0.0635851C0.57984 0.384572 1.66711 5.26616 7.05894 9.75626C7.05894 9.75626 7.05709 9.75812 7.05523 9.75997C6.18319 10.632 5.24806 12.3446 5.2629 14.1276C5.29073 17.2596 8.44122 20 13.4638 20C18.7573 20 21.5868 17.2484 21.674 14.1684C21.7241 12.3798 21.0636 10.9307 19.9262 9.7674C25.331 5.27544 26.4202 0.384572 25.9174 0.0635851Z"
+                        fill="#3F3A3A" />
+                </svg>
+                預約保留10分鐘，若超過時間未入場即視同棄權
+            </a>
+            <br>
+            <button id="btn">返回首頁</button>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        </section>
+    </main>
+
+    <!-- ==========footer 開始========== -->
+    <footer id="footer">
+        <div class="footer-contnet flex-fill">
+            <div class="footer-navbar flex-fill">
+
+                <div class="footer-logo">
+                    <img src="/public/reservation/雲端/icon/快閃店logoz_h100.png" />
+                </div>
+
+                <div class="footer-item flex-fill">
+
+                    <div class="footer-social flex-fill">
+                        <button class=""><img src="/public/reservation/雲端/icon/social_icon_fb.png"
+                                alt="facebook"></button>
+                        <button class=""><img src="/public/reservation/雲端/icon/social_icon_ig.png"
+                                alt="instagram"></button>
+                    </div>
+
+                    <div class="footer-link">
+                        <button class="">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"
+                                style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                                <path class="st0" d="M23.9,2.4c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.2-0.3c0-0.1-0.1-0.1-0.1-0.2
+             C23.3,1,23,0.7,22.7,0.5c-0.1,0-0.1-0.1-0.2-0.1c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1,0-0.2-0.1-0.3-0.1c-0.1,0-0.2-0.1-0.3-0.1
+             C21.4,0,21.2,0,21,0H3C1.3,0,0,1.3,0,3s1.3,3,3,3h10.8L0.9,18.9c-1.2,1.2-1.2,3.1,0,4.2C1.5,23.7,2.2,24,3,24s1.5-0.3,2.1-0.9
+             L18,10.2V21c0,1.7,1.3,3,3,3s3-1.3,3-3V3C24,2.8,24,2.6,23.9,2.4z" />
+                            </svg>
+                            隱私權政策
+                        </button>
+                        <button class="">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"
+                                style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                                <path class="st0" d="M23.9,2.4c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.2-0.3c0-0.1-0.1-0.1-0.1-0.2
+           C23.3,1,23,0.7,22.7,0.5c-0.1,0-0.1-0.1-0.2-0.1c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1,0-0.2-0.1-0.3-0.1c-0.1,0-0.2-0.1-0.3-0.1
+           C21.4,0,21.2,0,21,0H3C1.3,0,0,1.3,0,3s1.3,3,3,3h10.8L0.9,18.9c-1.2,1.2-1.2,3.1,0,4.2C1.5,23.7,2.2,24,3,24s1.5-0.3,2.1-0.9
+           L18,10.2V21c0,1.7,1.3,3,3,3s3-1.3,3-3V3C24,2.8,24,2.6,23.9,2.4z" />
+                            </svg>
+                            常見問題
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+            <p class="my-0">©Pokémon. ©Nintendo/Creatures Inc. /GAME FREAK inc.</p>
+        </div>
+
+    </footer>
+    <!-- ==========footer 結束========== -->
+</body>
+
+
+
+</html>

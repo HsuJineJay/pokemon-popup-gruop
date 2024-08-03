@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Google 字型 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="./_css/goods.css">
+
+    <!-- header & footer 的引用-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <script src="../_js/public.js"></script>
+    <link rel="stylesheet" href="../_css/public.css">
+
+    <!-- 購物車引用 JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="../_js/shoppingCartIcon.js"></script>
+    <link rel="stylesheet" href="../_css/shoppingCartIcon.css">
+
+</head>
+
+
+<body  onload="sc_msgall()">
+
+    <!-- ==========header 開始========== -->
+    <header class="nav-header header d-flex align-items-center fixed-top py-4 px-3">
+      <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+  
+        <a href="../index.html" class="navbar-brand col-5 col-md-3 nav-logo ">
+          <img src="../_images/logo/pokemon_popup_logo.svg" />
+        </a>
+  
+        <div class="d-flex ">
+          <!-- 電腦版菜單 -->
+          <div class="header-navibar px-4 d-none d-md-flex">
+            <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+              <a href="../reservation/reservation.html">
+                <span class="nav-button-text"><span>&nbsp;RESERVATION&nbsp;<span>預約入場</span></span>
+              </a>
+            </button>
+            <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+              <a href="../goods/goods.html">
+                <span class="nav-button-text"><span>&nbsp;GOODS&nbsp;<span>快閃商品</span></span>
+              </a>
+            </button>
+            <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+              <a href="./menu.html">
+                <span class="nav-button-text"><span>&nbsp;MENU&nbsp;<span>餐點菜單</span></span>
+              </a>
+            </button>
+            <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+              <a href="../game/game.html">
+                <span class="nav-button-text"><span>&nbsp;GAME&nbsp;<span>大冒險</span></span>
+              </a>
+            </button>
+          </div>
+  
+          <!-- 購物車按鈕 -->
+          <div class="navbar-cart" id="openNav" onclick="openNav()">
+            <img src="../_images/icon/cart_icon.svg" alt="購物車圖示">
+          </div>
+          <!-- 購物車導覽列小圖片 -->
+          <div id="mySidenav" class="sidenav">
+            <!-- 關閉標籤 -->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
+            <!-- 提示訊息 -->
+            <div id="buyprompt_message"></div>
+            <!-- 商品小卡 -->
+            <ul id="result_goodslist" class="result_goodslist"></ul><br><br>
+          </div>
+          <div id="backgroundOverlay" onclick="closeNav()">
+          </div>
+  
+          <!-- 手機版菜單 -->
+          <!-- 手機按鈕icon -->
+          <button class="navbar-toggler d-md-none d-block col-3 border-0" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <object class="menu-icon" data="../_images/icon/menu_icon.svg" type="image/svg+xml"></object>
+          </button>
+          <!-- 手機offcanvas菜單 開始 -->
+          <div class="offcanvas offcanvas-end header-navibar-sm d-md-none d-block px-3" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <!-- 手機offcanvas標題 -->
+            <div class="offcanvas-header mt-3 rounded-pill px-4 py-2 justify-content-between">
+  
+              <object id="offcanvasNavbarLabel" data="../_images/logo/pokemon_popup_logo.svg"></object>
+  
+              <button type="button" class="border-0 bg-transparent d-flex" data-bs-dismiss="offcanvas" aria-label="Close">
+                <object class="menu-icon" data="../_images/icon/close_icon.svg" type="image/svg+xml"></object>
+              </button>
+  
+            </div>
+            <!-- 手機offcanvas項目 -->
+            <div class="offcanvas-body px-4">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="./main/index.html">首頁｜<span>HOME</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./reservation/reservation.html">預約入場｜<span>RESERVATION</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./goods/goods.html">快閃商品｜<span>GOODS</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="./menu.html">餐點菜單｜<span>MENU</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="./game/game.html">心理測驗｜<span>GAME</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+    </header>
+  
+    <!-- ==========header 結束========== -->
+    
+
+    <div class="container" style="margin-top: 150px;">
+        <div class=" " style="max-width: 1200px;">  
+        <div class="row justify-content-center">
+
+            <!-- 商品類別-左側 -->
+            <div class="col-md-2 categoryA">
+                <div class="categoryB" id="storeOnly=1">限量商品</div>
+                <div class="categoryB">類別</div>
+                <ul>
+                    <li class="category_li" id="decoration">家飾用品</li>
+                    <li class="category_li" id="jewelry">珠寶首飾</li>
+                    <li class="category_li" id="stationery">文具、文創</li>
+                    <li class="category_li" id="toy">玩具、玩偶</li>
+                    <li class="category_li" id="model">模型</li>
+                </ul>
+            </div>
+            <!-- 商品瀏覽-右側 -->
+            <div class="col-md-8 col-12">
+            <div class="container-fuli">
+                <div class="row row-cols-1 row-cols-md-3 g-4"  id="result">
+                        
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</div>
+
+<br><br><br>
+
+    <!-- ==========footer 開始========== -->
+    <footer id="footer">
+      <div class="footer-contnet flex-fill">
+        <div class="footer-navbar flex-fill">
+  
+          <div class="footer-logo">
+            <object data="../_images/logo/pokemon_popup_logo.svg"></object>
+          </div>
+  
+          <div class="footer-item flex-fill">
+  
+            <div class="footer-social flex-fill">
+              <button class=""><img src="../_images/icon/social_icon_fb.png" alt="facebook"></button>
+              <button class=""><img src="../_images/icon/social_icon_ig.png" alt="instagram"></button>
+            </div>
+  
+            <div class="footer-link">
+              <button class="">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                  y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                  <path class="st0" d="M23.9,2.4c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.2-0.3c0-0.1-0.1-0.1-0.1-0.2
+                 C23.3,1,23,0.7,22.7,0.5c-0.1,0-0.1-0.1-0.2-0.1c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1,0-0.2-0.1-0.3-0.1c-0.1,0-0.2-0.1-0.3-0.1
+                 C21.4,0,21.2,0,21,0H3C1.3,0,0,1.3,0,3s1.3,3,3,3h10.8L0.9,18.9c-1.2,1.2-1.2,3.1,0,4.2C1.5,23.7,2.2,24,3,24s1.5-0.3,2.1-0.9
+                 L18,10.2V21c0,1.7,1.3,3,3,3s3-1.3,3-3V3C24,2.8,24,2.6,23.9,2.4z" />
+                </svg>
+                隱私權政策
+              </button>
+              <button class="">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                  y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                  <path class="st0" d="M23.9,2.4c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.2-0.3c0-0.1-0.1-0.1-0.1-0.2
+               C23.3,1,23,0.7,22.7,0.5c-0.1,0-0.1-0.1-0.2-0.1c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1,0-0.2-0.1-0.3-0.1c-0.1,0-0.2-0.1-0.3-0.1
+               C21.4,0,21.2,0,21,0H3C1.3,0,0,1.3,0,3s1.3,3,3,3h10.8L0.9,18.9c-1.2,1.2-1.2,3.1,0,4.2C1.5,23.7,2.2,24,3,24s1.5-0.3,2.1-0.9
+               L18,10.2V21c0,1.7,1.3,3,3,3s3-1.3,3-3V3C24,2.8,24,2.6,23.9,2.4z" />
+                </svg>
+                常見問題
+              </button>
+            </div>
+  
+          </div>
+  
+        </div>
+        <p class="my-0">©Pokémon. ©Nintendo/Creatures Inc. /GAME FREAK inc.</p>
+      </div>
+  
+    </footer>
+    <!-- ==========footer 結束========== -->
+
+
+<script>
+
+    // 類別被點選時替換顏色
+    document.querySelectorAll('.category_li').forEach(function(item) {
+        item.onclick = function() {
+            // 將所有元素的字體顏色恢復為原始顏色
+            document.querySelectorAll('.category_li').forEach(function(li) {
+                li.style.color = ''; // 恢復默認顏色
+                li.style.color = 'white';
+                li.style.listStyleImage = "url('/public/goods/images/Vector.svg')";
+
+            });
+            
+            // 將點擊的元素字體顏色設置為紅色
+            this.style.color = '#FFE050';
+            this.style.listStyleImage = "url('/public/goods/images/VectorV2.svg')";
+            console.log('類別 ID: ' + this.id);
+        };
+    });
+    document.querySelectorAll('.categoryB').forEach(function(item) {
+        item.onclick = function() {
+            document.querySelectorAll('.category_li').forEach(function(li) {
+                li.style.color = ''; // 恢復默認顏色
+                li.style.color = 'white';
+                li.style.listStyleImage = "url('/public/goods/images/Vector.svg')";
+
+            });
+                this.style.backgroundColor = '#FFE050';
+                console.log('類別 ID: ' + this.id);
+            };
+    });
+
+    // 為所有的 .category_li 和 .categoryB 添加點擊事件
+    $('.category_li').click(function() {
+        var productType = '&productType='+ $(this).attr('id'); // 獲取被點擊元素的 ID
+        console.log(productType);
+        sc_msgall(productType);
+    })
+    $('.categoryB').click(function() {
+        var productType = '&' + $(this).attr('id'); // 獲取被點擊元素的 ID
+        console.log(productType);
+        sc_msgall(productType);
+    })
+
+    // 商品瀏覽-右側
+    function sc_msgall(productType) {
+
+            //這裡要帶入的參數名稱 都是資料庫的欄位名稱
+            // let apiUrl = 'http://localhost/frontend/bigProject/root/backEnd/api/product/product.php' //原始的
+            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php'
+            let Exist_apiUrl = apiUrl + '?productExist=1' + productType//篩選條件
+            $.ajax({
+                url: Exist_apiUrl,
+                method: 'GET',
+                success: function (dataStr) {
+                    data = JSON.parse(dataStr);
+                    console.log(data);
+                    result = `
+                    
+                    `;
+
+                    for(row of data){
+                        // console.log(row);
+                        var productTags = '';
+                        if( row['storeOnly'] === 1 ){
+                            productTags +=`
+                            <span class="product_tag">會場限定</span>
+                        `;
+                        }
+                        if( row['productMain'] === 1 ){
+                            productTags +=`
+                                <span class="product_tag">限量商品</span>
+                            `;
+                        }
+
+                        result += `
+                        <div class="col-6 card products" style="border:0px"  >
+                            <img onclick="go(this)" id="${row['productID']}" src="${row['productImg'][0]['productImg']}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="g-1 product_div">
+                                    ${productTags}
+                                </div>
+                                <p class="card-title">${row['productName']}</p>
+                                <p class="card-text">${row['productPrice'].toLocaleString()}元<i id="${row['productID']}" class="cart-icon"></i></p>
+                            </div>
+                            </div>
+
+                        `;
+                    }
+
+
+                    result += `
+                        
+                    `;
+
+                    $('#result').html(result)
+                    
+                }
+            }).fail(function (z) {
+                    console.log('fail:', z.innerText);
+                })
+        }
+
+    // 跳轉商品頁面
+    function go(elem){
+            let id = $(elem).prop('id');
+            console.log(id);
+            window.location.href = `./product.html?id=${id}`
+
+        }
+
+    // <---------------------添加購物車清單--------------------->
+    $('#result').on('click', '.cart-icon', function() {
+    // 點擊購物車按鈕，抓取產品 ID
+        var id =  parseInt(this.id);
+
+    // 從 localStorage 取得購物車清單
+        var cartList = JSON.parse(localStorage.getItem("goods")) || [];
+
+    // 判斷是否已經添加過該商品
+        var existingItem = cartList.find(item => item.id === id);
+        if (existingItem) {
+            existingItem.num++;
+        } else {
+            cartList.push({ id: id, num: 1 });
+        }
+
+    // 將資料存回 localStorage
+        localStorage.setItem("goods", JSON.stringify(cartList));
+
+        console.log(cartList)
+    });
+
+</script>
+
+    
+</body>
+</html>

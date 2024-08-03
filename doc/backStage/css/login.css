@@ -1,0 +1,101 @@
+
+
+
+#container{
+    display: flex;
+    justify-self: center;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--white);
+    /* background-color: chocolate; */
+}
+
+#backStageContent{
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    border-radius: 20px;
+}
+
+#loginLogo{
+
+    width: 250px;
+    margin: 16px 75px;
+    margin-top: 40px;
+
+}
+
+#loginText{
+    text-align: center;
+    margin: 10px;
+    letter-spacing: 2px;
+    /* border: 3px solid black; */
+}
+#inputContent{
+    /* height: 100%; */
+    /* padding: 10px; */
+
+    /* border: 1px solid black; */
+}
+.input{
+    width: 280px;
+    height: 40px;
+    border-radius: 20px;
+    border: 0cap;
+    margin: 16px 60px;
+}
+.input::placeholder{
+    color: var(--black);
+    /* border: 1px solid black; */
+    padding-left: 20px;
+    font-weight: 600;
+    
+}
+#buttonDiv{
+    /* border: 1px black solid; */
+    margin: 16px 60px;
+}
+.button{
+    width: 130px;
+    height: 40px;
+    border-radius: 20px;
+    border: 0cap;
+    font-size: var(--p);
+}
+#forgetBN{
+    float: left;
+}
+#loginBN{
+    float: right;
+}
+
+
+
+
+/* ----------- */
+#backStageContentForget{
+    width: 400px;
+    height: 330px;
+    margin: auto;
+    border-radius: 20px;
+}
+#loginForgetText{
+    text-align: center;
+    margin: 10px;
+    font-weight: 600;
+    /* letter-spacing: 2px; */
+    /* border: 3px solid black; */
+}
+.buttonForget{
+    width: 130px;
+    height: 40px;
+    border-radius: 20px;
+    border: 0cap;
+    font-size: var(--p);
+}
+#backBN{
+    float: left;
+}
+#sendBN{
+    float: right;
+}
