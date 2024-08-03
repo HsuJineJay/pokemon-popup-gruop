@@ -42,7 +42,7 @@ $(document).ready(function () {
         , { quesNumber: "Q2", questionLine1: '突然前方傳來熟悉的美妙旋律....', questionLine2: '你認為...', text: 'BO BO RO RO BO BO LI BO ~~', option: ['看來胖丁又在禍害人間了', '不錯喔 胖丁的歌藝越來越精湛了', '我不要聽！拿出耳塞 塞好塞滿', '最近都失眠 聽完睡著剛剛好'] }
         , { quesNumber: "Q3", questionLine1: '碰！極巨肥化皮卡丘掉到了你面前....', questionLine2: '你會...', text: '走著走著天空突然下起蛋糕雨', option: ['摸摸看他的大肚子', '餵他吃更多蛋糕', '警告他吃太胖會被殺掉'] }
         , { quesNumber: "Q4", questionLine1: '你在天空看見了喵喵熱氣球飄向你....', questionLine2: '你會....', text: '皮卡丘一巴掌把你拍上了天空', option: ['進到熱氣球裡一探究竟', '趕快拿手機拍下來留念', '不想被發現 躲到雲後面'] }
-        , { quesNumber: "Q5", questionLine1: '你發現睡著的耿鬼....', questionLine2: '你認為....', text: '突然 你被抓進了熱氣球裡', option: ['他一定是被火箭隊抓住了', '一定有詐 他可是耿鬼', '太可愛了吧 反差萌', '大好機會 我要收服耿鬼'] }
+        , { quesNumber: "Q5", questionLine1: '你發現熱氣球裡有睡著的耿鬼....', questionLine2: '你認為....', text: '突然 你被抓進了熱氣球裡', option: ['他一定是被火箭隊抓住了', '一定有詐 他可是耿鬼', '太可愛了吧 反差萌', '大好機會 我要收服耿鬼'] }
         , { quesNumber: "Q6", questionLine1: '你掉在一群移動中的可達鴨裡....', questionLine2: '你想....', text: '耿鬼突然驚醒 嚇得你掉出熱氣球', option: ['跟著他們繼續走', '趁亂抱走一隻', '敲敲看他們的腦殼'] }
         , { quesNumber: "Q7", questionLine1: ' 可達鴨對你使出念力抬起你....', questionLine2: '你認為你會被送去....', text: '(可達鴨發現你了！)', option: ['真新鎮 ', '大木博士的研究所', '探望常磐森林的比雕'] }]
 
@@ -319,8 +319,69 @@ $(document).ready(function () {
 
     </section>
 </div>
-`
+`],
+        // 第5題 陣列索引4
+        [
+            `    <div class="superBigWebCon">
+    <!-- 網頁版bg容器 -->
+    <section class="webBgContainersixth">
 
+        <div class="thir_bgContainer" style="z-index: 1; ">
+
+
+
+
+            <!-- process -->
+            <div class="bigprocessCon">
+                <!-- 換進度條圖片src -->
+                <div class="processContainer"><img id="process" src="./images/publicImg/process1.svg" alt=""></div>
+            </div>
+            <!-- 題目選項按鈕區 -->
+            <div class="questionAndbuttonCon4">
+                <!-- 題目 -->
+                 <!-- .questionContainer換成圖片跟文字 -->
+                  <div class="storyTextCtrlEmpty">
+                 <div class="storyTextCtrl">
+                    <div class="storyText"><h4></h4></div>
+                </div>
+                </div>
+                <div class="questionContainer">
+                    <div class="questionIcon"></div>
+                    <div class="questionTextCon">
+                        <h4 id="questionline1"  class="textContent"></h4>
+                        <h4 id="questionline2"  class="textContent"></h4>
+
+                    </div>
+
+                </div>
+                <!-- 選項按鈕 -->
+                <div class="btnContainer3">
+                    
+                </div>
+            </div>
+            
+
+            </div>
+        </div>
+
+
+
+        <!-- 動畫區 -->
+         <div class="six_Anicontainer">
+        <div class="ghoastAniCon">
+            <video class="ghoastAni" src="./images/animation/ghoastSleep.webm" autoplay loop muted></video>
+        </div>
+        <div class="ghoastAniCon2">
+            <video class="ghoastAni" src="./images/animation/ghoastSleep.webm" autoplay loop muted></video>
+        </div>
+        <div class="ghoastAniCon3">
+            <video class="ghoastAni" src="./images/animation/ghoastSleep.webm" autoplay loop muted></video>
+        </div>
+        
+    </div>
+    </section>
+</div>
+`
         ]
     ]
 
@@ -404,8 +465,8 @@ $(document).ready(function () {
             // 3.5秒後清空旁白文字框=====
             const emptyStoryText = function () {
                 $('.storyTextCtrl').empty()
-                //移除第3題 皮卡丘 文字框
-                if (currentQuestion === 2 || currentQuestion === 3) {
+                //移除第3題 皮卡丘 第4題喵喵熱氣球 第5題耿鬼文字框
+                if (currentQuestion === 2 || currentQuestion === 3 ||currentQuestion === 4) {
                     $('.storyTextCtrlEmpty').remove()
                 }
             }
@@ -414,7 +475,7 @@ $(document).ready(function () {
 
             //========= 4秒後改變問題框跟選項框動畫框visibility hidden=>visable
             const showQuestionandbutton = function () {
-                $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer,.btn3Container,.cakeCon,.meowaniCon,.btnContainer2').css('visibility', 'visible')
+                $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer,.btn3Container,.cakeCon,.meowaniCon,.btnContainer2,.six_Anicontainer,.btnContainer3').css('visibility', 'visible')
             }
             setTimeout(showQuestionandbutton, 3500)
 
@@ -448,6 +509,11 @@ $(document).ready(function () {
                     case 3:
                         $('.btnContainer2').append(`
                                 <button class="btn1 option${i}">${questionData.option[i]}</button>`);
+
+                        break;
+                    case 4:
+                        $('.btnContainer3').append(`
+                                    <button class="btn2 option${i}">${questionData.option[i]}</button>`);
 
                         break;
                 }

@@ -1113,6 +1113,7 @@ visibility: hidden;
     gap: 1.5vh;
     margin-top: -10vh;
     margin-bottom: 70vh;
+    visibility: hidden;
 }
 
 .six_Anicontainer{
@@ -1123,6 +1124,7 @@ visibility: hidden;
     left: 0;
     
     overflow: hidden;
+    visibility: hidden;
 }
 
 
