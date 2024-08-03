@@ -45,6 +45,14 @@ button {
   background-color: transparent;
 }
 
+a,
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none !important;
+}
+
 .section_container {
   max-width: 1200px;
 }
@@ -388,7 +396,7 @@ button {
 .menu-icon {
   pointer-events: none;
   height: 45px !important;
-  
+
 }
 
 
@@ -491,7 +499,7 @@ button {
   }
 
   .footer-link button:hover {
-    transform: translate(-3px , -5px);
+    transform: translate(-3px, -5px);
     box-shadow: 3px 5px 0 var(--home-sub);
   }
 
@@ -577,7 +585,7 @@ button {
   width: 100%;
   max-height: auto;
   aspect-ratio: 1 / 1;
-  background-color:  rgba(63,58,58,0.9);
+  background-color: rgba(63, 58, 58, 0.9);
   border-radius: 1000px;
 }
 
@@ -635,8 +643,10 @@ button {
 }
 
 /* section1切換動畫按鈕背景動畫 */
-.scroll_icon button:hover {
-  filter: invert(1) contrast(5);
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+  .scroll_icon button:hover {
+    filter: invert(1) contrast(5);
+  }
 }
 
 @keyframes scrollIconBG {
@@ -739,10 +749,11 @@ button {
     overflow: hidden;
   }
 
-  .scroll_hint div:nth-child(1) svg{
+  .scroll_hint div:nth-child(1) svg {
     /* transform: translateX(20px); */
     animation: scrollHintLeft 1s ease-in-out infinite;
   }
+
   .scroll_hint div:nth-child(3) svg {
     animation: scrollHintRight 1s ease-in-out infinite;
   }
@@ -758,6 +769,7 @@ button {
     transform: translateX(0);
   }
 }
+
 @keyframes scrollHintRight {
   0% {
     transform: translateX(-15px);
@@ -816,14 +828,7 @@ button {
   color: var(--pk--white) !important;
   border: 2px solid var(--home-sub) !important;
   outline: 0px solid var(--home-sub) !important;
-  transition: 1s ease-out ;
-}
-
-/* 快閃店按鈕hover效果 */
-.switchActive:hover{
-  box-shadow: 3px 5px var(--home-main);
-  transform: translate(-3px, -5px);
-  /* outline: 2px solid var(--pk--black) !important; */
+  transition: 1s ease-out;
 }
 
 /* 咖啡廳/快閃店 未點擊的按鈕 */
@@ -833,13 +838,27 @@ button {
   cursor: pointer;
   pointer-events: auto;
   background-color: transparent;
-  transition: 0.1s ease-in-out ;
+  transition: 0.1s ease-in-out;
 }
-/* 快閃店按鈕hover效果 */
-.switch_bn:hover{
-  background-color: var(--home-main);
-  outline: 2px solid var(--pk--black);
+
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+
+  /* 快閃店按鈕hover效果 */
+  .switchActive:hover {
+    box-shadow: 3px 5px var(--home-main);
+    transform: translate(-3px, -5px);
+    /* outline: 2px solid var(--pk--black) !important; */
+  }
+
+  /* 快閃店按鈕hover效果 */
+  .switch_bn:hover {
+    background-color: var(--home-main);
+    outline: 2px solid var(--pk--black);
+  }
 }
+
+
+
 
 /* ======section2內容區====== */
 .info_card_group>div {
@@ -1013,9 +1032,11 @@ button {
   transition: 0.15s ease-out;
 }
 
-.card_reservation_bn:hover{
-  box-shadow: 5px 5px var(--pk--white);
-  transform: translate(-5px, -5px);
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+  .card_reservation_bn:hover {
+    box-shadow: 5px 5px var(--pk--white);
+    transform: translate(-5px, -5px);
+  }
 }
 
 /* ======section2手機版RWD====== */
@@ -1219,7 +1240,7 @@ button {
 
 .carousel_item .product_card {
   transition: .4s;
-  padding: 20px 20px 20px 20px;
+  /* padding: 20px 20px 20px 20px; */
   cursor: pointer;
   display: inline-block;
   position: absolute;
@@ -1228,6 +1249,13 @@ button {
   transform: translateX(-50%);
 
   background-color: var(--home-sub);
+  border-radius: 200px 200px 30px 30px;
+}
+
+.before_product_card {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 20px 20px 20px;
   border-radius: 200px 200px 30px 30px;
 }
 
@@ -1308,9 +1336,7 @@ button {
   font-weight: 400;
 }
 
-.product_card {
-  overflow: hidden;
-}
+
 
 /* 右下更多按鈕 */
 .more_product_bn {
@@ -1321,23 +1347,48 @@ button {
   height: 12vw;
   right: -6vw;
   bottom: -6vw;
+  z-index: 1;
 }
 
 .more_product_bn::before {
   position: absolute;
-  background: url('../../images/icon/more_icon.svg') no-repeat center center;
-  width: 3vw;
+  /* background: url('../../images/icon/more_icon.svg') no-repeat center center; */
+  /* width: 3vw;
   height: 3vw;
   top: 2vw;
-  left: 2vw;
+  left: 2vw; */
+  background: url('../images/shake_rotate.svg') no-repeat center center;
+  width: 2vw;
+  height: 2vw;
+  top: 2.5vw;
+  left: 2.5vw;
   content: "";
   transition: 0.15s ease-in-out;
+
+  /* animation: shakeToRotateRight 1s ease-in-out infinite,
+  shakeToRotateLeft 1s ease-in-out infinite;
+  transform-origin: bottom right; */
+
+  animation: rotateHint 3.5s ease-in-out infinite;
 }
 
-.more_product_bn:hover::before {
-  transform: translateX(5px);
-}
 
+/* 商品卡片右下角hover出現線，初始狀態大小0 */
+.product_card:has(.more_product_bn)::after {
+  position: absolute;
+  content: "";
+  background: url(../images/card_hint.svg) no-repeat;
+  width: 6vw;
+  height: 6vw;
+  /* top: 33vw;
+  left: 15vw; */
+  bottom: -4vw;
+  right: -4vw;
+  transform: scale(0);
+  transform-origin: 0 0;
+  transition: 0.4s ease-in-out;
+  z-index: -1;
+}
 
 .more_product_bn::after {
   content: '';
@@ -1349,6 +1400,62 @@ button {
   z-index: 1;
   cursor: pointer;
 }
+
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+  /* .more_product_bn:hover::before {
+  transform: translateX(5px);
+  } */
+
+  .more_product_bn:hover::before {
+    /* animation: rotateHint 3s ease-in-out infinite; */
+    animation: none;
+
+  }
+
+  /* 商品卡片右下角hover出現線 */
+  .product_card:has(.more_product_bn:hover)::after {
+    transform: scale(1);
+  }
+
+
+}
+
+/* 旋轉提示動畫 */
+@keyframes rotateHint {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 左右晃動動畫 */
+/* @keyframes shakeToRotateRight {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes shakeToRotateLeft {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+} */
+
+
 
 
 
@@ -1379,14 +1486,21 @@ button {
   }
 
   .carousel_item .product_card {
+    /* padding: 15px; */
+    border-radius: 200px 200px 15px 15px;
+  }
+
+  .before_product_card {
     padding: 15px;
     border-radius: 200px 200px 15px 15px;
   }
+
 
   .carousel_item {
     top: -80%;
     height: 130%;
   }
+
 
   .carousel_item img {
     width: 50vw;
@@ -1454,9 +1568,12 @@ button {
   box-shadow: 0px 0px var(--pk--white);
   transition: 0.15s ease-out;
 }
-.more_menu_bn:hover{
-  box-shadow: -5px 0px var(--home-main);
-  transform: translate(5px, 0px);
+
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+  .more_menu_bn:hover {
+    box-shadow: -5px 0px var(--home-main);
+    transform: translate(5px, 0px);
+  }
 }
 
 /* 餐點卡片 */
@@ -1660,26 +1777,35 @@ button {
   transition: 0.3s ease-in-out;
 }
 
-/* 圓形背景hover動畫 */
-.game_bn:hover>div {
-  background-color: var(--home-sub);
-  width: calc(25vw + 5px);
-  height: calc(25vw + 5px);
-  outline: 5px solid var(--pk--white);
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+
+  /* 圓形背景hover動畫 */
+  .game_bn:hover>div {
+    background-color: var(--home-sub);
+    width: calc(25vw + 5px);
+    height: calc(25vw + 5px);
+    outline: 5px solid var(--pk--white);
+  }
+
+  /* 圓形背景hover時 文字動畫 */
+  .game_bn:hover>div h5,
+  .game_bn:hover>div h6 {
+    color: var(--home-main);
+  }
+
+  /* START文字hover動畫 */
+  .game_bn:hover>h3 {
+    color: var(--pk--white);
+    box-shadow: 0px 5px var(--home-sub);
+    transform: translate(0px, -5px);
+  }
 }
 
-.game_bn>div h5, 
+.game_bn>div h5,
 .game_bn>div h6 {
   color: var(--pk--black);
   transition: 0.1s ease-out;
 }
-
-/* 圓形背景hover時 文字動畫 */
-.game_bn:hover>div h5, 
-.game_bn:hover>div h6 {
-  color: var(--home-main);
-}
-
 
 .game_bn h5 {
   font-size: 4.5vmin;
@@ -1699,8 +1825,8 @@ button {
   height: 30vw;
   border-radius: 50%;
   background: red; */
-  /* outline: 10px solid var(--pk--black); */
-  /* transition: all 0.1s ease-in-out;
+/* outline: 10px solid var(--pk--black); */
+/* transition: all 0.1s ease-in-out;
   z-index: -1;
 } */
 
@@ -1718,12 +1844,6 @@ button {
   box-shadow: 0px 0px var(--home-sub);
 }
 
-/* START文字hover動畫 */
-.game_bn:hover>h3 {
-  color: var(--pk--white);
-  box-shadow: 0px 5px var(--home-sub);
-  transform: translate(0px, -5px);
-}
 
 .footer_top {
   width: 100vw;

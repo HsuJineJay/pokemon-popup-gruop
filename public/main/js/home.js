@@ -676,23 +676,32 @@ function productGetData() {
         result += `
                   <div class="carousel_item item${index + 1}">
                     <div class="product_card d-flex flex-column gap-3">
-                      <!-- 圖片 -->
-                      <img src="${row['productImg'][0].productImg}">
-                      <!-- 內容 -->
-                      <div class="d-flex flex-column gap-2">
-                        <div class="product_tag d-flex">
-                          <h6 class="font-chin m-0">會場限定</h6>
+                    <div class="before_product_card" >
+
+                      <!-- ver2點擊卡片去商品頁 -->
+                      <a href="./goods/goods.html" >
+
+                        <!-- 圖片 -->
+                        <img src="${row['productImg'][0].productImg}">
+                        <!-- 內容 -->
+                        <div class="d-flex flex-column gap-2">
+                          <div class="product_tag d-flex">
+                            <h6 class="font-chin m-0">會場限定</h6>
+                          </div>
+
+                          <div class="d-flex flex-column text-start gap-0">
+                            <h4 class="font-chin m-0">${row['productName']}</h4>
+                            <h5 class="font-chin my-1">${row['productPrice']}元</h5>
+                          </div>
                         </div>
 
-                        <div class="d-flex flex-column text-start gap-0">
-                          <h4 class="font-chin m-0">${row['productName']}</h4>
-                          <h5 class="font-chin my-1">${row['productPrice']}元</h5>
-                        </div>
-                      </div>
+                      </a>
+                      
                       <!-- 右下更多按鈕 -->
-                      <button class="more_product_bn" onclick="clickMoreBN()">
+                      <button class="more_product_bn rotateButton" onclick="clickMoreBN()">
 
                       </button>
+                      </div>
                     </div>
                   </div>
       `;
@@ -711,9 +720,11 @@ function productGetData() {
 }
 
 // 點擊右下角箭頭按鈕跳轉到商品頁面
-function clickMoreBN(){
-  window.location.href = '/goods/goods.html';
-}
+// function clickMoreBN(){
+//   window.location.href = './goods/goods.html';
+// }
+
+
 
 
 
@@ -725,11 +736,16 @@ function allRotateFunction() {
 
   let rotateContain = document.querySelector('.rotate_card')
   let productItems = document.querySelectorAll('.carousel_item .product_card')
+
+    // ver2 點擊右下角按鈕旋轉
+    let rotateButton = document.querySelectorAll('.rotateButton')
+
   const totalItems = productItems.length;
   let rotateIndex = 0
 
 
-  productItems.forEach((item, idx) => {
+  // productItems.forEach((item, idx) => {
+  rotateButton.forEach((item, idx) => {
     item.addEventListener('click', function () {
 
       //用於數計算現在的位置
