@@ -653,7 +653,7 @@ visibility: hidden;
     animation-name:storyTextFade;
     opacity: 0;
     animation-duration: 4s;
-    animation-delay: 0.3s;
+    animation-delay: 0.2s;
     /* animation-fill-mode:forwards; */
     animation-timing-function: ease-in-out;
 
@@ -675,7 +675,8 @@ visibility: hidden;
 }
 
 .storyText h4{
-    font-size: 92%;
+    font-size: 75%;
+    
     font-family: "Fredoka", "Noto Sans TC", sans-serif;
     font-weight: bold;
     margin: 0;

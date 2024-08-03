@@ -44,7 +44,7 @@ $(document).ready(function () {
     
     // 每一頁背景裝到陣列
     const allBackground =[
-        {secondPage:` <section class="webBgContainerSec">
+        [` <section class="webBgContainerSec">
 
         <div class="sec_bgContainer" style="z-index: 1; ">
 
@@ -107,7 +107,7 @@ $(document).ready(function () {
         </div>
 
     </section>
-`}
+`]
     ]
 
     //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
@@ -166,7 +166,7 @@ $(document).ready(function () {
 
         //迴圈長出大背景=======
         $('.superBigWebCon').append(
-            allBackground[currentQuestion].secondPage
+            allBackground[currentQuestion]
         )
         //呼叫控制聲音
         CtrlSound()
