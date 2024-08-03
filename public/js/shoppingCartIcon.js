@@ -77,7 +77,7 @@ function closeNav() {
                             <img class=" image-container" src="${row['productImg'][0]['productImg']}" alt="圖片描述">
                             <div class="texr1">${row['productName']}</div>
                             <span class="texr2">$ </span>
-                            <span name="productPrice">${row['productPrice']}</span>
+                            <span name="productPrice">${row['productPrice'].toLocaleString()}</span>
                             <div class="d-flex align-items-center">
                                 <button class="btn-decrement-sm">-</button>
                                 <span name="num" class="quantity-sm">${row['num']}</span>
