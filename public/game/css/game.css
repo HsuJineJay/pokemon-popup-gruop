@@ -653,7 +653,7 @@ visibility: hidden;
     visibility: visible;
     animation-name:storyTextFade;
     opacity: 0;
-    animation-duration: 3.5s;
+    animation-duration: 3.3s;
     animation-delay: 0.2s;
    
     animation-timing-function: ease-in-out;
@@ -977,6 +977,7 @@ visibility: hidden;
     position: absolute;
     top: 25vh;
     left: 20vw;
+    visibility: hidden;
 }
 
 /* 按鈕容器 */
@@ -988,6 +989,7 @@ visibility: hidden;
     margin-top: -18vh;
     margin-bottom: 50vh;
     width: 100%;
+    visibility: hidden;
 
 }
 

@@ -39,7 +39,7 @@ $(document).ready(function () {
     CtrlSound()
     //把題目裝到陣列裡
     const allQuestion = [{ quesNumber: "Q1", questionLine1: '有一顆寶貝球滾到你面前不斷閃爍....', questionLine2: '你會...', text: 'WELCOME TO THE POKEMON ADVENTURE', option: ['默默把它撿起來帶走', '當作沒看到經過它', '站在原地觀察它'] }
-        , { quesNumber: "Q2", questionLine1: '突然前方傳來熟悉的美妙旋律....', questionLine2: '你會...', text: 'BO BO RO RO BO BO LI BO ~~', option: ['看來胖丁又在禍害人間了', '不錯喔 胖丁的歌藝越來越精湛了', '我不要聽！拿出耳塞 塞好塞滿', '最近都失眠 聽完睡著剛剛好'] }
+        , { quesNumber: "Q2", questionLine1: '突然前方傳來熟悉的美妙旋律....', questionLine2: '你認為...', text: 'BO BO RO RO BO BO LI BO ~~', option: ['看來胖丁又在禍害人間了', '不錯喔 胖丁的歌藝越來越精湛了', '我不要聽！拿出耳塞 塞好塞滿', '最近都失眠 聽完睡著剛剛好'] }
         , { quesNumber: "Q3", questionLine1: '碰！極巨肥化皮卡丘掉到了你面前....', questionLine2: '你會...', text: '走著走著天空突然下起蛋糕雨', option: ['摸摸看他的大肚子', '餵他吃更多蛋糕', '警告他吃太胖會被殺掉'] }
         , { quesNumber: "Q4", questionLine1: '你在天空看見了喵喵熱氣球飄向你....', questionLine2: '你會....', text: '皮卡丘一巴掌把你拍上了天空', option: ['進到熱氣球裡一探究竟', '趕快拿手機拍下來留念', '不想被發現 躲到雲後面'] }
         , { quesNumber: "Q5", questionLine1: '你發現睡著的耿鬼....', questionLine2: '你認為....', text: '突然 你被抓進了熱氣球裡', option: ['他一定是被火箭隊抓住了', '一定有詐 他可是耿鬼', '太可愛了吧 反差萌', '大好機會 我要收服耿鬼'] }
@@ -252,7 +252,76 @@ $(document).ready(function () {
 
     </section>
 </div>
-`]
+`],
+        // 第四題 陣列索引3
+        [`    <div class="superBigWebCon">
+    <!-- 網頁版bg容器 -->
+    <section class="webBgContainerfifth">
+
+        <div class="sec_bgContainer" style="z-index: 1; ">
+
+
+
+
+            <!-- process -->
+            <div class="bigprocessCon">
+                <!-- 換進度條圖片src -->
+                <div class="processContainer"><img id="process" src="" alt=""></div>
+            </div>
+            <!-- 題目選項按鈕區 -->
+            <div class="questionAndbuttonCon3">
+                <!-- 題目 -->
+                 <!-- .questionContainer換成圖片跟文字 -->
+                    <div class="storyTextCtrlEmpty">
+                        <div class="storyTextCtrl">
+                        <div class="storyText"><h4></h4></div>
+                    </div>
+                </div>
+                <div class="questionContainer">
+                    <div class="questionIcon"></div>
+                    <div class="questionTextCon">
+                        <h4 id="questionline1" class="textContent"></h4>
+                        <h4 id="questionline2" class="textContent"></h4>
+
+                    </div>
+
+                </div>
+                <!-- 選項按鈕 -->
+                <div class="btnContainer2">
+                    
+                </div>
+            </div>
+
+            
+        </div>
+
+
+
+        <!-- 雲朵 -->
+        <div class="fifth_cloudscontainer">
+            <div class="fifth_cloud1container"><img width="100vw" src="./images/fifthPageImg/cloudWhite1.svg" alt="">
+            </div>
+            <div class="fifth_cloud2container"><img width="90vw" src="./images/fifthPageImg/cloudWhite1.svg" alt="">
+            </div>
+            <div class="fifth_cloud3container"><img width="130vw" src="./images/fifthPageImg/cloudWhite2.svg" alt="">
+            </div>
+            <div class="fifth_cloud4container"><img width="150vw" src="./images/fifthPageImg/cloudWhite2.svg" alt="">
+            </div>
+            <div class="fifth_cloud5container"><img width="75vw" src="./images/fifthPageImg/cloudWhite1.svg" alt="">
+            </div>
+            <div class="fifth_cloud6container"><img width="100vw" src="./images/fifthPageImg/cloudWhite2.svg" alt="">
+            </div>
+             <!-- 動畫區 -->
+             <div class="meowaniCon"><img id="meowaniImg" src="./images/fifthPageImg/meowAirballoon.svg" alt="">
+             </div>
+
+        </div>
+
+    </section>
+</div>
+`
+
+        ]
     ]
 
     //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
@@ -335,18 +404,19 @@ $(document).ready(function () {
             // 3.5秒後清空旁白文字框=====
             const emptyStoryText = function () {
                 $('.storyTextCtrl').empty()
-                if(currentQuestion===2){
-                 $('.storyTextCtrlEmpty').remove()  
+                //移除第3題 皮卡丘 文字框
+                if (currentQuestion === 2 || currentQuestion === 3) {
+                    $('.storyTextCtrlEmpty').remove()
                 }
             }
 
-            setTimeout(emptyStoryText, 3700)
+            setTimeout(emptyStoryText, 3300)
 
             //========= 4秒後改變問題框跟選項框動畫框visibility hidden=>visable
             const showQuestionandbutton = function () {
-                $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer,.btn3Container,.cakeCon').css('visibility', 'visible')
+                $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer,.btn3Container,.cakeCon,.meowaniCon,.btnContainer2').css('visibility', 'visible')
             }
-            setTimeout(showQuestionandbutton, 4000)
+            setTimeout(showQuestionandbutton, 3500)
 
             //印出題數============
             $('.questionIcon').html(`${questionData.quesNumber}`)
@@ -373,7 +443,12 @@ $(document).ready(function () {
                     case 2:
                         $('.btn3Container').append(`
                             <button class="btn3_${i} option${i}">${questionData.option[i]}</button>`);
-                        
+
+                        break;
+                    case 3:
+                        $('.btnContainer2').append(`
+                                <button class="btn1 option${i}">${questionData.option[i]}</button>`);
+
                         break;
                 }
             }
