@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    // 音樂音量
     chubbySong.volume = 1;
     bgmusic.volume = 0.4;
 
@@ -38,22 +39,14 @@ $(document).ready(function () {
     CtrlSound()
     //把題目裝到陣列裡
     const allQuestion = [{ quesNumber: "Q1", questionLine1: '有一顆寶貝球滾到你面前不斷閃爍....', questionLine2: '你會...', text: 'WELCOME TO THE POKEMON ADVENTURE', option: ['默默把它撿起來帶走', '當作沒看到經過它', '站在原地觀察它'] }
-        , { quesNumber: "Q2", questionLine1: '突然前方傳來熟悉的美妙旋律....', questionLine2: '你會...', text: 'BOBOROROBOBOLIBO~~', option: ['看來胖丁又在禍害人間了', '不錯喔 胖丁的歌藝越來越精湛了', '我不要聽！拿出耳塞 塞好塞滿', '最近都失眠 聽完睡著剛剛好'] }
+        , { quesNumber: "Q2", questionLine1: '突然前方傳來熟悉的美妙旋律....', questionLine2: '你會...', text: 'BO BO RO RO BO BO LI BO ~~', option: ['看來胖丁又在禍害人間了', '不錯喔 胖丁的歌藝越來越精湛了', '我不要聽！拿出耳塞 塞好塞滿', '最近都失眠 聽完睡著剛剛好'] }
         , { quesNumber: "Q3", questionLine1: '碰！極巨肥化皮卡丘掉到了你面前....', questionLine2: '你會...', text: '走著走著天空突然下起蛋糕雨', option: ['摸摸看他的大肚子', '餵他吃更多蛋糕', '警告他吃太胖會被殺掉'] }
         , { quesNumber: "Q4", questionLine1: '你在天空看見了喵喵熱氣球飄向你....', questionLine2: '你會....', text: '皮卡丘一巴掌把你拍上了天空', option: ['進到熱氣球裡一探究竟', '趕快拿手機拍下來留念', '不想被發現 躲到雲後面'] }
-        , { quesNumber: "Q5", questionLine1: '你發現睡著的耿鬼....', questionLine2: '你認為....', text: '喵喵突然把你抓進熱氣球裡', option: ['他一定是被火箭隊抓住了', '一定有詐 他可是耿鬼', '太可愛了吧 反差萌', '大好機會 我要收服耿鬼'] }
+        , { quesNumber: "Q5", questionLine1: '你發現睡著的耿鬼....', questionLine2: '你認為....', text: '突然 你被抓進了熱氣球裡', option: ['他一定是被火箭隊抓住了', '一定有詐 他可是耿鬼', '太可愛了吧 反差萌', '大好機會 我要收服耿鬼'] }
         , { quesNumber: "Q6", questionLine1: '你掉在一群移動中的可達鴨裡....', questionLine2: '你想....', text: '耿鬼突然驚醒 嚇得你掉出熱氣球', option: ['跟著他們繼續走', '趁亂抱走一隻', '敲敲看他們的腦殼'] }
         , { quesNumber: "Q7", questionLine1: ' 可達鴨對你使出念力抬起你....', questionLine2: '你認為你會被送去....', text: '(可達鴨發現你了！)', option: ['真新鎮 ', '大木博士的研究所', '探望常磐森林的比雕'] }]
 
-    //把進度條裝到陣列裡
-    const allProcess = [
-        "./images/publicImg/process1.svg",
-        "./images/publicImg/process2.svg",
-        "./images/publicImg/process3.svg",
-        "./images/publicImg/process4.svg",
-        "./images/publicImg/process5.svg",
-        "./images/publicImg/process6.svg",
-        "./images/publicImg/process7.svg",]
+
 
     // 每一頁背景裝到陣列========
     const allBackground = [
@@ -121,7 +114,7 @@ $(document).ready(function () {
     </section>
 `],
         //第二題 陣列索引1
-        [`        <div class="superBigWebCon">
+        [`<div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainerSec">
 
@@ -188,7 +181,79 @@ $(document).ready(function () {
              <div class="musicIcon2"></div>
         </div>
 
-`]]
+`],
+        // 第三題 陣列索引2
+        [`    <div class="superBigWebCon">
+    <!-- 網頁版bg容器 -->
+    <section class="webBgContainerfour">
+
+        <div class="four_bgContainer" style="z-index: 1; ">
+
+
+
+
+            <!-- process -->
+            <div class="bigprocessCon">
+                <!-- 換進度條圖片src -->
+                <div class="processContainer"><img id="process" src="" alt=""></div>
+            </div>
+            <!-- 題目選項按鈕區 -->
+            <div class="questionAndbuttonCon2">
+                <!-- 題目 -->
+                <!-- .questionContainer換成圖片跟文字 -->
+                <div class="storyTextCtrlEmpty">
+               <div class="storyTextCtrl">
+                    <div class="storyText"><h4 ></h4></div>
+                </div>
+                </div>
+
+                <div class="questionContainer">
+                    <div class="questionIcon"></div>
+                    <div class="questionTextCon">
+                        <h4 id="questionline1"  class="textContent">有一顆寶貝球滾到你面前不斷閃爍.... </h4>
+                        <h4 id="questionline2"  class="textContent">你會...？</h4>
+
+                    </div>
+
+                </div>
+                <!-- 選項按鈕 -->
+                <div class="btn3Container">
+
+                </div>
+            </ㄥdiv>
+            
+
+        </div>
+
+
+
+        <!-- 蛋糕 -->
+        <div class="cakeCon">
+
+            <div  style=" position: absolute;">
+                
+                <div class="cake1"><img width="120vw" src="./images/fourthPageImg/cherryCake.svg" alt="">
+                </div>
+                <div class="cake2"><img width="90vw" src="./images/fourthPageImg/pancake1.svg" alt="">
+                </div>
+                <div class="cake3"><img width="130vw" src="./images/fourthPageImg/pancake2.svg" alt="">
+                </div>
+                <div class="cake4"><img width="85vw" src="./images/fourthPageImg/strawberryCake.svg" alt="">
+                </div>
+                <div class="cake5"><img width="75vw" src="./images/fourthPageImg/cherryCake.svg" alt="">
+                </div>
+                <div class="cake6"><img width="100vw" src="./images/fourthPageImg/pancake1.svg" alt="">
+                </div>
+            </div>
+            <!-- 皮卡丘 -->
+            <div class="fatpikaCon"><img class="pikafatAni" src="./images/fourthPageImg/fatPikaAni1.png" alt=""></div>
+
+        </div>
+
+    </section>
+</div>
+`]
+    ]
 
     //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
     let currentQuestion = 0
@@ -270,13 +335,16 @@ $(document).ready(function () {
             // 3.5秒後清空旁白文字框=====
             const emptyStoryText = function () {
                 $('.storyTextCtrl').empty()
+                if(currentQuestion===2){
+                 $('.storyTextCtrlEmpty').remove()  
+                }
             }
 
             setTimeout(emptyStoryText, 3700)
 
             //========= 4秒後改變問題框跟選項框動畫框visibility hidden=>visable
             const showQuestionandbutton = function () {
-                $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer').css('visibility', 'visible')
+                $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer,.btn3Container,.cakeCon').css('visibility', 'visible')
             }
             setTimeout(showQuestionandbutton, 4000)
 
@@ -301,6 +369,11 @@ $(document).ready(function () {
                     case 1:
                         $('.btnContainer').append(`
                         <button class="btn2 option${i}">${questionData.option[i]}</button>`);
+                        break;
+                    case 2:
+                        $('.btn3Container').append(`
+                            <button class="btn3_${i} option${i}">${questionData.option[i]}</button>`);
+                        
                         break;
                 }
             }

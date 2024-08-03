@@ -627,6 +627,7 @@ visibility: hidden;
     flex-direction: column;
     align-items: center;
     width: 100%;
+   
 }
 
 /* 旁白文字 */
@@ -676,7 +677,7 @@ visibility: hidden;
 
 .storyText h4{
     font-size: 75%;
-    
+    letter-spacing: 0.1vmin;
     font-family: "Fredoka", "Noto Sans TC", sans-serif;
     font-weight: bold;
     margin: 0;
@@ -793,11 +794,13 @@ visibility: hidden;
     position: relative;
     width: 100%;
     max-width: 450px;
+    visibility: hidden;
+    z-index: 1;
     
 }
 
 /* 按鈕1 */
-.btn3_1 {
+.btn3_0 {
     border: #FCF3E4 solid 6px;
     border-radius: 100%;
     width: 48%;
@@ -816,7 +819,7 @@ visibility: hidden;
 }
 
 /* 按鈕2 */
-.btn3_2 {
+.btn3_1 {
     border: #FCF3E4 solid 6px;
     border-radius: 100%;
     width: 48%;
@@ -835,7 +838,7 @@ visibility: hidden;
 }
 
 /* 按鈕3 */
-.btn3_3 {
+.btn3_2 {
     border: #FCF3E4 solid 6px;
     border-radius: 100%;
     width: 48%;
@@ -865,7 +868,7 @@ visibility: hidden;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 0 30vh;
-
+    visibility: hidden;
 }
 
 /* 肥皮卡丘容器 */
@@ -901,16 +904,16 @@ visibility: hidden;
 .cake1 {
     position: absolute;
     /* top: 80vh; */
-    bottom: -30vh;
-    left: 50vw;
+    bottom: -50vh;
+    left: 10vw;
     transform: rotate(30deg);
 }
 
 .cake2 {
     position: absolute;
     /* top: 32vh; */
-    bottom: -20vh;
-    left:40vw;
+    bottom: -40vh;
+    left:70vw;
     transform: rotate(30deg);
 }
 
@@ -940,6 +943,12 @@ visibility: hidden;
     top: 80vh;
     left: 40vw;
     transform: rotate(20deg);
+}
+
+.storyTextCtrlEmpty{
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 /* -----------------第五頁 遊戲第四題 ----------------------------------*/
