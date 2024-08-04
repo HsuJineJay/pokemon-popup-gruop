@@ -104,7 +104,7 @@
             }
         });
     }).then(() => {
-        console.log('sc_checkoutlist 載入完成');
+        // console.log('sc_checkoutlist 載入完成');
     });
 }
    
@@ -114,6 +114,10 @@
             window.location.href = 'product_all.html';
         });
     });
+
+    setTimeout(function() {
+        sc_subtotal();
+    }, 1000);
 
     // 訂單明細小計更新
     // function sc_checkoutsubtotal(){

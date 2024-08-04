@@ -1,5 +1,6 @@
 
 
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "360px";
     document.getElementById("mySidenav").style.padding = "140px 30px 75px";
@@ -111,8 +112,38 @@ function closeNav() {
 }
    
 
+    // // 購物車小計更新 ------ 原始
+    // function sc_subtotal(){
+    //         $('#subtotal').html("");
+    //         // console.log('1.開始執行 sc_subtotal');
+    //         let total = 0; // 將 total 初始化在外面以累加所有項目的值
+
+    //             $('li').each(function(index, elem) {
+    //                 let qty = parseFloat($(this).find("span[name='num']:first").text());
+    //                 let price = parseFloat($(this).find("span[name='productPrice']:first").text());
+                    
+    //                 if (!isNaN(qty) && !isNaN(price)) {
+    //                     let subtotal = qty * price;
+    //                     total += subtotal;
+    //                 }
+
+    //                 // 確保 elem.innerText 是數字並累加到 total
+    //                 let value = parseInt(elem.innerText);
+    //                 if (!isNaN(value)) {
+    //                     total += value;
+    //                 }
+    //                 // console.log('2.執行計算 sc_subtotal');
+    //             });
+
+    //             $('#subtotal').html(total.toLocaleString());
+    //             // console.log('3.計算完成並輸出 sc_subtotal');
+            
+    //     }
+
     // 購物車小計更新
+
     function sc_subtotal(){
+    
             $('#subtotal').html("");
             // console.log('1.開始執行 sc_subtotal');
             let total = 0; // 將 total 初始化在外面以累加所有項目的值
@@ -136,8 +167,31 @@ function closeNav() {
 
                 $('#subtotal').html(total.toLocaleString());
                 // console.log('3.計算完成並輸出 sc_subtotal');
-            
-        }
+
+                // 取得 billList 資訊
+                let billList = JSON.parse(localStorage.getItem("billList")) || [];
+                let fee = total < 0 ? 0 : (total <= 1500 ? 100 : 0);    //滿1,500免運費
+                
+                // 更新或初始化 billList 陣列
+                if (billList.length === 0) {
+                    billList.push({
+                        billtotal: total + fee,
+                        fee: fee,
+                        subtotal: total
+                    });
+                } else {
+                    billList[0].billtotal = total + fee;
+                    billList[0].fee = fee;
+                    billList[0].subtotal = total;
+                }
+        
+            // 存回 localStorage
+            localStorage.setItem("billList", JSON.stringify(billList));
+            // 刪除 billList 資訊
+            (total === 0 )? localStorage.removeItem("billList", JSON.stringify(billList)) : '';
+        
+}
+
 
         // 清空購物車按鈕 & 小計欄位也會消失
         $(document).ready(function() {
