@@ -1,4 +1,7 @@
-
+// 每秒訂單明細更新頁面
+// $(document).ready(function() {
+//     setInterval(sc_checkoutlist, 10000); 
+// });
 
     // $('#openNav').on('click', async function(){
     //     await sc_golist();
@@ -29,6 +32,7 @@
             $(this).html('訂單明細 ' + (isHidden ? '+' : '-')); // 使用 .html() 方法來更新文本
         });
     });
+
     // 購物車清單載入
     function sc_checkoutlist() {
     $('#result_checkoutlist').html("");
@@ -48,7 +52,7 @@
                 if (cookieStr) {
                     var cookieArr = JSON.parse(cookieStr);
                     var newgoodsArr = [];
-                    console.log(cookieArr);
+                    // console.log(cookieArr);
 
                     for (let i = 0; i < arr.length; i++) {
                         for (let j = 0; j < cookieArr.length; j++) {
@@ -71,10 +75,17 @@
                         </td>
                         <td class="align-middle">$${row['productPrice'].toLocaleString()}</td>
                         <td class="align-middle"> 
-                            <span name="num" class="quantity  d-flex align-items-center">${row['num']}</span>
+                            <div class="d-flex align-items-center">
+                                <button class="btn-decrement">-</button>
+                                <span name="num" class="quantity">${row['num']}</span>
+                                <button class="btn-increment">+</button>
+                                <p name="productInStock" class="d-none">${row['productInStock']}</p>
+                            </div>
                         </td>
                         <td class="align-middle subtotal-row">$${(row['productPrice']*row['num']).toLocaleString()}</td>
-                    </tr>
+
+                        
+
                         `;
                     }
 
@@ -108,6 +119,70 @@
     });
 }
    
+    // 按鈕 + , 增加1個項目
+    $(document).on('click', '.btn-increment', function(){
+        var nweID = parseInt($(this).closest('tr').attr('id'));
+        var productInStock = parseInt($(this).next().text());
+        var cartList = JSON.parse(localStorage.getItem("goods")) || [];
+
+        var existingItem = cartList.find(item => item.id === nweID);
+        if (existingItem.num < productInStock) {
+            existingItem.num++;
+            $(this).prev().text(existingItem.num); // 更新数字
+        } else {
+            // 使用 jQuery UI 弹出對話框
+            $('<div>目前商品庫存量不足，若需購買更多的商品數量，請洽服務人員</div>').dialog({
+                title: '提示',
+                modal: true,
+                buttons: {
+                    '確定': function() {
+                        $(this).dialog('close');
+                    }
+                }
+            });
+        }
+
+        // 將資料存回 localStorage
+        localStorage.setItem("goods", JSON.stringify(cartList));
+
+        sc_subtotal()
+
+    });
+
+    // 按鈕 - , 減少1個項目
+    $(document).on('click', '.btn-decrement', function(){
+    var nweID = parseInt($(this).closest('tr').attr('id'));
+    var cartList = JSON.parse(localStorage.getItem("goods")) || [];
+
+    var existingItem = cartList.find(item => item.id === nweID);
+    if (existingItem) {
+        if (existingItem.num > 0) {
+            existingItem.num--;
+            $(this).next().text(existingItem.num);  // 更新數字
+        }
+
+        // 檢查數量是否小於或等於 0
+        if (existingItem.num <= 0) {
+            var shouldDelete = window.confirm('數量小於 0，是否要刪除該商品？');
+            if (shouldDelete) {
+                // 移除該項目
+                cartList = cartList.filter(item => item.id !== nweID);
+                $(this).closest('tr').remove();
+            } else {
+                // 恢復數量顯示
+                existingItem.num = 1;
+                $(this).next().text(existingItem.num);
+            }
+        }
+    }
+
+        // 將資料存回 localStorage
+        localStorage.setItem("goods", JSON.stringify(cartList));
+
+        sc_subtotal();
+    });
+
+
     // 再去逛逛導入商品頁面
     $(document).ready(function(){
         $('#GoShoppingbtn').click(function(){
@@ -115,9 +190,6 @@
         });
     });
 
-    setTimeout(function() {
-        sc_subtotal();
-    }, 1000);
 
     // 訂單明細小計更新
     // function sc_checkoutsubtotal(){

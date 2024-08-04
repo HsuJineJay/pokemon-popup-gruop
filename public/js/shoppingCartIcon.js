@@ -112,36 +112,7 @@ function closeNav() {
 }
    
 
-    // // 購物車小計更新 ------ 原始
-    // function sc_subtotal(){
-    //         $('#subtotal').html("");
-    //         // console.log('1.開始執行 sc_subtotal');
-    //         let total = 0; // 將 total 初始化在外面以累加所有項目的值
-
-    //             $('li').each(function(index, elem) {
-    //                 let qty = parseFloat($(this).find("span[name='num']:first").text());
-    //                 let price = parseFloat($(this).find("span[name='productPrice']:first").text());
-                    
-    //                 if (!isNaN(qty) && !isNaN(price)) {
-    //                     let subtotal = qty * price;
-    //                     total += subtotal;
-    //                 }
-
-    //                 // 確保 elem.innerText 是數字並累加到 total
-    //                 let value = parseInt(elem.innerText);
-    //                 if (!isNaN(value)) {
-    //                     total += value;
-    //                 }
-    //                 // console.log('2.執行計算 sc_subtotal');
-    //             });
-
-    //             $('#subtotal').html(total.toLocaleString());
-    //             // console.log('3.計算完成並輸出 sc_subtotal');
-            
-    //     }
-
     // 購物車小計更新
-
     function sc_subtotal(){
     
             $('#subtotal').html("");
