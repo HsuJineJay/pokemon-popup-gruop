@@ -92,7 +92,7 @@ function closeNav() {
                         <div class="SubtotalCard">
                             <span class="text3">小計 $ <span id="subtotal"></span>  </span>
                             
-                            <a href="product_all.html" class="Checkout">前往結帳</a>
+                            <a href="checkout.html" class="Checkout">前往結帳</a>
                             <button class="CleargoodsList">清空購物車</button>
                         </div>
                     `;
