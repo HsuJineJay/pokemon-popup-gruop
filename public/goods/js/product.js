@@ -64,8 +64,8 @@
                             <p>${row['productDescribe']}</p>
                         </div>
                         <div>
-                            <span class="Activity_tag">活動</span><p>【買一送一，下單1出貨2】</p><br>
-                            <span class="Activity_tag">贈品</span><p>【全站滿$1,500 送限量貼紙】</p><br>
+                            <span class="Activity_tag">活動</span><p>【全站商品滿$1,500，免運費】</p><br>
+                            <span class="Activity_tag">贈品</span><p>【全站滿$4,500 送限量貼紙】</p><br>
                         </div>
                         <div class="bg_card">
                             <p class="bg_cardtexth3">售價$${row['productPrice'].toLocaleString()}</p>
@@ -76,7 +76,7 @@
                                 <button class="col-1 btn-decrement" id="btn-decrement">-</button>
                                 <span name="num" class="col-2 quantity">1</span>
                                 <button class="col-1 btn-increment">+</button>
-                                <button class="col-6 btn-add-to-cart">加入購物車</button>
+                                <button class="col-6 btn-add-to-cart" id="${row['productID']}">加入購物車</button>
                             </div>
 
                         </div>
@@ -119,5 +119,30 @@ $(document).ready(function() {
             let quantity = parseInt($(this).prev().text());
             (  stockElement > quantity  )? quantity++ : console.log('oh! no 庫存不夠') ;
             $('span[name="num"]').html(quantity);
+        });
+    })
+
+
+// <---------------------添加購物車清單--------------------->
+$(document).ready(function(){
+$('#result_product').on('click', '.btn-add-to-cart', function() {
+    // 點擊購物車按鈕，抓取產品 ID 及 數量
+        var id =  parseInt(this.id);
+        var num = parseInt($(this).siblings('span[name="num"]').text());
+    
+    // 從 localStorage 取得購物車清單
+         var cartList = JSON.parse(localStorage.getItem("goods")) || [];
+
+    // 判斷是否已經添加過該商品
+        var existingItem = cartList.find(item => item.id === id);
+        if (existingItem) {
+            existingItem.num += num
+        } else {
+            cartList.push({ id: id, num: num });
+        }
+    
+    // 將資料存回 localStorage
+            localStorage.setItem("goods", JSON.stringify(cartList));
+
         });
     })
