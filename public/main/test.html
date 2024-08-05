@@ -87,27 +87,28 @@
 
 
     @media (min-width: 768px) {
-  .carousel-inner .carousel-item-end.active,
-  .carousel-inner .carousel-item-next {
-    transform: translateX(33.33%);
-  }
-  
-  .carousel-inner .carousel-item-start.active, 
-  .carousel-inner .carousel-item-prev {
-    transform: translateX(-33.33%);
-  }
-}
 
-.carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
-  display: flex;
-}
+      .carousel-inner .carousel-item-end.active,
+      .carousel-inner .carousel-item-next {
+        transform: translateX(33.33%);
+      }
 
-.carousel-inner .carousel-item-end,
-.carousel-inner .carousel-item-start { 
-  transform: translateX(0);
-}
+      .carousel-inner .carousel-item-start.active,
+      .carousel-inner .carousel-item-prev {
+        transform: translateX(-33.33%);
+      }
+    }
+
+    .carousel-inner .carousel-item.active,
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+      display: flex;
+    }
+
+    .carousel-inner .carousel-item-end,
+    .carousel-inner .carousel-item-start {
+      transform: translateX(0);
+    }
   </style>
 </head>
 
@@ -158,7 +159,7 @@
             </div>
           </div>
         </div>
-        
+
       </div>
       <!--prev-->
       <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -173,10 +174,38 @@
     </div>
   </div>
 
-  
+
+
+  <hr>
+  <button id="shareButton">shareButton!!</button>
+  <hr>
+  <hr>
+
+  <button id="shareBN">
+    <svg id="share" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+      <path
+        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-4.051 15.117c.529-.585 1.297-.952 2.148-.952 1.604 0 2.902 1.299 2.902 2.901s-1.299 2.902-2.902 2.902c-1.602 0-2.9-1.3-2.9-2.902v-.031l-5.506-2.719c-.494.387-1.114.618-1.789.618-1.603 0-2.902-1.299-2.902-2.902 0-1.603 1.299-2.902 2.902-2.902.825 0 1.569.345 2.098.897l5.219-2.741-.021-.353c0-1.603 1.299-2.902 2.9-2.902 1.604 0 2.902 1.3 2.902 2.902s-1.299 2.901-2.902 2.901c-.738 0-1.412-.276-1.926-.731l-5.371 2.821c.007.201-.003.399-.045.628l5.193 2.565z" />
+    </svg>
+  </button>
 
 </body>
 <script>
+
+var shareBtn = document.getElementById("shareBN");  //你的按鈕ID
+    shareBtn.onclick = function() {
+        if (navigator.share) {
+        navigator.share({
+            // 輸入你要分享的內容設定
+            files: 'https://hsujinejay.github.io/pokemon-popup-gruop/public/main/images/store_popup_map.jpg',
+            title: '前往Google',
+            text: '走吧?走吧!',
+            // url: 'https://www.google.com.tw/?hl=zh_TW',
+        })
+            .then(() => console.log('成功！'))
+            .catch((error) => console.log('發生錯誤', error));
+        }
+    }
+
 
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -201,6 +230,42 @@
       interval: 2000,
       wrap: false
     });
+  });
+
+
+
+  // 假設您已經有了必要的access token和Instagram用戶ID
+  const accessToken = 'ead188fb10fcdf60c48a305810c3e6b4';
+  const igUserId = '413948191690451';
+
+  async function shareToInstagram(imageUrl, caption) {
+    try {
+      // 步驟 1: 創建媒體容器
+      const createMediaResponse = await fetch(`https://graph.facebook.com/v20.0/${igUserId}/media?image_url=${encodeURIComponent(imageUrl)}&caption=${encodeURIComponent(caption)}&access_token=${accessToken}`, {
+        method: 'POST'
+      });
+
+      const createMediaData = await createMediaResponse.json();
+      const containerId = createMediaData.id;
+
+      // 步驟 2: 發布媒體
+      const publishMediaResponse = await fetch(`https://graph.facebook.com/v20.0/${igUserId}/media_publish?creation_id=${containerId}&access_token=${accessToken}`, {
+        method: 'POST'
+      });
+
+      const publishMediaData = await publishMediaResponse.json();
+      console.log('Media published successfully. Media ID:', publishMediaData.id);
+
+    } catch (error) {
+      console.error('Error sharing to Instagram:', error);
+    }
+  }
+
+  // 為按鈕添加點擊事件處理程序
+  document.getElementById('shareButton').addEventListener('click', () => {
+    const imageUrl = 'https://hsujinejay.github.io/pokemon-popup-gruop/public/main/images/store_popup_map.jpg';
+    const caption = 'Your caption here #YourHashtag';
+    shareToInstagram(imageUrl, caption);
   });
 </script>
 

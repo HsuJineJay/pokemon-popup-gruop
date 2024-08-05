@@ -453,6 +453,7 @@ a:active {
 
 .footer-social button img {
   width: 7vmin;
+  transition: 0.3s ease-out;
 }
 
 .footer-link {
@@ -504,7 +505,7 @@ a:active {
   }
 
   .footer-social button:hover img {
-    filter: invert(100) contrast(100);
+    filter: invert(0.6) contrast(10);
     outline: 3px;
   }
 }
@@ -1847,22 +1848,31 @@ a:active {
   /* 圓形背景hover動畫 */
   .game_bn:hover>div {
     background-color: var(--home-sub);
-    width: calc(25vw + 5px);
+    /* width: calc(25vw + 5px);
     height: calc(25vw + 5px);
-    outline: 5px solid var(--pk--white);
+    outline: 5px solid rgba(255, 255, 255, 1); */
+    width: 25vw;
+    height: 25vw;
+    /* outline: 5vmin solid rgba(255, 255, 255, 1); */
+    outline: 3vw solid var(--pk--white);
   }
 
   /* 圓形背景hover時 文字動畫 */
   .game_bn:hover>div h5,
   .game_bn:hover>div h6 {
-    color: var(--home-main);
+    color: var(--pk--white);
   }
 
   /* START文字hover動畫 */
   .game_bn:hover>h3 {
-    color: var(--pk--white);
+    color: var(--home-sub);
     box-shadow: 0px 5px var(--home-sub);
     transform: translate(0px, -5px);
+  }
+
+  /* 環形文字hover變色 */
+  .game_bn:hover textPath {
+    fill: var(--pk--black);
   }
 }
 
@@ -1883,32 +1893,65 @@ a:active {
   font-weight: 400;
 }
 
-/* .game_bn>div::before {
-  content: "<svg viewBox="0 0 100 100"><path d="M 0,50 a 50,50 0 1, 1 0, 1 z" id="circle"></path><text><textPath xlink:href="#circle">这是一个环形文字效果</textPath</text></svg>";
-  position: absolute;
-  width: 30vw;
-  height: 30vw;
-  border-radius: 50%;
-  background: red; */
-/* outline: 10px solid var(--pk--black); */
-/* transition: all 0.1s ease-in-out;
-  z-index: -1;
-} */
-
-
 .game_bn>h3 {
   background-color: var(--pk--black);
   width: 100%;
-  padding: 15px;
-  margin-top: -9vh;
+  /* padding: 15px; */
+  padding: 20px;
+  margin-top: -8vh;
   font-size: 8vmin;
   color: var(--home-main);
   letter-spacing: 0.5vmin;
   border-radius: 1500px;
   transition: 0.3s ease-in-out;
   box-shadow: 0px 0px var(--home-sub);
+  z-index: 1;
 }
 
+/* 環形文字 */
+.game_circle{
+  width: 26vw;
+  height: 26vw;
+  position: absolute;
+  z-index: 0;
+  animation: rotateTextPath 15s ease-in-out infinite;
+}
+
+.game_circle path{ 
+  fill: none; 
+}
+
+.game_circle svg{
+  display: block;
+  overflow: visible;
+}
+
+.game_circle textPath{
+  font-family: var(--pk--font-eng);
+  /* font-size: 1vmin; */
+  font-size: 8.9px;
+  font-weight: 900;
+  letter-spacing: 0vmin;
+  fill: var(--pk--white);
+  /* mix-blend-mode: soft-light; */
+  /* background-color: var(--pk--white); */
+  transition: 0.1s ease-in-out;
+}
+
+@keyframes rotateTextPath {
+  0%{
+    transform: rotate(0deg);
+    /* opacity: 0.8; */
+  }
+  50%{
+    transform: rotate(180deg);
+    /* opacity: 0; */
+  }
+  100%{
+    transform: rotate(360deg);
+    /* opacity: 0.8; */
+  }
+}
 
 .footer_top {
   width: 100vw;
@@ -1941,9 +1984,14 @@ a:active {
   }
 
   .game_bn>h3 {
-    padding: 5px;
-    margin-top: -9vh;
+    padding: 10px;
+    margin-top: -7vh;
     font-size: 15vmin;
+  }
+
+  .game_circle{
+    width: 72vw;
+    height: 72vw;
   }
 
   .footer_top {
