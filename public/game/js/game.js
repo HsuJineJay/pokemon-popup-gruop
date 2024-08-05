@@ -1,16 +1,16 @@
 $(document).ready(function () {
 
-  //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
-  let currentQuestion = 0
-  //讓使用者的答案存在變數裡
-  let userSelect = []
-  //宣告一個使用者的名字為全域變數
-  let userName
-  //宣告一個使用者各項得分為全域變數
-  let get0
-  let get1
-  let get2
-  let get3
+    //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
+    let currentQuestion = 0
+    //讓使用者的答案存在變數裡
+    let userSelect = []
+    //宣告一個使用者的名字為全域變數
+    let userName
+    //宣告一個使用者各項得分為全域變數
+    let get0
+    let get1
+    let get2
+    let get3
 
 
 
@@ -32,7 +32,7 @@ $(document).ready(function () {
             } else {
                 bgmusic.muted = true
                 chubbySong.muted = true
-                guessWhoSong.muted =true
+                guessWhoSong.muted = true
                 $('#soundIcon').attr('src', './images/publicImg/soundOn.svg')
 
             }
@@ -53,10 +53,10 @@ $(document).ready(function () {
         }
     }
 
-     //功能 播放猜猜我是誰音樂===========
+    //功能 播放猜猜我是誰音樂===========
     // #soundIcon是Off的時候 把靜音打開 然後播放音樂
     let guessWhoSongCtrl = async function () {
-        if ( $('#soundIcon').attr('src') === './images/publicImg/soundOff.svg') {
+        if ($('#soundIcon').attr('src') === './images/publicImg/soundOff.svg') {
             $('#guessWhoSong').prop('muted', false)
             guessWhoSong.play().catch(e => console.log("猜猜我是播放失敗:", e))
 
@@ -77,7 +77,7 @@ $(document).ready(function () {
 
     // 每一頁背景裝到陣列========
     const allBackground = [
-//=============第一題 陣列索引0==============
+        //=============第一題 陣列索引0==============
         [` <section class="webBgContainerSec">
 
         <div class="sec_bgContainer" style="z-index: 1; ">
@@ -142,7 +142,7 @@ $(document).ready(function () {
 
     </section>
 `],
-//==========第二題 陣列索引1==============
+        //==========第二題 陣列索引1==============
         [`<div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainerSec">
@@ -211,7 +211,7 @@ $(document).ready(function () {
         </div>
 
 `],
-// =========第三題 陣列索引2===========
+        // =========第三題 陣列索引2===========
         [`    <div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainerfour">
@@ -282,7 +282,7 @@ $(document).ready(function () {
     </section>
 </div>
 `],
-// =========第四題 陣列索引3==========
+        // =========第四題 陣列索引3==========
         [`    <div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainerfifth">
@@ -349,7 +349,7 @@ $(document).ready(function () {
     </section>
 </div>
 `],
-//===========第5題 陣列索引4==============
+        //===========第5題 陣列索引4==============
         [
             `    <div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
@@ -412,7 +412,7 @@ $(document).ready(function () {
 </div>
 `
         ],
-//=============第六題 陣列索引5========
+        //=============第六題 陣列索引5========
         [`<div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainerSeven">
@@ -506,7 +506,7 @@ $(document).ready(function () {
 
     </section>
 </div>`],
-// ========第7題 陣列索引值6
+        // ========第7題 陣列索引值6
         [`    <div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainereight">
@@ -565,8 +565,8 @@ $(document).ready(function () {
 `]
     ]
 
- //猜猜我是誰背景
- const resultLoad =[`    <!-- 網頁版bg容器 -->
+    //猜猜我是誰背景
+    const resultLoad = [`    <!-- 網頁版bg容器 -->
     <section class="webBgContainerload">
 
         <div class="load_bgContainer">
@@ -593,9 +593,132 @@ $(document).ready(function () {
         </div>
     </div>
     </section>
-`] 
+`]
 
-  
+    // 結果頁大背景
+    const resultPageCon=[`        <section class="webBgContainerres">
+
+            <div class="result_bgContainer">
+
+
+
+
+
+                <!-- 題目選項按鈕區 -->
+                <div class="questionAndbuttonConRe" style="height: 100%; justify-content: space-evenly;">
+                    <!-- 題目 -->
+                    <!-- .questionContainer換成圖片跟文字 -->
+
+                    <div class="nameandattrContainer" style="height: 30%;">
+                        <div class="bignameIcon">
+                            <div class="nameIconCon"><img src="./images/result_Images/nameCon.svg" alt=""></div>
+                            <h3 id="userName" class="nameText">大寶雄</h3>
+                        </div>
+                        <div class="attrCon">
+                            <h4 class="attrtextContent">屬於火屬性寶可夢</h4>
+
+
+                        </div>
+
+                        <!-- 標籤容器 -->
+                        <div class="TagCon">
+                            <div id="Tag1">#大蜀好好吃</div>
+                            <div id="Tag2">#大蜀好好吃</div>
+                            <div id="Tag3">#大好好吃</div>
+                            <div id="Tag4">#好好吃</div>
+                            <div id="Tag5">#大暑大蜀好好吃</div>
+                        </div>
+
+                    </div>
+
+
+                    <section
+                        style="height: 70%; display: flex; flex-direction: column; justify-content: space-evenly ; align-items: center; gap: 5px;">
+
+
+
+                        <!-- 代表寶可夢容器 -->
+                        <div class="nameandattrContainer">
+                            <div class="pokeCon"><img src="./images/result_Images/小火龍.webp" alt=""></div>
+
+                            <div class="represent_Container">
+
+                                <div class="represent_title">
+                                    <h6>代表寶可夢</h6>
+                                </div>
+                                <div class="represent_name">
+                                    <h4>小火龍</h4>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- 相剋相殺最佳拍檔容器 -->
+                        <div class="friend_container">
+
+                            <!-- 相剋相殺 -->
+                            <div class="bad_friend">
+                                <h6>相剋<br>相殺</h6>
+                                <div class="friend_figure_container">
+                                    <figure>
+                                        <p> 草<br>屬<br>性</p>
+                                        <img src="./images/result_Images/菊草葉.webp">
+                                    </figure>
+                                    <figure>
+                                        <p>岩 <br>屬<br>性</p>
+                                        <img src="./images/result_Images/小拳石.webp">
+                                    </figure>
+                                </div>
+                            </div>
+                            <!-- 最佳拍檔 -->
+                            <div class="best_friend">
+                                <h6>最佳<br>拍檔</h6>
+                                <div class="friend_figure_container">
+                                    <figure>
+                                        <p> 雷<br>屬<br>性</p>
+                                        <img src="./images/result_Images/皮卡丘.webp">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 按鈕區 -->
+                        <div class="backReplaybtnCon">
+                            <button id="backHome">官網逛逛</button>
+                            <button id="Replay"><img src="./images/result_Images/ReplayIcon.png" alt=""> REPLAY</button>
+                        </div>
+                        <!-- 提醒字與分享按鈕 -->
+                        <div class="shareAndAlert">
+                            <h4>長按螢幕可儲存結果圖片</h4>
+                            <button id="shareIcon"><img src="./images/result_Images/ShareIcon.png" alt=""></button>
+                        </div>
+                        <!-- logo -->
+                        <div class="footlogo">
+                            <img src="./images/publicImg/logo.svg" alt="">
+                        </div>
+                    </section>
+                </div>
+
+
+
+            </div>
+
+
+    </div>
+
+
+    </div>
+
+
+
+
+    </section>
+
+        `
+    ]
+    
+
     //當冒險開始按鈕被點擊時 使用者有輸入姓名 則動態產出下一頁 沒有的話跳出請輸入姓名視窗
     // button #startPlay onclick
     //判斷#userName value是否為假  
@@ -660,13 +783,13 @@ $(document).ready(function () {
             //功能 播放胖丁音樂===========
             CtrlSound()
             chubbysongCtrl()
-            
+
 
             // 3.5秒後清空旁白文字框=====
             const emptyStoryText = function () {
                 $('.storyTextCtrl').empty()
                 //移除第3題 皮卡丘 第4題喵喵熱氣球 第5題耿鬼文字框
-                if ( currentQuestion === 2 || currentQuestion === 3 || currentQuestion === 4 || currentQuestion === 5 ||currentQuestion === 6) {
+                if (currentQuestion === 2 || currentQuestion === 3 || currentQuestion === 4 || currentQuestion === 5 || currentQuestion === 6) {
                     $('.storyTextCtrlEmpty').remove()
                 }
             }
@@ -735,41 +858,41 @@ $(document).ready(function () {
 
         } else {
             //題目結束播放猜猜我是誰動畫跟結果印出userName
-            console.log('播放猜猜我是誰動畫跟結果')
+            // console.log('播放猜猜我是誰動畫跟結果')
 
-             //印出結果加載頁load背景=======
-             //背景音樂關閉===========
-             bgmusic.muted = true
-            
+            //印出結果加載頁load背景=======
+            //背景音樂關閉===========
+            bgmusic.muted = true
 
-             $('.superBigWebCon').append(
+
+            $('.superBigWebCon').append(
                 resultLoad[0]
             )
             // 清空結果加載頁==========
-            function emptyLoadpage(){
+            function emptyLoadpage() {
                 $('.superBigWebCon').empty()
-                $('#soundContainer').css('visibility','hidden')
-            } 
+                $('#soundContainer').css('visibility', 'hidden')
+            }
             // 6秒後(猜猜我是誰音樂結束)清空容器內容
-            setTimeout(emptyLoadpage,5600)
+            setTimeout(emptyLoadpage, 5600)
             // 功能 播放猜猜我是誰音樂=======
             guessWhoSongCtrl()
             console.log(`${userName}的寶可夢屬性是...`)
         }
     }
 
-      //======== 結果加載頁圖片隨機功能
-      function changePokemonImg(){
+    //======== 結果加載頁圖片隨機功能
+    function changePokemonImg() {
         //改變url
-    let randomNum = Math.floor(Math.random()*6)
-        $('#changePokemon').attr("src",`./images/guessWhoPage/shadow${randomNum}.png`)
+        let randomNum = Math.floor(Math.random() * 6)
+        $('#changePokemon').attr("src", `./images/guessWhoPage/shadow${randomNum}.png`)
         // console.log(Math.floor(Math.random()*6))
     }
-   
+
     //每80毫秒更換一次
-   setInterval(function(){
-    changePokemonImg()
-   },80)  
+    setInterval(function () {
+        changePokemonImg()
+    }, 80)
     //==================================
 
 
@@ -793,11 +916,11 @@ $(document).ready(function () {
             console.log('總共的答案:', userSelect)
             //呼叫countScore()函數 計算使用者各選項計分
             countScore()
-            //呼叫showResult()函數 計算結果
-            showResult()
+
             //呼叫renderQuestion(currentQuestion)函數
             renderQuestion(currentQuestion)
-
+            //呼叫showResult()函數 計算結果
+            showResult()
 
         })
 
@@ -843,8 +966,20 @@ $(document).ready(function () {
 
     //得出結果 根據得分判斷結果
     async function showResult() {
+
+
         //判斷答題是否完成 答案長度 ＝ 題目長度
         if (userSelect.length == allQuestion.length) {
+            // 印出結果頁公版容器
+            // 顯示聲音按鈕
+            function showresultCon(){
+                $('#soundContainer').css('visibility', 'visible')
+            $('.superBigWebCon').append(resultPageCon[0])
+
+            }
+            //結果加載頁播放並清空後 顯示結果容器 
+            setTimeout(showresultCon,5601)
+            
             //判斷各個得分條件
             if (get3 == 2) {
                 console.log('你是：百變怪')

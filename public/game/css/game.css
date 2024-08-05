@@ -1689,9 +1689,9 @@ max-width: 45px;
     background-color: #FF6542;
     color: white;
     font-family: "Fredoka","Noto Sans TC", sans-serif;
-    font-size: 95%;
+    font-size: 88%;
     font-weight: 800;
-    letter-spacing: 0.3vw;
+    letter-spacing: 0.2vw;
     margin: 0;
     max-width: 130px;
     max-height: 65px;
@@ -1733,6 +1733,8 @@ max-width: 45px;
     height: 7vw;
     max-width: 30px;
     max-height: 30px;
+    display: flex;
+    align-items: center;
 }
 
 .shareAndAlert button img{
