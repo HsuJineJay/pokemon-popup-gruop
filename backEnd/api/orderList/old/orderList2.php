@@ -31,8 +31,6 @@ switch ($method) {
         $companyTitle = isset($_GET['companyTitle']) ? $_GET['companyTitle'] : null;
         $taxIDNumber = isset($_GET['taxIDNumber']) ? $_GET['taxIDNumber'] : null;
         $orderStatus = isset($_GET['orderStatus']) ? $_GET['orderStatus'] : null;
-        $transactionID = isset($_GET['transactionID']) ? $_GET['transactionID'] : null;
-        $orderAmount = isset($_GET['orderAmount']) ? $_GET['orderAmount'] : null;
         
         $productName = isset($_GET['productName']) ? $_GET['productName'] : null;
 
@@ -120,18 +118,6 @@ switch ($method) {
             $params[] = $orderStatus;
             $types .= "i";
         }
-        if ($transactionID!=null) {
-            $conditions[] = "transactionID LIKE ?";
-            $params[] =  "%" .$transactionID. "%";
-            $types .= "s";
-        }
-        if ($orderAmount!=null) {
-            $conditions[] = "orderAmount = ?";
-            $params[] = $orderAmount;
-            $types .= "i";
-        }
-
-
 
         if ($productName!=null) {
             $conditions[] = "productName LIKE ?";
@@ -182,8 +168,8 @@ switch ($method) {
     case "POST":
         // $orderID = $_POST['orderID'];
         $orderExist = $_POST['orderExist'];
-        $orderProductIDList = explode(',',$_POST['orderProductID']) ;
-        $productQList =explode(',',$_POST['productQ']) ;
+        $orderProductID = $_POST['orderProductID'];
+        $productQ = $_POST['productQ'];
         $buyerName = $_POST['buyerName'];
         $buyerEmail = $_POST['buyerEmail'];
         $buyerTel = $_POST['buyerTel'];
@@ -197,36 +183,12 @@ switch ($method) {
         $companyTitle = $_POST['companyTitle'];
         $taxIDNumber = $_POST['taxIDNumber'];
         $orderStatus = $_POST['orderStatus'];
-        $transactionID = date("YmdHis",time());
 
-        foreach($orderProductIDList as $index => $value){
-            // var_dump($index);
-            // var_dump($orderProductIDList[$index]);
-            // var_dump(intval($orderProductIDList[$index]));
 
-            $orderProductID = intval($orderProductIDList[$index]);
-            $productQ = intval($productQList[$index]);
-            $orderAmount;
-
-            $queryCheckPrice = "SELECT productPrice FROM product WHERE productID = ?";
-            $stmtCheckPrice = $mydb->prepare($queryCheckPrice);
-            $stmtCheckPrice->bind_param('i', $orderProductID);
-            $stmtCheckPrice->execute();
-            $resultCheckPrice = $stmtCheckPrice->get_result();
-            while ($row = $resultCheckPrice->fetch_object()) {
-                $price = $row->productPrice;
-                $orderAmount = $price * $productQ;
-                // var_dump($price);
-                // var_dump($orderAmount);
-            }
-
-        
-            $sql = 'INSERT INTO orderlist (orderExist,orderProductID,productQ,buyerName,buyerEmail,buyerTel,buyerAddr,transportNote,orderDate,payment,receiptType,companyTitle,taxIDNumber,orderStatus,transactionID,orderAmount) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-            $stmt = $mydb->prepare($sql);
-            $stmt->bind_param('iiissssssssssisi', $orderExist,$orderProductID, $productQ, $buyerName, $buyerEmail, $buyerTel,$buyerAddr,$transportNote,$orderDate,$payment,$receiptType,$companyTitle,$taxIDNumber,$orderStatus,$transactionID,$orderAmount);
-            $stmt->execute();
-        }
-
+        $sql = 'INSERT INTO orderlist (orderExist,orderProductID,productQ,buyerName,buyerEmail,buyerTel,buyerAddr,transportNote,orderDate,payment,receiptType,companyTitle,taxIDNumber,orderStatus) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+        $stmt = $mydb->prepare($sql);
+        $stmt->bind_param('iiissssssssssi', $orderExist,$orderProductID, $productQ, $buyerName, $buyerEmail, $buyerTel,$buyerAddr,$transportNote,$orderDate,$payment,$receiptType,$companyTitle,$taxIDNumber,$orderStatus);
+        $stmt->execute();
 
         $orderID = $mydb->insert_id;
 
@@ -267,29 +229,12 @@ switch ($method) {
         $companyTitle = $output['companyTitle'];
         $taxIDNumber = $output['taxIDNumber'];
         $orderStatus = $output['orderStatus'];
-        $transactionID = $output['transactionID'];
-        $orderAmount;
 
 
-
-        $queryCheckPrice = "SELECT productPrice FROM product WHERE productID = ?";
-        $stmtCheckPrice = $mydb->prepare($queryCheckPrice);
-        $stmtCheckPrice->bind_param('i', $orderProductID);
-        $stmtCheckPrice->execute();
-        $resultCheckPrice = $stmtCheckPrice->get_result();
-        while ($row = $resultCheckPrice->fetch_object()) {
-            $price = $row->productPrice;
-            $orderAmount = $price * $productQ;
-        }
-    
-        $sql = 'UPDATE orderlist SET orderExist = ?, orderProductID = ? ,productQ = ?, buyerName = ? , buyerEmail = ? , buyerTel = ?, buyerAddr = ?, transportNote = ?, orderDate = ?, payment = ?, receiptType = ?, companyTitle = ?, taxIDNumber = ?, orderStatus = ?, transactionID = ?, orderAmount = ? WHERE  orderID = ?';
+        $sql = 'UPDATE orderlist SET orderExist = ?, orderProductID = ? ,productQ = ?, buyerName = ? , buyerEmail = ? , buyerTel = ?, buyerAddr = ?, transportNote = ?, orderDate = ?, payment = ?, receiptType = ?, companyTitle = ?, taxIDNumber = ?, orderStatus = ? WHERE  orderID = ?';
         $stmt = $mydb->prepare($sql);
-        $stmt->bind_param('iiissssssssssiiii', $orderExist,$orderProductID, $productQ, $buyerName, $buyerEmail, $buyerTel,$buyerAddr,$transportNote,$orderDate,$payment,$receiptType,$companyTitle,$taxIDNumber,$orderStatus,$transactionID,$orderAmount,$orderID);
+        $stmt->bind_param('iiissssssssssii', $orderExist,$orderProductID, $productQ, $buyerName, $buyerEmail, $buyerTel,$buyerAddr,$transportNote,$orderDate,$payment,$receiptType,$companyTitle,$taxIDNumber,$orderStatus,$orderID);
         $stmt->execute();
-        
-
-
-
 
 
 
