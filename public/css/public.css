@@ -404,6 +404,7 @@ button {
 }
 .footer-social button img{
   width: 7vmin;
+  transition: 0.3s ease-out;
 }
 
 .footer-link {
@@ -453,7 +454,7 @@ button {
     box-shadow: 3px 5px 0 var(--pika--red);
   }
   .footer-social button:hover img {
-    filter: invert(100) contrast(100);
+    filter: invert(0.6) contrast(10);
     outline: 3px;
   }
 }
