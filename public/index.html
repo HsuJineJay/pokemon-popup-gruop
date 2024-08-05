@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>POKEMON_POPUP</title>
 
-  
+
   <!-- <link rel="stylesheet" href="./main/css/home.css"> -->
   <link rel="stylesheet" href="./main/css/home.css">
   <script src="./main/js/home.js"></script>
@@ -47,37 +47,37 @@
               </a>
             </button>
             <button class="nav-button shadow-drop-2-center bn-transition mx-2">
-              <a href="./goods/goods.html"> 
-                <span class="nav-button-text"><span>&nbsp;GOODS&nbsp;<span>快閃商品</span></span>              
+              <a href="./goods/goods.html">
+                <span class="nav-button-text"><span>&nbsp;GOODS&nbsp;<span>快閃商品</span></span>
               </a>
             </button>
             <button class="nav-button shadow-drop-2-center bn-transition mx-2">
               <a href="./menu/menu.html">
-                <span class="nav-button-text"><span>&nbsp;MENU&nbsp;<span>餐點菜單</span></span>                
+                <span class="nav-button-text"><span>&nbsp;MENU&nbsp;<span>餐點菜單</span></span>
               </a>
             </button>
             <button class="nav-button shadow-drop-2-center bn-transition mx-2">
               <a href="./game/game.html">
-                <span class="nav-button-text"><span>&nbsp;GAME&nbsp;<span>大冒險</span></span>              
+                <span class="nav-button-text"><span>&nbsp;GAME&nbsp;<span>大冒險</span></span>
               </a>
             </button>
           </div>
 
-         <!-- 購物車按鈕 -->
-        <div class="navbar-cart" id="openNav" onclick="openNav()">
-          <img src="./images/icon/cart_icon.svg" alt="購物車圖示">
-        </div>
-        <!-- 購物車導覽列小圖片 -->
-        <div id="mySidenav" class="sidenav">
-          <!-- 關閉標籤 -->
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
-          <!-- 提示訊息 -->
-          <div id="buyprompt_message"></div>
-          <!-- 商品小卡 -->
-          <ul id="result_goodslist" class="result_goodslist"></ul><br><br>
-        </div>
-        <div id="backgroundOverlay" onclick="closeNav()">
-        </div>
+          <!-- 購物車按鈕 -->
+          <div class="navbar-cart" id="openNav" onclick="openNav()">
+            <img src="./images/icon/cart_icon.svg" alt="購物車圖示">
+          </div>
+          <!-- 購物車導覽列小圖片 -->
+          <div id="mySidenav" class="sidenav">
+            <!-- 關閉標籤 -->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
+            <!-- 提示訊息 -->
+            <div id="buyprompt_message"></div>
+            <!-- 商品小卡 -->
+            <ul id="result_goodslist" class="result_goodslist"></ul><br><br>
+          </div>
+          <div id="backgroundOverlay" onclick="closeNav()">
+          </div>
 
           <!-- 手機版菜單 -->
           <!-- 手機按鈕icon -->
@@ -103,19 +103,19 @@
             <div class="offcanvas-body px-4">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./main/index.html">首頁｜<span>HOME</span></a>
+                  <a class="nav-link active" aria-current="page" href="#">首頁｜<span>HOME</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="reservation/reservation.html">預約入場｜<span>RESERVATION</span></a>
+                  <a class="nav-link" href="./reservation/reservation.html">預約入場｜<span>RESERVATION</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="goods/goods.html">快閃商品｜<span>GOODS</span></a>
+                  <a class="nav-link" href="./goods/goods.html">快閃商品｜<span>GOODS</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link " href="menu/menu.html">餐點菜單｜<span>MENU</span></a>
+                  <a class="nav-link " href="./menu/menu.html">餐點菜單｜<span>MENU</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link " href="game/game.html">心理測驗｜<span>GAME</span></a>
+                  <a class="nav-link " href="./game/game.html">心理測驗｜<span>GAME</span></a>
                 </li>
               </ul>
             </div>
@@ -176,7 +176,7 @@
                 fill="#3F3A3A" />
             </svg>
           </div>
-          
+
         </div>
       </div>
 
@@ -206,7 +206,7 @@
             <div class="card_group_two d-flex flex-column w-md-50 w-100">
 
 
-              <!-- 活動日期卡片 -->
+              <!-- 01活動日期卡片 -->
               <div class="card_date info_card d-flex flex-column justify-content-center align-items-start gap-4">
 
                 <!-- 活動日期標題列 -->
@@ -252,7 +252,7 @@
 
 
 
-              <!-- 預約指南卡片 -->
+              <!-- 02預約指南卡片 -->
               <div class="card_reservation info_card d-flex flex-column justify-content-center  gap-4">
 
                 <!-- 預約指南標題列 -->
@@ -281,7 +281,7 @@
                 </div>
 
                 <!-- 預約按鈕 -->
-                <button class="card_reservation_bn font-chin d-flex w-100 justify-content-center">預約入場</button>
+                <button class="card_reservation_bn font-chin d-flex w-100 justify-content-center" onclick="location.href='./reservation/reservation.html';">預約入場</button>
 
 
               </div>
@@ -291,7 +291,7 @@
             </div>
 
 
-            <!-- 交通資訊卡片 -->
+            <!-- 03交通資訊卡片 -->
             <div
               class="card_location info_card d-flex flex-column justify-content-center align-items-center gap-md-5 gap-4 w-md-50 w-100">
 
@@ -445,7 +445,7 @@
           <h2 class="font-eng m-0">MENU</h2>
           <h3 class="font-chin">熱門餐點</h3>
         </div>
-        <button class="more_menu_bn font-chin d-none d-md-flex">更多餐點</button>
+        <button class="more_menu_bn font-chin d-none d-md-flex" onclick="location.href='./menu/menu.html';">更多餐點</button>
       </div>
 
       <!-- section4餐點卡片 -->
@@ -545,8 +545,21 @@
     <!-- ==========section5 心理測驗 開始========== -->
     <section class="section_5">
       <div class="game_bg d-flex flex-column justify-content-center align-items-center">
-        <button class="game_bn d-flex flex-column justify-content-center align-items-center">
+
+        <button class="game_bn d-flex flex-column justify-content-center align-items-center" onclick="location.href='./game/game.html';">
           <div class="d-flex flex-column justify-content-center align-items-center">
+
+            <div class="game_circle">
+              <svg viewBox="0 0 100 100">
+                <path d="M 0,50 a 50,50 0 1, 1 0, 1 z" id="circlePath"></path>
+                <text>
+                  <textPath xlink:href="#circlePath">
+                    THE POKEMON ADVENTURE • GAMES • THE POKEMON ADVENTURE • GAMES •
+                  </textPath>
+                </text>
+              </svg>
+            </div>
+
             <h5 class="font-chin">寶可夢大冒險</h5>
             <h6 class="font-chin">測你是什麼屬性</h6>
           </div>
@@ -579,9 +592,8 @@
 
             <div class="footer-link">
               <button class="">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"
-                  style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                  y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
                   <path class="st0" d="M23.9,2.4c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.2-0.3c0-0.1-0.1-0.1-0.1-0.2
                C23.3,1,23,0.7,22.7,0.5c-0.1,0-0.1-0.1-0.2-0.1c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1,0-0.2-0.1-0.3-0.1c-0.1,0-0.2-0.1-0.3-0.1
                C21.4,0,21.2,0,21,0H3C1.3,0,0,1.3,0,3s1.3,3,3,3h10.8L0.9,18.9c-1.2,1.2-1.2,3.1,0,4.2C1.5,23.7,2.2,24,3,24s1.5-0.3,2.1-0.9
@@ -590,9 +602,8 @@
                 隱私權政策
               </button>
               <button class="">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"
-                  style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                  y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
                   <path class="st0" d="M23.9,2.4c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.1-0.3c0-0.1-0.1-0.2-0.2-0.3c0-0.1-0.1-0.1-0.1-0.2
              C23.3,1,23,0.7,22.7,0.5c-0.1,0-0.1-0.1-0.2-0.1c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1,0-0.2-0.1-0.3-0.1c-0.1,0-0.2-0.1-0.3-0.1
              C21.4,0,21.2,0,21,0H3C1.3,0,0,1.3,0,3s1.3,3,3,3h10.8L0.9,18.9c-1.2,1.2-1.2,3.1,0,4.2C1.5,23.7,2.2,24,3,24s1.5-0.3,2.1-0.9
@@ -605,7 +616,8 @@
           </div>
 
         </div>
-        <p class="my-0">©Pokémon. ©Nintendo/Creatures Inc. /GAME FREAK inc.</p>
+        <!-- <p class="my-0">©Pokémon. ©Nintendo/Creatures Inc. /GAME FREAK inc.</p> -->
+        <p class="my-0">圖片影片素材取自網路，僅作學習使用</p>
       </div>
 
     </footer>

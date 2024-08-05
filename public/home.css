@@ -45,14 +45,6 @@ button {
   background-color: transparent;
 }
 
-a,
-a:hover,
-a:visited,
-a:link,
-a:active {
-  text-decoration: none !important;
-}
-
 .section_container {
   max-width: 1200px;
 }
@@ -396,7 +388,7 @@ a:active {
 .menu-icon {
   pointer-events: none;
   height: 45px !important;
-
+  
 }
 
 
@@ -453,7 +445,6 @@ a:active {
 
 .footer-social button img {
   width: 7vmin;
-  transition: 0.3s ease-out;
 }
 
 .footer-link {
@@ -500,12 +491,12 @@ a:active {
   }
 
   .footer-link button:hover {
-    transform: translate(-3px, -5px);
+    transform: translate(-3px , -5px);
     box-shadow: 3px 5px 0 var(--home-sub);
   }
 
   .footer-social button:hover img {
-    filter: invert(0.6) contrast(10);
+    filter: invert(100) contrast(100);
     outline: 3px;
   }
 }
@@ -586,40 +577,8 @@ a:active {
   width: 100%;
   max-height: auto;
   aspect-ratio: 1 / 1;
-  background-color: rgba(63, 58, 58, 0.9);
+  background-color: var(--pk--black);
   border-radius: 1000px;
-
-  outline: 0px solid var(--home-sub) ;
-  transition: 0.2s ease-in-out;
-}
-
-#bannerAnimaiton:hover {
-  outline: 10px solid var(--home-sub) ;
-}
-
-
-/* 寶可夢影片提示晃動動畫 */
-#bannerAnimaiton {
-  animation: videoShakeHint 5s ease-in infinite;
-  transform-origin: bottom center;
-}
-
-@keyframes videoShakeHint {
-  0% {
-    transform: rotate(0deg) translateX(0px);
-  }
-  2% {
-    transform: rotate(2deg) translateX(1px);
-  }
-  4%{
-    transform: rotate(-1deg) translateX(0px);
-  }
-  8%{
-    transform: rotate(0deg) translateX(0px);
-  }
-  100%{
-    transform: rotate(0deg) translateX(0px);
-  }
 }
 
 .video_container {
@@ -656,6 +615,9 @@ a:active {
   z-index: 1;
 }
 
+#bannerAnimaiton2 {
+  /* margin-top: -50%; */
+}
 
 
 .scroll_icon button {
@@ -673,10 +635,8 @@ a:active {
 }
 
 /* section1切換動畫按鈕背景動畫 */
-@media only screen and (min-width: 768px) and (any-hover: hover) {
-  .scroll_icon button:hover {
-    filter: invert(1) contrast(5);
-  }
+.scroll_icon button:hover {
+  filter: invert(1) contrast(5);
 }
 
 @keyframes scrollIconBG {
@@ -700,11 +660,11 @@ a:active {
 }
 
 .scroll_icon_left {
-  background-image: url('../../images/icon/silde_icon_left.svg');
+  background-image: url('../../_images/icon/silde_icon_left.svg');
 }
 
 .scroll_icon_right {
-  background-image: url('../../images/icon/silde_icon_right.svg');
+  background-image: url('../../_images/icon/silde_icon_right.svg');
 }
 
 .main_title h1 {
@@ -779,11 +739,10 @@ a:active {
     overflow: hidden;
   }
 
-  .scroll_hint div:nth-child(1) svg {
+  .scroll_hint div:nth-child(1) svg{
     /* transform: translateX(20px); */
     animation: scrollHintLeft 1s ease-in-out infinite;
   }
-
   .scroll_hint div:nth-child(3) svg {
     animation: scrollHintRight 1s ease-in-out infinite;
   }
@@ -799,7 +758,6 @@ a:active {
     transform: translateX(0);
   }
 }
-
 @keyframes scrollHintRight {
   0% {
     transform: translateX(-15px);
@@ -858,7 +816,14 @@ a:active {
   color: var(--pk--white) !important;
   border: 2px solid var(--home-sub) !important;
   outline: 0px solid var(--home-sub) !important;
-  transition: 1s ease-out;
+  transition: 1s ease-out ;
+}
+
+/* 快閃店按鈕hover效果 */
+.switchActive:hover{
+  box-shadow: 3px 5px var(--home-main);
+  transform: translate(-3px, -5px);
+  /* outline: 2px solid var(--pk--black) !important; */
 }
 
 /* 咖啡廳/快閃店 未點擊的按鈕 */
@@ -868,27 +833,13 @@ a:active {
   cursor: pointer;
   pointer-events: auto;
   background-color: transparent;
-  transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out ;
 }
-
-@media only screen and (min-width: 768px) and (any-hover: hover) {
-
-  /* 快閃店按鈕hover效果 */
-  .switchActive:hover {
-    box-shadow: 3px 5px var(--home-main);
-    transform: translate(-3px, -5px);
-    /* outline: 2px solid var(--pk--black) !important; */
-  }
-
-  /* 快閃店按鈕hover效果 */
-  .switch_bn:hover {
-    background-color: var(--home-main);
-    outline: 2px solid var(--pk--black);
-  }
+/* 快閃店按鈕hover效果 */
+.switch_bn:hover{
+  background-color: var(--home-main);
+  outline: 2px solid var(--pk--black);
 }
-
-
-
 
 /* ======section2內容區====== */
 .info_card_group>div {
@@ -1062,11 +1013,9 @@ a:active {
   transition: 0.15s ease-out;
 }
 
-@media only screen and (min-width: 768px) and (any-hover: hover) {
-  .card_reservation_bn:hover {
-    box-shadow: 5px 5px var(--pk--white);
-    transform: translate(-5px, -5px);
-  }
+.card_reservation_bn:hover{
+  box-shadow: 5px 5px var(--pk--white);
+  transform: translate(-5px, -5px);
 }
 
 /* ======section2手機版RWD====== */
@@ -1198,20 +1147,6 @@ a:active {
   }
 }
 
-
-@keyframes infoCardMoveUp {
-  0%{
-    /* transform: translateY(-100px); */
-    transform: translateY(8vh);
-    opacity: 0.8;
-  }
-  100%{
-    transform: translateY(0vh);
-    opacity: 1;
-    /* transform: translateY(0px); */
-  }
-}
-
 /* -----------section2 結束----------- */
 
 
@@ -1222,16 +1157,6 @@ a:active {
   width: 100vw;
   /* overflow-x: hidden;  */
   background: url('../images/sec3_bg_comic.png') repeat center/30%;
-  animation: moveComicBG 30s linear infinite;
-}
-
-@keyframes moveComicBG{
-  0%{
-    background-position: 0 0;
-  }
-  100%{
-    background-position: 0vw 100vh;
-  }
 }
 
 /* 波浪svg */
@@ -1265,7 +1190,7 @@ a:active {
 
 /* 旋轉卡片 */
 .rotate_card_section {
-  height: 50vw;
+  height: 60vw;
 }
 
 .rotate_card {
@@ -1293,30 +1218,16 @@ a:active {
 }
 
 .carousel_item .product_card {
-  transition: 0.4s ease-in-out;
-  /* padding: 20px 20px 20px 20px; */
+  transition: .4s;
+  padding: 20px 20px 20px 20px;
   cursor: pointer;
   display: inline-block;
   position: absolute;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  outline: 0px solid var(--home-main);
 
   background-color: var(--home-sub);
-  border-radius: 200px 200px 30px 30px;
-}
-
-@media only screen and (min-width: 768px) and (any-hover: hover) {
-  .carousel_item .product_card:hover {
-    outline: 5px solid var(--home-main);
-  }
-}
-
-.before_product_card {
-  position: relative;
-  overflow: hidden;
-  padding: 20px 20px 20px 20px;
   border-radius: 200px 200px 30px 30px;
 }
 
@@ -1397,7 +1308,9 @@ a:active {
   font-weight: 400;
 }
 
-
+.product_card {
+  overflow: hidden;
+}
 
 /* 右下更多按鈕 */
 .more_product_bn {
@@ -1408,48 +1321,23 @@ a:active {
   height: 12vw;
   right: -6vw;
   bottom: -6vw;
-  z-index: 1;
 }
 
 .more_product_bn::before {
   position: absolute;
-  /* background: url('../../images/icon/more_icon.svg') no-repeat center center; */
-  /* width: 3vw;
+  background: url('../../_images/icon/more_icon.svg') no-repeat center center;
+  width: 3vw;
   height: 3vw;
   top: 2vw;
-  left: 2vw; */
-  background: url('../images/shake_rotate.svg') no-repeat center center;
-  width: 2vw;
-  height: 2vw;
-  top: 2.5vw;
-  left: 2.5vw;
+  left: 2vw;
   content: "";
   transition: 0.15s ease-in-out;
-
-  /* animation: shakeToRotateRight 1s ease-in-out infinite,
-  shakeToRotateLeft 1s ease-in-out infinite;
-  transform-origin: bottom right; */
-
-  animation: rotateHint 3.5s ease-in-out infinite;
 }
 
-
-/* 商品卡片右下角hover出現線，初始狀態大小0 */
-.product_card:has(.more_product_bn)::after {
-  position: absolute;
-  content: "";
-  background: url(../images/card_hint.svg) no-repeat;
-  width: 6vw;
-  height: 6vw;
-  /* top: 33vw;
-  left: 15vw; */
-  bottom: -4vw;
-  right: -4vw;
-  transform: scale(0);
-  transform-origin: 0 0;
-  transition: 0.4s ease-in-out;
-  z-index: -1;
+.more_product_bn:hover::before {
+  transform: translateX(5px);
 }
+
 
 .more_product_bn::after {
   content: '';
@@ -1461,62 +1349,6 @@ a:active {
   z-index: 1;
   cursor: pointer;
 }
-
-@media only screen and (min-width: 768px) and (any-hover: hover) {
-  /* .more_product_bn:hover::before {
-  transform: translateX(5px);
-  } */
-
-  .more_product_bn:hover::before {
-    /* animation: rotateHint 3s ease-in-out infinite; */
-    animation: none;
-
-  }
-
-  /* 商品卡片右下角hover出現線 */
-  .product_card:has(.more_product_bn:hover)::after {
-    transform: scale(1);
-  }
-
-
-}
-
-/* 旋轉提示動畫 */
-@keyframes rotateHint {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* 左右晃動動畫 */
-/* @keyframes shakeToRotateRight {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(20deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-@keyframes shakeToRotateLeft {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-} */
-
-
 
 
 
@@ -1547,21 +1379,14 @@ a:active {
   }
 
   .carousel_item .product_card {
-    /* padding: 15px; */
-    border-radius: 200px 200px 15px 15px;
-  }
-
-  .before_product_card {
     padding: 15px;
     border-radius: 200px 200px 15px 15px;
   }
-
 
   .carousel_item {
     top: -80%;
     height: 130%;
   }
-
 
   .carousel_item img {
     width: 50vw;
@@ -1629,12 +1454,9 @@ a:active {
   box-shadow: 0px 0px var(--pk--white);
   transition: 0.15s ease-out;
 }
-
-@media only screen and (min-width: 768px) and (any-hover: hover) {
-  .more_menu_bn:hover {
-    box-shadow: -5px 0px var(--home-main);
-    transform: translate(5px, 0px);
-  }
+.more_menu_bn:hover{
+  box-shadow: -5px 0px var(--home-main);
+  transform: translate(5px, 0px);
 }
 
 /* 餐點卡片 */
@@ -1675,27 +1497,12 @@ a:active {
   letter-spacing: 0.5vmin;
 }
 
-.menu_card figure {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 50%;
-}
-
 .menu_card img {
   width: 100%;
   aspect-ratio: 1 / 1;
-  /* border-radius: 50%; */
+  border-radius: 50%;
   object-fit: cover;
-  transition: 0.3s ease-in-out;
 }
-
-/* 當菜單卡片hover時圖片放大 */
-@media only screen and (min-width: 768px) and (any-hover: hover) {
-  .menu_card:hover img {
-    transform: scale(1.1);
-  }
-}
-
 
 .menu_card_detail h4 {
   color: var(--home-sub);
@@ -1853,44 +1660,26 @@ a:active {
   transition: 0.3s ease-in-out;
 }
 
-@media only screen and (min-width: 768px) and (any-hover: hover) {
-
-  /* 圓形背景hover動畫 */
-  .game_bn:hover>div {
-    background-color: var(--home-sub);
-    /* width: calc(25vw + 5px);
-    height: calc(25vw + 5px);
-    outline: 5px solid rgba(255, 255, 255, 1); */
-    width: 25vw;
-    height: 25vw;
-    /* outline: 5vmin solid rgba(255, 255, 255, 1); */
-    outline: 3vw solid var(--pk--white);
-  }
-
-  /* 圓形背景hover時 文字動畫 */
-  .game_bn:hover>div h5,
-  .game_bn:hover>div h6 {
-    color: var(--pk--white);
-  }
-
-  /* START文字hover動畫 */
-  .game_bn:hover>h3 {
-    color: var(--home-sub);
-    box-shadow: 0px 5px var(--home-sub);
-    transform: translate(0px, -5px);
-  }
-
-  /* 環形文字hover變色 */
-  .game_bn:hover textPath {
-    fill: var(--pk--black);
-  }
+/* 圓形背景hover動畫 */
+.game_bn:hover>div {
+  background-color: var(--home-sub);
+  width: calc(25vw + 5px);
+  height: calc(25vw + 5px);
+  outline: 5px solid var(--pk--white);
 }
 
-.game_bn>div h5,
+.game_bn>div h5, 
 .game_bn>div h6 {
   color: var(--pk--black);
   transition: 0.1s ease-out;
 }
+
+/* 圓形背景hover時 文字動畫 */
+.game_bn:hover>div h5, 
+.game_bn:hover>div h6 {
+  color: var(--home-main);
+}
+
 
 .game_bn h5 {
   font-size: 4.5vmin;
@@ -1903,64 +1692,37 @@ a:active {
   font-weight: 400;
 }
 
+/* .game_bn>div::before {
+  content: "<svg viewBox="0 0 100 100"><path d="M 0,50 a 50,50 0 1, 1 0, 1 z" id="circle"></path><text><textPath xlink:href="#circle">这是一个环形文字效果</textPath</text></svg>";
+  position: absolute;
+  width: 30vw;
+  height: 30vw;
+  border-radius: 50%;
+  background: red; */
+  /* outline: 10px solid var(--pk--black); */
+  /* transition: all 0.1s ease-in-out;
+  z-index: -1;
+} */
+
+
 .game_bn>h3 {
   background-color: var(--pk--black);
   width: 100%;
-  /* padding: 15px; */
-  padding: 20px;
-  margin-top: -8vh;
+  padding: 15px;
+  margin-top: -9vh;
   font-size: 8vmin;
   color: var(--home-main);
   letter-spacing: 0.5vmin;
   border-radius: 1500px;
   transition: 0.3s ease-in-out;
   box-shadow: 0px 0px var(--home-sub);
-  z-index: 1;
 }
 
-/* 環形文字 */
-.game_circle{
-  width: 26vw;
-  height: 26vw;
-  position: absolute;
-  z-index: 0;
-  animation: rotateTextPath 15s ease-in-out infinite;
-}
-
-.game_circle path{ 
-  fill: none; 
-}
-
-.game_circle svg{
-  display: block;
-  overflow: visible;
-}
-
-.game_circle textPath{
-  font-family: var(--pk--font-eng);
-  /* font-size: 1vmin; */
-  font-size: 8.9px;
-  font-weight: 900;
-  letter-spacing: 0vmin;
-  fill: var(--pk--white);
-  /* mix-blend-mode: soft-light; */
-  /* background-color: var(--pk--white); */
-  transition: 0.1s ease-in-out;
-}
-
-@keyframes rotateTextPath {
-  0%{
-    transform: rotate(0deg);
-    /* opacity: 0.8; */
-  }
-  50%{
-    transform: rotate(180deg);
-    /* opacity: 0; */
-  }
-  100%{
-    transform: rotate(360deg);
-    /* opacity: 0.8; */
-  }
+/* START文字hover動畫 */
+.game_bn:hover>h3 {
+  color: var(--pk--white);
+  box-shadow: 0px 5px var(--home-sub);
+  transform: translate(0px, -5px);
 }
 
 .footer_top {
@@ -1994,14 +1756,9 @@ a:active {
   }
 
   .game_bn>h3 {
-    padding: 10px;
-    margin-top: -7vh;
+    padding: 5px;
+    margin-top: -9vh;
     font-size: 15vmin;
-  }
-
-  .game_circle{
-    width: 72vw;
-    height: 72vw;
   }
 
   .footer_top {

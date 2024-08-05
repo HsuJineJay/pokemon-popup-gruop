@@ -127,7 +127,8 @@ button {
   background-color: var(--pika--yellow);
   outline: 2px solid var(--pk--white);
 }
-.menu_category li:hover h4{
+
+.menu_category li:hover h4 {
   color: var(--pika--red);
 }
 
@@ -138,7 +139,8 @@ button {
   transform: translate(-3px, -5px);
   outline: 0px solid var(--pk--white);
 }
-.menu_category li:hover:has(.active) h4{
+
+.menu_category li:hover:has(.active) h4 {
   color: var(--pk--white);
 }
 
@@ -192,8 +194,11 @@ button {
   transition: 0.3s ease-in-out;
 }
 
-.menu_card:hover img{
-  transform: scale(1.2);
+/* 當菜單卡片hover時圖片放大 */
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+  .menu_card:hover img {
+    transform: scale(1.2);
+  }
 }
 
 .menu_card_detail h4 {
