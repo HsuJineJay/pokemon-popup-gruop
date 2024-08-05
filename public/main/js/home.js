@@ -301,11 +301,13 @@ window.onload = function () {
     $('.switch_button button').removeClass('switchActive')
     $(this).addClass('switchActive')
     changeInfo(infoData.cafe)
+    cardMoveUp()
   })
   $('#switchStore').on('click', function () {
     $('.switch_button button').removeClass('switchActive')
     $(this).addClass('switchActive')
     changeInfo(infoData.store)
+    cardMoveUp()
   })
 
   //改變資料內容函式
@@ -323,6 +325,20 @@ window.onload = function () {
   }
 
 
+    // >>>>>>切換資訊按鈕點擊後資訊卡片向上動畫<<<<<<
+    function cardMoveUp(){
+      // console.log(12345);
+
+      // 每次執行的時候都歸零動畫屬性
+      $('.card_date, .card_reservation, .card_location').css('animation', 'none')
+      // 個別加入動畫並造成時差
+      setTimeout(function() {
+        $('.card_date').css('animation', 'infoCardMoveUp 0.2s ease-in-out')
+        $('.card_reservation').css('animation', 'infoCardMoveUp 0.3s ease-in-out')
+        $('.card_location').css('animation', 'infoCardMoveUp 0.4s ease-in-out')
+      }, 10)
+
+    }
 
 
 

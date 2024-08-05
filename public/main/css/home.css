@@ -1197,6 +1197,20 @@ a:active {
   }
 }
 
+
+@keyframes infoCardMoveUp {
+  0%{
+    /* transform: translateY(-100px); */
+    transform: translateY(8vh);
+    opacity: 0.8;
+  }
+  100%{
+    transform: translateY(0vh);
+    opacity: 1;
+    /* transform: translateY(0px); */
+  }
+}
+
 /* -----------section2 結束----------- */
 
 
