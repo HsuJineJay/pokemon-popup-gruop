@@ -174,7 +174,6 @@ function closeNav() {
         });
 
 
-    
     // 按鈕 + , 增加1個項目
     $(document).on('click', '.btn-increment-sm', function(){
             var nweID = parseInt($(this).closest('li').attr('id'));
