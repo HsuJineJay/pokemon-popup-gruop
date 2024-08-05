@@ -1,6 +1,6 @@
 // 每秒訂單明細更新頁面
 // $(document).ready(function() {
-//     setInterval(sc_checkoutlist, 10000); 
+//     setInterval(sc_checkoutlist, 1000); 
 // });
 
 
@@ -30,6 +30,7 @@
             success: function(arr) {
                 let cookieArr = JSON.parse(localStorage.getItem("goods")) || [];
                 let billListArr = JSON.parse(localStorage.getItem("billList")) || [];
+
                 arr = JSON.parse(arr);
                 if (cookieArr) {
                     var newgoodsArr = [];
@@ -62,7 +63,7 @@
                                 <p name="productInStock" class="d-none">${row['productInStock']}</p>
                             </div>
                         </td>
-                        <td class="align-middle subtotal-row">$${(row['productPrice']*row['num']).toLocaleString()}</td>
+                        <td class="align-middle subtotal-row" name="subtotal-row">$${(row['productPrice']*row['num']).toLocaleString()}</td>
 
                         
 
@@ -100,6 +101,7 @@
     });
 }
 
+
 // 庫存數量對話框
 $(document).ready(function() {
     $('#dialog-messages').dialog({
@@ -113,31 +115,30 @@ $(document).ready(function() {
     });
 })
 
-    // 按鈕 + , 增加1個項目
-    $(document).on('click', '.btn-increment', function(){
-        var nweID = parseInt($(this).closest('tr').attr('id'));
-        var productInStock = parseInt($(this).next().text());
-        var cartList = JSON.parse(localStorage.getItem("goods")) || [];
+// 按鈕 + , 增加1個項目
+$(document).on('click', '.btn-increment', function(){
+    var nweID = parseInt($(this).closest('tr').attr('id'));
+    var productInStock = parseInt($(this).next().text());
+    var cartList = JSON.parse(localStorage.getItem("goods")) || [];
 
-        var existingItem = cartList.find(item => item.id === nweID);
-        if (existingItem.num < productInStock) {
-            existingItem.num++;
-            $(this).prev().text(existingItem.num); // 更新数字
-        } else {
-            // 使用 jQuery UI 弹出庫存數量對話框
-            $('#dialog-messages').dialog('open');
-        }
+    var existingItem = cartList.find(item => item.id === nweID);
+    if (existingItem.num < productInStock) {
+        existingItem.num++;
+        $(this).prev().text(existingItem.num); // 更新数字
+    } else {
+        // 使用 jQuery UI 弹出庫存數量對話框
+        $('#dialog-messages').dialog('open');
+    }
 
 
         // 將資料存回 localStorage
         localStorage.setItem("goods", JSON.stringify(cartList));
 
-        sc_subtotal()
-
+        sc_subtotal_td();
     });
 
-    // 按鈕 - , 減少1個項目
-    $(document).on('click', '.btn-decrement', function(){
+// 按鈕 - , 減少1個項目
+$(document).on('click', '.btn-decrement', function(){
     var nweID = parseInt($(this).closest('tr').attr('id'));
     var cartList = JSON.parse(localStorage.getItem("goods")) || [];
 
@@ -166,27 +167,53 @@ $(document).ready(function() {
         // 將資料存回 localStorage
         localStorage.setItem("goods", JSON.stringify(cartList));
 
-        sc_subtotal();
-    });
+        sc_subtotal_td();
 
+});
 
-    // 再去逛逛導入商品頁面
-    $(document).ready(function(){
-        $('#GoShoppingbtn').click(function(){
-            window.location.href = 'product_all.html';
-        });
-    });
-
-
-        $(document).ready(function() {
-            function sc_checkoutsubtotal(){
-            // 提取小計數值
-            $('.subtotal-row td').each(function() {
-                let subtotalText = $(this).text();
-                let subtotalValue = parseFloat(subtotalText.replace(/[$,]/g, ''));
-                console.log('Subtotal:', subtotalValue);
-
-            })
-            }})
+// 商品計算更新
+    function sc_subtotal_td(){
     
+        let total = 0; // 將 total 初始化在外面以累加所有項目的值
+
+            $('tr').each(function(index, elem) {
+                let subtotalText = $(this).find("td[name='subtotal-row']").text();
+                let subtotalValue = parseFloat(subtotalText.replace(/[$,]/g, ''));
+                ( subtotalValue > 0 )? total += subtotalValue: '';
+            });
+
+            // 取得 billList 資訊
+            let billList = JSON.parse(localStorage.getItem("billList")) || [];
+            let fee = total < 0 ? 0 : (total <= 1500 ? 100 : 0);    //滿1,500免運費
+            
+            // 更新或初始化 billList 陣列
+            if (billList.length === 0) {
+                billList.push({
+                    billtotal: total + fee,
+                    fee: fee,
+                    subtotal: total
+                });
+            } else {
+                billList[0].billtotal = total + fee;
+                billList[0].fee = fee;
+                billList[0].subtotal = total;
+            }
+    
+        // 存回 localStorage
+        localStorage.setItem("billList", JSON.stringify(billList));
+        // 刪除 billList 資訊
+        (total === 0 )? localStorage.removeItem("billList", JSON.stringify(billList)) : '';
+
+        sc_checkoutlist()
+    
+}
+
+
+// 再去逛逛導入商品頁面
+$(document).ready(function(){
+    $('#GoShoppingbtn').click(function(){
+        window.location.href = 'product_all.html';
+    });
+});
+
             
