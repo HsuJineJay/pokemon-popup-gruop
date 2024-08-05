@@ -841,7 +841,7 @@ function menuSwitch() {
         result += `
                   <div class="menu_card d-flex flex-column flex-fill justify-content-center align-items-center gap-3">
                       <h3 class="font-eng m-0"> TOP${index + 1}</h3>
-                      <img id="foodImg1" src="${row['itemImg']}">
+                      <figure><img src="${row['itemImg']}"></figure>
                       <div class="menu_card_detail d-flex flex-fill flex-column justify-content-center align-items-center">
                           <h4 class="font-chin">${row['itemName']}</h4>
                           <h5 class="font-chin">${row['itemPrice']}元</h5>

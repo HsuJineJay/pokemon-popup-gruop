@@ -587,6 +587,38 @@ a:active {
   aspect-ratio: 1 / 1;
   background-color: rgba(63, 58, 58, 0.9);
   border-radius: 1000px;
+
+  outline: 0px solid var(--home-sub) ;
+  transition: 0.2s ease-in-out;
+}
+
+#bannerAnimaiton:hover {
+  outline: 10px solid var(--home-sub) ;
+}
+
+
+/* 寶可夢影片提示晃動動畫 */
+#bannerAnimaiton {
+  animation: videoShakeHint 5s ease-in infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes videoShakeHint {
+  0% {
+    transform: rotate(0deg) translateX(0px);
+  }
+  2% {
+    transform: rotate(2deg) translateX(1px);
+  }
+  4%{
+    transform: rotate(-1deg) translateX(0px);
+  }
+  8%{
+    transform: rotate(0deg) translateX(0px);
+  }
+  100%{
+    transform: rotate(0deg) translateX(0px);
+  }
 }
 
 .video_container {
@@ -623,9 +655,6 @@ a:active {
   z-index: 1;
 }
 
-#bannerAnimaiton2 {
-  /* margin-top: -50%; */
-}
 
 
 .scroll_icon button {
@@ -1239,7 +1268,7 @@ a:active {
 }
 
 .carousel_item .product_card {
-  transition: .4s;
+  transition: 0.4s ease-in-out;
   /* padding: 20px 20px 20px 20px; */
   cursor: pointer;
   display: inline-block;
@@ -1247,9 +1276,16 @@ a:active {
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
+  outline: 0px solid var(--home-main);
 
   background-color: var(--home-sub);
   border-radius: 200px 200px 30px 30px;
+}
+
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+  .carousel_item .product_card:hover {
+    outline: 5px solid var(--home-main);
+  }
 }
 
 .before_product_card {
@@ -1614,12 +1650,27 @@ a:active {
   letter-spacing: 0.5vmin;
 }
 
+.menu_card figure {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
 .menu_card img {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   object-fit: cover;
+  transition: 0.3s ease-in-out;
 }
+
+/* 當菜單卡片hover時圖片放大 */
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+  .menu_card:hover img {
+    transform: scale(1.1);
+  }
+}
+
 
 .menu_card_detail h4 {
   color: var(--home-sub);
