@@ -222,3 +222,22 @@
         background-color: aqua;
         color: red;
     }
+
+    /* 購買數量超過庫存量提醒框 */
+    .dialog-message{
+        font-size: 16px;
+        font-family: "Noto Sans TC", sans-serif;
+        padding: 10px 5px;
+        color: #3F3A3A;
+        background-color: #FFE050;
+        display: none;
+    }
+    .ui-dialog-titlebar{
+        font-size: 16px;
+        font-family: "Noto Sans TC", sans-serif;
+        /* padding: 10px 5px; */
+        color: #3F3A3A;
+        background-color: #FFE050;
+        /* display: none; */
+    }
+

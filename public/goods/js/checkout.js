@@ -100,6 +100,19 @@
     });
 }
    
+// 庫存數量對話框
+$(document).ready(function() {
+    $('#dialog-message').dialog({
+        autoOpen: false,
+        modal: true,
+        buttons: {
+            Ok: function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+})
+
     // 按鈕 + , 增加1個項目
     $(document).on('click', '.btn-increment', function(){
         var nweID = parseInt($(this).closest('tr').attr('id'));
@@ -111,17 +124,10 @@
             existingItem.num++;
             $(this).prev().text(existingItem.num); // 更新数字
         } else {
-            // 使用 jQuery UI 弹出對話框
-            $('<div>目前商品庫存量不足，若需購買更多的商品數量，請洽服務人員</div>').dialog({
-                title: '提示',
-                modal: true,
-                buttons: {
-                    '確定': function() {
-                        $(this).dialog('close');
-                    }
-                }
-            });
+            // 使用 jQuery UI 弹出庫存數量對話框
+            $('#dialog-message').dialog('open');
         }
+
 
         // 將資料存回 localStorage
         localStorage.setItem("goods", JSON.stringify(cartList));
