@@ -18,7 +18,7 @@ $(document).ready(function () {
     // 音樂音量
     chubbySong.volume = 1;
     bgmusic.volume = 0.4;
-    guessWhoSong.volume = 1;
+    guessWhoSong.volume = 0.6;
 
     //控制聲音總開關 預設關閉
     let CtrlSound = async function () {
@@ -748,6 +748,7 @@ $(document).ready(function () {
             // 清空結果加載頁==========
             function emptyLoadpage(){
                 $('.superBigWebCon').empty()
+                $('#soundContainer').css('visibility','hidden')
             } 
             // 6秒後(猜猜我是誰音樂結束)清空容器內容
             setTimeout(emptyLoadpage,5600)
@@ -757,7 +758,7 @@ $(document).ready(function () {
         }
     }
 
-      //======== 圖片隨機功能
+      //======== 結果加載頁圖片隨機功能
       function changePokemonImg(){
         //改變url
     let randomNum = Math.floor(Math.random()*6)

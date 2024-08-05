@@ -49,6 +49,7 @@ body{
          visibility: hidden;
     }
    
+
    
 }
 /* 可達鴨網頁版手機版RWD消失 */
@@ -60,6 +61,8 @@ body{
     .webduckaniCon{
         visibility: visible;
     }
+
+    
     
 }
 
@@ -1420,44 +1423,24 @@ visibility: hidden;
     gap: 5%;
 
     width: 100%;
-    max-width: 420px;
+    max-width: 520px;
     max-height: 280px;
 
 
 }
 
 /* 名字的背景容器 */
-.nameIconCon {
-    width: 40vw;
-    height: 33vw;
-    max-width: 300px;
-    max-height: 105px;
-    background-image: url(../images/result_Images/nameCon.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin: 0;
-    color: #fff;
-    /* font-size: 80%; */
-    text-align: center;
-    font-family: "Fredoka", "Noto Sans TC", sans-serif;
-    font-weight: 800;
-    display: flex;
-    background-position: center;
-    align-items: center;
-    justify-content: center;
-
-
-    /* margin-top: 5vh; */
-    margin-bottom: -40px;
-
+.nameIconCon>img{
+ width:40vw ;    
+max-width: 45px;
 }
 
 /* 名字 */
 .nameText {
     font-family: "Noto Sans TC", sans-serif;
-    font-size: 90%;
+    font-size: 120%;
     font-weight: bold;
-    letter-spacing: 0.4vw;
+    letter-spacing: 0.3vw;
     margin: 0;
     display: flex;
     flex-wrap: nowrap;
@@ -1465,17 +1448,24 @@ visibility: hidden;
     text-align: center;
     padding-left: 2vw;
     padding-right: 2vw;
-    color: #FFB700;
+    color: #3F3A3A;
     
 
+}
+.nameIconCon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 屬性容器 */
 .attrCon {
     width: 90vw;
     height: 15vw;
-    max-width: 380px;
-    max-height: 45px;
+    max-width: 400px;
+    min-width: 150px;
+    max-height: 100px;
+    min-height: 40px;
     background-image: url(../images/result_Images/AttrtextCon.svg);
     background-size: contain;
     background-repeat: no-repeat;
@@ -1491,8 +1481,8 @@ visibility: hidden;
 /* 屬性文字 */
 .attrtextContent {
     font-family: "Noto Sans TC", sans-serif;
-    font-size: 140%;
-    font-weight: 500;
+    font-size: 170%;
+    font-weight: 600;
     letter-spacing: 0.4vw;
     margin: 0;
     display: flex;
@@ -1512,31 +1502,33 @@ visibility: hidden;
     flex-direction: row;
     align-items: center;
     gap: 1vh;
-    
+   
+    max-width: 400px;
+    max-height: 100px;
     color: #3F3A3A;
     font-family: "Noto Sans TC", sans-serif;
     font-size: 90%;
     font-weight: 600;
-    letter-spacing: 0.3vw;
+    letter-spacing: 0.1vw;
     margin: 0;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 15%;
+    margin-top: 9%;
 }
 
 /* 標籤們 */
 #Tag1,#Tag2,#Tag3,#Tag4,#Tag5 {
 
     width: fit-content;
-    height: 4vh;
+    height: 4.5vh;
+    max-height: 32px;
     border-radius: 5px;
     border: #3F3A3A 3px solid;
     padding-left: 10px;
     padding-right: 10px;
     box-sizing: border-box;
     background-color: #FFB700;
-    filter: drop-shadow(3px 3px 0px rgb(255, 255, 255));
-}
+    filter: drop-shadow(3px 3px 0px rgb(255, 255, 255));}
 
 
 .pokeCon {
@@ -1580,13 +1572,13 @@ visibility: hidden;
     border-radius: 1000px;
     overflow: hidden;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-evenly;
     width: 80vw;
     max-width: 320px;
-
     height: 10vh;
     max-height: 80px;
+    align-items: baseline;
+    flex-direction: row;
 
 }
 .represent_Container div{
@@ -1596,7 +1588,7 @@ visibility: hidden;
 .represent_Container h4,
 .represent_Container h6{
     margin: 0;
-    /* padding: 1vh 0px; */
+    padding: 2% 0%;
 }
 
 .represent_title h6{
