@@ -50,7 +50,7 @@ $(document).ready(function () {
 
     // 每一頁背景裝到陣列========
     const allBackground = [
-        //第一題 陣列索引0
+//=============第一題 陣列索引0==============
         [` <section class="webBgContainerSec">
 
         <div class="sec_bgContainer" style="z-index: 1; ">
@@ -67,9 +67,11 @@ $(document).ready(function () {
             <div class="questionAndbuttonCon">
                 <!-- 題目 -->
                  <!-- .questionContainer換成圖片跟文字 -->
+                 
                  <div class="storyTextCtrl">
                     <div class="storyText"><h4 ></h4></div>
                 </div>
+                
                  <div class="questionContainer">
                     <div class="questionIcon"></div>
                     <div class="questionTextCon">
@@ -113,7 +115,7 @@ $(document).ready(function () {
 
     </section>
 `],
-        //第二題 陣列索引1
+//==========第二題 陣列索引1==============
         [`<div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainerSec">
@@ -182,7 +184,7 @@ $(document).ready(function () {
         </div>
 
 `],
-        // 第三題 陣列索引2
+// =========第三題 陣列索引2===========
         [`    <div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainerfour">
@@ -253,7 +255,7 @@ $(document).ready(function () {
     </section>
 </div>
 `],
-        // 第四題 陣列索引3
+// =========第四題 陣列索引3==========
         [`    <div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainerfifth">
@@ -320,7 +322,7 @@ $(document).ready(function () {
     </section>
 </div>
 `],
-        // 第5題 陣列索引4
+//===========第5題 陣列索引4==============
         [
             `    <div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
@@ -383,7 +385,7 @@ $(document).ready(function () {
 </div>
 `
         ],
-        //第六題 陣列索引5
+//=============第六題 陣列索引5========
         [`<div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainerSeven">
@@ -477,7 +479,7 @@ $(document).ready(function () {
 
     </section>
 </div>`],
-        // 第7題 陣列索引值6
+// ========第7題 陣列索引值6
         [`    <div class="superBigWebCon">
     <!-- 網頁版bg容器 -->
     <section class="webBgContainereight">
@@ -535,6 +537,36 @@ $(document).ready(function () {
 </div>
 `]
     ]
+
+ //猜猜我是誰背景
+ const resultLoad =[`    <!-- 網頁版bg容器 -->
+    <section class="webBgContainerload">
+
+        <div class="load_bgContainer">
+
+
+
+
+
+
+        </div>
+        <!-- 猜猜我是誰區 -->
+        <div style="display: flex;
+    justify-content: center;">
+        <div class="gueseWhoCon">
+
+            <div>
+            <img id="changePokemon" src="" alt="">
+            </div>
+
+        </div>
+        <div class="guesstextCon">
+        <h5 class="guessText1">我是誰</h5>
+        <h5 class="guessText2">？？？？</h5>
+        </div>
+    </div>
+    </section>
+`] 
 
     //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
     let currentQuestion = 0
@@ -617,7 +649,7 @@ $(document).ready(function () {
             const emptyStoryText = function () {
                 $('.storyTextCtrl').empty()
                 //移除第3題 皮卡丘 第4題喵喵熱氣球 第5題耿鬼文字框
-                if (currentQuestion === 2 || currentQuestion === 3 || currentQuestion === 4 || currentQuestion === 5 ||currentQuestion === 6) {
+                if ( currentQuestion === 2 || currentQuestion === 3 || currentQuestion === 4 || currentQuestion === 5 ||currentQuestion === 6) {
                     $('.storyTextCtrlEmpty').remove()
                 }
             }
@@ -687,9 +719,30 @@ $(document).ready(function () {
         } else {
             //題目結束播放猜猜我是誰動畫跟結果印出userName
             console.log('播放猜猜我是誰動畫跟結果')
+
+             //印出結果加載頁load背景=======
+             $('.superBigWebCon').append(
+                resultLoad[0]
+            )
             console.log(`${userName}的寶可夢屬性是...`)
         }
     }
+
+      //======== 圖片隨機功能
+      function changePokemonImg(){
+        //改變url
+    let randomNum = Math.floor(Math.random()*6)
+        $('#changePokemon').attr("src",`./images/guessWhoPage/shadow${randomNum}.png`)
+        // console.log(Math.floor(Math.random()*6))
+    }
+   
+    //每80毫秒更換一次
+   setInterval(function(){
+    changePokemonImg()
+   },80)  
+    //==================================
+
+
 
     //#questionContainer裡的任一.option按鈕被點擊 currentQuestion就自增1
     //清空div #questionContainer內容
