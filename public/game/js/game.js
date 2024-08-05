@@ -1,8 +1,24 @@
 $(document).ready(function () {
 
+  //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
+  let currentQuestion = 0
+  //讓使用者的答案存在變數裡
+  let userSelect = []
+  //宣告一個使用者的名字為全域變數
+  let userName
+  //宣告一個使用者各項得分為全域變數
+  let get0
+  let get1
+  let get2
+  let get3
+
+
+
+
     // 音樂音量
     chubbySong.volume = 1;
     bgmusic.volume = 0.4;
+    guessWhoSong.volume = 1;
 
     //控制聲音總開關 預設關閉
     let CtrlSound = async function () {
@@ -16,6 +32,7 @@ $(document).ready(function () {
             } else {
                 bgmusic.muted = true
                 chubbySong.muted = true
+                guessWhoSong.muted =true
                 $('#soundIcon').attr('src', './images/publicImg/soundOn.svg')
 
             }
@@ -32,6 +49,16 @@ $(document).ready(function () {
         if (currentQuestion === 1 && $('#soundIcon').attr('src') === './images/publicImg/soundOff.svg') {
             $('#chubbySong').prop('muted', false)
             chubbySong.play().catch(e => console.log("胖丁播放失敗:", e))
+
+        }
+    }
+
+     //功能 播放猜猜我是誰音樂===========
+    // #soundIcon是Off的時候 把靜音打開 然後播放音樂
+    let guessWhoSongCtrl = async function () {
+        if ( $('#soundIcon').attr('src') === './images/publicImg/soundOff.svg') {
+            $('#guessWhoSong').prop('muted', false)
+            guessWhoSong.play().catch(e => console.log("猜猜我是播放失敗:", e))
 
         }
     }
@@ -568,18 +595,7 @@ $(document).ready(function () {
     </section>
 `] 
 
-    //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
-    let currentQuestion = 0
-    //讓使用者的答案存在變數裡
-    let userSelect = []
-    //宣告一個使用者的名字為全域變數
-    let userName
-    //宣告一個使用者各項得分為全域變數
-    let get0
-    let get1
-    let get2
-    let get3
-
+  
     //當冒險開始按鈕被點擊時 使用者有輸入姓名 則動態產出下一頁 沒有的話跳出請輸入姓名視窗
     // button #startPlay onclick
     //判斷#userName value是否為假  
@@ -644,6 +660,7 @@ $(document).ready(function () {
             //功能 播放胖丁音樂===========
             CtrlSound()
             chubbysongCtrl()
+            
 
             // 3.5秒後清空旁白文字框=====
             const emptyStoryText = function () {
@@ -721,9 +738,21 @@ $(document).ready(function () {
             console.log('播放猜猜我是誰動畫跟結果')
 
              //印出結果加載頁load背景=======
+             //背景音樂關閉===========
+             bgmusic.muted = true
+            
+
              $('.superBigWebCon').append(
                 resultLoad[0]
             )
+            // 清空結果加載頁==========
+            function emptyLoadpage(){
+                $('.superBigWebCon').empty()
+            } 
+            // 6秒後(猜猜我是誰音樂結束)清空容器內容
+            setTimeout(emptyLoadpage,5600)
+            // 功能 播放猜猜我是誰音樂=======
+            guessWhoSongCtrl()
             console.log(`${userName}的寶可夢屬性是...`)
         }
     }
