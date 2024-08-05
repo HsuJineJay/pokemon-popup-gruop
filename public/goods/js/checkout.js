@@ -33,7 +33,8 @@
     function sc_checkoutlist() {
     $('#result_checkoutlist').html("");
 
-    let apiUrl = 'http://localhost/mfee51/root/backEnd/api/product/product.php';
+    // let apiUrl = 'http://localhost/mfee51/root/backEnd/api/product/product.php';
+    let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php'
     let Exist_apiUrl = apiUrl + '?productExist=1';
 
     return new Promise((resolve, reject) => {

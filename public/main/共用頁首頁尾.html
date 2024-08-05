@@ -28,102 +28,105 @@
 
 <body>
 
-  <!-- ==========header 開始========== -->
-  <header class="nav-header header d-flex align-items-center fixed-top py-4 px-3">
-    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
-
-      <a href="#" class="navbar-brand col-5 col-md-3 nav-logo ">
-        <img src="/_images/logo/pokemon_popup_logo.svg" />
-      </a>
-
-      <div class="d-flex ">
-        <!-- 電腦版菜單 -->
-        <div class="header-navibar px-4 d-none d-md-flex">
-          <button class="nav-button shadow-drop-2-center bn-transition mx-2">
-            <a href="/reservation/reservation.html">
-              <span class="nav-button-text"><span>&nbsp;RESERVATION&nbsp;<span>預約入場</span></span>
-            </a>
-          </button>
-          <button class="nav-button shadow-drop-2-center bn-transition mx-2">
-            <a href="/goods/goods.html">
-              <span class="nav-button-text"><span>&nbsp;GOODS&nbsp;<span>快閃商品</span></span>
-            </a>
-          </button>
-          <button class="nav-button shadow-drop-2-center bn-transition mx-2">
-            <a href="/menu/menu.html">
-              <span class="nav-button-text"><span>&nbsp;MENU&nbsp;<span>餐點菜單</span></span>
-            </a>
-          </button>
-          <button class="nav-button shadow-drop-2-center bn-transition mx-2">
-            <a href="/game/game.html">
-              <span class="nav-button-text"><span>&nbsp;GAME&nbsp;<span>大冒險</span></span>
-            </a>
-          </button>
-        </div>
-
-        <!-- 購物車按鈕 -->
-        <div class="navbar-cart" id="openNav" onclick="openNav()">
-          <img src="/_images/icon/cart_icon.svg" alt="購物車圖示">
-        </div>
-        <!-- 購物車導覽列小圖片 -->
-        <div id="mySidenav" class="sidenav">
-          <!-- 關閉標籤 -->
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
-          <!-- 提示訊息 -->
-          <div id="buyprompt_message"></div>
-          <!-- 商品小卡 -->
-          <ul id="result_goodslist" class="result_goodslist"></ul><br><br>
-        </div>
-        <div id="backgroundOverlay" onclick="closeNav()">
-        </div>
-
-        <!-- 手機版菜單 -->
-        <!-- 手機按鈕icon -->
-        <button class="navbar-toggler d-md-none d-block col-3 border-0" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-          <object class="menu-icon" data="/_images/icon/menu_icon.svg" type="image/svg+xml"></object>
-        </button>
-        <!-- 手機offcanvas菜單 開始 -->
-        <div class="offcanvas offcanvas-end header-navibar-sm d-md-none d-block px-3" tabindex="-1" id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel">
-          <!-- 手機offcanvas標題 -->
-          <div class="offcanvas-header mt-3 rounded-pill px-4 py-2 justify-content-between">
-
-            <object id="offcanvasNavbarLabel" data="/_images/logo/pokemon_popup_logo.svg"></object>
-
-            <button type="button" class="border-0 bg-transparent d-flex" data-bs-dismiss="offcanvas" aria-label="Close">
-              <object class="menu-icon" data="/_images/icon/close_icon.svg" type="image/svg+xml"></object>
+    <!-- ==========header 開始========== -->
+    <header class="nav-header header d-flex align-items-center fixed-top py-4 px-3">
+      <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+  
+        <a href="../index.html" class="navbar-brand col-5 col-md-3 nav-logo ">
+          <img src="../images/logo/pokemon_popup_logo.svg" />
+        </a>
+  
+        <div class="d-flex ">
+          <!-- 電腦版菜單 -->
+          <div class="header-navibar px-4 d-none d-md-flex">
+            <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+              <a href="../reservation/reservation.html">
+                <span class="nav-button-text"><span>&nbsp;RESERVATION&nbsp;<span>預約入場</span></span>
+              </a>
             </button>
-
+            <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+              <a href="../goods/goods.html">
+                <span class="nav-button-text"><span>&nbsp;GOODS&nbsp;<span>快閃商品</span></span>
+              </a>
+            </button>
+            <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+              <a href="./menu.html">
+                <span class="nav-button-text"><span>&nbsp;MENU&nbsp;<span>餐點菜單</span></span>
+              </a>
+            </button>
+            <button class="nav-button shadow-drop-2-center bn-transition mx-2">
+              <a href="../game/game.html">
+                <span class="nav-button-text"><span>&nbsp;GAME&nbsp;<span>大冒險</span></span>
+              </a>
+            </button>
           </div>
-          <!-- 手機offcanvas項目 -->
-          <div class="offcanvas-body px-4">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/main/index.html">首頁｜<span>HOME</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/reservation/reservation.html">預約入場｜<span>RESERVATION</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/goods/goods.html">快閃商品｜<span>GOODS</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="/menu/menu.html">餐點菜單｜<span>MENU</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="/game/game.html">心理測驗｜<span>GAME</span></a>
-              </li>
-            </ul>
+  
+          <!-- 購物車按鈕 -->
+          <div class="navbar-cart" id="openNav" onclick="openNav()">
+            <img src="../images/icon/cart_icon.svg" alt="購物車圖示">
           </div>
+          <!-- 購物車導覽列小圖片 -->
+          
+          <div id="mySidenav" class="sidenav">
+            <!-- 關閉標籤 -->
+            <button type="button" class="closebtn " onclick="closeNav()">
+              <object class="menu-icon" data="../images/icon/close_icon.svg" type="image/svg+xml"></object>
+            </button>            
+            <!-- 提示訊息 -->
+            <div id="buyprompt_message"></div>
+            <!-- 商品小卡 -->
+            <ul id="result_goodslist" class="result_goodslist"></ul><br><br>
+          </div>
+          <div id="backgroundOverlay" onclick="closeNav()">
+          </div>
+  
+          <!-- 手機版菜單 -->
+          <!-- 手機按鈕icon -->
+          <button class="navbar-toggler d-md-none d-block col-3 border-0" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <object class="menu-icon" data="../images/icon/menu_icon.svg" type="image/svg+xml"></object>
+          </button>
+          <!-- 手機offcanvas菜單 開始 -->
+          <div class="offcanvas offcanvas-end header-navibar-sm d-md-none d-block px-3" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <!-- 手機offcanvas標題 -->
+            <div class="offcanvas-header mt-3 rounded-pill px-4 py-2 justify-content-between">
+  
+              <object id="offcanvasNavbarLabel" data="../images/logo/pokemon_popup_logo.svg"></object>
+  
+              <button type="button" class="border-0 bg-transparent d-flex" data-bs-dismiss="offcanvas" aria-label="Close">
+                <object class="menu-icon" data="../images/icon/close_icon.svg" type="image/svg+xml"></object>
+              </button>
+  
+            </div>
+            <!-- 手機offcanvas項目 -->
+            <div class="offcanvas-body px-4">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="./main/index.html">首頁｜<span>HOME</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./reservation/reservation.html">預約入場｜<span>RESERVATION</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./goods/goods.html">快閃商品｜<span>GOODS</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="./menu.html">餐點菜單｜<span>MENU</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="./game/game.html">心理測驗｜<span>GAME</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+  
         </div>
-
+  
       </div>
-
-    </div>
-  </header>
-
-  <!-- ==========header 結束========== -->
+    </header>
+  
+    <!-- ==========header 結束========== -->
 
 
   <section style="height:200vh;"></section>

@@ -159,8 +159,8 @@
     /* 數量 */
     .quantity {
         color: #3F3A3A;
-        margin: 0px 20px;
-        min-width: 40px;
+        margin: 0px 5px;
+        /* min-width: 40px; */
         font-size: 18px;
         display: flex;
         justify-content: center;
@@ -176,6 +176,8 @@
         border-radius: 20px;
         font-size: 16px;
         border: none;
+        justify-content: space-around;
+        text-overflow: ellipsis;
     }
 
     /* 全域文字 */
