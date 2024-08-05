@@ -44,23 +44,39 @@
             <article class="tabs">
                 <div class="selectDiv">
                     <select class="selectSomething" name="" id="condition">
-                        <option class="selectOption" value="orderID">訂單編號</option>
-                        <option class="selectOption" value="productName">商品名稱</option>
-                        <option class="selectOption" value="productQ">商品數量</option>
-                        <option class="selectOption" value="buyerName">買家姓名</option>
-                        <option class="selectOption" value="buyerEmail">信箱</option>
-                        <option class="selectOption" value="buyerTel">電話</option>
-                        <option class="selectOption" value="buyerAddr">地址</option>
-                        <option class="selectOption" value="orderDate">訂單日期</option>
-                        <option class="selectOption" value="payment">付款方式</option>
-                        <option class="selectOption" value="receiptType">發票類別</option>
-                        <option class="selectOption" value="companyTitle">公司名稱</option>
-                        <option class="selectOption" value="taxIDNumber">統一編號</option>
-                        <option class="selectOption" value="orderStatus">訂單狀態</option>
-                        <option class="selectOption" value="transportNote">物流備註</option>
+                        
                     </select>
                     <input class="selectInput" type="text" name="" id="conditionInput" placeholder="請輸入值">
-                    <select class="selectInput selectSomething" name="" id="conditionSelect">
+
+                    <input type="date" class="selectInput selectSomething" name="" id="conditionSelect1">
+                    <select class="selectInput selectSomething" name="" id="conditionSelect2">
+                        <option value=""  selected>不分時段</option>
+                        <option value="00:">00:00</option>
+                        <option value="01:">01:00</option>
+                        <option value="02:">02:00</option>
+                        <option value="03:">03:00</option>
+                        <option value="04:">04:00</option>
+                        <option value="05:">05:00</option>
+                        <option value="06:">06:00</option>
+                        <option value="07:">07:00</option>
+                        <option value="08:">08:00</option>
+                        <option value="09:">09:00</option>
+                        <option value="10:">10:00</option>
+                        <option value="11:">11:00</option>
+                        <option value="12:">12:00</option>
+                        <option value="13:">13:00</option>
+                        <option value="14:">14:00</option>
+                        <option value="15:">15:00</option>
+                        <option value="16:">16:00</option>
+                        <option value="17:">17:00</option>
+                        <option value="18:">18:00</option>
+                        <option value="19:">19:00</option>
+                        <option value="20:">20:00</option>
+                        <option value="21:">21:00</option>
+                        <option value="22:">22:00</option>
+                        <option value="23:">23:00</option>
+                    </select>
+                    <select class="selectInput selectSomething" name="" id="conditionSelect3">
                         <option value=""  selected>不分類</option>
                         <option value="0">已接收訂單</option>
                         <option value="1">待出貨</option>
@@ -79,52 +95,8 @@
                     <div class="panel">
                         <table class="panelTable">
                             <thead>
-                                <tr class="bc_yellow">
-                                    <td>
-                                        <span class="orderTHead">訂單編號</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">商品名稱</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">商品數量</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">買家姓名</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">信箱</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">電話</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">地址</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">訂單日期</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">付款方式</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">發票類別</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">公司名稱</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">統一編號</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">訂單狀態</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">物流備註</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">編輯</span>
-                                    </td>
+                                <tr class="bc_yellow" id="existTHead">
+                                    
                                 </tr>
                             </thead>
                             <tbody class="noto-sans-tc_r c_black " id="existTBody">
@@ -137,52 +109,8 @@
                     <div class="panel">
                         <table class="panelTable">
                             <thead>
-                                <tr class="bc_yellow">
-                                    <td>
-                                        <span class="orderTHead">訂單編號</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">商品名稱</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">商品數量</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">買家姓名</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">信箱</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">電話</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">地址</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">訂單日期</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">付款方式</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">發票類別</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">公司名稱</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">統一編號</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">訂單狀態</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">物流備註</span>
-                                    </td>
-                                    <td>
-                                        <span class="orderTHead">編輯</span>
-                                    </td>
+                                <tr class="bc_yellow" id="noExistTHead">
+                                    
                                 </tr>
                             </thead>
                             <tbody class="noto-sans-tc_r c_black " id="noExistTBody">
@@ -212,18 +140,26 @@
                         </div>
                     </div>
 
-                    <div class="UILittleDiv row">
-                        <div class="UISpan col-3">產品ID</div>
-                        <div class="col-9">
-                            <input class="UIInput TESTorderProductID" type="text" id="orderProductIDCreate" >
+                    <div id="orderProductCreateBigDiv">
+                        <div class="orderProductCreateDiv">
+                            <div class="UILittleDiv row">
+                                <div class="UISpan col-3">產品ID</div>
+                                <div class="col-9">
+                                    <input class="UIInput TESTorderProductID" type="text" id="orderProductIDCreate" >
+                                </div>
+                            </div>
+                            <div class="UILittleDiv row">
+                                <div class="UISpan col-3">產品數量</div>
+                                <div class="col-9">
+                                    <input class="UIInput TESTproductQ" type="text" id="productQCreate">
+                                </div>
+                            </div>
+                            <button class="plusProduct"></button>
+                            <!-- <button class="minusProduct"></button> -->
                         </div>
                     </div>
-                    <div class="UILittleDiv row">
-                        <div class="UISpan col-3">產品數量</div>
-                        <div class="col-9">
-                            <input class="UIInput TESTproductQ" type="text" id="productQCreate">
-                        </div>
-                    </div>
+
+
                     <div class="UILittleDiv row">
                         <div class="UISpan col-3">客戶名稱</div>
                         <div class="col-9">

@@ -1,7 +1,27 @@
 
-
 let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/orderList/orderList.php'
-
+let col = ['orderID','transactionID','productName','productQ','orderAmount','buyerName','buyerEmail','buyerTel','buyerAddr','orderDate','payment','receiptType','companyTitle','taxIDNumber','orderStatus','transportNote']
+let colTW = ['資料ID','訂單編號','商品名稱','商品數量','單品總價','買家姓名','信箱','電話','地址','訂單日期','付款方式','發票類別','公司名稱','統一編號','訂單狀態','物流備註']
+let colExist = 'orderExist'
+function setUp(){
+    for(i in col){
+        $('#condition').append(`
+            <option class="selectOption" value=${col[i]}>${colTW[i]}</option>
+        `)
+    }
+    for(item of colTW){
+        $('#existTHead,#noExistTHead').append(`
+        <td>
+            <span >${item}</span>
+        </td>
+        `)
+    }
+    $('#existTHead,#noExistTHead').append(`
+    <td>
+        <span>編輯</span>
+    </td>
+    `)
+}
 function getDataCreateTable(condition, place) {
     let apiUrl2 = apiUrl + condition
     $.ajax({
@@ -12,66 +32,34 @@ function getDataCreateTable(condition, place) {
             // console.log(data);
             result = '';
             for (item of data) {
-                orderStatus = '';
-                if (item.orderStatus == 0) {
-                    orderStatus = '已接收訂單';
-                } else if (item.orderStatus == 1) {
-                    orderStatus = '待出貨';
-                } else if (item.orderStatus == 2) {
-                    orderStatus = '已出貨';
-                } else {
-                    orderStatus = '其他'
+            
+            result += `<tr>`
+                for(key of col){
+                    //change here
+                    if(key==='transportNote'){
+                        result += `
+                        <td>
+                        ${item[key]===null?'無':item[key]}
+                        </td>
+                        `
+                    
+                    }else if(key==='orderStatus'){
+                        result += `
+                        <td>
+                        ${item[key]===0?'訂單已接收':item[key]===1?'待出貨':'已出貨'}
+                        </td>
+                        `
+                    }else{
+                        result += `
+                        <td>${item[key]}</td>
+                        `
+                    }
+                    //////
+                    
                 }
-                result += `
-                <tr>
-                    <td>
-                        ${item.orderID}
-                    </td>
-                    <td>
-                        ${item.productName}
-                    </td>
-                    <td>
-                    ${item.productQ}
-                    </td>
-                    <td>
-                    ${item.buyerName}
-                    </td>
-                    <td>
-                    ${item.buyerEmail}
-                    </td>
-                    <td>
-                    ${item.buyerTel}
-                    </td>
-                    <td>
-                    ${item.buyerAddr}
-                    </td>
-                    <td>
-                    ${item.orderDate}
-                    </td>
-                    <td>
-                    ${item.payment}
-                    </td>
-                    <td>
-                    ${item.receiptType}
-                    </td>
-                    <td>
-                    ${item.companyTitle}
-                    </td>
-                    <td>
-                    ${item.taxIDNumber}
-                    </td>
-                    <td>
-                    ${orderStatus}
-                    </td>
-                    <td>
-                    ${item.transportNote === null ? '無' : item.transportNote}
-                    </td>
-
-                `;
                 if($('#one').prop('checked')){
                     result += `
                         <td>
-
                             <button title='編輯資料' class="edit tableBn" onclick='edit(this)'></button>
                             <button title='改成無效資料' class='remove tableBn' onclick='removeBN(this)'></button>
                         </td>
@@ -87,6 +75,7 @@ function getDataCreateTable(condition, place) {
                     
                 }
             }
+
             result += '</tr> <tr><td></td><tr><tr><td></td><tr>'
 
 
@@ -294,9 +283,11 @@ function setCondition() {
         // for(num of list){
         //     condition += '&' + $('#condition').val() + '=' + num
         // }
-        condition = '?orderExist=' + exist + '&' + $('#condition').val() + '=' + $('#conditionSelect').val()
+        condition = '?orderExist=' + exist + '&' + $('#condition').val() + '=' + $('#conditionSelect3').val()
 
 
+    } else if($('#condition').val() == 'orderDate') {
+        condition = '?orderExist=' + exist + '&' + $('#condition').val() + '=' + $('#conditionSelect1').val() + ' ' +$('#conditionSelect2').val()
     } else {
         condition = '?orderExist=' + exist + '&' + $('#condition').val() + '=' + $('#conditionInput').val()
     }
@@ -337,6 +328,8 @@ function switchEditUIDisplay(display, elem) {
 
     }
 }
+
+
 
 
 
@@ -398,6 +391,28 @@ function deleteBN(elem) {
     $('.deleteUIID').val(id)
 }
 
+function moreDiv(place){
+    $(place).append(`
+            
+    <div class="orderProductCreateDiv divMore">
+        <div class="UILittleDiv row">
+            <div class="UISpan col-3">產品ID</div>
+            <div class="col-9">
+                <input class="UIInput TESTorderProductID" type="text" id="orderProductIDCreate" >
+            </div>
+        </div>
+    <div class="UILittleDiv row">
+        <div class="UISpan col-3">產品數量</div>
+        <div class="col-9">
+            <input class="UIInput TESTproductQ" type="text" id="productQCreate">
+        </div>
+    </div>
+    <button class="plusProduct plusButtonMore" onclick="moreDiv('#orderProductCreateBigDiv')"></button>
+    <button class="minusButtonMore"></button>
+</div>
+`)
+}
+
 
 
 function testCreatValueSet() {
@@ -422,7 +437,7 @@ function testCreatValueSet() {
 
 
 window.onload = function () {
-
+    setUp()
     getDataCreateTable('?orderExist=1','#existTBody');
 
     $('#editBlack,.UICancelBN,#deleteUICancelBn,#removeUICancelBn,#onUICancelBn').click(function () {
@@ -441,16 +456,27 @@ window.onload = function () {
     })
 
     $('#condition').on('change', function () {
-        if ($('#condition').val() == 'orderStatus'){
+        if ($('#condition').val() == 'orderDate'){
             $('#conditionInput').css('display','none')
-            // $('#conditionSelect').css('display','block')
-            $('#conditionSelect').fadeIn()
+            $('#conditionSelect1').fadeIn()
+            $('#conditionSelect2').fadeIn()
+            $('#conditionSelect3').css('display','none')
+
+            $('#conditionSelect').val('')
+        }else if($('#condition').val() == 'orderStatus'){
+            $('#conditionInput').css('display','none')
+            $('#conditionSelect1').css('display','none')
+            $('#conditionSelect2').css('display','none')
+            $('#conditionSelect3').fadeIn()
 
             $('#conditionSelect').val('')
         }else{
-            // $('#conditionInput').css('display','block')
             $('#conditionInput').fadeIn()
-            $('#conditionSelect').css('display','none')
+            $('#conditionSelect1').css('display','none')
+            $('#conditionSelect2').css('display','none')
+            $('#conditionSelect3').css('display','none')
+
+            $('#conditionSelect').val('')
         }
 
         if ($('#conditionInput').val() != '') {
@@ -469,7 +495,21 @@ window.onload = function () {
             reload()
         }
     })
-    $('#conditionSelect').on('change', function () {
+    $('#conditionSelect1').on('change', function () {
+        if ($('#conditionSelect').val() != '') {
+            conditionReload()
+        } else {
+            reload()
+        }
+    })
+    $('#conditionSelect2').on('change', function () {
+        if ($('#conditionSelect').val() != '') {
+            conditionReload()
+        } else {
+            reload()
+        }
+    })
+    $('#conditionSelect3').on('change', function () {
         if ($('#conditionSelect').val() != '') {
             conditionReload()
         } else {
@@ -493,5 +533,8 @@ window.onload = function () {
     //     deleteData()
     // })
 
+    $('.plusProduct').click(function(){
+        moreDiv('#orderProductCreateBigDiv');
+    })
 
 }
