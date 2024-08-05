@@ -44,7 +44,7 @@ $(document).ready(function () {
         , { quesNumber: "Q4", questionLine1: '你在天空看見了喵喵熱氣球飄向你....', questionLine2: '你會....', text: '皮卡丘一巴掌把你拍上了天空', option: ['進到熱氣球裡一探究竟', '趕快拿手機拍下來留念', '不想被發現 躲到雲後面'] }
         , { quesNumber: "Q5", questionLine1: '你發現熱氣球裡有睡著的耿鬼....', questionLine2: '你認為....', text: '突然 你被抓進了熱氣球裡', option: ['他一定是被火箭隊抓住了', '一定有詐 他可是耿鬼', '太可愛了吧 反差萌', '大好機會 我要收服耿鬼'] }
         , { quesNumber: "Q6", questionLine1: '你掉在一群移動中的可達鴨裡....', questionLine2: '你想....', text: '耿鬼突然驚醒 嚇得你掉出熱氣球', option: ['跟著他們繼續走', '趁亂抱走一隻', '敲敲看他們的腦殼'] }
-        , { quesNumber: "Q7", questionLine1: ' 可達鴨對你使出念力抬起你....', questionLine2: '你認為你會被送去....', text: '(可達鴨發現你了！)', option: ['真新鎮 ', '大木博士的研究所', '探望常磐森林的比雕'] }]
+        , { quesNumber: "Q7", questionLine1: ' 可達鴨對你使出念力抬起你....', questionLine2: '你認為你會被送去....', text: '可達鴨發現你了！', option: ['真新鎮 ', '大木博士的研究所', '探望常磐森林的比雕'] }]
 
 
 
@@ -476,7 +476,64 @@ $(document).ready(function () {
 
 
     </section>
-</div>`]
+</div>`],
+        // 第7題 陣列索引值6
+        [`    <div class="superBigWebCon">
+    <!-- 網頁版bg容器 -->
+    <section class="webBgContainereight">
+
+        <div class="sec_bgContainer" style="z-index: 1; ">
+
+
+
+
+            <!-- process -->
+            <div class="bigprocessCon">
+                <!-- 換進度條圖片src -->
+                <div class="processContainer"><img id="process" src="" alt=""></div>
+            </div>
+            <!-- 題目選項按鈕區 -->
+            <div class="questionAndbuttonCon3">
+                <!-- 題目 -->
+                 <!-- .questionContainer換成圖片跟文字 -->
+    <div class="storyTextCtrlEmpty">
+                 <div class="storyTextCtrl">
+                    <div class="storyText"><h4></h4></div>
+                </div>
+    </div>
+
+                <div class="questionContainer">
+                    <div class="questionIcon"></div>
+                    <div class="questionTextCon">
+                        <h4 id="questionline1"  class="textContent"></h4>
+                        <h4 id="questionline2"  class="textContent"></h4>
+
+                    </div>
+
+                </div>
+                <!-- 選項按鈕 -->
+                <div class="btnContainer2">
+                    
+                </div>
+            </div>
+
+            
+        </div>
+
+
+
+        <!-- 雲朵 -->
+        <div class="eight_cloudscontainer">
+            
+             <!-- 動畫區 -->
+             <div class="ducklookaniCon"><video id="duckHappyAni" src="./images/animation/duckHappy.webm" loop autoplay muted></video>
+             </div>
+
+        </div>
+
+    </section>
+</div>
+`]
     ]
 
     //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
@@ -560,7 +617,7 @@ $(document).ready(function () {
             const emptyStoryText = function () {
                 $('.storyTextCtrl').empty()
                 //移除第3題 皮卡丘 第4題喵喵熱氣球 第5題耿鬼文字框
-                if (currentQuestion === 2 || currentQuestion === 3 || currentQuestion === 4 || currentQuestion === 5) {
+                if (currentQuestion === 2 || currentQuestion === 3 || currentQuestion === 4 || currentQuestion === 5 ||currentQuestion === 6) {
                     $('.storyTextCtrlEmpty').remove()
                 }
             }
@@ -571,7 +628,7 @@ $(document).ready(function () {
             const showQuestionandbutton = function () {
                 $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer,.btn3Container,.cakeCon,.meowaniCon,.btnContainer2,.six_Anicontainer,.btnContainer3').css('visibility', 'visible')
                 // =======網頁版可達鴨容器透明度0=>1 
-                $('.webduckaniCon').css('opacity','1')
+                $('.webduckaniCon').css('opacity', '1')
             }
             setTimeout(showQuestionandbutton, 3500)
 
@@ -615,6 +672,11 @@ $(document).ready(function () {
                     case 5:
                         $('.btnContainer').append(`
                                         <button class="btn1 option${i}">${questionData.option[i]}</button>`);
+
+                        break;
+                    case 6:
+                        $('.btnContainer2').append(`
+                                            <button class="btn1 option${i}">${questionData.option[i]}</button>`);
 
                         break;
                 }
