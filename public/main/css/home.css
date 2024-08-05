@@ -1222,6 +1222,16 @@ a:active {
   width: 100vw;
   /* overflow-x: hidden;  */
   background: url('../images/sec3_bg_comic.png') repeat center/30%;
+  animation: moveComicBG 30s linear infinite;
+}
+
+@keyframes moveComicBG{
+  0%{
+    background-position: 0 0;
+  }
+  100%{
+    background-position: 0vw 100vh;
+  }
 }
 
 /* 波浪svg */
@@ -1255,7 +1265,7 @@ a:active {
 
 /* 旋轉卡片 */
 .rotate_card_section {
-  height: 60vw;
+  height: 50vw;
 }
 
 .rotate_card {
