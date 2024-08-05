@@ -99,10 +99,10 @@
         // console.log('sc_checkoutlist 載入完成');
     });
 }
-   
+
 // 庫存數量對話框
 $(document).ready(function() {
-    $('#dialog-message').dialog({
+    $('#dialog-messages').dialog({
         autoOpen: false,
         modal: true,
         buttons: {
@@ -125,7 +125,7 @@ $(document).ready(function() {
             $(this).prev().text(existingItem.num); // 更新数字
         } else {
             // 使用 jQuery UI 弹出庫存數量對話框
-            $('#dialog-message').dialog('open');
+            $('#dialog-messages').dialog('open');
         }
 
 

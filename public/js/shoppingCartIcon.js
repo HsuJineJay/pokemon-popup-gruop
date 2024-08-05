@@ -1,5 +1,14 @@
 
+$.getScript('https://code.jquery.com/ui/1.12.1/jquery-ui.js'); // 引用 jQuery 提示ul
+function loadCSS(url) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = url;
+    document.head.appendChild(link);
+}
 
+// 使用
+loadCSS('https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css');
 
 function openNav() {
     document.getElementById("mySidenav").style.width = "360px";
@@ -83,6 +92,7 @@ function closeNav() {
                                 <button class="btn-decrement-sm">-</button>
                                 <span name="num" class="quantity-sm">${row['num']}</span>
                                 <button class="btn-increment-sm">+</button>
+                                <p name="productInStock" class="d-none">${row['productInStock']}</p>
                             </div>
                         </li>
                         <br />
@@ -92,7 +102,6 @@ function closeNav() {
                     result += `
                         <div class="SubtotalCard">
                             <span class="text3">小計 $ <span id="subtotal"></span>  </span>
-                            
                             <a href="checkout.html" class="Checkout">前往結帳</a>
                             <button class="CleargoodsList">清空購物車</button>
                         </div>
@@ -107,7 +116,7 @@ function closeNav() {
             }
         });
     }).then(() => {
-        // console.log('sc_msg');
+        console.log('sc_msg');
     });
 }
    
@@ -174,15 +183,29 @@ function closeNav() {
         });
 
 
+
+
     // 按鈕 + , 增加1個項目
     $(document).on('click', '.btn-increment-sm', function(){
             var nweID = parseInt($(this).closest('li').attr('id'));
             var cartList = JSON.parse(localStorage.getItem("goods")) || [];
+            var productInStock = parseInt($(this).next().text());
+            console.log(productInStock);
         
             var existingItem = cartList.find(item => item.id === nweID);
-            if (existingItem) {
+            if (existingItem.num < productInStock) {            // 數量不超過庫存數判斷
                 existingItem.num++;
-                parseInt($(this).prev().text(existingItem.num));    //更新數字
+                parseInt($(this).prev().text(existingItem.num)); // 更新数字
+            } else {
+                $('<div>目前商品庫存量不足，若需購買更多的商品數量，請洽服務人員</div>').dialog({
+                    title: '提示',
+                    modal: true,
+                    buttons: {
+                        '确定': function() {
+                            $(this).dialog('close');
+                        }
+                    }
+                });
             }
 
         // 將資料存回 localStorage
