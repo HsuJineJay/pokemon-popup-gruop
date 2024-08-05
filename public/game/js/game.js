@@ -382,7 +382,101 @@ $(document).ready(function () {
     </section>
 </div>
 `
-        ]
+        ],
+        //第六題 陣列索引5
+        [`<div class="superBigWebCon">
+    <!-- 網頁版bg容器 -->
+    <section class="webBgContainerSeven">
+
+        <div class="seven_bgContainer" style="z-index: 1; ">
+
+
+
+
+            <!-- process -->
+            <div class="bigprocessCon">
+                <!-- 換進度條圖片src -->
+                <div class="processContainer"><img id="process" src="" alt=""></div>
+            </div>
+            <!-- 題目選項按鈕區 -->
+            <div class="questionAndbuttonCon">
+                <!-- 題目 -->
+                <!-- .questionContainer換成圖片跟文字 -->
+                <div class="storyTextCtrlEmpty">
+                <div class="storyTextCtrl">
+                    <div class="storyText"><h4 ></h4></div>
+                </div>
+                 </div>
+                <div class="questionContainer">
+                    <div class="questionIcon"></div>
+                    <div class="questionTextCon">
+                        <h4 id="questionline1" class="textContent"></h4>
+                        <h4 id="questionline2" class="textContent"></h4>
+
+                    </div>
+
+                </div>
+                <!-- 選項按鈕 -->
+                <div class="btnContainer">
+                   
+                </div>
+            </div>
+            <div style=" z-index: 1;">
+                <!-- 網頁版動畫區 -->
+                <div class="webduckaniCon">
+                   <video class="duckAniWeb" src="./images/animation/duckWalk.webm" autoplay loop
+                   muted></video>
+                   <video class="duckAniWeb" src="./images/animation/duckWalk.webm" autoplay loop
+                   muted></video>
+                   <video class="duckAniWeb" src="./images/animation/duckWalk.webm" autoplay loop
+                   muted></video>
+                   <video class="duckAniWeb" src="./images/animation/duckWalk.webm" autoplay loop
+                   muted></video>
+                   <video class="duckAniWeb" src="./images/animation/duckWalk.webm" autoplay loop
+                   muted></video>
+               </div>
+           </div>
+        </div>
+
+    
+        <div class="seven_Anicontainer">
+            <!-- 手機版動畫區 -->
+            <div  class="duckaniCon1"><video class="duckAni" src="./images/animation/duckWalk.webm" autoplay loop
+                    muted></video>
+            </div>
+
+            <div  class="duckaniCon2"><video class="duckAni" src="./images/animation/duckWalk.webm" autoplay loop
+                    muted></video>
+            </div>
+
+            <div  class="duckaniCon3"><video class="duckAni" src="./images/animation/duckWalk.webm" autoplay loop
+                    muted></video>
+            </div>
+
+            <div  class="duckaniCon4"><video class="duckAni" src="./images/animation/duckWalk.webm" autoplay loop
+                    muted></video>
+            </div>
+
+            <div  class="duckaniCon5"><video class="duckAni" src="./images/animation/duckWalk.webm" autoplay loop
+                    muted></video>
+            </div>
+         </div> 
+               
+
+        </div>
+          <!-- 雲朵 -->
+          <div class="seven_cloudscontainer">
+            
+            <!-- 草皮 -->
+            <div class="grassContainer grassDisappear"><img src="./images/secondPageImg/grass.svg" alt=""></div>
+           
+        </div>
+
+
+
+
+    </section>
+</div>`]
     ]
 
     //讓題目數一開始為0 題目數變化:選項button被點擊就＋1
@@ -466,7 +560,7 @@ $(document).ready(function () {
             const emptyStoryText = function () {
                 $('.storyTextCtrl').empty()
                 //移除第3題 皮卡丘 第4題喵喵熱氣球 第5題耿鬼文字框
-                if (currentQuestion === 2 || currentQuestion === 3 ||currentQuestion === 4) {
+                if (currentQuestion === 2 || currentQuestion === 3 || currentQuestion === 4 || currentQuestion === 5) {
                     $('.storyTextCtrlEmpty').remove()
                 }
             }
@@ -476,6 +570,8 @@ $(document).ready(function () {
             //========= 4秒後改變問題框跟選項框動畫框visibility hidden=>visable
             const showQuestionandbutton = function () {
                 $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer,.btn3Container,.cakeCon,.meowaniCon,.btnContainer2,.six_Anicontainer,.btnContainer3').css('visibility', 'visible')
+                // =======網頁版可達鴨容器透明度0=>1 
+                $('.webduckaniCon').css('opacity','1')
             }
             setTimeout(showQuestionandbutton, 3500)
 
@@ -514,6 +610,11 @@ $(document).ready(function () {
                     case 4:
                         $('.btnContainer3').append(`
                                     <button class="btn2 option${i}">${questionData.option[i]}</button>`);
+
+                        break;
+                    case 5:
+                        $('.btnContainer').append(`
+                                        <button class="btn1 option${i}">${questionData.option[i]}</button>`);
 
                         break;
                 }

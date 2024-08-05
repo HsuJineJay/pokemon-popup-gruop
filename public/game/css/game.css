@@ -57,6 +57,9 @@ body{
         visibility: hidden;
     }
     
+    .webduckaniCon{
+        visibility: visible;
+    }
     
 }
 
@@ -1205,6 +1208,7 @@ visibility: hidden;
     margin-left: 0;
     margin-top: 0;
     /* max-height: 1080px; */
+    opacity: 0;
 
 }
 /* 網頁版可達鴨 */
