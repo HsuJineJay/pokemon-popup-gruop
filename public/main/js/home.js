@@ -301,11 +301,13 @@ window.onload = function () {
     $('.switch_button button').removeClass('switchActive')
     $(this).addClass('switchActive')
     changeInfo(infoData.cafe)
+    cardMoveUp()
   })
   $('#switchStore').on('click', function () {
     $('.switch_button button').removeClass('switchActive')
     $(this).addClass('switchActive')
     changeInfo(infoData.store)
+    cardMoveUp()
   })
 
   //改變資料內容函式
@@ -323,6 +325,20 @@ window.onload = function () {
   }
 
 
+    // >>>>>>切換資訊按鈕點擊後資訊卡片向上動畫<<<<<<
+    function cardMoveUp(){
+      // console.log(12345);
+
+      // 每次執行的時候都歸零動畫屬性
+      $('.card_date, .card_reservation, .card_location').css('animation', 'none')
+      // 個別加入動畫並造成時差
+      setTimeout(function() {
+        $('.card_date').css('animation', 'infoCardMoveUp 0.2s ease-in-out')
+        $('.card_reservation').css('animation', 'infoCardMoveUp 0.3s ease-in-out')
+        $('.card_location').css('animation', 'infoCardMoveUp 0.4s ease-in-out')
+      }, 10)
+
+    }
 
 
 
@@ -676,23 +692,32 @@ function productGetData() {
         result += `
                   <div class="carousel_item item${index + 1}">
                     <div class="product_card d-flex flex-column gap-3">
-                      <!-- 圖片 -->
-                      <img src="${row['productImg'][0].productImg}">
-                      <!-- 內容 -->
-                      <div class="d-flex flex-column gap-2">
-                        <div class="product_tag d-flex">
-                          <h6 class="font-chin m-0">會場限定</h6>
+                    <div class="before_product_card" >
+
+                      <!-- ver2點擊卡片去商品頁 -->
+                      <a href="./goods/goods.html" >
+
+                        <!-- 圖片 -->
+                        <img src="${row['productImg'][0].productImg}">
+                        <!-- 內容 -->
+                        <div class="d-flex flex-column gap-2">
+                          <div class="product_tag d-flex">
+                            <h6 class="font-chin m-0">會場限定</h6>
+                          </div>
+
+                          <div class="d-flex flex-column text-start gap-0">
+                            <h4 class="font-chin m-0">${row['productName']}</h4>
+                            <h5 class="font-chin my-1">${row['productPrice']}元</h5>
+                          </div>
                         </div>
 
-                        <div class="d-flex flex-column text-start gap-0">
-                          <h4 class="font-chin m-0">${row['productName']}</h4>
-                          <h5 class="font-chin my-1">${row['productPrice']}元</h5>
-                        </div>
-                      </div>
+                      </a>
+                      
                       <!-- 右下更多按鈕 -->
-                      <button class="more_product_bn" onclick="clickMoreBN()">
+                      <button class="more_product_bn rotateButton" onclick="clickMoreBN()">
 
                       </button>
+                      </div>
                     </div>
                   </div>
       `;
@@ -711,9 +736,11 @@ function productGetData() {
 }
 
 // 點擊右下角箭頭按鈕跳轉到商品頁面
-function clickMoreBN(){
-  window.location.href = '/goods/goods.html';
-}
+// function clickMoreBN(){
+//   window.location.href = './goods/goods.html';
+// }
+
+
 
 
 
@@ -725,11 +752,16 @@ function allRotateFunction() {
 
   let rotateContain = document.querySelector('.rotate_card')
   let productItems = document.querySelectorAll('.carousel_item .product_card')
+
+    // ver2 點擊右下角按鈕旋轉
+    let rotateButton = document.querySelectorAll('.rotateButton')
+
   const totalItems = productItems.length;
   let rotateIndex = 0
 
 
-  productItems.forEach((item, idx) => {
+  // productItems.forEach((item, idx) => {
+  rotateButton.forEach((item, idx) => {
     item.addEventListener('click', function () {
 
       //用於數計算現在的位置
@@ -825,7 +857,7 @@ function menuSwitch() {
         result += `
                   <div class="menu_card d-flex flex-column flex-fill justify-content-center align-items-center gap-3">
                       <h3 class="font-eng m-0"> TOP${index + 1}</h3>
-                      <img id="foodImg1" src="${row['itemImg']}">
+                      <figure><img src="${row['itemImg']}"></figure>
                       <div class="menu_card_detail d-flex flex-fill flex-column justify-content-center align-items-center">
                           <h4 class="font-chin">${row['itemName']}</h4>
                           <h5 class="font-chin">${row['itemPrice']}元</h5>

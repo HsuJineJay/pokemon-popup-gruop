@@ -24,7 +24,7 @@ $(document).ready(function () {
     }
     CtrlSound()
     //把題目裝到陣列裡
-    const allQuestion = [{quesNumber:"Q1", questionLine1: '有一顆寶貝球滾到你面前不斷閃爍....',questionLine2:'你會...', text: 'WELCOME TO THE POkEMON ADVENTURE', option: ['默默把它撿起來帶走', '當作沒看到經過它', '站在原地觀察它'] }
+    const allQuestion = [{quesNumber:"Q1", questionLine1: '有一顆寶貝球滾到你面前不斷閃爍....',questionLine2:'你會...', text: 'WELCOME TO THE POKEMON ADVENTURE', option: ['默默把它撿起來帶走', '當作沒看到經過它', '站在原地觀察它'] }
         , { quesNumber:"Q2",questionLine1: '突然前方傳來熟悉的’美妙’旋律....',questionLine2:'你會...', text: 'BOBOROROBOBOLIBO~~', option: ['看來胖丁又在禍害人間了', '不錯喔 胖丁的歌藝越來越精湛了', '我不要聽！拿出耳塞 塞好塞滿', '最近都失眠 聽完睡著剛剛好'] }
         , { quesNumber:"Q3",questionLine1: '碰！極巨肥化皮卡丘掉到了你面前....',questionLine2:'你會...', text: '走著走著天空突然下起蛋糕雨', option: ['摸摸看他的大肚子', '餵他吃更多蛋糕', '警告他吃太胖會被殺掉'] }
         , { quesNumber:"Q4",questionLine1: '你在天空看見了喵喵熱氣球飄向你....',questionLine2:'你會....', text: '皮卡丘一巴掌把你拍上了天空', option: ['進到熱氣球裡一探究竟', '趕快拿手機拍下來留念', '不想被發現 躲到雲後面'] }
@@ -62,9 +62,10 @@ $(document).ready(function () {
             <div class="questionAndbuttonCon">
                 <!-- 題目 -->
                  <!-- .questionContainer換成圖片跟文字 -->
-                    <div class="storyText"><h4 >Welcome to the Pokemon adventure</h4></div>
-
-              <!--    <div class="questionContainer">
+                 <div class="storyTextCtrl">
+                    <div class="storyText"><h4 ></h4></div>
+                </div>
+                 <div class="questionContainer">
                     <div class="questionIcon"></div>
                     <div class="questionTextCon">
                         <h4 id="questionline1" class="textContent"></h4>
@@ -72,11 +73,11 @@ $(document).ready(function () {
 
                     </div>
 
-                </div> -->
+                </div> 
                 <!-- 選項按鈕 -->
                   
-                <!--<div class="btnContainer">
-                </div>-->
+                <div class="btnContainer">
+                </div>
             </div>
 
             <div >
@@ -173,8 +174,22 @@ $(document).ready(function () {
         $('#process').attr('src',`./images/publicImg/process${currentQuestion}.svg`)
        
         //印出旁白文字=========
-        $('.storyText < h4').html()
-       
+        // 透明度進入 持續2.5秒 消失 css控制
+        $('.storyText h4').html(`${questionData.text}`)
+        
+        
+        // 3秒後清空旁白文字框=====
+        const emptyStoryText = function(){
+            $('.storyTextCtrl').empty()}
+
+        setTimeout(emptyStoryText,4000)
+
+        //========= 3.5秒後改變問題框跟選項框動畫框visibility hidden=>visable
+        const showQuestionandbutton = function(){
+            $('.pokeaniCon,.btnContainer,.questionContainer').css('visibility','visible')
+        }
+        setTimeout(showQuestionandbutton,4200)
+        
         //印出題數============
        $('.questionIcon').html(`${questionData.quesNumber}`)
         

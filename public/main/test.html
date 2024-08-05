@@ -87,27 +87,28 @@
 
 
     @media (min-width: 768px) {
-  .carousel-inner .carousel-item-end.active,
-  .carousel-inner .carousel-item-next {
-    transform: translateX(33.33%);
-  }
-  
-  .carousel-inner .carousel-item-start.active, 
-  .carousel-inner .carousel-item-prev {
-    transform: translateX(-33.33%);
-  }
-}
 
-.carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
-  display: flex;
-}
+      .carousel-inner .carousel-item-end.active,
+      .carousel-inner .carousel-item-next {
+        transform: translateX(33.33%);
+      }
 
-.carousel-inner .carousel-item-end,
-.carousel-inner .carousel-item-start { 
-  transform: translateX(0);
-}
+      .carousel-inner .carousel-item-start.active,
+      .carousel-inner .carousel-item-prev {
+        transform: translateX(-33.33%);
+      }
+    }
+
+    .carousel-inner .carousel-item.active,
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+      display: flex;
+    }
+
+    .carousel-inner .carousel-item-end,
+    .carousel-inner .carousel-item-start {
+      transform: translateX(0);
+    }
   </style>
 </head>
 
@@ -158,7 +159,7 @@
             </div>
           </div>
         </div>
-        
+
       </div>
       <!--prev-->
       <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -173,10 +174,101 @@
     </div>
   </div>
 
-  
 
+
+  <hr>
+  <button id="shareButton">shareButton!!</button>
+  <hr>
+  <hr>
+  
+  
+    <a id="share">
+    <svg id="share" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-4.051 15.117c.529-.585 1.297-.952 2.148-.952 1.604 0 2.902 1.299 2.902 2.901s-1.299 2.902-2.902 2.902c-1.602 0-2.9-1.3-2.9-2.902v-.031l-5.506-2.719c-.494.387-1.114.618-1.789.618-1.603 0-2.902-1.299-2.902-2.902 0-1.603 1.299-2.902 2.902-2.902.825 0 1.569.345 2.098.897l5.219-2.741-.021-.353c0-1.603 1.299-2.902 2.9-2.902 1.604 0 2.902 1.3 2.902 2.902s-1.299 2.901-2.902 2.901c-.738 0-1.412-.276-1.926-.731l-5.371 2.821c.007.201-.003.399-.045.628l5.193 2.565z"/>
+    </svg></a>
+  
+    <script>
+      var shareBtn = document.getElementById("share");  //你的按鈕ID
+      shareBtn.onclick = function() {
+        console.log('clickShare');
+          if (navigator.share) {
+          navigator.share({
+              // 輸入你要分享的內容設定
+              title: '前往Google',
+              text: '走吧?走吧!',
+              url: 'https://www.google.com.tw/?hl=zh_TW',
+          })
+              .then(() => console.log('成功！'))
+              .catch((error) => console.log('發生錯誤', error));
+          }
+      }
+    </script>
+  
+  <hr>
+<!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://hsujinejay.github.io/pokemon-popup-gruop/public/main/images/store_popup_map.jpg" data-a2a-title="寶可夢分項">
+  <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+  <a class="a2a_button_facebook"></a>
+  <a class="a2a_button_email"></a>
+  </div>
+  <script>
+  var a2a_config = a2a_config || {};
+  a2a_config.onclick = 1;
+  a2a_config.locale = "zh-TW";
+  </script>
+  <script async src="https://static.addtoany.com/menu/page.js"></script>
+  <!-- AddToAny END -->
+
+  <hr>
+  <hr>
+  <head>
+    <!-- 載入html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <div id="socialMedia">
+        <!-- facebook -->
+        <a id="fburl" href="https://www.facebook.com/sharer.php?u=https://www.google.com.tw/?hl=zh_TW" target="_blank">
+        <svg id="fb" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3 7h-1.924c-.615 0-1.076.252-1.076.889v1.111h3l-.238 3h-2.762v8h-3v-8h-2v-3h2v-1.923c0-2.022 1.064-3.077 3.461-3.077h2.539v3z" transform="scale(1.5)"/>
+        </svg></a>
+        <!-- line -->
+        <a id="lineurl" href="http://line.naver.jp/R/msg/text/?https://www.google.com.tw/?hl=zh_TW" target="_blank">
+        <svg id="line" width="36" height="36" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+        <path d="M19 24h-14c-2.761 0-5-2.239-5-5v-14c0-2.761 2.239-5 5-5h14c2.762 0 5 2.239 5 5v14c0 2.761-2.238 5-5 5zm1-12.508c0-3.58-3.589-6.492-8-6.492s-8 2.912-8 6.492c0 3.209 2.846 5.897 6.691 6.405.26.056.615.172.704.395.081.202.053.519.026.723l-.114.685c-.035.202-.161.791.693.431.854-.36 4.607-2.713 6.286-4.645h-.001c1.16-1.271 1.715-2.561 1.715-3.994zm-10.978 2.067h-2.242l-.108-.043v-.001l-.001-.001-.003-.003-.044-.107v-3.486c0-.086.07-.156.156-.156h.562c.085 0 .155.07.155.156v2.768h1.525c.086 0 .155.07.155.156v.561c0 .086-.069.156-.155.156zm8.314 0h-2.242l-.108-.043-.004-.005-.044-.107v-3.486l.044-.107.004-.005.108-.044h2.242c.086 0 .155.07.155.156v.561c0 .086-.069.156-.155.156h-1.525v.589h1.525c.086 0 .155.07.155.156v.561c0 .086-.069.156-.155.156h-1.525v.589h1.525c.086 0 .155.07.155.156v.561c0 .086-.069.156-.155.156zm-6.961 0h-.562c-.086 0-.156-.069-.156-.155v-3.486c0-.086.07-.156.156-.156h.562c.086 0 .155.07.155.156v3.486c0 .085-.069.155-.155.155zm1.418 0h-.561c-.086 0-.156-.069-.156-.155v-3.486c0-.086.07-.156.156-.156h.561l.013.001.015.002.009.002.015.004.005.002.014.006.013.008.008.005.012.01.003.003.01.011.013.015 1.597 2.158v-2.071c0-.086.07-.156.156-.156h.561c.086 0 .156.07.156.156v3.486c0 .085-.07.155-.156.155h-.561l-.04-.005-.002-.001-.016-.005-.007-.003-.012-.006-.01-.006-.001-.001-.04-.039-1.599-2.16v2.071c0 .085-.07.155-.156.155z" transform="scale(1.5)"/>
+        </svg></a>
+        <!-- instagram -->
+        <a id="igurl" href="http://instagram.com" target="_blank">
+        <svg id="ig" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+        <path d="M15.233 5.488c-.843-.038-1.097-.046-3.233-.046s-2.389.008-3.232.046c-2.17.099-3.181 1.127-3.279 3.279-.039.844-.048 1.097-.048 3.233s.009 2.389.047 3.233c.099 2.148 1.106 3.18 3.279 3.279.843.038 1.097.047 3.233.047 2.137 0 2.39-.008 3.233-.046 2.17-.099 3.18-1.129 3.279-3.279.038-.844.046-1.097.046-3.233s-.008-2.389-.046-3.232c-.099-2.153-1.111-3.182-3.279-3.281zm-3.233 10.62c-2.269 0-4.108-1.839-4.108-4.108 0-2.269 1.84-4.108 4.108-4.108s4.108 1.839 4.108 4.108c0 2.269-1.839 4.108-4.108 4.108zm4.271-7.418c-.53 0-.96-.43-.96-.96s.43-.96.96-.96.96.43.96.96-.43.96-.96.96zm-1.604 3.31c0 1.473-1.194 2.667-2.667 2.667s-2.667-1.194-2.667-2.667c0-1.473 1.194-2.667 2.667-2.667s2.667 1.194 2.667 2.667zm4.333-12h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm.952 15.298c-.132 2.909-1.751 4.521-4.653 4.654-.854.039-1.126.048-3.299.048s-2.444-.009-3.298-.048c-2.908-.133-4.52-1.748-4.654-4.654-.039-.853-.048-1.125-.048-3.298 0-2.172.009-2.445.048-3.298.134-2.908 1.748-4.521 4.654-4.653.854-.04 1.125-.049 3.298-.049s2.445.009 3.299.048c2.908.133 4.523 1.751 4.653 4.653.039.854.048 1.127.048 3.299 0 2.173-.009 2.445-.048 3.298z" transform="scale(1.5)"/>
+        </svg></a>
+    </div>
+  
+    <script>
+      document.getElementById('igurl').addEventListener('click', function() {
+          var lightboxContent = document.querySelector('#socialMedia');
+          
+          html2canvas(lightboxContent, { scale: 3 }).then(function(canvas) {
+              // scale:3是因為放大畫質會比較好，可以自己調整合適大小
+              // 將canvas轉換為圖片
+              var image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+              
+              // 觸發圖片下載
+              var link = document.createElement('a');
+              link.download = 'capture.png';
+              link.href = image;
+              link.click();
+              
+          });
+      });
+    </script>
+  </body>
+  <hr>
+  <hr>
+  
 </body>
 <script>
+
+
 
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -201,6 +293,42 @@
       interval: 2000,
       wrap: false
     });
+  });
+
+
+
+  // 假設您已經有了必要的access token和Instagram用戶ID
+  const accessToken = 'ead188fb10fcdf60c48a305810c3e6b4';
+  const igUserId = '413948191690451';
+
+  async function shareToInstagram(imageUrl, caption) {
+    try {
+      // 步驟 1: 創建媒體容器
+      const createMediaResponse = await fetch(`https://graph.facebook.com/v20.0/${igUserId}/media?image_url=${encodeURIComponent(imageUrl)}&caption=${encodeURIComponent(caption)}&access_token=${accessToken}`, {
+        method: 'POST'
+      });
+
+      const createMediaData = await createMediaResponse.json();
+      const containerId = createMediaData.id;
+
+      // 步驟 2: 發布媒體
+      const publishMediaResponse = await fetch(`https://graph.facebook.com/v20.0/${igUserId}/media_publish?creation_id=${containerId}&access_token=${accessToken}`, {
+        method: 'POST'
+      });
+
+      const publishMediaData = await publishMediaResponse.json();
+      console.log('Media published successfully. Media ID:', publishMediaData.id);
+
+    } catch (error) {
+      console.error('Error sharing to Instagram:', error);
+    }
+  }
+
+  // 為按鈕添加點擊事件處理程序
+  document.getElementById('shareButton').addEventListener('click', () => {
+    const imageUrl = 'https://hsujinejay.github.io/pokemon-popup-gruop/public/main/images/store_popup_map.jpg';
+    const caption = 'Your caption here #YourHashtag';
+    shareToInstagram(imageUrl, caption);
   });
 </script>
 

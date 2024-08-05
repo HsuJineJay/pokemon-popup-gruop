@@ -42,7 +42,8 @@ function closeNav() {
     function sc_msg() {
     $('#result_goodslist').html("");
 
-    let apiUrl = 'http://localhost/mfee51/root/backEnd/api/product/product.php';
+    // let apiUrl = 'http://localhost/mfee51/root/backEnd/api/product/product.php';
+    let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php';
     let Exist_apiUrl = apiUrl + '?productExist=1';
 
     return new Promise((resolve, reject) => {
@@ -76,7 +77,7 @@ function closeNav() {
                             <img class=" image-container" src="${row['productImg'][0]['productImg']}" alt="圖片描述">
                             <div class="texr1">${row['productName']}</div>
                             <span class="texr2">$ </span>
-                            <span name="productPrice">${row['productPrice']}</span>
+                            <span name="productPrice">${row['productPrice'].toLocaleString()}</span>
                             <div class="d-flex align-items-center">
                                 <button class="btn-decrement-sm">-</button>
                                 <span name="num" class="quantity-sm">${row['num']}</span>
@@ -91,7 +92,7 @@ function closeNav() {
                         <div class="SubtotalCard">
                             <span class="text3">小計 $ <span id="subtotal"></span>  </span>
                             
-                            <a href="product_all.html" class="Checkout">前往結帳</a>
+                            <a href="checkout.html" class="Checkout">前往結帳</a>
                             <button class="CleargoodsList">清空購物車</button>
                         </div>
                     `;
