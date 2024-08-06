@@ -206,29 +206,6 @@
 
     <div class="container-md" style="max-width: 1200px;">
         <div class="row detailtitle">
-            <div class="col-12 detailtitleText">發票資訊</div>
-        </div>
-        <div  class="row detaillist">
-        <form class="col-12 form-invoice">
-            <div class="col-md-6 col-12">
-                <input type="radio" class="detailRadio" id="DuplicateUniformInvoice" name="invoice" value="二聯式" checked >
-                <label for="DuplicateUniformInvoice" class="detailListText">個人戶（二聯）電子發票</label><br><br>
-            </div>
-            <div class="col-md-6 col-12">
-                <input type="radio" class="detailRadio" id="TriplicateUniformInvoice" name="invoice" value="三聯式">
-                <label for="TriplicateUniformInvoice" class="detailListText">公司戶（三聯）發票</label><br><br>
-                <label for="companyID" class="detailListText">統一編號</label><br>
-                <input type="text" class="detailListGroupText-A" id="companyID" name="invoice">
-                <label for="companyName" class="detailListText">公司抬頭</label><br>
-                <input type="text" class="detailListGroupText-A" id="companyName" name="invoice">
-            </div>
-        </form>
-
-        </div>
-    </div>
-
-    <div class="container-md" style="max-width: 1200px;">
-        <div class="row detailtitle">
             <div class="col-12 detailtitleText">收件資料</div>
         </div>
         <div  class="row detaillist">
@@ -261,7 +238,30 @@
         </form>
 
         </div>
-    </div>      
+    </div>   
+    
+  <div class="container-md" style="max-width: 1200px;">
+      <div class="row detailtitle">
+          <div class="col-12 detailtitleText">發票資訊</div>
+      </div>
+      <div  class="row detaillist">
+      <form class="col-12 form-invoice">
+          <div class="col-md-6 col-12">
+              <input type="radio" class="detailRadio" id="DuplicateUniformInvoice" name="receiptType" value="二聯式" checked >
+              <label for="DuplicateUniformInvoice" class="detailListText">個人戶（二聯）電子發票</label><br><br>
+          </div>
+          <div class="col-md-6 col-12">
+              <input type="radio" class="detailRadio" id="TriplicateUniformInvoice" name="receiptType" value="三聯式">
+              <label for="TriplicateUniformInvoice" class="detailListText">公司戶（三聯）發票</label><br><br>
+              <label for="taxIDNumber" class="detailListText">統一編號</label><br>
+              <input type="text" class="detailListGroupText-A" id="taxIDNumber" name="receiptType">
+              <label for="companyTitle" class="detailListText">公司抬頭</label><br>
+              <input type="text" class="detailListGroupText-A" id="companyTitle" name="receiptType">
+          </div>
+      </form>
+
+      </div>
+  </div>
 
     <!-- ============================== 訂單資訊填寫 結束 ============================== -->
 
