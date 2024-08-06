@@ -1,24 +1,8 @@
+// 每秒訂單明細更新頁面
+// $(document).ready(function() {
+//     setInterval(sc_checkoutlist, 1000); 
+// });
 
-
-    // $('#openNav').on('click', async function(){
-    //     await sc_golist();
-    //     sc_subtotal();
-    //     sc_SubtotalCard();
-    // });
-
-    // 判斷購物車清單小計是否顯示&提示訊息------------------------------- 01
-    // function sc_SubtotalCard(){
-    //     var x = localStorage.getItem("goods");
-    //     if( x === null || x === '[]' ){
-    //         $('.SubtotalCard').css('display', 'none');
-    //         $('#buyprompt_message').html("");
-    //         $('#buyprompt_message').append('目前尚未添加任何商品...');
-            
-    //     }else{
-    //         $('#buyprompt_message').html("");
-    //         $('.SubtotalCard').css('display', 'flex');
-    //     }
-    // }
 
     // 訂單明細隱藏/載入按鈕
     $(document).ready(function() {
@@ -29,6 +13,7 @@
             $(this).html('訂單明細 ' + (isHidden ? '+' : '-')); // 使用 .html() 方法來更新文本
         });
     });
+
     // 購物車清單載入
     function sc_checkoutlist() {
     $('#result_checkoutlist').html("");
@@ -43,12 +28,12 @@
             method: 'GET',
             async:false,
             success: function(arr) {
-                var cookieStr = localStorage.getItem("goods");
+                let cookieArr = JSON.parse(localStorage.getItem("goods")) || [];
+                let billListArr = JSON.parse(localStorage.getItem("billList")) || [];
+
                 arr = JSON.parse(arr);
-                if (cookieStr) {
-                    var cookieArr = JSON.parse(cookieStr);
+                if (cookieArr) {
                     var newgoodsArr = [];
-                    console.log(cookieArr);
 
                     for (let i = 0; i < arr.length; i++) {
                         for (let j = 0; j < cookieArr.length; j++) {
@@ -71,29 +56,37 @@
                         </td>
                         <td class="align-middle">$${row['productPrice'].toLocaleString()}</td>
                         <td class="align-middle"> 
-                            <span name="num" class="quantity  d-flex align-items-center">${row['num']}</span>
+                            <div class="d-flex align-items-center">
+                                <button class="btn-decrement">-</button>
+                                <span name="num" class="quantity">${row['num']}</span>
+                                <button class="btn-increment">+</button>
+                                <p name="productInStock" class="d-none">${row['productInStock']}</p>
+                            </div>
                         </td>
-                        <td class="align-middle subtotal-row">$${(row['productPrice']*row['num']).toLocaleString()}</td>
-                    </tr>
+                        <td class="align-middle subtotal-row" name="subtotal-row">$${(row['productPrice']*row['num']).toLocaleString()}</td>
+
+                        
+
                         `;
                     }
 
+                    for (let j of billListArr) {
                     result += `
- 
                         <tr>
                             <td class="text-end" scope="row" colspan="3">商品小計</td>
-                            <td id="checkouttotal" >$33</td>
+                            <td id="checkouttotal" >$${j['subtotal'].toLocaleString()}</td>
                         </tr>
                         <tr>
                             <td class="text-end" scope="row" colspan="3">運費</td>
-                            <td>$0</td>
+                            <td>$${j['fee'].toLocaleString()}</td>
                         </tr>
                         <tr>
                             <td class="text-end" scope="row" colspan="3">總計</td>
-                            <td>$33</td>
+                            <td>$${j['billtotal'].toLocaleString()}</td>
                         </tr>
 
-                    `;
+                        `;
+                    }
 
                     $('#result_checkoutlist').html(result);
                 }
@@ -104,121 +97,123 @@
             }
         });
     }).then(() => {
-        console.log('sc_checkoutlist 載入完成');
+        // console.log('sc_checkoutlist 載入完成');
     });
 }
-   
-    // 再去逛逛導入商品頁面
-    $(document).ready(function(){
-        $('#GoShoppingbtn').click(function(){
-            window.location.href = 'product_all.html';
-        });
+
+
+// 庫存數量對話框
+$(document).ready(function() {
+    $('#dialog-messages').dialog({
+        autoOpen: false,
+        modal: true,
+        buttons: {
+            Ok: function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+})
+
+// 按鈕 + , 增加1個項目
+$(document).on('click', '.btn-increment', function(){
+    var nweID = parseInt($(this).closest('tr').attr('id'));
+    var productInStock = parseInt($(this).next().text());
+    var cartList = JSON.parse(localStorage.getItem("goods")) || [];
+
+    var existingItem = cartList.find(item => item.id === nweID);
+    if (existingItem.num < productInStock) {
+        existingItem.num++;
+        $(this).prev().text(existingItem.num); // 更新数字
+    } else {
+        // 使用 jQuery UI 弹出庫存數量對話框
+        $('#dialog-messages').dialog('open');
+    }
+
+
+        // 將資料存回 localStorage
+        localStorage.setItem("goods", JSON.stringify(cartList));
+
+        sc_subtotal_td();
     });
 
-    // 訂單明細小計更新
-    // function sc_checkoutsubtotal(){
-    //         $('#checkouttotal').html("$0");
-    //         console.log('1.開始執行 sc_checkoutsubtotal');
-    //         let total = 0; // 將 total 初始化在外面以累加所有項目的值
+// 按鈕 - , 減少1個項目
+$(document).on('click', '.btn-decrement', function(){
+    var nweID = parseInt($(this).closest('tr').attr('id'));
+    var cartList = JSON.parse(localStorage.getItem("goods")) || [];
 
-    //             $('li').each(function(index, elem) {
-    //                 let qty = parseFloat($(this).find("span[name='num']:first").text());
-    //                 let price = parseFloat($(this).find("span[name='productPrice']:first").text());
-                    
-    //                 if (!isNaN(qty) && !isNaN(price)) {
-    //                     let subtotal = qty * price;
-    //                     total += subtotal;
-    //                 }
+    var existingItem = cartList.find(item => item.id === nweID);
+    if (existingItem) {
+        if (existingItem.num > 0) {
+            existingItem.num--;
+            $(this).next().text(existingItem.num);  // 更新數字
+        }
 
-    //                 // 確保 elem.innerText 是數字並累加到 total
-    //                 let value = parseInt(elem.innerText);
-    //                 if (!isNaN(value)) {
-    //                     total += value;
-    //                 }
-    //                 // console.log('2.執行計算 sc_subtotal');
-    //             });
+        // 檢查數量是否小於或等於 0
+        if (existingItem.num <= 0) {
+            var shouldDelete = window.confirm('數量小於 0，是否要刪除該商品？');
+            if (shouldDelete) {
+                // 移除該項目
+                cartList = cartList.filter(item => item.id !== nweID);
+                $(this).closest('tr').remove();
+            } else {
+                // 恢復數量顯示
+                existingItem.num = 1;
+                $(this).next().text(existingItem.num);
+            }
+        }
+    }
 
-    //             $('#subtotal').html(total.toLocaleString());
-    //             // console.log('3.計算完成並輸出 sc_subtotal');
-            
-    //     }
+        // 將資料存回 localStorage
+        localStorage.setItem("goods", JSON.stringify(cartList));
 
+        sc_subtotal_td();
 
-        $(document).ready(function() {
-            function sc_checkoutsubtotal(){
-            // 提取小計數值
-            $('.subtotal-row td').each(function() {
-                let subtotalText = $(this).text();
+});
+
+// 商品計算更新
+    function sc_subtotal_td(){
+    
+        let total = 0; // 將 total 初始化在外面以累加所有項目的值
+
+            $('tr').each(function(index, elem) {
+                let subtotalText = $(this).find("td[name='subtotal-row']").text();
                 let subtotalValue = parseFloat(subtotalText.replace(/[$,]/g, ''));
-                console.log('Subtotal:', subtotalValue);
+                ( subtotalValue > 0 )? total += subtotalValue: '';
+            });
 
-            })
-            }})
-    
+            // 取得 billList 資訊
+            let billList = JSON.parse(localStorage.getItem("billList")) || [];
+            let fee = total < 0 ? 0 : (total <= 1500 ? 100 : 0);    //滿1,500免運費
             
+            // 更新或初始化 billList 陣列
+            if (billList.length === 0) {
+                billList.push({
+                    billtotal: total + fee,
+                    fee: fee,
+                    subtotal: total
+                });
+            } else {
+                billList[0].billtotal = total + fee;
+                billList[0].fee = fee;
+                billList[0].subtotal = total;
+            }
+    
+        // 存回 localStorage
+        localStorage.setItem("billList", JSON.stringify(billList));
+        // 刪除 billList 資訊
+        (total === 0 )? localStorage.removeItem("billList", JSON.stringify(billList)) : '';
+
+        sc_checkoutlist()
+    
+}
+
+
+// 再去逛逛導入商品頁面
+$(document).ready(function(){
+    $('#GoShoppingbtn').click(function(){
+        window.location.href = 'product_all.html';
+    });
+});
 
             
-        
-
-        // 清空購物車按鈕 & 小計欄位也會消失
-        // $(document).ready(function() {
-        //     $(document).on('click', '.CleargoodsList', function() {
-        //         localStorage.removeItem("goods");
-        //         sc_golist();
-        //         sc_SubtotalCard();
-        //     });
-        // });
-
-
-    
-    // 按鈕 + , 增加1個項目
-    // $(document).on('click', '.btn-increment-sm', function(){
-    //         var nweID = parseInt($(this).closest('li').attr('id'));
-    //         var cartList = JSON.parse(localStorage.getItem("goods")) || [];
-        
-    //         var existingItem = cartList.find(item => item.id === nweID);
-    //         if (existingItem) {
-    //             existingItem.num++;
-    //             parseInt($(this).prev().text(existingItem.num));    //更新數字
-    //         }
-
-    //     // 將資料存回 localStorage
-    //         localStorage.setItem("goods", JSON.stringify(cartList));
-
-    //         sc_subtotal()
-
-    //     });
-    
-    // $(document).on('click', '.btn-decrement-sm', function(){
-    //     var nweID = parseInt($(this).closest('li').attr('id'));
-    //     var cartList = JSON.parse(localStorage.getItem("goods")) || [];
-        
-    //     var existingItem = cartList.find(item => item.id === nweID);
-    //     if (existingItem) {
-    //         if (existingItem.num > 0) {
-    //             existingItem.num--;
-    //             $(this).next().text(existingItem.num);  // 更新數字
-    //         }
-    
-    //         // 檢查數量是否小於或等於 0
-    //         if (existingItem.num <= 0) {
-    //             var shouldDelete = window.confirm('數量小於 0，是否要刪除該商品？');
-    //             if (shouldDelete) {
-    //                 // 移除該項目
-    //                 cartList = cartList.filter(item => item.id !== nweID);
-    //                 $(this).closest('li').remove(); // 更新 UI
-    //             } else {
-    //                 // 恢復數量顯示
-    //                 existingItem.num = 1;
-    //                 $(this).next().text(existingItem.num);
-    //             }
-    //         }
-    //     }
-    
-    //     // 將資料存回 localStorage
-    //     localStorage.setItem("goods", JSON.stringify(cartList));
-
-    //     sc_subtotal();
-    // });
-    
-

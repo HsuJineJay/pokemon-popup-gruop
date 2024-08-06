@@ -66,14 +66,14 @@
     /* 商品小卡 */
     .image-container {
         max-width: 100px;
-        max-height: 100px;
+        aspect-ratio: 1 / 1;
         display: flex;
         justify-content: flex-start; /* 這會讓圖片飄向左邊 */
         align-items: center;
         float: left;    /* 修改圖片位置 */
         margin-right: 10px;
         border-radius: 5px;
-        object-fit: contain;
+        object-fit: cover;
 
     }
 
@@ -222,3 +222,15 @@
         background-color: aqua;
         color: red;
     }
+
+    /* 購買數量超過庫存量提醒框 */
+    .ui-dialog {
+        z-index: 9999; 
+        font-size: 16px;
+        font-family: "Noto Sans TC", sans-serif;
+    }
+
+    .ui-widget-overlay {    
+        z-index: 9998; 
+    }
+

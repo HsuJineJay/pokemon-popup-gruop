@@ -1,4 +1,14 @@
 
+$.getScript('https://code.jquery.com/ui/1.12.1/jquery-ui.js'); // 引用 jQuery 提示ul
+function loadCSS(url) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = url;
+    document.head.appendChild(link);
+}
+
+// 使用
+loadCSS('https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css');
 
 function openNav() {
     document.getElementById("mySidenav").style.width = "360px";
@@ -82,6 +92,7 @@ function closeNav() {
                                 <button class="btn-decrement-sm">-</button>
                                 <span name="num" class="quantity-sm">${row['num']}</span>
                                 <button class="btn-increment-sm">+</button>
+                                <p name="productInStock" class="d-none">${row['productInStock']}</p>
                             </div>
                         </li>
                         <br />
@@ -91,7 +102,6 @@ function closeNav() {
                     result += `
                         <div class="SubtotalCard">
                             <span class="text3">小計 $ <span id="subtotal"></span>  </span>
-                            
                             <a href="checkout.html" class="Checkout">前往結帳</a>
                             <button class="CleargoodsList">清空購物車</button>
                         </div>
@@ -106,13 +116,14 @@ function closeNav() {
             }
         });
     }).then(() => {
-        // console.log('sc_msg');
+        console.log('sc_msg');
     });
 }
    
 
     // 購物車小計更新
     function sc_subtotal(){
+    
             $('#subtotal').html("");
             // console.log('1.開始執行 sc_subtotal');
             let total = 0; // 將 total 初始化在外面以累加所有項目的值
@@ -136,8 +147,31 @@ function closeNav() {
 
                 $('#subtotal').html(total.toLocaleString());
                 // console.log('3.計算完成並輸出 sc_subtotal');
-            
-        }
+
+                // 取得 billList 資訊
+                let billList = JSON.parse(localStorage.getItem("billList")) || [];
+                let fee = total < 0 ? 0 : (total <= 1500 ? 100 : 0);    //滿1,500免運費
+                
+                // 更新或初始化 billList 陣列
+                if (billList.length === 0) {
+                    billList.push({
+                        billtotal: total + fee,
+                        fee: fee,
+                        subtotal: total
+                    });
+                } else {
+                    billList[0].billtotal = total + fee;
+                    billList[0].fee = fee;
+                    billList[0].subtotal = total;
+                }
+        
+            // 存回 localStorage
+            localStorage.setItem("billList", JSON.stringify(billList));
+            // 刪除 billList 資訊
+            (total === 0 )? localStorage.removeItem("billList", JSON.stringify(billList)) : '';
+        
+}
+
 
         // 清空購物車按鈕 & 小計欄位也會消失
         $(document).ready(function() {
@@ -149,16 +183,29 @@ function closeNav() {
         });
 
 
-    
+
+
     // 按鈕 + , 增加1個項目
     $(document).on('click', '.btn-increment-sm', function(){
             var nweID = parseInt($(this).closest('li').attr('id'));
             var cartList = JSON.parse(localStorage.getItem("goods")) || [];
+            var productInStock = parseInt($(this).next().text());
+            console.log(productInStock);
         
             var existingItem = cartList.find(item => item.id === nweID);
-            if (existingItem) {
+            if (existingItem.num < productInStock) {            // 數量不超過庫存數判斷
                 existingItem.num++;
-                parseInt($(this).prev().text(existingItem.num));    //更新數字
+                parseInt($(this).prev().text(existingItem.num)); // 更新数字
+            } else {
+                $('<div>目前商品庫存量不足，若需購買更多的商品數量，請洽服務人員</div>').dialog({
+                    title: '提示',
+                    modal: true,
+                    buttons: {
+                        '确定': function() {
+                            $(this).dialog('close');
+                        }
+                    }
+                });
             }
 
         // 將資料存回 localStorage
