@@ -411,6 +411,18 @@
     margin: 10px 0px;
     margin-left: auto;
 }
+.TCText{
+    color: var(--, #3F3A3A);
+
+    /* 電腦_內文_細_中文 */
+    font-family: "Noto Sans TC";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 157.143% */
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
 .form-control{
     display: flex;
     height: 40px;
@@ -440,6 +452,17 @@ select,option{
     align-items: center;
     margin-bottom: 10px;
 }
+/* 關於同意條款的排版 */
+.form-TC{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-TC>input {
+    margin-right: 10px; 
+    flex-shrink: 0; 
+}
+
 
 /* 設定響應式時的元素距離 */
 @media screen and (max-width:768px) {
@@ -451,7 +474,5 @@ select,option{
         margin-top: 10px;
         margin-bottom: 10px;
     }
-
-
 
 }
