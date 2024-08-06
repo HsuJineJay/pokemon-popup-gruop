@@ -15,22 +15,29 @@ $(document).ready(function(){
 //------------------------交易明細------------------------
 $(document).ready(function(){
 
-    $('#submitOderList').click(function(){
+    $('#submitOderList').click(async function(event){
+        event.preventDefault();
         
-        // 收集所有表单数据
-        var formData = $('#orderForm').serializeArray();
-        console.log(formData);
+        // 收集訂單明細
+        let formData = $('#orderForm').serializeArray();
 
+        // 分析訂單明細
+        let formDataArray = formData;
+        let orderDate = formatDate(new Date());
 
-        // 原始表单数据数组
-        const formDataArray = formData;
-        const orderDate = formatDate(new Date());
+        // 商品訂單取值
+        let productArray = JSON.parse(localStorage.getItem("goods")) || [];
+        let orderProductID = productArray.map(item => item.id).join(',');
+        console.log(orderProductID);
+        let productQ = productArray.map(item => item.num).join(',');
+        // console.log(typeof productQ);
+
 
         // 轉換及定義data格式
         const data = {
             orderExist: 1,
-            // orderProductID: '1,2', // 示例值
-            // productQ: '4,5', // 示例值
+            orderProductID:orderProductID, // 示例值
+            productQ: productQ, // 示例值
             buyerName: '',
             buyerEmail: '',
             buyerTel: '',
@@ -44,7 +51,7 @@ $(document).ready(function(){
             orderStatus: 1 // 示例值
         };
 
-        
+        // 訂單時間取值
         function formatDate(date) {
             const year = date.getFullYear();
             const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -56,7 +63,35 @@ $(document).ready(function(){
             return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
         }
 
-        // 分析 Array 並填入 data
+        // 地址取值
+        let addressParts = {
+            zipcode: '',
+            city: '',
+            town: '',
+            buyerAddr: ''
+        };
+        
+        $.each(formDataArray, function(index, item) {
+            switch (item.name) {
+                case 'zipcode':
+                    addressParts.zipcode = item.value;
+                    break;
+                case 'city':
+                    addressParts.city = item.value;
+                    break;
+                case 'town':
+                    addressParts.town = item.value;
+                    break;
+                case 'buyerAddr':
+                    addressParts.buyerAddr = item.value;
+                    break;
+            }
+        });
+        
+        // 格式化地址
+        data.buyerAddr = `${addressParts.zipcode}${addressParts.city}${addressParts.town}${addressParts.buyerAddr}`;
+
+        // 分析其他欄位 Array 並填入 data
         formDataArray.forEach(item => {
             switch(item.name) {
                 case 'buyerName':
@@ -68,12 +103,6 @@ $(document).ready(function(){
                 case 'buyerEmail':
                     data.buyerEmail = item.value;
                     break;
-                case 'zipcode':
-                case 'city':
-                case 'town':
-                case 'buyerAddr':
-                    data.buyerAddr += item.value; // 合併地址
-                    break;
                 case 'transportNote':
                     data.transportNote = item.value;
                     break;
@@ -81,18 +110,10 @@ $(document).ready(function(){
                     data.receiptType = item.value;
                     break;
                 case 'taxIDNumber':
-                    if (data.receiptType === '三聯式') {
-                        data.taxIDNumber = item.value;
-                    } else {
-                        data.taxIDNumber = ''; // 二聯式时，設為空值
-                    }
+                    ( data.receiptType === '三聯式' )? data.taxIDNumber = item.value : data.taxIDNumber = '';
                     break;
                 case 'companyTitle':
-                    if (data.receiptType === '三聯式') {
-                        data.companyTitle = item.value;
-                    } else {
-                        data.companyTitle = ''; // 二聯式时，設為空值
-                    }
+                    ( data.receiptType === '三聯式' )? data.companyTitle = item.value : data.companyTitle = '';
                     break;
                 case 'payment':
                     if (item.value !== '客戶同意條款') {
@@ -105,49 +126,39 @@ $(document).ready(function(){
         
 
         console.log(data);
-        
+
+// 訂單明細 AJAX 傳送 ----------------------------------------------->
+        try {
+            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/orderList/orderList.php';
+            const response = await $.ajax({
+                url: apiUrl,
+                method: 'POST',
+                data: data,
+            });
+
+            // 成功處理
+            alert('成功送出表單');
+            console.log(response);
+            // localStorage.removeItem("goods");
+            // window.location.href = 'goods.html';
+        } catch (error) {
+            // 失敗處理
+            console.error('錯誤訊息:', error);
+        }
     });
 
 })
+
+
+
+
 
 // $('#oPostInsert').click(function () {
 //     let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/orderList/orderList.php' 
 //     $.ajax({
 //         url: apiUrl,
 //         method: 'Post',
-//         data: {
-//         "orderExist":0,
-//         "orderProductID":'1,2',
-//         "productQ":'4,5',
-//         "buyerName":"Bob",
-//         "buyerEmail":"Bob@gmail.com",
-//         "buyerTel":"0912123123",
-//         "buyerAddr":"台中市台中公園",
-//         "transportNote":"",
-//         "orderDate":"2024-07-18 00:10:00",
-//         "payment":"現金",
-//         "receiptType":"三聯式",
-//         "companyTitle":"company",
-//         "taxIDNumber":"12341234",
-//         "orderStatus":1
-
-
-        // 0:{name: 'Delivery', value: '貨到付款'}
-        // 1:{name: 'payment', value: '貨到付款'}
-        // 2:{name: 'buyerNames', value: '王小明'}
-        // 3:{name: 'buyerTel', value: '0911111111'}
-        // 4:{name: 'buyerEmail', value: 'abc@yahoo.com.tw'}
-        // 5:{name: 'city', value: '臺北市'}
-        // 6:{name: 'town', value: '大同區'}
-        // 7:{name: 'zipcode', value: '103'}
-        // 8:{name: 'buyerAddr', value: '中正路5號1樓'}
-        // 9:{name: 'transportNote', value: '請按電鈴'}
-        // 10:{name: 'receiptType', value: '三聯式'}
-        // 11:{name: 'taxIDNumber', value: '84690000'}
-        // 12:{name: 'companyTitle', value: '快樂股份有限公司'}
-        // 13:{name: 'payment', value: '客戶同意條款'}
-
-//         },
+//         data: data,
 //         success: function (dataStr) {
 //             $('#result').html(dataStr)
 //         }
