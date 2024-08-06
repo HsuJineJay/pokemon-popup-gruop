@@ -15,16 +15,17 @@ window.onload = function(){
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({ account, password })
         });
     
         const data = await response.json();
-        // console.log(data);
+
         if (data.success) {
             window.location.href = '../overAll.html';
         } else {
-            // alert('Login failed');
-            $('#inputContent').prepend(`<div id="loginWrong">帳號或密碼錯誤</div>`)
+            console.log(data.success);
+            $('#loginWrongDiv').html(`<div id="loginWrong">帳號或密碼錯誤</div>`)
         }
     });
     

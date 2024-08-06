@@ -1,7 +1,9 @@
 <?php
-header("Access-Control-Allow-Origin: * ");
+header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']} ");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS");
-header('Content-Type: application/json');
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Credentials: true");
+header("Content-Type: application/json; charset=UTF-8");
 
 session_start();
 
@@ -35,7 +37,9 @@ while ($row = $result->fetch_assoc()) {
 // 應該從資料庫中檢查用戶
 if ($check) {
     $_SESSION['account'] = $account;
-    echo json_encode(['success' => true]);
+    // echo $account;
+    // var_dump($account);
+    echo json_encode(['success' => true ]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid credentials']);
 }
