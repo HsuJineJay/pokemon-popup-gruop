@@ -31,25 +31,28 @@
     letter-spacing: 2px;
     /* border: 3px solid black; */
 }
-#inputContent{
-    /* height: 100%; */
-    /* padding: 10px; */
-
-    /* border: 1px solid black; */
-}
 .input{
     width: 280px;
     height: 40px;
     border-radius: 20px;
     border: 0cap;
     margin: 16px 60px;
+    padding-left: 20px;
 }
 .input::placeholder{
     color: var(--black);
     /* border: 1px solid black; */
-    padding-left: 20px;
+    padding-left: 10px;
     font-weight: 600;
     
+}
+#loginWrong{
+    margin: auto;
+    width: 150px;
+    text-align: center;
+    border-radius: 10px;
+    color: var(--white);
+    background-color: var(--red);
 }
 #buttonDiv{
     /* border: 1px black solid; */

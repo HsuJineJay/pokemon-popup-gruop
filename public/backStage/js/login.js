@@ -23,7 +23,8 @@ window.onload = function(){
         if (data.success) {
             window.location.href = '../overAll.html';
         } else {
-            alert('Login failed');
+            // alert('Login failed');
+            $('#inputContent').prepend(`<div id="loginWrong">帳號或密碼錯誤</div>`)
         }
     });
     

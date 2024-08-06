@@ -68,8 +68,8 @@ function getDataCreateTable(condition, place) {
                 }else{
                     result += `
                         <td>
+                        <button title='編輯資料' class='edit tableBn' onclick='edit(this)'></button>
                             <button title='改成有效資料' class='on tableBn' onclick='on(this)'></button>
-                            <button title='編輯資料' class='edit tableBn' onclick='edit(this)'></button>
                         </td>
                     `;
                     
@@ -102,10 +102,22 @@ function getData(condition) {
     });
 }
 function postData() {
-    console.log('post');
+    // console.log('post');
     let orderExistCreate = $('#orderExistCreate').val()
+
     let orderProductIDCreate = $('#orderProductIDCreate').val()
+    $('.orderProductIDCreate').each(function(index, elem ){
+        // console.log(index,' ',elem);
+        orderProductIDCreate += ','+elem.value
+    })
+    // console.log(orderProductIDCreate);
     let productQCreate = $('#productQCreate').val()
+    $('.productQCreate').each(function(index, elem ){
+        // console.log(index,' ',elem);
+        productQCreate += ','+elem.value
+    })
+    // console.log(productQCreate);
+
     let buyerNameCreate = $('#buyerNameCreate').val()
     let buyerEmailCreate = $('#buyerEmailCreate').val()
     let buyerTelCreate = $('#buyerTelCreate').val()
@@ -393,24 +405,26 @@ function deleteBN(elem) {
 
 function moreDiv(place){
     $(place).append(`
-            
     <div class="orderProductCreateDiv divMore">
         <div class="UILittleDiv row">
             <div class="UISpan col-3">產品ID</div>
             <div class="col-9">
-                <input class="UIInput TESTorderProductID" type="text" id="orderProductIDCreate" >
+                <input class="UIInput orderProductIDCreate TESTorderProductID" type="text"  >
             </div>
         </div>
-    <div class="UILittleDiv row">
-        <div class="UISpan col-3">產品數量</div>
-        <div class="col-9">
-            <input class="UIInput TESTproductQ" type="text" id="productQCreate">
+        <div class="UILittleDiv row">
+            <div class="UISpan col-3">產品數量</div>
+            <div class="col-9">
+                <input class="UIInput productQCreate TESTproductQ" type="text" >
+            </div>
         </div>
+        <button class="plusProduct plusButtonMore" onclick="moreDiv('#orderProductCreateBigDiv')"></button>
+        <button class="minusButtonMore" onclick="lessDiv(this)"></button>
     </div>
-    <button class="plusProduct plusButtonMore" onclick="moreDiv('#orderProductCreateBigDiv')"></button>
-    <button class="minusButtonMore"></button>
-</div>
-`)
+    `)
+}
+function lessDiv(elem){
+    $(elem).parent().detach()
 }
 
 
@@ -536,5 +550,6 @@ window.onload = function () {
     $('.plusProduct').click(function(){
         moreDiv('#orderProductCreateBigDiv');
     })
+
 
 }
