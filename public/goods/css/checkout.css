@@ -270,8 +270,11 @@
     letter-spacing: 1.3px;
     text-transform: uppercase;
 }
+    /* 響應式 */
+    /* 商品類別-左側 在765px以下消失 */
 
-@media (max-width: 768px) {
+
+@media screen and (max-width:768px) {
     .MyText1{
         font-size: 16px;
     }
@@ -301,4 +304,154 @@
     .Subtotal-card{
         flex-direction:column-reverse;
     }
+}
+
+/* 訂單內容 */
+
+/* 框架 - Ttitle */
+.detailtitle{
+
+    border-radius: 10px 10px 0px 0px;
+    padding: 15px 30px;
+    align-items: center;
+    align-self: stretch;
+    background: #3F3A3A;
+}
+
+/* 框架文字 - Ttitle */
+.detailtitleText{
+    color: #FFF;
+
+    /* 電腦_重要資訊_中文 */
+    font-family: "Noto Sans TC";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+}
+/* 框架 - List */
+.detaillist{
+    display: flex;
+    border-radius: 0px 0px 10px 10px;
+    padding: 30px;
+    align-items: center;
+    align-self: stretch;
+    background: #F0F0F1;
+}
+
+/* 框架文字 - List */
+.detailListText{
+    color: #3F3A3A;
+
+    /* 電腦_內文_粗_中文 */
+    font-family: "Noto Sans TC";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    margin: 0px 10px;
+    white-space:nowrap;
+}
+
+/* radio 預設未點選的樣式 */
+.detailRadio{
+    appearance: none;
+    outline: none;
+    /* 新增樣式 */
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: static;
+    background: url('../images/checkboxoff.png');
+    background-size: cover;
+}
+
+.detailRadio:checked{
+    background: url('../images/checkboxno.png');
+    background-size: cover;
+}
+
+.detailRadio:checked + label{
+    color: #FF6542;
+}
+
+/* 文字框樣式 */
+.detailListGroupText-A{
+    height: 40px;
+    width: 100%;
+    align-self: stretch;
+    border-radius: 5px;
+    border: 1px solid #CBCBBD;
+    background: #FFF;
+    margin: 5px 10px 0 0;
+}
+.detailListGroupText-B{
+    height: 40px;
+    width: 100%;
+    align-self: stretch;
+    border-radius: 5px;
+    border: 1px solid #CBCBBD;
+    background: #FFF;
+    margin: 10px 0px;
+    margin-left: auto;
+}
+.detailListGroupText-C{
+    height: 120px;
+    width: 100%;
+    align-self: stretch;
+    border-radius: 5px;
+    border: 1px solid #CBCBBD;
+    background: #FFF;
+    margin: 10px 0px;
+    margin-left: auto;
+}
+.form-control{
+    display: flex;
+    height: 40px;
+    margin: 10px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    border-radius: 5px;
+    border: 1px solid var(--_, #CBCBBD);
+    background: #FFF;
+    font-family: "Noto Sans TC";
+}
+select,option{
+    font: "Noto Sans TC";
+}
+
+/* 關於發票的排版設定 */
+.form-invoice,.form-addr {
+    display: flex;    
+    align-content:center;
+}
+
+/* 關於地址的排版 */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* 設定響應式時的元素距離 */
+@media screen and (max-width:768px) {
+    .form-invoice, .form-addr {
+        display: block;
+
+        }
+    .form-invoice div{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+
+
 }
