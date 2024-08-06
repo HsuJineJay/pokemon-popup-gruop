@@ -1429,6 +1429,12 @@ visibility: hidden;
 
 }
 
+.bignameIcon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* 名字的背景容器 */
 .nameIconCon>img{
  width:40vw ;    
@@ -1517,7 +1523,7 @@ max-width: 45px;
 }
 
 /* 標籤們 */
-#Tag1,#Tag2,#Tag3,#Tag4,#Tag5 {
+#Tag0,#Tag1,#Tag2,#Tag3,#Tag4 {
 
     width: fit-content;
     height: 4.5vh;

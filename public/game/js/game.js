@@ -12,7 +12,7 @@ $(document).ready(function () {
     let get2
     let get3
 
-    
+
 
 
     // 音樂音量
@@ -74,23 +74,23 @@ $(document).ready(function () {
         , { quesNumber: "Q7", questionLine1: ' 可達鴨對你使出念力抬起你....', questionLine2: '你認為你會被送去....', text: '可達鴨發現你了！', option: ['真新鎮 ', '大木博士的研究所', '探望常磐森林的比雕'] }]
 
 
-        // 結果屬性陣列=============
-        const everyAttrText = [
-            //0百變怪 
-            { attrStament: '？？？？？？？', tagContent: ['?????', '????', '?????', '????', '???'],representiveImg: './images/result_Images/百變怪.webp', representiveName:'百變怪' },
-            //1超能力系
-            { attrStament: '超能力', tagContent: ['#敏銳的洞察力', '#智慧的神', '#難以捉摸', '#好孤單', '#本質派'], representiveImg: './images/result_Images/果然翁.webp', representiveName:'果然翁', bestfriendText: ['水<br>屬<br>性', '火<br>屬<br>性'], bestfriendImg: ['./images/result_Images/傑尼龜.webp', './images/result_Images/小火龍.webp'] },
-            //2岩屬性
-            { attrStament: '岩屬性', tagContent: ['#無法撼動的保守派', '#值得信賴的', '#耐心', '#穩重', '#堅韌不拔'], representiveImg: './images/result_Images/小拳石.webp', representiveName:'小拳石', bestfriendText: ['超<br>能<br>力'], bestfriendImg: ['./images/result_Images/果然翁.webp'], badfriendText: ['草<br>屬<br>性', '水<br>屬<br>性'], badfriendImg: ['./images/result_Images/傑尼龜.webp', './images/result_Images/菊草葉.webp'] },
-            //3草屬性
-            { attrStament: '草屬性', tagContent: ['#喜歡與大自然接觸', '#正能量大師', '#充滿活力', '#善於計劃', '#樂於助人'], representiveImg: './images/result_Images/菊草葉.webp', representiveName:'菊草葉', bestfriendText: ['雷<br>屬<br>性'], bestfriendImg: ['./images/result_Images/皮卡丘.webp'], badfriendText: ['岩<br>屬<br>性', '火<br>屬<br>性'], badfriendImg: ['./images/result_Images/小拳石.webp', './images/result_Images/小火龍.webp'] },
-            //4雷屬性
-            { attrStament: '雷屬性', tagContent: ['#偏愛獨自完成任務', '#自信心combo', '#反應迅速', '#頭腦靈活', '#富有創造力'], representiveImg: './images/result_Images/皮卡丘.webp', representiveName:'皮卡丘', bestfriendText: ['草<br>屬<br>性', '火<br>屬<br>性'], bestfriendImg: ['./images/result_Images/菊草葉.webp', './images/result_Images/小火龍.webp'], badfriendText: ['水<br>屬<br>性'], badfriendImg: ['./images/result_Images/傑尼龜.webp'] },
-            //5水屬性
-            { attrStament: '水屬性', tagContent: ['#性格溫和', '#包容力MAX達人', '#適應力強', '#高敏感', '#同理心'], representiveImg: './images/result_Images/傑尼龜.webp', representiveName:'傑尼龜', bestfriendText: ['超<br>能<br>力'], bestfriendImg: ['./images/result_Images/果然翁.webp'], badfriendText: ['雷<br>屬<br>性', '火<br>屬<br>性'], badfriendImg: ['./images/result_Images/皮卡丘.webp', './images/result_Images/小火龍.webp'] },
-            //6火屬性
-            { attrStament: '火屬性', tagContent: ['#冒險家精神', '#天生樂觀派', '#領導者', '#充滿熱情', '#勇敢向前衝'], representiveImg: './images/result_Images/小火龍.webp', representiveName:'小火龍', bestfriendText: ['雷<br>屬<br>性'], bestfriendImg: ['./images/result_Images/皮卡丘.webp'], badfriendText: ['草<br>屬<br>性', '岩<br>屬<br>性'], badfriendImg: ['./images/result_Images/菊草葉.webp', './images/result_Images/小拳石.webp'] }
-        ]
+    // 結果屬性陣列=============
+    const everyAttrText = [
+        //0百變怪 
+        { attrStament: '屬於??????????', tagContent: ['????????', '???????', '????????', '???????????', '????????'], representiveImg: './images/result_Images/百變怪.webp', representiveName: '百變怪' },
+        //1超能力系
+        { attrStament: '屬於超能力寶可夢', tagContent: ['#敏銳的洞察力', '#智慧的神', '#難以捉摸', '#好孤單', '#本質派'], representiveImg: './images/result_Images/果然翁.webp', representiveName: '果然翁', bestfriendText: ['水<br>屬<br>性', '火<br>屬<br>性'], bestfriendImg: ['./images/result_Images/傑尼龜.webp', './images/result_Images/小火龍.webp'] },
+        //2岩屬性
+        { attrStament: '屬於岩屬性寶可夢', tagContent: ['#無法撼動的保守派', '#值得信賴的', '#耐心', '#穩重的悶騷', '#堅韌不拔'], representiveImg: './images/result_Images/小拳石.webp', representiveName: '小拳石', bestfriendText: ['超<br>能<br>力'], bestfriendImg: ['./images/result_Images/果然翁.webp'], badfriendText: ['草<br>屬<br>性', '水<br>屬<br>性'], badfriendImg: ['./images/result_Images/傑尼龜.webp', './images/result_Images/菊草葉.webp'] },
+        //3草屬性
+        { attrStament: '屬於草屬性寶可夢', tagContent: ['#喜歡與大自然接觸', '#正能量大師', '#充滿活力', '#善於計劃', '#樂於助人'], representiveImg: './images/result_Images/菊草葉.webp', representiveName: '菊草葉', bestfriendText: ['雷<br>屬<br>性'], bestfriendImg: ['./images/result_Images/皮卡丘.webp'], badfriendText: ['岩<br>屬<br>性', '火<br>屬<br>性'], badfriendImg: ['./images/result_Images/小拳石.webp', './images/result_Images/小火龍.webp'] },
+        //4雷屬性
+        { attrStament: '屬於雷屬性寶可夢', tagContent: ['#偏愛獨自完成任務', '#自信心combo', '#反應迅速', '#頭腦靈活', '#富有創造力'], representiveImg: './images/result_Images/皮卡丘.webp', representiveName: '皮卡丘', bestfriendText: ['草<br>屬<br>性', '火<br>屬<br>性'], bestfriendImg: ['./images/result_Images/菊草葉.webp', './images/result_Images/小火龍.webp'], badfriendText: ['水<br>屬<br>性'], badfriendImg: ['./images/result_Images/傑尼龜.webp'] },
+        //5水屬性
+        { attrStament: '屬於水屬性寶可夢', tagContent: ['#性格溫和', '#包容力MAX達人', '#適應力強', '#高敏感', '#同理心'], representiveImg: './images/result_Images/傑尼龜.webp', representiveName: '傑尼龜', bestfriendText: ['超<br>能<br>力'], bestfriendImg: ['./images/result_Images/果然翁.webp'], badfriendText: ['雷<br>屬<br>性', '火<br>屬<br>性'], badfriendImg: ['./images/result_Images/皮卡丘.webp', './images/result_Images/小火龍.webp'] },
+        //6火屬性
+        { attrStament: '屬於火屬性寶可夢', tagContent: ['#冒險家精神', '#天生樂觀派', '#領導者', '#充滿熱情', '#勇敢向前衝'], representiveImg: './images/result_Images/小火龍.webp', representiveName: '小火龍', bestfriendText: ['雷<br>屬<br>性'], bestfriendImg: ['./images/result_Images/皮卡丘.webp'], badfriendText: ['草<br>屬<br>性', '岩<br>屬<br>性'], badfriendImg: ['./images/result_Images/菊草葉.webp', './images/result_Images/小拳石.webp'] }
+    ]
 
 
 
@@ -642,11 +642,6 @@ $(document).ready(function () {
 
                         <!-- 標籤容器 -->
                         <div class="TagCon">
-                            <div id="Tag1">#大蜀好好吃</div>
-                            <div id="Tag2">#大蜀好好吃</div>
-                            <div id="Tag3">#大好好吃</div>
-                            <div id="Tag4">#好好吃</div>
-                            <div id="Tag5">#大暑大蜀好好吃</div>
                         </div>
 
                     </div>
@@ -659,7 +654,7 @@ $(document).ready(function () {
 
                         <!-- 代表寶可夢容器 -->
                         <div class="nameandattrContainer">
-                            <div class="pokeCon"><img src="./images/result_Images/${everyAttrText[0].representiveName}.webp" alt=""></div>
+                            <div class="pokeCon"><img src="" alt=""></div>
 
                             <div class="represent_Container">
 
@@ -682,21 +677,14 @@ $(document).ready(function () {
                             <div class="bad_friend">
                                 <h6>相剋<br>相殺</h6>
                                 <div class="friend_figure_container">
-                                    <figure>
-                                        <p></p>
-                                        <img src="">
-                                    </figure>
+                                   
                                     
                                 </div>
                             </div>
                             <!-- 最佳拍檔 -->
                             <div class="best_friend">
-                                <h6>最佳<br>拍檔</h6>
+                               <h6>最佳<br>拍檔</h6>
                                 <div class="friend_figure_container">
-                                    <figure>
-                                        <p></p>
-                                        <img src="">
-                                    </figure>
                                 </div>
                             </div>
                         </div>
@@ -983,14 +971,8 @@ $(document).ready(function () {
 
 
     }
-
-    //得出結果 根據得分判斷結果
-    async function showResult() {
-
-
-        //判斷答題是否完成 答案長度 ＝ 題目長度
-        if (userSelect.length == allQuestion.length) {
-            // 印出結果頁公版容器
+            // ============顯示結果函式
+            // 印出結果頁公版容器============
             // 顯示聲音按鈕
             function showresultCon() {
                 $('#soundContainer').css('visibility', 'visible')
@@ -1001,23 +983,264 @@ $(document).ready(function () {
 
                 //判斷各屬性得分條件
                 if (get3 == 2) {
+                    //索引值0=======百變怪
+                    //屬性描述=======
+                    $('.attrtextContent').html(everyAttrText[0].attrStament)
+                    //標籤內容==========
+                    for (let i = 0; i < 5; i++) {
+                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[0].tagContent[i]}</div>
+                        `)
+                    }
+                    //代表寶可夢圖片======
+                    $('.pokeCon img').attr('src', `${everyAttrText[0].representiveImg}`)
+                    //代表寶可夢名字======
+                    $('.represent_name h4').html(everyAttrText[0].representiveName)
 
+                    // 隱藏相剋相殺 最佳拍檔容器
+                    $('.friend_container').css('visibility', 'hidden')
                     console.log('你是：百變怪')
+
+
                 } else if (get0 == 7 || get1 == 7 || get2 == 7) {
+                    //索引值1=======超能力系
+                    //屬性描述=======
+                    $('.attrtextContent').html(everyAttrText[1].attrStament)
+                    //標籤內容==========
+                    for (let i = 0; i < 5; i++) {
+                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[1].tagContent[i]}</div>
+                        `)
+                    }
+                    //代表寶可夢圖片======
+                    $('.pokeCon img').attr('src', `${everyAttrText[1].representiveImg}`)
+                    //代表寶可夢名字======
+                    $('.represent_name h4').html(everyAttrText[1].representiveName)
+                    //相剋相殺圖片跟文字清空========
+                    $('.bad_friend').remove()
+                    //最佳拍檔圖片跟文字========
+                    for (let i = 0; i < everyAttrText[1].bestfriendImg.length; i++) {
+                        $('.best_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[1].bestfriendText[i]}</p>
+                                        <img src="${everyAttrText[1].bestfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
+                    //最佳拍檔畫面置中
+                    $('.friend_container').css('justify-content', 'center')
+
                     console.log('你是：超能力屬性')
+
+
                 } else if (get0 == 6 || get1 == 6 || get2 == 6) {
+                    //索引值2=======岩屬性
+                    //屬性描述=======
+                    $('.attrtextContent').html(everyAttrText[2].attrStament)
+                    //標籤內容==========
+                    for (let i = 0; i < 5; i++) {
+                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[2].tagContent[i]}</div>
+                        `)
+                    }
+                    //代表寶可夢圖片======
+                    $('.pokeCon img').attr('src', `${everyAttrText[2].representiveImg}`)
+                    //代表寶可夢名字======
+                    $('.represent_name h4').html(everyAttrText[2].representiveName)
+                    //相愛相殺圖片跟文字========
+                    for (let i = 0; i < everyAttrText[2].badfriendImg.length; i++) {
+                        $('.bad_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[2].badfriendText[i]}</p>
+                                        <img src="${everyAttrText[2].badfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
+                    //最佳拍檔圖片跟文字========
+                    for (let i = 0; i < everyAttrText[2].bestfriendImg.length; i++) {
+                        $('.best_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[2].bestfriendText[i]}</p>
+                                        <img src="${everyAttrText[2].bestfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
+
+
+
                     console.log('你是：岩屬性')
+
+
                 } else if (get0 == 5 || get1 == 5 || get2 == 5) {
+                    //索引值3=======草屬性
+                    //屬性描述=======
+                    $('.attrtextContent').html(everyAttrText[3].attrStament)
+                    //標籤內容==========
+                    for (let i = 0; i < 5; i++) {
+                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[3].tagContent[i]}</div>
+                        `)
+                    }
+                    //代表寶可夢圖片======
+                    $('.pokeCon img').attr('src', `${everyAttrText[3].representiveImg}`)
+                    //代表寶可夢名字======
+                    $('.represent_name h4').html(everyAttrText[3].representiveName)
+                    //相愛相殺圖片跟文字========
+                    for (let i = 0; i < everyAttrText[3].badfriendImg.length; i++) {
+                        $('.bad_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[3].badfriendText[i]}</p>
+                                        <img src="${everyAttrText[3].badfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
+                    //最佳拍檔圖片跟文字========
+                    for (let i = 0; i < everyAttrText[3].bestfriendImg.length; i++) {
+                        $('.best_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[3].bestfriendText[i]}</p>
+                                        <img src="${everyAttrText[3].bestfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
                     console.log('你是：草屬性')
+
                 } else if (get0 == 4 || get1 == 4 || get2 == 4) {
+                    //索引值4=======雷屬性
+                    //屬性描述=======
+                    $('.attrtextContent').html(everyAttrText[4].attrStament)
+                    //標籤內容==========
+                    for (let i = 0; i < 5; i++) {
+                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[4].tagContent[i]}</div>
+                        `)
+                    }
+                    //代表寶可夢圖片======
+                    $('.pokeCon img').attr('src', `${everyAttrText[4].representiveImg}`)
+                    //代表寶可夢名字======
+                    $('.represent_name h4').html(everyAttrText[4].representiveName)
+                    //相愛相殺圖片跟文字========
+                    for (let i = 0; i < everyAttrText[4].badfriendImg.length; i++) {
+                        $('.bad_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[4].badfriendText[i]}</p>
+                                        <img src="${everyAttrText[4].badfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
+                    //最佳拍檔圖片跟文字========
+                    for (let i = 0; i < everyAttrText[4].bestfriendImg.length; i++) {
+                        $('.best_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[4].bestfriendText[i]}</p>
+                                        <img src="${everyAttrText[4].bestfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
+
                     console.log('你是：雷屬性')
+
+
                 } else if (get0 == 3 || get1 == 3) {
+                    //索引值5=======水屬性
+                    //屬性描述=======
+                    $('.attrtextContent').html(everyAttrText[5].attrStament)
+                    //標籤內容==========
+                    for (let i = 0; i < 5; i++) {
+                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[5].tagContent[i]}</div>
+                        `)
+                    }
+                    //代表寶可夢圖片======
+                    $('.pokeCon img').attr('src', `${everyAttrText[5].representiveImg}`)
+                    //代表寶可夢名字======
+                    $('.represent_name h4').html(everyAttrText[5].representiveName)
+                    //相愛相殺圖片跟文字========
+                    for (let i = 0; i < everyAttrText[5].badfriendImg.length; i++) {
+                        $('.bad_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[5].badfriendText[i]}</p>
+                                        <img src="${everyAttrText[5].badfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
+                    //最佳拍檔圖片跟文字========
+                    for (let i = 0; i < everyAttrText[5].bestfriendImg.length; i++) {
+                        $('.best_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[5].bestfriendText[i]}</p>
+                                        <img src="${everyAttrText[5].bestfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
+
+
                     console.log('你是：水屬性')
+
                 } else {
+                    //索引值6=======火屬性
+                    //屬性描述=======
+                    $('.attrtextContent').html(everyAttrText[6].attrStament)
+                    //標籤內容==========
+                    for (let i = 0; i < 5; i++) {
+                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[6].tagContent[i]}</div>
+                        `)
+                    }
+                    //代表寶可夢圖片======
+                    $('.pokeCon img').attr('src', `${everyAttrText[6].representiveImg}`)
+                    //代表寶可夢名字======
+                    $('.represent_name h4').html(everyAttrText[6].representiveName)
+                    //相愛相殺圖片跟文字========
+                    for (let i = 0; i < everyAttrText[6].badfriendImg.length; i++) {
+                        $('.bad_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[6].badfriendText[i]}</p>
+                                        <img src="${everyAttrText[6].badfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
+                    //最佳拍檔圖片跟文字========
+                    for (let i = 0; i < everyAttrText[6].bestfriendImg.length; i++) {
+                        $('.best_friend div').append(` 
+                               
+                                    <figure>
+                                        <p>${everyAttrText[6].bestfriendText[i]}</p>
+                                        <img src="${everyAttrText[6].bestfriendImg[i]}">
+                                    </figure>
+                                
+                            `)
+                    }
+
                     console.log('你是：火屬性')
                 }
             }
-            //結果加載頁播放並清空後 顯示結果容器 
+
+
+    //=======================判斷答題是否完成 完成就顯示結果函式
+    async function showResult() {
+
+
+        //判斷答題是否完成 答案長度 ＝ 題目長度
+        if (userSelect.length == allQuestion.length) {
+
+            
+
+
+            //結果加載頁播放並清空後5601毫秒後 呼叫顯示結果 
             setTimeout(showresultCon, 5601)
         }
 
