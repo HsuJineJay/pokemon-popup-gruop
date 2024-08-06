@@ -6,6 +6,8 @@
     color: var(--white);
 }
 
+
+
 #conditionSelect1{
     display: none;
 }
@@ -44,4 +46,8 @@
 
 
 
+td:nth-last-of-type(4) {
+    /* display: block; */
+    text-align: center;
+}
 

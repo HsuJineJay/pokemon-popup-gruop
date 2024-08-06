@@ -20,30 +20,31 @@ function getDataCreateTable() {
         console.log('fail:', res.innerText);
     });
 
-    let request2 = $.ajax({
+    let requestCreatTable = $.ajax({
         url: apiUrlOverAll,
         method: 'GET',
         success: function (dataStr) {
             let data = JSON.parse(dataStr);
+            console.log(data);
             result += `
             <tr>
-                <td class="overAllTD">商品數量：${data[0].productNum}個</td>
+                <td class="overAllTD">商品數量：  ${data[0].productNum}  個</td>
             </tr>
             <tr>
                 <td class="overAllTD">
-                    交易筆數：100筆
+                    交易筆數：  ${data[1].orderNum}  筆
                 </td>
             </tr>
             <tr>
                 <td class="overAllTD">
-                    交易金額：100新台幣
+                    交易金額：  ${data[2].amount}  新台幣
                 </td>
             </tr>
             <tr>
-                <td class="overAllTD">咖啡廳預定總人數：${data[1].cafeBookingNum}人</td>
+                <td class="overAllTD">咖啡廳預定總人數：  ${data[3].cafeBookingNum}  人</td>
             </tr>
             <tr>
-                <td class="overAllTD">快閃店預定總人數：${data[2].storeBookingNum}人</td>
+                <td class="overAllTD">快閃店預定總人數：  ${data[4].storeBookingNum}  人</td>
             </tr>
             `;
         }
@@ -52,7 +53,7 @@ function getDataCreateTable() {
     });
 
     // 使用 Promise.all 等待兩個請求都完成後才更新頁面
-    Promise.all([request1, request2]).then(() => {
+    Promise.all([request1, requestCreatTable]).then(() => {
         $('#overAlltbody').html(result);
     });
 }

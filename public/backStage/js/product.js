@@ -80,8 +80,8 @@ function getDataCreateTable(condition, place) {
                 }else{
                     result += `
                         <td>
-                            <button title='改成有效資料' class='on tableBn' onclick='on(this)'></button>
                             <button title='編輯資料' class='edit tableBn' onclick='edit(this)'></button>
+                            <button title='改成有效資料' class='on tableBn' onclick='on(this)'></button>
                         </td>
                     `;
                     

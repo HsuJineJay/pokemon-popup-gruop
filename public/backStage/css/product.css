@@ -48,6 +48,12 @@
     background-size: cover;
 }
 
+td:nth-last-of-type(3) {
+    /* display: block; */
+
+    text-align: center;
+}
+
 
 
 

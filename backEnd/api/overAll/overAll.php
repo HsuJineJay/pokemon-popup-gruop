@@ -41,7 +41,15 @@ switch ($method) {
         
         executeSQL($query);
 
+        //-------------------------交易筆數orderNum
+        $query = "SELECT COUNT(transactionID) AS orderNum FROM (SELECT transactionID FROM orderlist GROUP BY transactionID ) as tmp";
 
+        executeSQL($query);
+
+        //-------------------------交易總金額amount
+        $query = "SELECT sum(orderAmount) as amount FROM orderlist";
+
+        executeSQL($query);
 
         //-------------------------咖啡廳預定人數cafeBookingNum
         // 構建基本 SQL 查詢

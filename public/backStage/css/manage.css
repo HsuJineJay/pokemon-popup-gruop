@@ -44,6 +44,9 @@ body{
     border-radius: 20px;
     border: 0cap;
 }
+#conditionInput{
+    padding-left: 10px;
+}
 
 .selectInput::placeholder {
     font-size: var(--p);
