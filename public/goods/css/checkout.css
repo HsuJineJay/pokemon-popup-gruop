@@ -457,6 +457,8 @@ select,option{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .form-TC>input {
     margin-right: 10px; 
@@ -474,5 +476,35 @@ select,option{
         margin-top: 10px;
         margin-bottom: 10px;
     }
+    .submitOderListbtn{
+        max-width: none;
+        width: 100%;
+    }
 
+}
+
+
+/* 提交訂單 btn */
+.submitOderListbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 60px;
+    border-radius: 1000px;
+    background: #FF6542;
+    max-width: 600px;
+    
+    color: #FFF;
+
+    /* 電腦_按鈕_中文 */
+    font-family: "Noto Sans TC";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+}
+.submitOderListbtn:hover{
+    color: #3F3A3A;
 }
