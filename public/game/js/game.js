@@ -971,54 +971,59 @@ $(document).ready(function () {
 
 
     }
-            // ============顯示結果函式
-            // 印出結果頁公版容器============
-            // 顯示聲音按鈕
-            function showresultCon() {
-                $('#soundContainer').css('visibility', 'visible')
-                $('.superBigWebCon').append(resultPageCon[0])
-                //印出使用者輸入的姓名 
-                $('#userNamePrint').html(userName)
+    // ============顯示結果函式
+    // 印出結果頁公版容器============
+
+    function showresultCon() {
+        // $('#soundContainer').css('visibility', 'visible')
+        $('.superBigWebCon').append(resultPageCon[0])
+        //印出使用者輸入的姓名 
+        $('#userNamePrint').html(userName)
 
 
-                //判斷各屬性得分條件
-                if (get3 == 2) {
-                    //索引值0=======百變怪
-                    //屬性描述=======
-                    $('.attrtextContent').html(everyAttrText[0].attrStament)
-                    //標籤內容==========
-                    for (let i = 0; i < 5; i++) {
-                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[0].tagContent[i]}</div>
+        //判斷各屬性得分條件
+        if (get3 == 2) {
+            //索引值0=======百變怪
+
+            //屬性描述=======
+            $('.attrtextContent').html(everyAttrText[0].attrStament)
+            //標籤內容==========
+            for (let i = 0; i < 5; i++) {
+                $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[0].tagContent[i]}</div>
                         `)
-                    }
-                    //代表寶可夢圖片======
-                    $('.pokeCon img').attr('src', `${everyAttrText[0].representiveImg}`)
-                    //代表寶可夢名字======
-                    $('.represent_name h4').html(everyAttrText[0].representiveName)
+            }
+            //代表寶可夢圖片======
+            $('.pokeCon img').attr('src', `${everyAttrText[0].representiveImg}`)
+            //代表寶可夢名字======
+            $('.represent_name h4').html(everyAttrText[0].representiveName)
 
-                    // 隱藏相剋相殺 最佳拍檔容器
-                    $('.friend_container').css('visibility', 'hidden')
-                    console.log('你是：百變怪')
+            // 隱藏相剋相殺 最佳拍檔容器
+            $('.friend_container').css('visibility', 'hidden')
+            //改變顏色=======
+            $('.attrtextContent,.represent_name h4,.friend_container h6').css('color', '#CBB9FA')
+            $('.TagCon div,.webBgContainerres').css('background-color', '#CBB9FA')
+
+            console.log('你是：百變怪')
 
 
-                } else if (get0 == 7 || get1 == 7 || get2 == 7) {
-                    //索引值1=======超能力系
-                    //屬性描述=======
-                    $('.attrtextContent').html(everyAttrText[1].attrStament)
-                    //標籤內容==========
-                    for (let i = 0; i < 5; i++) {
-                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[1].tagContent[i]}</div>
+        } else if (get0 == 7 || get1 == 7 || get2 == 7) {
+            //索引值1=======超能力系
+            //屬性描述=======
+            $('.attrtextContent').html(everyAttrText[1].attrStament)
+            //標籤內容==========
+            for (let i = 0; i < 5; i++) {
+                $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[1].tagContent[i]}</div>
                         `)
-                    }
-                    //代表寶可夢圖片======
-                    $('.pokeCon img').attr('src', `${everyAttrText[1].representiveImg}`)
-                    //代表寶可夢名字======
-                    $('.represent_name h4').html(everyAttrText[1].representiveName)
-                    //相剋相殺圖片跟文字清空========
-                    $('.bad_friend').remove()
-                    //最佳拍檔圖片跟文字========
-                    for (let i = 0; i < everyAttrText[1].bestfriendImg.length; i++) {
-                        $('.best_friend div').append(` 
+            }
+            //代表寶可夢圖片======
+            $('.pokeCon img').attr('src', `${everyAttrText[1].representiveImg}`)
+            //代表寶可夢名字======
+            $('.represent_name h4').html(everyAttrText[1].representiveName)
+            //相剋相殺圖片跟文字清空========
+            $('.bad_friend').remove()
+            //最佳拍檔圖片跟文字========
+            for (let i = 0; i < everyAttrText[1].bestfriendImg.length; i++) {
+                $('.best_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[1].bestfriendText[i]}</p>
@@ -1026,29 +1031,33 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
-                    //最佳拍檔畫面置中
-                    $('.friend_container').css('justify-content', 'center')
+            }
+            //最佳拍檔畫面置中
+            $('.friend_container').css('justify-content', 'center')
 
-                    console.log('你是：超能力屬性')
+            //改變顏色=======
+            $('.attrtextContent,.represent_name h4,.friend_container h6').css('color', '#6CDBFC')
+            $('.TagCon div,.webBgContainerres').css('background-color', '#FFC4FA')
+
+            console.log('你是：超能力屬性')
 
 
-                } else if (get0 == 6 || get1 == 6 || get2 == 6) {
-                    //索引值2=======岩屬性
-                    //屬性描述=======
-                    $('.attrtextContent').html(everyAttrText[2].attrStament)
-                    //標籤內容==========
-                    for (let i = 0; i < 5; i++) {
-                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[2].tagContent[i]}</div>
+        } else if (get0 == 6 || get1 == 6 || get2 == 6) {
+            //索引值2=======岩屬性
+            //屬性描述=======
+            $('.attrtextContent').html(everyAttrText[2].attrStament)
+            //標籤內容==========
+            for (let i = 0; i < 5; i++) {
+                $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[2].tagContent[i]}</div>
                         `)
-                    }
-                    //代表寶可夢圖片======
-                    $('.pokeCon img').attr('src', `${everyAttrText[2].representiveImg}`)
-                    //代表寶可夢名字======
-                    $('.represent_name h4').html(everyAttrText[2].representiveName)
-                    //相愛相殺圖片跟文字========
-                    for (let i = 0; i < everyAttrText[2].badfriendImg.length; i++) {
-                        $('.bad_friend div').append(` 
+            }
+            //代表寶可夢圖片======
+            $('.pokeCon img').attr('src', `${everyAttrText[2].representiveImg}`)
+            //代表寶可夢名字======
+            $('.represent_name h4').html(everyAttrText[2].representiveName)
+            //相愛相殺圖片跟文字========
+            for (let i = 0; i < everyAttrText[2].badfriendImg.length; i++) {
+                $('.bad_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[2].badfriendText[i]}</p>
@@ -1056,10 +1065,10 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
-                    //最佳拍檔圖片跟文字========
-                    for (let i = 0; i < everyAttrText[2].bestfriendImg.length; i++) {
-                        $('.best_friend div').append(` 
+            }
+            //最佳拍檔圖片跟文字========
+            for (let i = 0; i < everyAttrText[2].bestfriendImg.length; i++) {
+                $('.best_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[2].bestfriendText[i]}</p>
@@ -1067,29 +1076,33 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
+            }
+
+            //改變顏色=======
+            $('.attrtextContent,.represent_name h4,.friend_container h6').css('color', '#CBCBBD')
+            $('.TagCon div,.webBgContainerres').css('background-color', '#CBCBBD')
 
 
 
-                    console.log('你是：岩屬性')
+            console.log('你是：岩屬性')
 
 
-                } else if (get0 == 5 || get1 == 5 || get2 == 5) {
-                    //索引值3=======草屬性
-                    //屬性描述=======
-                    $('.attrtextContent').html(everyAttrText[3].attrStament)
-                    //標籤內容==========
-                    for (let i = 0; i < 5; i++) {
-                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[3].tagContent[i]}</div>
+        } else if (get0 == 5 || get1 == 5 || get2 == 5) {
+            //索引值3=======草屬性
+            //屬性描述=======
+            $('.attrtextContent').html(everyAttrText[3].attrStament)
+            //標籤內容==========
+            for (let i = 0; i < 5; i++) {
+                $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[3].tagContent[i]}</div>
                         `)
-                    }
-                    //代表寶可夢圖片======
-                    $('.pokeCon img').attr('src', `${everyAttrText[3].representiveImg}`)
-                    //代表寶可夢名字======
-                    $('.represent_name h4').html(everyAttrText[3].representiveName)
-                    //相愛相殺圖片跟文字========
-                    for (let i = 0; i < everyAttrText[3].badfriendImg.length; i++) {
-                        $('.bad_friend div').append(` 
+            }
+            //代表寶可夢圖片======
+            $('.pokeCon img').attr('src', `${everyAttrText[3].representiveImg}`)
+            //代表寶可夢名字======
+            $('.represent_name h4').html(everyAttrText[3].representiveName)
+            //相愛相殺圖片跟文字========
+            for (let i = 0; i < everyAttrText[3].badfriendImg.length; i++) {
+                $('.bad_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[3].badfriendText[i]}</p>
@@ -1097,10 +1110,10 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
-                    //最佳拍檔圖片跟文字========
-                    for (let i = 0; i < everyAttrText[3].bestfriendImg.length; i++) {
-                        $('.best_friend div').append(` 
+            }
+            //最佳拍檔圖片跟文字========
+            for (let i = 0; i < everyAttrText[3].bestfriendImg.length; i++) {
+                $('.best_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[3].bestfriendText[i]}</p>
@@ -1108,25 +1121,30 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
-                    console.log('你是：草屬性')
+            }
+            //改變顏色=======
+            $('.attrtextContent,.represent_name h4,.friend_container h6').css('color', '#E4EFB7')
+            $('.TagCon div,.webBgContainerres').css('background-color', '#E4EFB7')
 
-                } else if (get0 == 4 || get1 == 4 || get2 == 4) {
-                    //索引值4=======雷屬性
-                    //屬性描述=======
-                    $('.attrtextContent').html(everyAttrText[4].attrStament)
-                    //標籤內容==========
-                    for (let i = 0; i < 5; i++) {
-                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[4].tagContent[i]}</div>
+
+            console.log('你是：草屬性')
+
+        } else if (get0 == 4 || get1 == 4 || get2 == 4) {
+            //索引值4=======雷屬性
+            //屬性描述=======
+            $('.attrtextContent').html(everyAttrText[4].attrStament)
+            //標籤內容==========
+            for (let i = 0; i < 5; i++) {
+                $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[4].tagContent[i]}</div>
                         `)
-                    }
-                    //代表寶可夢圖片======
-                    $('.pokeCon img').attr('src', `${everyAttrText[4].representiveImg}`)
-                    //代表寶可夢名字======
-                    $('.represent_name h4').html(everyAttrText[4].representiveName)
-                    //相愛相殺圖片跟文字========
-                    for (let i = 0; i < everyAttrText[4].badfriendImg.length; i++) {
-                        $('.bad_friend div').append(` 
+            }
+            //代表寶可夢圖片======
+            $('.pokeCon img').attr('src', `${everyAttrText[4].representiveImg}`)
+            //代表寶可夢名字======
+            $('.represent_name h4').html(everyAttrText[4].representiveName)
+            //相愛相殺圖片跟文字========
+            for (let i = 0; i < everyAttrText[4].badfriendImg.length; i++) {
+                $('.bad_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[4].badfriendText[i]}</p>
@@ -1134,10 +1152,10 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
-                    //最佳拍檔圖片跟文字========
-                    for (let i = 0; i < everyAttrText[4].bestfriendImg.length; i++) {
-                        $('.best_friend div').append(` 
+            }
+            //最佳拍檔圖片跟文字========
+            for (let i = 0; i < everyAttrText[4].bestfriendImg.length; i++) {
+                $('.best_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[4].bestfriendText[i]}</p>
@@ -1145,27 +1163,32 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
+            }
 
-                    console.log('你是：雷屬性')
+            //改變顏色=======
+            $('.attrtextContent,.represent_name h4,.friend_container h6').css('color', '#FFE050')
+            $('.TagCon div,.webBgContainerres').css('background-color', '#FFE050')
 
 
-                } else if (get0 == 3 || get1 == 3) {
-                    //索引值5=======水屬性
-                    //屬性描述=======
-                    $('.attrtextContent').html(everyAttrText[5].attrStament)
-                    //標籤內容==========
-                    for (let i = 0; i < 5; i++) {
-                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[5].tagContent[i]}</div>
+            console.log('你是：雷屬性')
+
+
+        } else if (get0 == 3 || get1 == 3) {
+            //索引值5=======水屬性
+            //屬性描述=======
+            $('.attrtextContent').html(everyAttrText[5].attrStament)
+            //標籤內容==========
+            for (let i = 0; i < 5; i++) {
+                $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[5].tagContent[i]}</div>
                         `)
-                    }
-                    //代表寶可夢圖片======
-                    $('.pokeCon img').attr('src', `${everyAttrText[5].representiveImg}`)
-                    //代表寶可夢名字======
-                    $('.represent_name h4').html(everyAttrText[5].representiveName)
-                    //相愛相殺圖片跟文字========
-                    for (let i = 0; i < everyAttrText[5].badfriendImg.length; i++) {
-                        $('.bad_friend div').append(` 
+            }
+            //代表寶可夢圖片======
+            $('.pokeCon img').attr('src', `${everyAttrText[5].representiveImg}`)
+            //代表寶可夢名字======
+            $('.represent_name h4').html(everyAttrText[5].representiveName)
+            //相愛相殺圖片跟文字========
+            for (let i = 0; i < everyAttrText[5].badfriendImg.length; i++) {
+                $('.bad_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[5].badfriendText[i]}</p>
@@ -1173,10 +1196,10 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
-                    //最佳拍檔圖片跟文字========
-                    for (let i = 0; i < everyAttrText[5].bestfriendImg.length; i++) {
-                        $('.best_friend div').append(` 
+            }
+            //最佳拍檔圖片跟文字========
+            for (let i = 0; i < everyAttrText[5].bestfriendImg.length; i++) {
+                $('.best_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[5].bestfriendText[i]}</p>
@@ -1184,27 +1207,32 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
+            }
 
 
-                    console.log('你是：水屬性')
+            //改變顏色=======
+            $('.attrtextContent,.represent_name h4,.friend_container h6').css('color', '#92E2FB')
+            $('.TagCon div,.webBgContainerres').css('background-color', '#92E2FB')
 
-                } else {
-                    //索引值6=======火屬性
-                    //屬性描述=======
-                    $('.attrtextContent').html(everyAttrText[6].attrStament)
-                    //標籤內容==========
-                    for (let i = 0; i < 5; i++) {
-                        $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[6].tagContent[i]}</div>
+
+            console.log('你是：水屬性')
+
+        } else {
+            //索引值6=======火屬性
+            //屬性描述=======
+            $('.attrtextContent').html(everyAttrText[6].attrStament)
+            //標籤內容==========
+            for (let i = 0; i < 5; i++) {
+                $('.TagCon').append(`<div id="Tag${i}">${everyAttrText[6].tagContent[i]}</div>
                         `)
-                    }
-                    //代表寶可夢圖片======
-                    $('.pokeCon img').attr('src', `${everyAttrText[6].representiveImg}`)
-                    //代表寶可夢名字======
-                    $('.represent_name h4').html(everyAttrText[6].representiveName)
-                    //相愛相殺圖片跟文字========
-                    for (let i = 0; i < everyAttrText[6].badfriendImg.length; i++) {
-                        $('.bad_friend div').append(` 
+            }
+            //代表寶可夢圖片======
+            $('.pokeCon img').attr('src', `${everyAttrText[6].representiveImg}`)
+            //代表寶可夢名字======
+            $('.represent_name h4').html(everyAttrText[6].representiveName)
+            //相愛相殺圖片跟文字========
+            for (let i = 0; i < everyAttrText[6].badfriendImg.length; i++) {
+                $('.bad_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[6].badfriendText[i]}</p>
@@ -1212,10 +1240,10 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
-                    //最佳拍檔圖片跟文字========
-                    for (let i = 0; i < everyAttrText[6].bestfriendImg.length; i++) {
-                        $('.best_friend div').append(` 
+            }
+            //最佳拍檔圖片跟文字========
+            for (let i = 0; i < everyAttrText[6].bestfriendImg.length; i++) {
+                $('.best_friend div').append(` 
                                
                                     <figure>
                                         <p>${everyAttrText[6].bestfriendText[i]}</p>
@@ -1223,11 +1251,13 @@ $(document).ready(function () {
                                     </figure>
                                 
                             `)
-                    }
-
-                    console.log('你是：火屬性')
-                }
             }
+
+           
+
+            console.log('你是：火屬性')
+        }
+    }
 
 
     //=======================判斷答題是否完成 完成就顯示結果函式
@@ -1237,7 +1267,7 @@ $(document).ready(function () {
         //判斷答題是否完成 答案長度 ＝ 題目長度
         if (userSelect.length == allQuestion.length) {
 
-            
+
 
 
             //結果加載頁播放並清空後5601毫秒後 呼叫顯示結果 

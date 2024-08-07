@@ -1489,7 +1489,7 @@ max-width: 45px;
     font-family: "Noto Sans TC", sans-serif;
     font-size: 170%;
     font-weight: 600;
-    letter-spacing: 0.4vw;
+    letter-spacing: 0.3vw;
     margin: 0;
     display: flex;
     flex-wrap: nowrap;
@@ -1615,7 +1615,7 @@ max-width: 45px;
 .represent_name h4{
     color: #FFB700;
     font-family: "Noto Sans TC", sans-serif;
-    font-size: 160%;
+    font-size: 170%;
     font-weight: 700;
     letter-spacing: 0.3vw;
 }
