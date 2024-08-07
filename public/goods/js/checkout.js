@@ -1,7 +1,7 @@
 // 每秒訂單明細更新頁面
-// $(document).ready(function() {
-//     setInterval(sc_checkoutlist, 1000); 
-// });
+$(document).ready(function() {
+    setInterval(sc_checkoutlist, 1000); 
+});
 
 
     // 訂單明細隱藏/載入按鈕
@@ -215,5 +215,3 @@ $(document).ready(function(){
         window.location.href = 'product_all.html';
     });
 });
-
-            
