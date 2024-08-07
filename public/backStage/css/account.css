@@ -1,0 +1,37 @@
+
+
+
+#navAccount {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+/* thead,tbody,tr{
+    width: 100%;
+} */
+table{
+    width: 100%;
+    table-layout: fixed;
+}
+
+td:first-of-type{
+    width: 50px;
+}
+
+<<<<<<< Updated upstream
+#accountCreateTitle{
+    margin-bottom: 10px;
+}
+
+#accountRepeat{
+    margin: auto;
+    width: 150px;
+    text-align: center;
+    border-radius: 10px;
+    color: var(--white);
+    background-color: var(--red);
+}
+
+=======
+>>>>>>> Stashed changes
+

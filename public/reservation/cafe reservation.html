@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./_js/jquery-3.7.1.js"></script>
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>咖啡廳預定</h1>
+    <button id="cGetAll">cafe get all</button>
+    <button id="cGetWhere">cafe get 特定條件撈資料</button>
+    <button id="cPostInsert">cafe post 輸入資料</button>
+    <hr>
+    <h1>快閃店預定</h1>
+    <button id="sGetAll">store get all</button>
+    <button id="sGetWhere">store get 特定條件撈資料</button>
+    <button id="sPostInsert">store post 輸入資料</button>
+    <hr>
+
+    <div id="result"></div>
+    <script>
+        $('#cGetAll').click(function () {
+            let apiUrl = 'http://localhost/frontend/bigProject/root/backEnd/api/cafeBooking/cafeBooking.php'
+            $.ajax({
+                url: apiUrl,
+                method: 'GET',
+                success: function (dataStr) {
+                    data = JSON.parse(dataStr);
+                    console.log(data);
+                    result = `
+<table border="1">
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>data</td>
+        </tr>
+    </thead>
+    <tbody>
+        `;
+
+
+                    for (row of data) {
+                        console.log(row);
+                        result += `
+        <tr>
+            <td>${row['cafeBookingID']}</td>
+            <td>${row['bookingTimePeriod']}</td>
+            <td>${row['bookingName']}</td>
+            <td>${row['bookingTel']}</td>
+            `;
+                    }
+
+
+                    result += `
+        </tr>
+    </tbody>
+</table>
+`
+
+                    $('#result').html(result)
+
+                }
+            }).fail(function (z) {
+                console.log('fail:', z.innerText);
+            })
+        })
+        $('#cGetWhere').click(function () {
+            let apiUrl = 'http://localhost/frontend/bigProject/root/backEnd/api/cafeBooking/cafeBooking.php?bookingExist=1'
+            //以bookingExist（有效預定）篩出資料
+            $.ajax({
+                url: apiUrl,
+                method: 'GET',
+                success: function (dataStr) {
+                    data = JSON.parse(dataStr);
+                    console.log(data);
+                    result = `
+<table border="1">
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>data</td>
+        </tr>
+    </thead>
+    <tbody>
+        `;
+
+
+                    for (row of data) {
+                        console.log(row);
+                        result += `
+        <tr>
+            <td>${row['cafeBookingID']}</td>
+            <td>${row['bookingTimePeriod']}</td>
+            <td>${row['bookingName']}</td>
+            <td>${row['bookingTel']}</td>
+            `;
+                    }
+
+
+                    result += `
+        </tr>
+    </tbody>
+</table>
+`
+
+                    $('#result').html(result)
+
+                }
+            }).fail(function (z) {
+                console.log('fail:', z.innerText);
+            })
+        })
+        $('#cPostInsert').click(function () {
+            let apiUrl = 'http://localhost/frontend/bigProject/root/backEnd/api/cafeBooking/cafeBooking.php'
+            //以bookingExist（有效預定）篩出資料
+            $.ajax({
+                url: apiUrl,
+                method: 'Post',
+                data: {
+                    "bookingExist": 1,
+                    "bookingDate": "2024/07/11 22:12:11",
+                    "bookingTimePeriod": "2024/07/21 22:12:11",
+                    "bookingNumber": 7,
+                    "bookingName": "Bob",
+                    "bookingEmail": "Bob@gmail.com",
+                    "bookingTel": "0912123123",
+                },
+                success: function (dataStr) {
+                    $('#result').html(dataStr)
+                }
+            }).fail(function (z) {
+                console.log('fail:', z.innerText);
+            })
+        })
+
+    </script>
+</body>
+
+</html>

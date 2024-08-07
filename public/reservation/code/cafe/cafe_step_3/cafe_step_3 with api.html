@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POKEMON_POPUP</title>
 
-    <link rel="stylesheet" href="/public/reservation/reservation.css">
+    <link rel="stylesheet" href="/public/reservation/code/cafe/cafe_step_3/cafe_step_3 with api.css">
     <!-- <script src="/main/_js/home.js"></script> -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,7 +19,8 @@
     <!-- 購物車引用 JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="/public/_js/shoppingCartIcon.js"></script>
-    <link rel="stylesheet" href="/public/_css/shoppingCartIcon.css">
+    <link rel="stylesheet" href="/public/css/shoppingCartIcon.css">
+
 </head>
 
 <body>
@@ -75,22 +76,106 @@
         </div>
     </header>
     <!-- ==========header 結束========== -->
+
     <main>
-        <div id="orderSystem">
-            <a href="/public/reservation/code/cafe/cafe_step_1 /cafe_step_1.html">
+        <section>
+            <div class="reserve">
+                <h1 style="font-weight: bold;">WHEN?</h1>
+                <h5 style="margin-top: -10px;color: #FF6542;letter-spacing: 2px;">預約時間</h5>
+            </div>
+            <div id="store-info">
                 <div class="circle" style="color: #FFE050;">
                     <h3 style="letter-spacing: 2px;padding-top: 35px;">咖啡廳</h3>
-                    <h6 style="letter-spacing: 1px">CAFE</h6>
+                    <h6 style="margin-top: -10px;letter-spacing: 1px;">CAFE</h6>
                 </div>
-            </a>
-            
-            <a href="/public/reservation/code/popup/popup_step_1/popup_step_1.html">
-                <div class="circle" style="color:#FF6542;">
-                    <h3 style="letter-spacing: 2px;padding-top: 35px;">快閃店</h3>
-                    <h6 style="letter-spacing: 1px">STORE</h6>
+                <div class="orderTime">
+                    <div class="whatDay">
+                        <input type="date" id="dateInput" value="" min="" max=""
+                            style="background: #FFE050;color:#3F3A3A ; padding-left: 15px; padding-right: 15px;padding-top: 3px; padding-bottom: 3px;">
+                    </div>
+                    <div id="timeSlotSelector">
+                        <button class="timeSlot" value="10:00:00">10:00:00</button>
+                        <button class="timeSlot" value="11:00:00">11:00:00</button>
+                        <button class="timeSlot" value="12:00:00">12:00:00</button>
+                        <button class="timeSlot" value="13:00:00">13:00:00</button>
+                        <button class="timeSlot" value="14:00:00">14:00:00</button>
+                        <button class="timeSlot" value="15:00:00">15:00:00</button>
+                        <button class="timeSlot" value="16:00:00">16:00:00</button>
+                    </div>
                 </div>
-            </a>
-        </div>
+            </div>
+            <div id="result"> </div>
+            <a href="/public/reservation/code/cafe/cafe_step_2/cafe_step_2.html"><button id="btn-back">上一步</button></a>
+            <br>
+            <a href="/public/reservation/code/cafe/cafe_step_4/cafe_step_4.html"><button id="btn">下一步</button></a>
+        </section>
+        <script>
+            document.getElementById("dateInput").addEventListener("input", function () {
+                const dateInput = document.getElementById('dateInput').value;
+
+                if (!dateInput) {
+                    alert("請輸入一個有效的日期");
+                    return;
+                }
+
+                const apiUrl = "http://localhost/root/backEnd/api/cafeBooking/cafeBooking.php";
+
+                fetch(`${apiUrl}?bookingTimePeriod=${dateInput}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`API 請求失敗，狀態碼: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // 按bookingTimePeriod 分組並統計座位數
+                        const groupedData = data.reduce((acc, item) => {
+                            const period = item.bookingTimePeriod;
+                            const seats = parseInt(item.bookingNumber, 10);
+
+                            if (!acc[period]) {
+                                acc[period] = 0;
+                            }
+                            acc[period] += seats;
+                            return acc;
+                        }, {});
+
+                        // 將篩選結果顯示在網頁上
+                        const resultDiv = document.getElementById('result');
+                        resultDiv.innerHTML = "";
+
+                        // 更新時間段選擇器的可用性並添加紅色背景
+                        const timeSlots = document.querySelectorAll('.timeSlot');
+                        timeSlots.forEach(slot => {
+                            const period = slot.value; // 取得選項的值
+                            const bookedSeats = groupedData[period] || 0;
+
+                            if (bookedSeats >= 2) {
+                                slot.disabled = true; // 已達上限，禁用選項
+                                slot.classList.add('fully-booked'); // 添加紅色背景
+                            } else {
+                                slot.disabled = false; // 可供預約，啟用選項
+                                slot.classList.remove('fully-booked'); // 移除紅色背景
+                            }
+                        });
+
+
+                        if (Object.keys(groupedData).length > 0) {
+                            for (let period in groupedData) {
+                                resultDiv.innerHTML += `<p>時段: ${period} - 已預約座位數: ${groupedData[period]} 位</p>`;
+                            }
+                        } else {
+                            resultDiv.innerHTML = "<p>沒有找到符合條件的預訂</p>";
+                        }
+                    })
+
+
+                    .catch(error => {
+                        document.getElementById('result').innerText = error.message;
+                    });
+            });
+
+        </script>
     </main>
 
     <!-- ==========footer 開始========== -->
@@ -105,10 +190,8 @@
                 <div class="footer-item flex-fill">
 
                     <div class="footer-social flex-fill">
-                        <button class=""><img src="/public/_images/icon/social_icon_fb.png"
-                                alt="facebook"></button>
-                        <button class=""><img src="/public/_images/icon/social_icon_ig.png"
-                                alt="instagram"></button>
+                        <button class=""><img src="/public/_images/icon/social_icon_fb.png" alt="facebook"></button>
+                        <button class=""><img src="/public/_images/icon/social_icon_ig.png" alt="instagram"></button>
                     </div>
 
                     <div class="footer-link">
