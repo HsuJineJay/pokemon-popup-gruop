@@ -41,7 +41,7 @@
     .MainProduct{
         aspect-ratio: 1/1;
         padding: 0px;
-        margin-right: 50px;
+        /* margin-right: 50px; */
         display: flex;
         justify-content: center;
     }
