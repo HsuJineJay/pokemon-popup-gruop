@@ -1,5 +1,3 @@
-<!-- wbe3 訂單無法在該頁面更改 -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +10,8 @@
   
     <!-- 購物車引用 JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="/public/js/shoppingCartIcon.js"></script>
-    <link rel="stylesheet" href="/public/css/shoppingCartIcon.css">
+    <script src="../../public/js/shoppingCartIcon.js"></script>
+    <link rel="stylesheet" href="../../public/css/shoppingCartIcon.css">
 
     <!-- bootstrap 引用 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -24,11 +22,11 @@
         crossorigin="anonymous"></script>
 
     <!-- checkout css 引用 -->
-    <link rel="stylesheet" href="/public/goods/css/checkout.css">
+    <link rel="stylesheet" href="../goods/css/checkout.css">
 
     <!-- js 引用 -->
-    <script src="/public/goods/js/checkout.js"></script>
-    <script src="/public/goods/js/checkoutpost.js"></script>
+    <script src="../goods/js/checkout.js"></script>
+    <script src="../goods/js/checkoutpost.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -64,7 +62,7 @@
               </a>
             </button>
             <button class="nav-button shadow-drop-2-center bn-transition mx-2">
-              <a href="./menu.html">
+              <a href="../menu/menu.html">
                 <span class="nav-button-text"><span>&nbsp;MENU&nbsp;<span>餐點菜單</span></span>
               </a>
             </button>
@@ -117,19 +115,19 @@
             <div class="offcanvas-body px-4">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./main/index.html">首頁｜<span>HOME</span></a>
+                  <a class="nav-link active" aria-current="page" href="../index.html">首頁｜<span>HOME</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./reservation/reservation.html">預約入場｜<span>RESERVATION</span></a>
+                  <a class="nav-link" href="../reservation/reservation.html">預約入場｜<span>RESERVATION</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./goods/goods.html">快閃商品｜<span>GOODS</span></a>
+                  <a class="nav-link" href="../goods/goods.html">快閃商品｜<span>GOODS</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link " href="./menu.html">餐點菜單｜<span>MENU</span></a>
+                  <a class="nav-link " href="../menu/menu.html">餐點菜單｜<span>MENU</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link " href="./game/game.html">心理測驗｜<span>GAME</span></a>
+                  <a class="nav-link " href="../game/game.html">心理測驗｜<span>GAME</span></a>
                 </li>
               </ul>
             </div>
@@ -146,127 +144,119 @@
     <div class="order-title"  style="margin-top: 150px;">order</div>
     <div class="order-title2">訂單明細</div>
 
-<div class="d-grid gap-3">
-    <!-- ============================== 訂單明細 ============================== -->
-    <div class="container-md" style="max-width: 1200px;">
-        <div class="row order-list">
-            <div class="col-6 order-text1">訂單明細 +</div>
-        </div>
-        <table  id="orderTable" class="table table-hover table-rounded table-hidden">
-            <thead>
-            <tr>
-                <th scope="col">商品</th>
-                <th scope="col">價格</th>
-                <th scope="col">數量</th>
-                <th scope="col">小計</th>
-            </tr>
-            </thead>
-
-            <!-- 動態載入購物車清單至訂單明細 -->
-            <tbody id="result_checkoutlist"></tbody>
-
-        </table>
-        </div>
-
-    <!-- ============================== 庫存數量超過提醒 ============================== -->
-    <div id="dialog-messages" class="dialog-message" title="提示訊息">
-    <p>目前商品庫存量不足，若需購買更多的商品數量，請洽服務人員</p>
-
+    <div class="d-grid gap-3">
+        <!-- ============================== 主表單 ============================== -->
+        <form id="orderForm" class="container-md" style="max-width: 1200px;">
+            
+            <!-- ============================== 訂單明細 ============================== -->
+            <div class="row order-list">
+                <div class="col-6 order-text1">訂單明細 +</div>
+            </div>
+            <table id="orderTable" class="table table-hover table-rounded table-hidden">
+                <thead>
+                    <tr>
+                        <th scope="col">商品</th>
+                        <th scope="col">價格</th>
+                        <th scope="col">數量</th>
+                        <th scope="col">小計</th>
+                    </tr>
+                </thead>
+                <!-- 動態載入購物車清單至訂單明細 -->
+                <tbody id="result_checkoutlist"></tbody>
+            </table>
+    
+            <!-- ============================== 配送方式 ============================== -->
+            <div class="row detailtitle mt-4">
+                <div class="col-12 detailtitleText">配送方式</div>
+            </div>
+            <div class="row detaillist">
+                <div class="col-12 d-flex align-content-center">
+                    <input type="radio" class="detailRadio" id="Home" name="Delivery" value="宅配到府" checked>
+                    <label for="Home" class="detailListText">宅配到府</label>
+                    <!-- <input type="radio" class="detailRadio" id="Supermarket" name="Delivery" value="超商取貨">
+                    <label for="Supermarket" class="detailListText">超商取貨</label> -->
+                </div>
+            </div>      
+    
+            <!-- ============================== 付款方式 ============================== -->
+            <div class="row detailtitle mt-4">
+                <div class="col-12 detailtitleText">付款方式</div>
+            </div>
+            <div class="row detaillist">
+                <div class="col-12 d-flex align-content-center">
+                    <input type="radio" class="detailRadio" id="COD" name="payment" value="貨到付款" checked>
+                    <label for="COD" class="detailListText">貨到付款</label>
+                    <input type="radio" class="detailRadio" id="CreditCard" name="payment" value="線上刷卡">
+                    <label for="CreditCard" class="detailListText">轉帳付款</label>
+                </div>
+            </div>      
+    
+            <!-- ============================== 收件資料 ============================== -->
+            <div class="row detailtitle mt-4">
+                <div class="col-12 detailtitleText">收件資料</div>
+            </div>
+            <div class="row detaillist justify-content-between form-addr  align-items-start">
+                <div class="col-md-5 col-12">
+                    <div class="form-group mt-3">
+                        <label for="buyerName" class="detailListText">姓　名</label>
+                        <input type="text" class="detailListGroupText-B ml-auto" id="buyerName" name="buyerName">
+                    </div>
+                    <div class="form-group">
+                        <label for="buyerTel" class="detailListText">電　話</label>
+                        <input type="tel" class="detailListGroupText-B" id="buyerTel" name="buyerTel" placeholder="EX:0911100100">
+                    </div>
+                    <div class="form-group">
+                        <label for="buyerEmail" class="detailListText">EMAIL</label>
+                        <input type="email" class="detailListGroupText-B" id="buyerEmail" name="buyerEmail"  placeholder="EX:ABC@gmail.com">
+                      </div>
+                      <!-- <div class="help_block"><span>聯絡電話只能輸入 8~20 碼以內的數字及 + 和 # 符號。</span></div>  -->
+                      
+                </div>
+                <div class="col-md-5 col-12">
+                    <div class="detailListText">地址</div>
+                    <div id="twzipcode_ADV" class="row"></div>
+                    <label for="buyerAddr" class="detailListText d-none">地址</label>
+                    <input type="text" class="detailListGroupText-B" id="buyerAddr" name="buyerAddr"><br>
+                    <label for="transportNote" class="detailListText">物流備註</label>
+                    <input type="text" class="detailListGroupText-C" id="transportNote" name="transportNote"><br>
+                </div>
+            </div>
+            
+            <!-- ============================== 發票資訊 ============================== -->
+            <div class="row detailtitle mt-4">
+                <div class="col-12 detailtitleText">發票資訊</div>
+            </div>
+            <div class="row detaillist align-items-start">
+                <div class="col-md-6 col-12">
+                    <input type="radio" class="detailRadio" id="DuplicateUniformInvoice" name="receiptType" value="二聯式" checked>
+                    <label for="DuplicateUniformInvoice" class="detailListText">個人戶（二聯）電子發票</label><br><br>
+                </div>
+                <div class="col-md-6 col-12">
+                    <input type="radio" class="detailRadio" id="TriplicateUniformInvoice" name="receiptType" value="三聯式">
+                    <label for="TriplicateUniformInvoice" class="detailListText">公司戶（三聯）發票</label><br><br>
+                    <label for="taxIDNumber" class="detailListText">統一編號</label><br>
+                    <input type="text" class="detailListGroupText-A" id="taxIDNumber" name="taxIDNumber" placeholder="請輸入8碼統一編號">
+                    <label for="companyTitle" class="detailListText">公司抬頭</label><br>
+                    <input type="text" class="detailListGroupText-A" id="companyTitle" name="companyTitle">
+                </div>
+            </div>
+    
+            <!-- ============================== 同意條款 ============================== -->
+            <div class="col-12 form-TC mt-4">
+                <input type="checkbox" class="detailRadio" id="T&C" name="payment" value="客戶同意條款" checked>
+                <label for="T&C" class="TCText">我同意辦理退貨時，由The Pokémon Company代為處理發票及銷貨退回證明單，以加速退貨退款作業。</label>
+            </div>
+    
+            <!-- ============================== 提交訂單 ============================== -->
+            <div class="col-md-12 col-12 d-flex justify-content-center mt-4">
+                <button type="button" class="submitOderListbtn" id="submitOderList">提交訂單</button>
+            </div>
+    
+        </form>
     </div>
 
-    <!-- ============================== 訂單資訊填寫 開始 ============================== -->
-
-    <div class="container-md" style="max-width: 1200px;">
-        <div class="row detailtitle">
-            <div class="col-12 detailtitleText">配送方式</div>
-        </div>
-        <div  class="row detaillist">
-        <form class="col-12 d-flex align-content-center">
-            <input type="radio" class="detailRadio" id="Home" name="Delivery" value="Home" checked >
-            <label for="Home" class="detailListText">宅配到府</label>
-            <input type="radio" class="detailRadio" id="Supermarket" name="Delivery" value="Supermarket">
-            <label for="Supermarket" class="detailListText">超商取貨</label>
-        </form>
-        </div>      
-    </div>
-
-    <div class="container-md" style="max-width: 1200px;">
-        <div class="row detailtitle">
-            <div class="col-12 detailtitleText">付款方式</div>
-        </div>
-        <div  class="row detaillist">
-        <form class="col-12 d-flex align-content-center">
-            <input type="radio" class="detailRadio" id="COD" name="payment" value="貨到付款" checked >
-            <label for="COD" class="detailListText">貨到付款</label>
-            <input type="radio" class="detailRadio" id="CreditCard" name="payment" value="線上刷卡">
-            <label for="CreditCard" class="detailListText">線上刷卡</label>
-        </form>
-        </div>      
-    </div>
-
-    <div class="container-md" style="max-width: 1200px;">
-        <div class="row detailtitle">
-            <div class="col-12 detailtitleText">發票資訊</div>
-        </div>
-        <div  class="row detaillist">
-        <form class="col-12 form-invoice">
-            <div class="col-md-6 col-12">
-                <input type="radio" class="detailRadio" id="DuplicateUniformInvoice" name="invoice" value="二聯式" checked >
-                <label for="DuplicateUniformInvoice" class="detailListText">個人戶（二聯）電子發票</label><br><br>
-            </div>
-            <div class="col-md-6 col-12">
-                <input type="radio" class="detailRadio" id="TriplicateUniformInvoice" name="invoice" value="三聯式">
-                <label for="TriplicateUniformInvoice" class="detailListText">公司戶（三聯）發票</label><br><br>
-                <label for="companyID" class="detailListText">統一編號</label><br>
-                <input type="text" class="detailListGroupText-A" id="companyID" name="invoice">
-                <label for="companyName" class="detailListText">公司抬頭</label><br>
-                <input type="text" class="detailListGroupText-A" id="companyName" name="invoice">
-            </div>
-        </form>
-
-        </div>
-    </div>
-
-    <div class="container-md" style="max-width: 1200px;">
-        <div class="row detailtitle">
-            <div class="col-12 detailtitleText">收件資料</div>
-        </div>
-        <div  class="row detaillist">
-        <form class="col-12 justify-content-between form-addr">
-            <div class="col-md-5 col-12">
-              <div class="form-group mt-3">
-                <label for="buyerName" class="detailListText">姓　名</label>
-                <input type="text" class="detailListGroupText-B ml-auto" id="buyerName" name="buyerNames">
-              </div>
-              <div class="form-group">
-                <label for="buyerTel" class="detailListText">電　話</label>
-                <input type="text" class="detailListGroupText-B" id="buyerTel" name="buyerTel">
-              </div>
-              <div class="form-group">
-                <label for="buyerEmail" class="detailListText">EMAIL</label>
-                <input type="text" class="detailListGroupText-B" id="buyerEmail" name="buyerEmail">
-              </div>
-            </div>
-            <div class="col-md-5 col-12">
-              <div class="detailListText">地址</div>
-
-              <div id="twzipcode_ADV" class="row"></div>
 
 
-                <label for="buyerAddr" class="detailListText d-none">地址</label>
-                <input type="text" class="detailListGroupText-B" id="buyerAddr" name="buyerAddr"><br>
-                <label for="transportNote" class="detailListText">物流備註</label>
-                <input type="text" class="detailListGroupText-C" id="transportNote" name="transportNote"><br>
-            </div>
-        </form>
-
-        </div>
-    </div>      
-
-    <!-- ============================== 訂單資訊填寫 結束 ============================== -->
-
-
-</div> 
 
 
 
