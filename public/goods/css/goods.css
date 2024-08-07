@@ -53,13 +53,13 @@
     .category_li {
         color: white;
         padding: 5px;
-        list-style-image: url('/public/goods/images/Vector.svg');
+        list-style-image: url('../images/Vector.svg');
     }
 
     /* 小類被選擇時 變皮卡丘黃 */
     .category_li:hover{
         color: #FFE050;
-        list-style-image: url('/public/goods/images/VectorV2.svg');
+        list-style-image: url('../images/VectorV2.svg');
     }
 
     /* ------------------------商品卡片------------------------ */
@@ -103,7 +103,7 @@
         display: inline-block;
         width: 40px; 
         height: 40px; 
-        background-image: url('/public/goods/images/Cart3.png');
+        background-image: url('../images/Cart3.png');
         background-size: contain; 
         background-repeat: no-repeat;
     }
