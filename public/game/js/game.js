@@ -114,11 +114,11 @@ $(document).ready(function () {
             <div class="questionAndbuttonCon">
                 <!-- 題目 -->
                  <!-- .questionContainer換成圖片跟文字 -->
-                 
+                 <div class="storyTextCtrlEmpty">
                  <div class="storyTextCtrl">
                     <div class="storyText"><h4 ></h4></div>
                 </div>
-                
+                </div>
                  <div class="questionContainer">
                     <div class="questionIcon"></div>
                     <div class="questionTextCon">
@@ -180,8 +180,10 @@ $(document).ready(function () {
             <div class="questionAndbuttonCon">
                 <!-- 題目 -->
                  <!-- .questionContainer換成圖片跟文字 -->
+                 <div class="storyTextCtrlEmpty">
                  <div class="storyTextCtrl">
                     <div class="storyText"><h4 ></h4></div>
+                </div>
                 </div>
                 <div class="questionContainer">
                     <div class="questionIcon"></div>
@@ -779,6 +781,15 @@ $(document).ready(function () {
             $('.superBigWebCon').append(
                 allBackground[currentQuestion]
             )
+            // 控制字體大小rwd
+            if ($(window).width() < 450){
+                $('.storyText h4').css(
+                    'font-size', '85%')
+                }else{
+                    $('.storyText h4').css(
+                        'font-size', '90%')
+                    }
+            
             //呼叫控制bgm聲音
             CtrlSound()
             // 印出進度條============
@@ -795,20 +806,21 @@ $(document).ready(function () {
 
             // 3.5秒後清空旁白文字框=====
             const emptyStoryText = function () {
-                $('.storyTextCtrl').empty()
-                //移除第3題 皮卡丘 第4題喵喵熱氣球 第5題耿鬼文字框
-                if (currentQuestion === 2 || currentQuestion === 3 || currentQuestion === 4 || currentQuestion === 5 || currentQuestion === 6) {
+                // $('.storyTextCtrl').empty()
+                //移除文字框
                     $('.storyTextCtrlEmpty').remove()
                 }
-            }
+            
 
             setTimeout(emptyStoryText, 3300)
 
-            //========= 4秒後改變問題框跟選項框動畫框visibility hidden=>visable
+            //========= 3秒後改變問題框跟選項框動畫框visibility hidden=>visable
             const showQuestionandbutton = function () {
                 $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer,.btn3Container,.cakeCon,.meowaniCon,.btnContainer2,.six_Anicontainer,.btnContainer3').css('visibility', 'visible')
                 // =======網頁版可達鴨容器透明度0=>1 
                 $('.webduckaniCon').css('opacity', '1')
+                // =======第八頁可達鴨快樂容器透明度0=>1
+                $('.eight_cloudscontainer').css('opacity', '1')
             }
             setTimeout(showQuestionandbutton, 3500)
 

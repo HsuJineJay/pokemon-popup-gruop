@@ -35,7 +35,7 @@ body{
         background-size: contain;
         
     }
- 
+  
  
 }
 /* 耿鬼網頁版手機版RWD消失 */
@@ -633,15 +633,15 @@ visibility: hidden;
     flex-direction: column;
     align-items: center;
     width: 100%;
-   
+   margin-top: 35%;
 }
 
 /* 旁白文字 */
 /* 動態設計 */
 .storyText {
-    width: 80%;
-    max-width: 400px;
-    height: 9vw;
+    width: 90%;
+    max-width: 430px;
+    height: 12vw;
     background-image: url(../images/publicImg/talkContent.svg);
     background-repeat: no-repeat;
     background-size: contain;
@@ -661,7 +661,7 @@ visibility: hidden;
     opacity: 0;
     animation-duration: 3.3s;
     animation-delay: 0.2s;
-   
+    
     animation-timing-function: ease-in-out;
    
 }
@@ -682,7 +682,7 @@ visibility: hidden;
 }
 
 .storyText h4{
-    font-size: 75%;
+    font-size: 90%;
     letter-spacing: 0.1vmin;
     font-family: "Fredoka", "Noto Sans TC", sans-serif;
     font-weight: bold;
@@ -955,6 +955,7 @@ visibility: hidden;
     width: 100%;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 /* -----------------第五頁 遊戲第四題 ----------------------------------*/
@@ -1279,6 +1280,7 @@ visibility: hidden;
     position: absolute;
     top: 0;
     overflow: hidden;
+   opacity: 0;
 }
 
 /* 結果加載頁 */
