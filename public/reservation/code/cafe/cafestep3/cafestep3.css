@@ -376,7 +376,7 @@ main {
     margin: 10px auto;
     /* margin-top: -10px; */
     border-radius: 20px;
-    max-width: 300px;
+    max-width: 250px;
     height: auto;
     display: grid;
     justify-content: center;
@@ -399,7 +399,7 @@ main {
 .whatDay {
     background-color: #FFE050;
     color: #ffffff;
-    border-radius: 12px;
+    border-radius: 120px;
     margin-bottom: 15px;
     margin-top: 15px;
 }
@@ -428,6 +428,16 @@ main {
   margin-top: 0px;
 }
 
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+
+  #btn-back:hover {
+    background-color: var(--pk--white);
+    font-size: 16px;
+    filter:drop-shadow(3px 2px 0px var(--pk--black));
+    transform: scale(1.05) translate(-3px, -2px);
+  }
+}
+
 #btn-back a {
 text-decoration: none;
 color:var(--pk--black);
@@ -444,6 +454,18 @@ color:var(--pk--black);
     margin-top: 10px;
     margin-bottom: 10px;
     justify-items: center;
+}
+
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+
+  #btn:hover {
+    background-color: var(--pika--yellow);
+    color: var(--pika--red);
+    font-size: 16.5px;
+    font-weight: bold;
+    filter:drop-shadow(3px 2px 0px var(--pika--red));
+    transform: scale(1.05) translate(-3px, -2px);
+  }
 }
 
 #btn a {
