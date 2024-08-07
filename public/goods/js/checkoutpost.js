@@ -139,8 +139,8 @@ $(document).ready(function(){
             // 成功處理
             alert('成功送出表單');
             console.log(response);
-            // localStorage.removeItem("goods");
-            // window.location.href = 'goods.html';
+            localStorage.removeItem("goods");
+            window.location.href = 'goods.html';
         } catch (error) {
             // 失敗處理
             console.error('錯誤訊息:', error);
