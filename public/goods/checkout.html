@@ -10,8 +10,8 @@
   
     <!-- 購物車引用 JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="/public/js/shoppingCartIcon.js"></script>
-    <link rel="stylesheet" href="/public/css/shoppingCartIcon.css">
+    <script src="../../public/js/shoppingCartIcon.js"></script>
+    <link rel="stylesheet" href="../../public/css/shoppingCartIcon.css">
 
     <!-- bootstrap 引用 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,11 +22,11 @@
         crossorigin="anonymous"></script>
 
     <!-- checkout css 引用 -->
-    <link rel="stylesheet" href="/public/goods/css/checkout.css">
+    <link rel="stylesheet" href="../goods/css/checkout.css">
 
     <!-- js 引用 -->
-    <script src="/public/goods/js/checkout.js"></script>
-    <script src="/public/goods/js/checkoutpost.js"></script>
+    <script src="../goods/js/checkout.js"></script>
+    <script src="../goods/js/checkoutpost.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -62,7 +62,7 @@
               </a>
             </button>
             <button class="nav-button shadow-drop-2-center bn-transition mx-2">
-              <a href="./menu.html">
+              <a href="../menu/menu.html">
                 <span class="nav-button-text"><span>&nbsp;MENU&nbsp;<span>餐點菜單</span></span>
               </a>
             </button>
@@ -115,19 +115,19 @@
             <div class="offcanvas-body px-4">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./main/index.html">首頁｜<span>HOME</span></a>
+                  <a class="nav-link active" aria-current="page" href="../index.html">首頁｜<span>HOME</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./reservation/reservation.html">預約入場｜<span>RESERVATION</span></a>
+                  <a class="nav-link" href="../reservation/reservation.html">預約入場｜<span>RESERVATION</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./goods/goods.html">快閃商品｜<span>GOODS</span></a>
+                  <a class="nav-link" href="../goods/goods.html">快閃商品｜<span>GOODS</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link " href="./menu.html">餐點菜單｜<span>MENU</span></a>
+                  <a class="nav-link " href="../menu/menu.html">餐點菜單｜<span>MENU</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link " href="./game/game.html">心理測驗｜<span>GAME</span></a>
+                  <a class="nav-link " href="../game/game.html">心理測驗｜<span>GAME</span></a>
                 </li>
               </ul>
             </div>
@@ -173,8 +173,8 @@
                 <div class="col-12 d-flex align-content-center">
                     <input type="radio" class="detailRadio" id="Home" name="Delivery" value="宅配到府" checked>
                     <label for="Home" class="detailListText">宅配到府</label>
-                    <input type="radio" class="detailRadio" id="Supermarket" name="Delivery" value="超商取貨">
-                    <label for="Supermarket" class="detailListText">超商取貨</label>
+                    <!-- <input type="radio" class="detailRadio" id="Supermarket" name="Delivery" value="超商取貨">
+                    <label for="Supermarket" class="detailListText">超商取貨</label> -->
                 </div>
             </div>      
     
@@ -187,7 +187,7 @@
                     <input type="radio" class="detailRadio" id="COD" name="payment" value="貨到付款" checked>
                     <label for="COD" class="detailListText">貨到付款</label>
                     <input type="radio" class="detailRadio" id="CreditCard" name="payment" value="線上刷卡">
-                    <label for="CreditCard" class="detailListText">線上刷卡</label>
+                    <label for="CreditCard" class="detailListText">轉帳付款</label>
                 </div>
             </div>      
     
@@ -203,12 +203,14 @@
                     </div>
                     <div class="form-group">
                         <label for="buyerTel" class="detailListText">電　話</label>
-                        <input type="text" class="detailListGroupText-B" id="buyerTel" name="buyerTel">
+                        <input type="tel" class="detailListGroupText-B" id="buyerTel" name="buyerTel" placeholder="EX:0911100100">
                     </div>
                     <div class="form-group">
                         <label for="buyerEmail" class="detailListText">EMAIL</label>
-                        <input type="text" class="detailListGroupText-B" id="buyerEmail" name="buyerEmail">
-                    </div>
+                        <input type="email" class="detailListGroupText-B" id="buyerEmail" name="buyerEmail"  placeholder="EX:ABC@gmail.com">
+                      </div>
+                      <!-- <div class="help_block"><span>聯絡電話只能輸入 8~20 碼以內的數字及 + 和 # 符號。</span></div>  -->
+                      
                 </div>
                 <div class="col-md-5 col-12">
                     <div class="detailListText">地址</div>
@@ -233,7 +235,7 @@
                     <input type="radio" class="detailRadio" id="TriplicateUniformInvoice" name="receiptType" value="三聯式">
                     <label for="TriplicateUniformInvoice" class="detailListText">公司戶（三聯）發票</label><br><br>
                     <label for="taxIDNumber" class="detailListText">統一編號</label><br>
-                    <input type="text" class="detailListGroupText-A" id="taxIDNumber" name="taxIDNumber">
+                    <input type="text" class="detailListGroupText-A" id="taxIDNumber" name="taxIDNumber" placeholder="請輸入8碼統一編號">
                     <label for="companyTitle" class="detailListText">公司抬頭</label><br>
                     <input type="text" class="detailListGroupText-A" id="companyTitle" name="companyTitle">
                 </div>
@@ -241,7 +243,7 @@
     
             <!-- ============================== 同意條款 ============================== -->
             <div class="col-12 form-TC mt-4">
-                <input type="checkbox" class="detailRadio" id="T&C" name="payment" value="客戶同意條款">
+                <input type="checkbox" class="detailRadio" id="T&C" name="payment" value="客戶同意條款" checked>
                 <label for="T&C" class="TCText">我同意辦理退貨時，由The Pokémon Company代為處理發票及銷貨退回證明單，以加速退貨退款作業。</label>
             </div>
     

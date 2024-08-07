@@ -11,6 +11,18 @@ $(document).ready(function(){
     });
 })
 
+// 發票的填寫限制
+$(document).ready(function() {
+    function toggleInputs() {
+        const isDuplicateSelected = $('#DuplicateUniformInvoice').is(':checked');
+        $('#taxIDNumber, #companyTitle').prop('disabled', isDuplicateSelected);
+    }
+
+    toggleInputs();
+
+    $('input[name="receiptType"]').on('change', toggleInputs);
+});
+
 
 //------------------------交易明細------------------------
 $(document).ready(function(){
@@ -28,10 +40,7 @@ $(document).ready(function(){
         // 商品訂單取值
         let productArray = JSON.parse(localStorage.getItem("goods")) || [];
         let orderProductID = productArray.map(item => item.id).join(',');
-        console.log(orderProductID);
         let productQ = productArray.map(item => item.num).join(',');
-        // console.log(typeof productQ);
-
 
         // 轉換及定義data格式
         const data = {
@@ -139,8 +148,8 @@ $(document).ready(function(){
             // 成功處理
             alert('成功送出表單');
             console.log(response);
-            localStorage.removeItem("goods");
-            window.location.href = 'goods.html';
+            // localStorage.removeItem("goods");        // 結帳送出後清空購物車
+            // window.location.href = 'goods.html';     // 結帳送出後回到商品頁面
         } catch (error) {
             // 失敗處理
             console.error('錯誤訊息:', error);
@@ -149,20 +158,3 @@ $(document).ready(function(){
 
 })
 
-
-
-
-
-// $('#oPostInsert').click(function () {
-//     let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/orderList/orderList.php' 
-//     $.ajax({
-//         url: apiUrl,
-//         method: 'Post',
-//         data: data,
-//         success: function (dataStr) {
-//             $('#result').html(dataStr)
-//         }
-//     }).fail(function (z) {
-//             console.log('fail:', z.innerText);
-//         })
-// })
