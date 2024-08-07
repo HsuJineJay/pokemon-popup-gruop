@@ -23,6 +23,20 @@ $(document).ready(function() {
     $('input[name="receiptType"]').on('change', toggleInputs);
 });
 
+// 綠界的前往超商按鈕
+$(document).ready(function(){
+    $('#ecpay_btn').on('click', function(){
+        console.log('123');
+    });
+
+});
+
+// 準備一個全域函式，待取得超商資訊後，供另開視窗的頁面將資訊傳進來，放到要顯示的位置
+window.map_return = function(info) {
+    info = JSON.parse(info); // 我們預期傳進來的參數會是被json_encode的超商資訊
+    $("#cvs_title").value(info.CVSStore);
+};
+
 
 //------------------------交易明細------------------------
 $(document).ready(function(){
@@ -157,4 +171,9 @@ $(document).ready(function(){
     });
 
 })
+
+
+
+
+
 
