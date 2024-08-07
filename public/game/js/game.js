@@ -695,7 +695,18 @@ $(document).ready(function () {
                             <button id="backHome">官網逛逛</button>
                             <button id="Replay"><img src="./images/result_Images/ReplayIcon.png" alt=""> REPLAY</button>
                         </div>
+
                         <!-- 提醒字與分享按鈕 -->
+                           <!-- AddToAny BEGIN -->
+                        <div style="display: none;" class="ctrlShare">
+                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                                <a class="a2a_button_facebook"></a>
+                                <a class="a2a_button_line"></a>
+                            </div>
+                            <script async src="https://static.addtoany.com/menu/page.js"></script>
+                        </div>
+                        <!-- AddToAny END -->
                         <div class="shareAndAlert">
                             <h4>長按螢幕可儲存結果圖片</h4>
                             <button id="shareIcon"><img src="./images/result_Images/ShareIcon.png" alt=""></button>
@@ -991,8 +1002,14 @@ $(document).ready(function () {
         $('.superBigWebCon').append(resultPageCon[0])
         //印出使用者輸入的姓名 
         $('#userNamePrint').html(userName)
-
-
+        // replay按鈕綁定重新加載
+        $('#Replay').on('click',function(){
+            location.reload()
+        })
+        //分享按鈕綁定切換顯示與關閉分享畫面
+        $('#shareIcon').on('click', function () {
+            $('.ctrlShare').toggle();
+        });
         //判斷各屬性得分條件
         if (get3 == 2) {
             //索引值0=======百變怪

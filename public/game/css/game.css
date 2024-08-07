@@ -1752,6 +1752,18 @@ max-width: 45px;
     max-height: 20px;
 }
 
+.ctrlShare{
+    width: fit-content;
+    background-color:rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 1.5%;
+    position: absolute;
+    top: 85%;
+    border-color: #fff;
+    border: 1px solid;
+    
+}
+
 /* ============ */
 /* logo */
 .footlogo>img{
