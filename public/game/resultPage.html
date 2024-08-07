@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./_css/_.css">
+    <link rel="stylesheet" href="./css/game.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Noto+Sans+TC:wght@100..900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
@@ -14,126 +17,151 @@
 </head>
 
 <body>
+
+    <script>
+        $(document).ready(function () {
+            $('#shareIcon').on('click', function () {
+                $('.ctrlShare').toggle();
+            });
+        });
+    </script>
+    <!-- soundON OFF icon -->
+    <button id="soundContainer"><img id="soundIcon" src="./images/publicImg/soundOn.svg" alt=""></button>
+
+
     <div class="superBigWebCon">
-    <!-- 網頁版bg容器 -->
-    <section class="webBgContainerres">
+        <!-- 網頁版bg容器 -->
+        <section class="webBgContainerres">
 
-        <div class="result_bgContainer">
-
-
-            <!-- soundON OFF icon -->
-            <button id="soundContainer"><img id="soundIcon" src="./images/publicImg/soundOn.svg" alt=""></button>
+            <div class="result_bgContainer">
 
 
 
-            <!-- 題目選項按鈕區 -->
-            <div class="questionAndbuttonConRe" style="height: 100%; justify-content: space-evenly;">
-                <!-- 題目 -->
-                <!-- .questionContainer換成圖片跟文字 -->
 
-                <div class="nameandattrContainer" style="height: 30%;">
-                    <div class="nameIconCon">
-                        <h3 id="userName" class="nameText">大寶雄</h3>
+
+                <!-- 題目選項按鈕區 -->
+                <div class="questionAndbuttonConRe" style="height: 100%; justify-content: space-evenly;">
+                    <!-- 題目 -->
+                    <!-- .questionContainer換成圖片跟文字 -->
+
+                    <div class="nameandattrContainer" style="height: 30%;">
+                        <div class="bignameIcon">
+                            <div class="nameIconCon"><img src="./images/result_Images/nameCon.svg" alt=""></div>
+                            <h3 id="userName" class="nameText">大寶雄</h3>
+                        </div>
+                        <div class="attrCon">
+                            <h4 class="attrtextContent">屬於火屬性寶可夢</h4>
+
+
+                        </div>
+
+                        <!-- 標籤容器 -->
+                        <div class="TagCon">
+                            <div id="Tag0">#大蜀好好吃</div>
+                            <div id="Tag1">#大蜀好好吃</div>
+                            <div id="Tag2">#大好好吃</div>
+                            <div id="Tag3">#好好吃</div>
+                            <div id="Tag4">#大暑大蜀好好吃</div>
+                        </div>
+
                     </div>
-                    <div class="attrCon">
-                        <h4 class="attrtextContent">屬於火屬性寶可夢</h4>
 
 
-                    </div>
+                    <section
+                        style="height: 70%; display: flex; flex-direction: column; justify-content: space-evenly ; align-items: center; gap: 5px;">
 
-                    <!-- 標籤容器 -->
-                    <div class="TagCon">
-                        <div id="Tag1">#大蜀好好吃</div>
-                        <div id="Tag2">#大蜀好好吃</div>
-                        <div id="Tag3">#大好好吃</div>
-                        <div id="Tag4">#好好吃</div>
-                        <div id="Tag5">#大暑大蜀好好吃</div>
-                    </div>
 
+
+                        <!-- 代表寶可夢容器 -->
+                        <div class="nameandattrContainer">
+                            <div class="pokeCon"><img src="./images/result_Images/小火龍.webp" alt=""></div>
+
+                            <div class="represent_Container">
+
+                                <div class="represent_title">
+                                    <h6>代表寶可夢</h6>
+                                </div>
+                                <div class="represent_name">
+                                    <h4>小火龍</h4>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- 相剋相殺最佳拍檔容器 -->
+                        <div class="friend_container">
+
+                            <!-- 相剋相殺 -->
+                            <div class="bad_friend">
+                                <h6>相剋<br>相殺</h6>
+                                <div class="friend_figure_container">
+                                    <figure>
+                                        <p> 草<br>屬<br>性</p>
+                                        <img src="./images/result_Images/菊草葉.webp">
+                                    </figure>
+                                    <figure>
+                                        <p>岩 <br>屬<br>性</p>
+                                        <img src="./images/result_Images/小拳石.webp">
+                                    </figure>
+                                </div>
+                            </div>
+                            <!-- 最佳拍檔 -->
+                            <div class="best_friend">
+                                <h6>最佳<br>拍檔</h6>
+                                <div class="friend_figure_container">
+                                    <figure>
+                                        <p> 雷<br>屬<br>性</p>
+                                        <img src="./images/result_Images/皮卡丘.webp">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 按鈕區 -->
+                        <div class="backReplaybtnCon">
+                            <button id="backHome">官網逛逛</button>
+                            <button id="Replay"><img src="./images/result_Images/ReplayIcon.png" alt=""> REPLAY</button>
+                        </div>
+                        <!-- 提醒字與分享按鈕 -->
+                        <!-- AddToAny BEGIN -->
+                        <div style="display: none;" class="ctrlShare">
+                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                                <a class="a2a_button_facebook"></a>
+                                <a class="a2a_button_line"></a>
+                            </div>
+                            <script async src="https://static.addtoany.com/menu/page.js"></script>
+                        </div>
+                        <!-- AddToAny END -->
+                        <div class="shareAndAlert">
+                            <h4>長按螢幕可儲存結果圖片</h4>
+                            <button id="shareIcon"><img src="./images/result_Images/ShareIcon.png" alt=""></button>
+
+                        </div>
+                        <!-- logo -->
+                        <div class="footlogo">
+                            <img src="./images/publicImg/logo.svg" alt="">
+                        </div>
+                    </section>
                 </div>
 
 
-                <section style="height: 70%; display: flex; flex-direction: column; justify-content: space-evenly ; align-items: center; gap: 5px;">
-
-
-
-                    <!-- 代表寶可夢容器 -->
-                    <div class="nameandattrContainer">
-                        <div class="pokeCon"><img src="./images/result_Images/小火龍.webp" alt=""></div>
-
-                        <div class="represent_Container">
-
-                            <div class="represent_title">
-                                <h6>代表寶可夢</h6>
-                            </div>
-                            <div class="represent_name">
-                                <h4>小火龍</h4>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- 相剋相殺最佳拍檔容器 -->
-                    <div class="friend_container">
-
-                        <!-- 相剋相殺 -->
-                        <div class="bad_friend">
-                            <h6>相剋<br>相殺</h6>
-                            <div class="friend_figure_container">
-                                <figure>
-                                    <p> 草<br>屬<br>性</p>
-                                    <img src="./images/result_Images/菊草葉.webp">
-                                </figure>
-                                <figure>
-                                    <p>岩 <br>屬<br>性</p>
-                                    <img src="./images/result_Images/小拳石.webp">
-                                </figure>
-                            </div>
-                        </div>
-                        <!-- 最佳拍檔 -->
-                        <div class="best_friend">
-                            <h6>最佳<br>拍檔</h6>
-                            <div class="friend_figure_container">
-                                <figure>
-                                    <p> 雷<br>屬<br>性</p>
-                                    <img src="./images/result_Images/皮卡丘.webp">
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 按鈕區 -->
-                    <div class="backReplaybtnCon">
-                        <button id="backHome">官網逛逛</button>
-                        <button id="Replay"><img src="./images/result_Images/ReplayIcon.png" alt=""> REPLAY</button>
-                    </div>
-                    <!-- 提醒字與分享按鈕 -->
-                    <div class="shareAndAlert">
-                        <h4>長按螢幕可儲存結果圖片</h4>
-                        <button id="shareIcon"><img src="./images/result_Images/ShareIcon.png" alt=""></button>
-                    </div>
-                    <!-- logo -->
-                    <div class="footlogo">
-                        <img src="./images/publicImg/logo.svg" alt="">
-                    </div>
-                </section>
-            </div>
-
-
 
             </div>
 
 
-        </div>
+    </div>
 
 
-        </div>
+    </div>
 
 
 
 
     </section>
+
+    </div>
 
 </body>
 

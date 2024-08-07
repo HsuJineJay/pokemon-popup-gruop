@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="./_css/_.css">
+    <link rel="stylesheet" href="./css/game.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Noto+Sans+TC:wght@100..900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
@@ -17,7 +17,7 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-        <script src="./_js/_js.js"></script>
+        <script src="./js/game.js"></script>
     <style>
         video::-webkit-media-controls-enclosure {
             display: none;
@@ -39,13 +39,34 @@
          <!-- <video src="./images/animation/transparent_animation拷貝.webm" autoplay loop muted>
         </video>   -->
     <!-- </div> -->
+
+
+     <!-- =======背景音樂======= -->
     <audio id="bgmusic" autoplay muted loop >
         
         <source src="./sounds/PokemonRubySapphire_EmeraldLittleroot Town.mp3" type="audio/mpeg">
         <source src="./sounds/PokemonRubySapphire_EmeraldLittleroot Town.mp3" type="audio/ogg">
       </audio>
+    <!-- =======胖丁唱歌音樂======= -->
+      <audio id="chubbySong" autoplay muted  >
+        
+        <source src="./sounds/chubbySing.mp3" type="audio/mpeg">
+        <source src="./sounds/chubbySing.mp3" type="audio/ogg">
 
+      </audio>
 
+     <!-- =======猜猜我是誰音樂======= -->
+     <audio id="guessWhoSong" autoplay muted  >
+        
+        <source src="./sounds/whoareyou_music.mp3" type="audio/mpeg">
+        <source src="./sounds/whoareyou_music.mp3" type="audio/ogg">
+
+      </audio>  
+    <!-- =======音樂開關控制按鈕======= -->
+    <!-- soundON OFF icon -->
+                <button id="soundContainer"><img id="soundIcon" src="./images/publicImg/soundOn.svg" alt=""></button>
+
+<!-- =====網頁版大容器====== -->
     <div class="superBigWebCon">
         <!-- 網頁版bg容器 -->
         <section class="webBgContainer" >
@@ -53,8 +74,6 @@
             <div id="bgContainer" style="z-index: 1;">
     
     
-                <!-- soundON OFF icon -->
-                <button id="soundContainer"><img id="soundIcon" src="./images/publicImg/soundOn.svg" alt=""></button>
     
                 <div class="upTextContainer">
                     <!-- logo -->

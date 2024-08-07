@@ -35,7 +35,7 @@ body{
         background-size: contain;
         
     }
- 
+  
  
 }
 /* 耿鬼網頁版手機版RWD消失 */
@@ -49,6 +49,7 @@ body{
          visibility: hidden;
     }
    
+
    
 }
 /* 可達鴨網頁版手機版RWD消失 */
@@ -56,6 +57,11 @@ body{
     .seven_Anicontainer{
         visibility: hidden;
     }
+    
+    .webduckaniCon{
+        visibility: visible;
+    }
+
     
     
 }
@@ -164,9 +170,9 @@ video::-webkit-media-controls-enclosure {
     background-color: transparent;
     position: absolute;
     /* margin-top: 3vh; */
-    z-index: 1;
+    z-index: 100;
     width: fit-content;
-    left: 88%;
+    left: 90%;
     top:3vh;
     border: none;
 
@@ -627,14 +633,15 @@ visibility: hidden;
     flex-direction: column;
     align-items: center;
     width: 100%;
+   margin-top: 35%;
 }
 
 /* 旁白文字 */
 /* 動態設計 */
 .storyText {
-    width: 80%;
-    max-width: 400px;
-    height: 9vw;
+    width: 90%;
+    max-width: 430px;
+    height: 12vw;
     background-image: url(../images/publicImg/talkContent.svg);
     background-repeat: no-repeat;
     background-size: contain;
@@ -652,11 +659,11 @@ visibility: hidden;
     visibility: visible;
     animation-name:storyTextFade;
     opacity: 0;
-    animation-duration: 4s;
-    animation-delay: 0.3s;
-    /* animation-fill-mode:forwards; */
+    animation-duration: 3.3s;
+    animation-delay: 0.2s;
+    
     animation-timing-function: ease-in-out;
-
+   
 }
 
 /*storyTextFade 動態 ========== */
@@ -666,7 +673,7 @@ visibility: hidden;
         opacity: 0
     }25%{
         opacity: 1
-    }90%{
+    }85%{
         opacity: 1
         
     }100%{
@@ -675,7 +682,8 @@ visibility: hidden;
 }
 
 .storyText h4{
-    font-size: 92%;
+    font-size: 90%;
+    letter-spacing: 0.1vmin;
     font-family: "Fredoka", "Noto Sans TC", sans-serif;
     font-weight: bold;
     margin: 0;
@@ -716,6 +724,7 @@ visibility: hidden;
     justify-content: center;
     width: 100%;
     margin-left: 10%;
+    visibility: hidden;
 
 
 }
@@ -791,11 +800,13 @@ visibility: hidden;
     position: relative;
     width: 100%;
     max-width: 450px;
+    visibility: hidden;
+    z-index: 1;
     
 }
 
 /* 按鈕1 */
-.btn3_1 {
+.btn3_0 {
     border: #FCF3E4 solid 6px;
     border-radius: 100%;
     width: 48%;
@@ -814,7 +825,7 @@ visibility: hidden;
 }
 
 /* 按鈕2 */
-.btn3_2 {
+.btn3_1 {
     border: #FCF3E4 solid 6px;
     border-radius: 100%;
     width: 48%;
@@ -833,7 +844,7 @@ visibility: hidden;
 }
 
 /* 按鈕3 */
-.btn3_3 {
+.btn3_2 {
     border: #FCF3E4 solid 6px;
     border-radius: 100%;
     width: 48%;
@@ -863,7 +874,7 @@ visibility: hidden;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 0 30vh;
-
+    visibility: hidden;
 }
 
 /* 肥皮卡丘容器 */
@@ -899,16 +910,16 @@ visibility: hidden;
 .cake1 {
     position: absolute;
     /* top: 80vh; */
-    bottom: -30vh;
-    left: 50vw;
+    bottom: -50vh;
+    left: 10vw;
     transform: rotate(30deg);
 }
 
 .cake2 {
     position: absolute;
     /* top: 32vh; */
-    bottom: -20vh;
-    left:40vw;
+    bottom: -40vh;
+    left:70vw;
     transform: rotate(30deg);
 }
 
@@ -940,6 +951,13 @@ visibility: hidden;
     transform: rotate(20deg);
 }
 
+.storyTextCtrlEmpty{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
 /* -----------------第五頁 遊戲第四題 ----------------------------------*/
 /* 背景顏色 */
 .webBgContainerfifth {
@@ -966,6 +984,7 @@ visibility: hidden;
     position: absolute;
     top: 25vh;
     left: 20vw;
+    visibility: hidden;
 }
 
 /* 按鈕容器 */
@@ -977,6 +996,7 @@ visibility: hidden;
     margin-top: -18vh;
     margin-bottom: 50vh;
     width: 100%;
+    visibility: hidden;
 
 }
 
@@ -1100,6 +1120,7 @@ visibility: hidden;
     gap: 1.5vh;
     margin-top: -10vh;
     margin-bottom: 70vh;
+    visibility: hidden;
 }
 
 .six_Anicontainer{
@@ -1110,6 +1131,7 @@ visibility: hidden;
     left: 0;
     
     overflow: hidden;
+    visibility: hidden;
 }
 
 
@@ -1190,6 +1212,7 @@ visibility: hidden;
     margin-left: 0;
     margin-top: 0;
     /* max-height: 1080px; */
+    opacity: 0;
 
 }
 /* 網頁版可達鴨 */
@@ -1238,6 +1261,7 @@ visibility: hidden;
     position: absolute;
     top: 20vh;
     left: 3vw;
+    
 }
 
 /* 可達鴨動畫 */
@@ -1256,6 +1280,7 @@ visibility: hidden;
     position: absolute;
     top: 0;
     overflow: hidden;
+   opacity: 0;
 }
 
 /* 結果加載頁 */
@@ -1400,44 +1425,30 @@ visibility: hidden;
     gap: 5%;
 
     width: 100%;
-    max-width: 420px;
+    max-width: 520px;
     max-height: 280px;
 
 
 }
 
-/* 名字的背景容器 */
-.nameIconCon {
-    width: 40vw;
-    height: 33vw;
-    max-width: 300px;
-    max-height: 105px;
-    background-image: url(../images/result_Images/nameCon.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin: 0;
-    color: #fff;
-    /* font-size: 80%; */
-    text-align: center;
-    font-family: "Fredoka", "Noto Sans TC", sans-serif;
-    font-weight: 800;
+.bignameIcon{
     display: flex;
-    background-position: center;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
 
-
-    /* margin-top: 5vh; */
-    margin-bottom: -40px;
-
+/* 名字的背景容器 */
+.nameIconCon>img{
+ width:40vw ;    
+max-width: 45px;
 }
 
 /* 名字 */
 .nameText {
     font-family: "Noto Sans TC", sans-serif;
-    font-size: 90%;
+    font-size: 120%;
     font-weight: bold;
-    letter-spacing: 0.4vw;
+    letter-spacing: 0.3vw;
     margin: 0;
     display: flex;
     flex-wrap: nowrap;
@@ -1445,17 +1456,24 @@ visibility: hidden;
     text-align: center;
     padding-left: 2vw;
     padding-right: 2vw;
-    color: #FFB700;
+    color: #3F3A3A;
     
 
+}
+.nameIconCon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 屬性容器 */
 .attrCon {
     width: 90vw;
     height: 15vw;
-    max-width: 380px;
-    max-height: 45px;
+    max-width: 400px;
+    min-width: 150px;
+    max-height: 100px;
+    min-height: 40px;
     background-image: url(../images/result_Images/AttrtextCon.svg);
     background-size: contain;
     background-repeat: no-repeat;
@@ -1471,9 +1489,9 @@ visibility: hidden;
 /* 屬性文字 */
 .attrtextContent {
     font-family: "Noto Sans TC", sans-serif;
-    font-size: 140%;
-    font-weight: 500;
-    letter-spacing: 0.4vw;
+    font-size: 170%;
+    font-weight: 600;
+    letter-spacing: 0.3vw;
     margin: 0;
     display: flex;
     flex-wrap: nowrap;
@@ -1492,31 +1510,33 @@ visibility: hidden;
     flex-direction: row;
     align-items: center;
     gap: 1vh;
-    
+   
+    max-width: 400px;
+    max-height: 100px;
     color: #3F3A3A;
     font-family: "Noto Sans TC", sans-serif;
     font-size: 90%;
     font-weight: 600;
-    letter-spacing: 0.3vw;
+    letter-spacing: 0.1vw;
     margin: 0;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 15%;
+    margin-top: 9%;
 }
 
 /* 標籤們 */
-#Tag1,#Tag2,#Tag3,#Tag4,#Tag5 {
+#Tag0,#Tag1,#Tag2,#Tag3,#Tag4 {
 
     width: fit-content;
-    height: 4vh;
+    height: 4.5vh;
+    max-height: 32px;
     border-radius: 5px;
     border: #3F3A3A 3px solid;
     padding-left: 10px;
     padding-right: 10px;
     box-sizing: border-box;
     background-color: #FFB700;
-    filter: drop-shadow(3px 3px 0px rgb(255, 255, 255));
-}
+    filter: drop-shadow(3px 3px 0px rgb(255, 255, 255));}
 
 
 .pokeCon {
@@ -1560,13 +1580,13 @@ visibility: hidden;
     border-radius: 1000px;
     overflow: hidden;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-evenly;
     width: 80vw;
     max-width: 320px;
-
     height: 10vh;
     max-height: 80px;
+    align-items: baseline;
+    flex-direction: row;
 
 }
 .represent_Container div{
@@ -1576,7 +1596,7 @@ visibility: hidden;
 .represent_Container h4,
 .represent_Container h6{
     margin: 0;
-    /* padding: 1vh 0px; */
+    padding: 2% 0%;
 }
 
 .represent_title h6{
@@ -1597,7 +1617,7 @@ visibility: hidden;
 .represent_name h4{
     color: #FFB700;
     font-family: "Noto Sans TC", sans-serif;
-    font-size: 160%;
+    font-size: 170%;
     font-weight: 700;
     letter-spacing: 0.3vw;
 }
@@ -1677,9 +1697,9 @@ visibility: hidden;
     background-color: #FF6542;
     color: white;
     font-family: "Fredoka","Noto Sans TC", sans-serif;
-    font-size: 95%;
+    font-size: 88%;
     font-weight: 800;
-    letter-spacing: 0.3vw;
+    letter-spacing: 0.2vw;
     margin: 0;
     max-width: 130px;
     max-height: 65px;
@@ -1721,6 +1741,8 @@ visibility: hidden;
     height: 7vw;
     max-width: 30px;
     max-height: 30px;
+    display: flex;
+    align-items: center;
 }
 
 .shareAndAlert button img{
@@ -1728,6 +1750,18 @@ visibility: hidden;
     height:4vw;
     max-width: 20px;
     max-height: 20px;
+}
+
+.ctrlShare{
+    width: fit-content;
+    background-color:rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 1.5%;
+    position: absolute;
+    top: 85%;
+    border-color: #fff;
+    border: 1px solid;
+    
 }
 
 /* ============ */
