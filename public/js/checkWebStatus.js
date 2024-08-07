@@ -6,9 +6,9 @@ function checkWebStatus() {
         method: 'GET',
         success: function (data) {
             if (parseInt(data[0].webStatus)){
-                console.log('1');
+                // console.log('1');
             }else{
-                console.log('0');
+                // console.log('0');
                 window.location.href = '../error.html'
 
             }
@@ -18,4 +18,4 @@ function checkWebStatus() {
     });
 }
 checkWebStatus()
-setInterval(checkWebStatus,1000)
+setInterval(checkWebStatus,5000)

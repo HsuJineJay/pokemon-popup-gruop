@@ -25,7 +25,7 @@ function getDataCreateTable() {
         method: 'GET',
         success: function (dataStr) {
             let data = JSON.parse(dataStr);
-            console.log(data);
+            // console.log(data);
             result += `
             <tr>
                 <td class="overAllTD">商品數量：  ${data[0].productNum}  個</td>

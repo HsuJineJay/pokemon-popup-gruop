@@ -1,3 +1,5 @@
+
+
 //change here
 let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/account/account.php'
 let col = ['userID','userName','userAccount','userPassword','userTitle','userEmail']
@@ -95,7 +97,7 @@ function getData(condition) {
         console.log('fail:', res.innerText);
     });
 }
-function postData() {
+async function postData() {
     // console.log('post');
     let userExistCreate = $('#userExistCreate').val()
     
@@ -105,33 +107,67 @@ function postData() {
     let userTitleCreate = $('#userTitleCreate').val()
     let userEmailCreate = $('#userEmailCreate').val()
 
+    
+    let dataStrOld = await  getData(`?userAccount=${userAccountCreate}`)
+    let dataJsonOld = JSON.parse(dataStrOld)
+    let dataOld = dataJsonOld[0]
+    console.log(dataOld);
 
-
-
-    $.ajax({
-        url: apiUrl,
-        method: 'Post',
-        data: {
-            "userExist": userExistCreate,
-
-            "userName": userNameCreate,
-            "userAccount": userAccountCreate,
-            "userPassword": userPasswordCreate,
-            "userTitle": userTitleCreate,
-            "userEmail": userEmailCreate,
-        },
-        success: function (dataStr) {
-            console.log(dataStr);
-            switchEditUIDisplay('none')
-            conditionReload()
-            
+    if(dataOld !== undefined){
+        if(dataOld.userAccount === userAccountCreate){
+            // console.log('重複');
+            $('#accountRepeatDivCreate').html(`<div id="accountRepeat">帳號重複</div>`)
+        }else{
+            $.ajax({
+                url: apiUrl,
+                method: 'Post',
+                data: {
+                    "userExist": userExistCreate,
+        
+                    "userName": userNameCreate,
+                    "userAccount": userAccountCreate,
+                    "userPassword": userPasswordCreate,
+                    "userTitle": userTitleCreate,
+                    "userEmail": userEmailCreate,
+                },
+                success: function (dataStr) {
+                    console.log(dataStr);
+                    switchEditUIDisplay('none')
+                    conditionReload()
+                    
+                }
+            }).fail(function (res) {
+                console.log('fail:', res.innerText);
+            })
         }
-    }).fail(function (res) {
-        console.log('fail:', res.innerText);
-    })
+    }else{  
+        $.ajax({
+            url: apiUrl,
+            method: 'Post',
+            data: {
+                "userExist": userExistCreate,
+    
+                "userName": userNameCreate,
+                "userAccount": userAccountCreate,
+                "userPassword": userPasswordCreate,
+                "userTitle": userTitleCreate,
+                "userEmail": userEmailCreate,
+            },
+            success: function (dataStr) {
+                console.log(dataStr);
+                switchEditUIDisplay('none')
+                conditionReload()
+                
+            }
+        }).fail(function (res) {
+            console.log('fail:', res.innerText);
+        })
+    }
+
+
 
 }
-function putData() {
+async function putData() {
     // console.log('put');
     let userIDEdit = $('.editUIID').val()
     let userExistEdit = $('#userExistEdit').val()
@@ -141,30 +177,69 @@ function putData() {
     let userTitleEdit = $('#userTitleEdit').val()
     let userEmailEdit = $('#userEmailEdit').val()
 
+    let userOriginPassword = $('.editUIPW').val()
 
+    let dataStrOld = await  getData(`?userAccount=${userAccountEdit}`)
+    let dataJsonOld = JSON.parse(dataStrOld)
+    let dataOld = dataJsonOld[0]
+    console.log(dataOld);
+    // console.log('sql:',dataOld.userAccount,'/edit:',userAccountEdit);
 
-
-    $.ajax({
-        url: apiUrl,
-        method: 'put',
-        data: JSON.stringify({
-            "userID": userIDEdit,
-            "userExist": userExistEdit,
-            "userName": userNameEdit,
-            "userAccount": userAccountEdit,
-            "userPassword": userPasswordEdit,
-            "userTitle": userTitleEdit,
-            "userEmail": userEmailEdit,
-        }),
-        success: function (dataStr) {
-            console.log(dataStr);
-            switchEditUIDisplay('none')
-            conditionReload()
-
+    if(dataOld !== undefined){
+        if(dataOld.userAccount === userAccountEdit & dataOld.userID !==userIDEdit ){
+            console.log('重複');
+            $('#accountRepeatDivEdit').html(`<div id="accountRepeat">帳號重複</div>`)
+        }else{
+            console.log('不重複');
+            $.ajax({
+                url: apiUrl,
+                method: 'put',
+                data: JSON.stringify({
+                    "userID": userIDEdit,
+                    "userExist": userExistEdit,
+                    "userName": userNameEdit,
+                    "userAccount": userAccountEdit,
+                    "userPassword": userPasswordEdit,
+                    "userOriginPassword": userOriginPassword,
+                    "userTitle": userTitleEdit,
+                    "userEmail": userEmailEdit,
+                }),
+                success: function (dataStr) {
+                    console.log(dataStr);
+                    switchEditUIDisplay('none')
+                    conditionReload()
+        
+                }
+            }).fail(function (res) {
+                console.log('fail:', res.innerText);
+            })
         }
-    }).fail(function (res) {
-        console.log('fail:', res.innerText);
-    })
+    }else{
+        $.ajax({
+            url: apiUrl,
+            method: 'put',
+            data: JSON.stringify({
+                "userID": userIDEdit,
+                "userExist": userExistEdit,
+                "userName": userNameEdit,
+                "userAccount": userAccountEdit,
+                "userPassword": userPasswordEdit,
+                "userOriginPassword": userOriginPassword,
+                "userTitle": userTitleEdit,
+                "userEmail": userEmailEdit,
+            }),
+            success: function (dataStr) {
+                console.log(dataStr);
+                switchEditUIDisplay('none')
+                conditionReload()
+    
+            }
+        }).fail(function (res) {
+            console.log('fail:', res.innerText);
+        })
+    }
+
+
 
 
 }
@@ -279,6 +354,7 @@ async function edit(elem) {
     let data = dataJson[0]
     // console.log(data);
     $('.editUIID').val(data.userID)
+    $('.editUIPW').val(data.userPassword)
     $('#userExistEdit').val(data.userExist)
     $('#userName_DateEdit').val(userNameEdit)
     $('#userAccountEdit').val(data.userAccount)

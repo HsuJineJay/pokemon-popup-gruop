@@ -94,7 +94,9 @@
         <div id="editContainer" >
             <div id="editBlack"></div>
             <div id="createUI" >
-                <div class="UITitle f_h6 c_black">新增帳號</div>
+                <div class="UITitle f_h6 c_black" id="accountCreateTitle">新增帳號</div>
+                <div id="accountRepeatDivCreate"></div>
+                
                 <div class="UIInputDiv f_p c_black">
                     <div class="UILittleDiv row">
                         <div class="UISpan col-3" >帳號狀況</div>
@@ -151,8 +153,10 @@
             </div >
             <div id="editUI" >
                 <input class="editUIID" type="hidden" name=""  >
+                <input class="editUIPW" type="hidden" name=""  >
 
                 <div class="UITitle f_h6 c_black">修改帳號</div>
+                <div id="accountRepeatDivEdit"></div>
                 <div class="UIInputDiv f_p c_black">
                     <div class="UILittleDiv row">
                         <div class="UISpan col-3" >帳號狀況</div>
