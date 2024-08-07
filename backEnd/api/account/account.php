@@ -158,27 +158,20 @@ switch ($method) {
         $userName = $output['userName'];
         $userAccount = $output['userAccount'];
         $userPassword = $output['userPassword'];
+        $userOriginPassword = $output['userOriginPassword'];
+        $userNewPassword = password_hash($userOriginPassword, PASSWORD_DEFAULT);
         $userTitle = $output['userTitle'];
         $userEmail = $output['userEmail'];
 
-        // //撈資料確認密碼是否更改
-        // $query = "SELECT * FROM userInfo  WHERE userID = ? ";
-        // $stmt = $mydb->prepare($query);
-        // $stmt->bind_param('i', $userID);
-        // $stmt->execute();
-        // $result = $stmt->get_result();
 
-        // $check = false;
-        // while ($row = $result->fetch_object()) {
-        //     $check = $userPassword===$row['userPassword']?false:true ;
-        // }
-        // if($check){
-        //     $userPassword=password_hash($userPassword, PASSWORD_DEFAULT) ;
-        // } 
 
         $sql = 'UPDATE userInfo SET userExist = ?, userName = ? ,userAccount = ?, userPassword = ? , userTitle = ? , userEmail = ? WHERE userID = ?';
         $stmt = $mydb->prepare($sql);
-        $stmt->bind_param('isssssi', $userExist, $userName, $userAccount, $userPassword, $userTitle, $userEmail, $userID);
+        if($userOriginPassword !== $userPassword){
+            $stmt->bind_param('isssssi', $userExist, $userName, $userAccount, $userNewPassword, $userTitle, $userEmail, $userID);
+        }else{
+            $stmt->bind_param('isssssi', $userExist, $userName, $userAccount, $userPassword, $userTitle, $userEmail, $userID);
+        }
         $stmt->execute();
 
 
