@@ -692,7 +692,7 @@ $(document).ready(function () {
                         </div>
                         <!-- 按鈕區 -->
                         <div class="backReplaybtnCon">
-                            <button id="backHome">官網逛逛</button>
+                            <button id="backHome" onclick="location.href='../index.html'">官網逛逛</button>
                             <button id="Replay"><img src="./images/result_Images/ReplayIcon.png" alt=""> REPLAY</button>
                         </div>
 
@@ -823,7 +823,7 @@ $(document).ready(function () {
                 }
             
 
-            setTimeout(emptyStoryText, 3300)
+            setTimeout(emptyStoryText, 2400)
 
             //========= 3秒後改變問題框跟選項框動畫框visibility hidden=>visable
             const showQuestionandbutton = function () {
@@ -833,7 +833,7 @@ $(document).ready(function () {
                 // =======第八頁可達鴨快樂容器透明度0=>1
                 $('.eight_cloudscontainer').css('opacity', '1')
             }
-            setTimeout(showQuestionandbutton, 3500)
+            setTimeout(showQuestionandbutton, 2401)
 
             //印出題數============
             $('.questionIcon').html(`${questionData.quesNumber}`)

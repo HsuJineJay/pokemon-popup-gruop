@@ -165,6 +165,8 @@ video::-webkit-media-controls-enclosure {
     gap: 4vh;
 }
 
+
+
 /* 聲音按鈕容器 */
 #soundContainer {
     background-color: transparent;
@@ -659,7 +661,7 @@ visibility: hidden;
     visibility: visible;
     animation-name:storyTextFade;
     opacity: 0;
-    animation-duration: 3.3s;
+    animation-duration: 2.3s;
     animation-delay: 0.2s;
     
     animation-timing-function: ease-in-out;
@@ -1759,8 +1761,8 @@ max-width: 45px;
     padding: 1.5%;
     position: absolute;
     top: 85%;
-    border-color: #fff;
-    border: 1px solid;
+   
+    border: 1px solid white;
     
 }
 
