@@ -39,7 +39,7 @@ body{
  
 }
 /* 耿鬼網頁版手機版RWD消失 */
-@media (max-width:450px) {
+@media (max-width:451px) {
     .ghoastAniCon2{
       
         visibility: hidden;
@@ -48,8 +48,11 @@ body{
      
          visibility: hidden;
     }
-   
-
+   /* 聲音按鈕rwd */
+    #soundIcon {
+       max-width: 27px;
+       
+    }
    
 }
 /* 可達鴨網頁版手機版RWD消失 */
@@ -61,7 +64,7 @@ body{
     .webduckaniCon{
         visibility: visible;
     }
-
+  
     
     
 }
@@ -184,8 +187,8 @@ video::-webkit-media-controls-enclosure {
 
 /* 聲音按鈕 */
 #soundIcon {
-    width: 100%;
-
+    width: 45px;
+   
 }
 
 /* logo容器 */
@@ -661,8 +664,8 @@ visibility: hidden;
     visibility: visible;
     animation-name:storyTextFade;
     opacity: 0;
-    animation-duration: 2.3s;
-    animation-delay: 0.2s;
+    animation-duration: 2s;
+    animation-delay: 0.1s;
     
     animation-timing-function: ease-in-out;
    
@@ -675,7 +678,7 @@ visibility: hidden;
         opacity: 0
     }25%{
         opacity: 1
-    }85%{
+    }80%{
         opacity: 1
         
     }100%{

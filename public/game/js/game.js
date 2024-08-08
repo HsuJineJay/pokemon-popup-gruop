@@ -786,7 +786,8 @@ $(document).ready(function () {
             //             }
 
 
-
+            
+           
 
             //迴圈長出大背景=======
             $('.superBigWebCon').append(
@@ -823,7 +824,7 @@ $(document).ready(function () {
                 }
             
 
-            setTimeout(emptyStoryText, 2400)
+            setTimeout(emptyStoryText, 2100)
 
             //========= 3秒後改變問題框跟選項框動畫框visibility hidden=>visable
             const showQuestionandbutton = function () {
@@ -833,7 +834,7 @@ $(document).ready(function () {
                 // =======第八頁可達鴨快樂容器透明度0=>1
                 $('.eight_cloudscontainer').css('opacity', '1')
             }
-            setTimeout(showQuestionandbutton, 2401)
+            setTimeout(showQuestionandbutton, 2101)
 
             //印出題數============
             $('.questionIcon').html(`${questionData.quesNumber}`)
