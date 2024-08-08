@@ -21,7 +21,7 @@ window.addEventListener('load',function(){
         window.location.href = './account.html'
     })
     $('#logout').click(async function () {
-        console.log('Logout button clicked');
+        // console.log('Logout button clicked');
         let apiUrl = 'http://localhost/pokemon-popup-gruop/public/backStage/login/logout.php';
         
         try {

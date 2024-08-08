@@ -5,6 +5,7 @@
 //     //     // credentials: 'include'
 //     // });
 
+
 //     // const data = await response.json();
 //     // if (data.success) {
 //     //     // document.getElementById('message').innerText = data.message;
@@ -37,21 +38,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     $.ajax({
         url: protectedUrl,
         method: 'GET',
-        xhrFields: {
-            withCredentials: true // 包含凭据
-        },
+        // xhrFields: {
+        //     withCredentials: true // 包含凭据
+        // },
         success: function (data) {
+            // console.log('OK');
             if (data.success) {
                 console.log(data.message);
+                console.log(data.responseText);
             } else {
                 console.log(data.message);
+                console.log(data.responseText);
                 alert('Access denied');
                 window.location.href = './login/login.html';
             }
-        },
-        error: function (error) {
-            console.log('fail');
-            console.log(error.responseText);
         }
-    });
+         
+    }).fail(function (error) {
+        console.log('fail1');
+        console.log(error);
+        console.log(error.responseText);
+    })
 });
