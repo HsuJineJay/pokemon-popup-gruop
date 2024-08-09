@@ -57,22 +57,25 @@ body{
 }
 /* 可達鴨網頁版手機版RWD消失 */
 @media (min-width:450px){
-    .seven_Anicontainer{
-        visibility: hidden;
-    }
+    /* .seven_Anicontainer{
+        display: none;
+    } */
     
-    .webduckaniCon{
-        visibility: visible;
-    }
+    /* .webduckaniCon{
+        display: flex;
+    } */
   
     
     
 }
 
-@media (max-width:451px){
-    .webduckaniCon{
-        visibility: hidden;
-    }
+@media only screen and (max-width:451px){
+    /* .seven_Anicontainer{
+        display: flex;
+    } */
+    /* .webduckaniCon{
+        display: none;
+    } */
     .grassDisappear{
         visibility: hidden;
     }
@@ -1155,7 +1158,7 @@ visibility: hidden;
     position: absolute;
     top: 0;
     left: 0%;
-  
+    display:none;
     overflow: hidden;
    
 }
@@ -1164,7 +1167,7 @@ visibility: hidden;
 .duckaniCon1 {
     width: 100%;
     position: absolute;
-    bottom: 5vh;
+    bottom: 2vh;
     left: -20vw;
     overflow: hidden;
 }
@@ -1186,14 +1189,14 @@ visibility: hidden;
 .duckaniCon4 {
     width: 100%;
     position: absolute;
-    bottom: 4vh;
-    left: 30vw;
+    bottom: 0vh;
+    left: 24vw;
 }
 
 .duckaniCon5 {
     width: 100%;
     position: absolute;
-    bottom: 5vh;
+    bottom: 1vh;
     left: 45vw;
 }
 
@@ -1211,13 +1214,12 @@ visibility: hidden;
 
 /* 網頁版可達鴨容器 */
 .webduckaniCon {
-    display: flex;
+    display: none;
     justify-content: center;
     width: 100%;
     margin-left: 0;
     margin-top: 0;
-    /* max-height: 1080px; */
-    opacity: 0;
+    
 
 }
 /* 網頁版可達鴨 */

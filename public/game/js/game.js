@@ -12,7 +12,7 @@ $(document).ready(function () {
     let get2
     let get3
 
-
+    
 
 
     // 音樂音量
@@ -137,7 +137,7 @@ $(document).ready(function () {
             <div >
 
                 <!-- 動畫區 -->
-                <div class="pokeaniCon"><img id="pokeaniImg" src="./images/secondPageImg/pokeballNormal.svg" alt="">
+                <div class="pokeaniCon"><img class="lazyload" id="pokeaniImg" data-src="./images/secondPageImg/pokeballNormal.svg" alt="">
                 </div>
 
             </div>
@@ -147,16 +147,16 @@ $(document).ready(function () {
 
         <!-- 雲朵 -->
         <div class="thir_cloudscontainer">
-            <div class="sec_cloud1container"><img width="100vw" src="./images/secondPageImg/cloudWhite1.svg" alt="">
+            <div class="sec_cloud1container"><img class="lazyload" width="100vw" data-src="./images/secondPageImg/cloudWhite1.svg" alt="">
             </div>
-            <div class="sec_cloud2container"><img width="90vw" src="./images/secondPageImg/cloudWhite1.svg" alt="">
+            <div class="sec_cloud2container"><img class="lazyload" width="90vw" data-src="./images/secondPageImg/cloudWhite1.svg" alt="">
             </div>
-            <div class="sec_cloud3container"><img width="110vw" src="./images/secondPageImg/cloudWhite2.svg" alt="">
+            <div class="sec_cloud3container"><img class="lazyload" width="110vw" data-src="./images/secondPageImg/cloudWhite2.svg" alt="">
             </div>
-            <div class="sec_cloud4container"><img width="75vw" src="./images/secondPageImg/cloudWhite2.svg" alt="">
+            <div class="sec_cloud4container"><img class="lazyload" width="75vw" data-src="./images/secondPageImg/cloudWhite2.svg" alt="">
             </div>
             <!-- 草皮 -->
-            <div class="grassContainer"><img src="./images/secondPageImg/grass.svg" alt=""></div>
+            <div class="grassContainer"><img class="lazyload" data-src="./images/secondPageImg/grass.svg" alt=""></div>
 
         </div>
 
@@ -203,8 +203,8 @@ $(document).ready(function () {
 
                 <!-- 動畫區 -->
                 <div class="chubbyaniCon">
-                    <img class="micImg" src="./images/thirdPageImg/mic.svg" alt="">
-                    <video class="chubbySing" src="./images/animation/chubbySing.webm"  autoplay loop muted></video>
+                    <img class="micImg lazyload" data-src="./images/thirdPageImg/mic.svg" alt="">
+                    <video class="chubbySing lazyload" data-src="./images/animation/chubbySing.webm"  autoplay loop muted></video>
                     
                 </div>
                 
@@ -217,16 +217,16 @@ $(document).ready(function () {
 
         <!-- 雲朵 -->
         <div class="thir_cloudscontainer">
-            <div class="sec_cloud1container"><img width="100vw" src="./images/secondPageImg/cloudWhite1.svg" alt="">
+            <div class="sec_cloud1container"><img class="lazyload"  width="100vw" data-src="./images/secondPageImg/cloudWhite1.svg" alt="">
             </div>
-            <div class="sec_cloud2container"><img width="90vw" src="./images/secondPageImg/cloudWhite1.svg" alt="">
+            <div class="sec_cloud2container"><img  class="lazyload" width="90vw" data-src="./images/secondPageImg/cloudWhite1.svg" alt="">
             </div>
-            <div class="sec_cloud3container"><img width="110vw" src="./images/secondPageImg/cloudWhite2.svg" alt="">
+            <div class="sec_cloud3container"><img class="lazyload"  width="110vw" data-src="./images/secondPageImg/cloudWhite2.svg" alt="">
             </div>
-            <div class="sec_cloud4container"><img width="75vw" src="./images/secondPageImg/cloudWhite2.svg" alt="">
+            <div class="sec_cloud4container"><img  class="lazyload" width="75vw" data-src="./images/secondPageImg/cloudWhite2.svg" alt="">
             </div>
             <!-- 草皮 -->
-            <div class="grassContainer"><img src="./images/secondPageImg/grass.svg" alt=""></div>
+            <div class="grassContainer"><img  class="lazyload"  data-src="./images/secondPageImg/grass.svg" alt=""></div>
             <!-- 音符 -->
              <div class="musicIcon1"></div>
              <div class="musicIcon2"></div>
@@ -283,21 +283,21 @@ $(document).ready(function () {
 
             <div  style=" position: absolute;">
                 
-                <div class="cake1"><img width="120vw" src="./images/fourthPageImg/cherryCake.svg" alt="">
+                <div class="cake1"><img class="lazyload" width="120vw"  data-src="./images/fourthPageImg/cherryCake.svg" alt="">
                 </div>
-                <div class="cake2"><img width="90vw" src="./images/fourthPageImg/pancake1.svg" alt="">
+                <div class="cake2"><img class="lazyload" width="90vw"  data-src="./images/fourthPageImg/pancake1.svg" alt="">
                 </div>
-                <div class="cake3"><img width="130vw" src="./images/fourthPageImg/pancake2.svg" alt="">
+                <div class="cake3"><img class="lazyload" width="130vw"  data-src="./images/fourthPageImg/pancake2.svg" alt="">
                 </div>
-                <div class="cake4"><img width="85vw" src="./images/fourthPageImg/strawberryCake.svg" alt="">
+                <div class="cake4"><img class="lazyload" width="85vw"  data-src="./images/fourthPageImg/strawberryCake.svg" alt="">
                 </div>
-                <div class="cake5"><img width="75vw" src="./images/fourthPageImg/cherryCake.svg" alt="">
+                <div class="cake5"><img class="lazyload" width="75vw"  data-src="./images/fourthPageImg/cherryCake.svg" alt="">
                 </div>
-                <div class="cake6"><img width="100vw" src="./images/fourthPageImg/pancake1.svg" alt="">
+                <div class="cake6"><img class="lazyload" width="100vw"  data-src="./images/fourthPageImg/pancake1.svg" alt="">
                 </div>
             </div>
             <!-- 皮卡丘 -->
-            <div class="fatpikaCon"><img class="pikafatAni" src="./images/fourthPageImg/fatPikaAni1.png" alt=""></div>
+            <div class="fatpikaCon"><img class="pikafatAni lazyload"  data-src="./images/fourthPageImg/fatPikaAni1.png" alt=""></div>
 
         </div>
 
@@ -350,20 +350,20 @@ $(document).ready(function () {
 
         <!-- 雲朵 -->
         <div class="fifth_cloudscontainer">
-            <div class="fifth_cloud1container"><img width="100vw" src="./images/fifthPageImg/cloudWhite1.svg" alt="">
+            <div class="fifth_cloud1container"><img  class="lazyload" width="100vw" data-src="./images/fifthPageImg/cloudWhite1.svg" alt="">
             </div>
-            <div class="fifth_cloud2container"><img width="90vw" src="./images/fifthPageImg/cloudWhite1.svg" alt="">
+            <div class="fifth_cloud2container"><img  class="lazyload" width="90vw" data-src="./images/fifthPageImg/cloudWhite1.svg" alt="">
             </div>
-            <div class="fifth_cloud3container"><img width="130vw" src="./images/fifthPageImg/cloudWhite2.svg" alt="">
+            <div class="fifth_cloud3container"><img  class="lazyload" width="130vw" data-src="./images/fifthPageImg/cloudWhite2.svg" alt="">
             </div>
-            <div class="fifth_cloud4container"><img width="150vw" src="./images/fifthPageImg/cloudWhite2.svg" alt="">
+            <div class="fifth_cloud4container"><img  class="lazyload" width="150vw" data-src="./images/fifthPageImg/cloudWhite2.svg" alt="">
             </div>
-            <div class="fifth_cloud5container"><img width="75vw" src="./images/fifthPageImg/cloudWhite1.svg" alt="">
+            <div class="fifth_cloud5container"><img  class="lazyload" width="75vw" data-src="./images/fifthPageImg/cloudWhite1.svg" alt="">
             </div>
-            <div class="fifth_cloud6container"><img width="100vw" src="./images/fifthPageImg/cloudWhite2.svg" alt="">
+            <div class="fifth_cloud6container"><img  class="lazyload" width="100vw" data-src="./images/fifthPageImg/cloudWhite2.svg" alt="">
             </div>
              <!-- 動畫區 -->
-             <div class="meowaniCon"><img id="meowaniImg" src="./images/fifthPageImg/meowAirballoon.svg" alt="">
+             <div class="meowaniCon"><img class="lazyload" id="meowaniImg" data-src="./images/fifthPageImg/meowAirballoon.svg" alt="">
              </div>
 
         </div>
@@ -420,13 +420,13 @@ $(document).ready(function () {
         <!-- 動畫區 -->
          <div class="six_Anicontainer">
         <div class="ghoastAniCon">
-            <video class="ghoastAni" src="./images/animation/ghoastSleep.webm" autoplay loop muted></video>
+            <video class="ghoastAni lazyload" data-src="./images/animation/ghoastSleep.webm" autoplay loop muted></video>
         </div>
         <div class="ghoastAniCon2">
-            <video class="ghoastAni" src="./images/animation/ghoastSleep.webm" autoplay loop muted></video>
+            <video class="ghoastAni lazyload" data-src="./images/animation/ghoastSleep.webm" autoplay loop muted></video>
         </div>
         <div class="ghoastAniCon3">
-            <video class="ghoastAni" src="./images/animation/ghoastSleep.webm" autoplay loop muted></video>
+            <video class="ghoastAni lazyload" data-src="./images/animation/ghoastSleep.webm" autoplay loop muted></video>
         </div>
         
     </div>
@@ -475,15 +475,15 @@ $(document).ready(function () {
             <div style=" z-index: 1;">
                 <!-- 網頁版動畫區 -->
                 <div class="webduckaniCon">
-                   <video class="duckAniWeb" src="./images/animation/duckWalk.webm" autoplay loop
+                   <video class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video class="duckAniWeb" src="./images/animation/duckWalk.webm" autoplay loop
+                   <video class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video class="duckAniWeb" src="./images/animation/duckWalk.webm" autoplay loop
+                   <video class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video class="duckAniWeb" src="./images/animation/duckWalk.webm" autoplay loop
+                   <video class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video class="duckAniWeb" src="./images/animation/duckWalk.webm" autoplay loop
+                   <video class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
                </div>
            </div>
@@ -492,23 +492,23 @@ $(document).ready(function () {
     
         <div class="seven_Anicontainer">
             <!-- 手機版動畫區 -->
-            <div  class="duckaniCon1"><video class="duckAni" src="./images/animation/duckWalk.webm" autoplay loop
+            <div  class="duckaniCon1"><video class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
                     muted></video>
             </div>
 
-            <div  class="duckaniCon2"><video class="duckAni" src="./images/animation/duckWalk.webm" autoplay loop
+            <div  class="duckaniCon2"><video class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
                     muted></video>
             </div>
 
-            <div  class="duckaniCon3"><video class="duckAni" src="./images/animation/duckWalk.webm" autoplay loop
+            <div  class="duckaniCon3"><video class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
                     muted></video>
             </div>
 
-            <div  class="duckaniCon4"><video class="duckAni" src="./images/animation/duckWalk.webm" autoplay loop
+            <div  class="duckaniCon4"><video class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
                     muted></video>
             </div>
 
-            <div  class="duckaniCon5"><video class="duckAni" src="./images/animation/duckWalk.webm" autoplay loop
+            <div  class="duckaniCon5"><video class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
                     muted></video>
             </div>
          </div> 
@@ -829,8 +829,37 @@ $(document).ready(function () {
             //========= 3秒後改變問題框跟選項框動畫框visibility hidden=>visable
             const showQuestionandbutton = function () {
                 $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer,.btn3Container,.cakeCon,.meowaniCon,.btnContainer2,.six_Anicontainer,.btnContainer3').css('visibility', 'visible')
-                // =======網頁版可達鴨容器透明度0=>1 
-                $('.webduckaniCon').css('opacity', '1')
+                
+                  // ============網頁版可達鴨rwd
+      function displayWebduckRWD(){
+        if ($(window).width() < 450){
+            $('.webduckaniCon').css('display', 'none')
+            }else{
+                $('.webduckaniCon').css( 'display', 'flex')
+                }
+    }
+    displayWebduckRWD()
+    
+
+    //// ============手機版可達鴨rwd
+   function  displaymbduckRWD(){
+        if ($(window).width() > 450){
+            $('.seven_Anicontainer').css('display', 'none')
+            }else{
+                $('.seven_Anicontainer').css( 'display', 'flex')
+                }
+    }
+    
+    displaymbduckRWD();
+    // 視窗改變就呼叫執行displayWebduckRWD()
+    function resizeduck(){
+    $(window).resize(function() {
+        displayWebduckRWD();
+        displaymbduckRWD();
+     });
+   } 
+   resizeduck()
+              
                 // =======第八頁可達鴨快樂容器透明度0=>1
                 $('.eight_cloudscontainer').css('opacity', '1')
             }
