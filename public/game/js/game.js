@@ -33,6 +33,7 @@ $(document).ready(function () {
                 bgmusic.muted = true
                 chubbySong.muted = true
                 guessWhoSong.muted = true
+                WhoisthatSong.muted =true
                 $('#soundIcon').attr('src', './images/publicImg/soundOn.svg')
 
             }
@@ -61,6 +62,15 @@ $(document).ready(function () {
             guessWhoSong.play().catch(e => console.log("猜猜我是播放失敗:", e))
 
         }
+    }
+
+    let WhoisthatSongCtrl = async function () {
+        if ($('#soundIcon').attr('src') === './images/publicImg/soundOff.svg') {
+            $('#WhoisthatSong').prop('muted', false)
+           WhoisthatSong.play().catch(e => console.log("寶可夢結果播放失敗:", e))
+            
+          
+         }
     }
     //初始就呼叫控制音樂
     CtrlSound()
@@ -204,7 +214,7 @@ $(document).ready(function () {
                 <!-- 動畫區 -->
                 <div class="chubbyaniCon">
                     <img class="micImg lazyload" data-src="./images/thirdPageImg/mic.svg" alt="">
-                    <video class="chubbySing lazyload" data-src="./images/animation/chubbySing.webm"  autoplay loop muted></video>
+                    <video  class="chubbySing lazyload" data-src="./images/animation/chubbySing.webm"  autoplay loop muted></video>
                     
                 </div>
                 
@@ -475,15 +485,15 @@ $(document).ready(function () {
             <div style=" z-index: 1;">
                 <!-- 網頁版動畫區 -->
                 <div class="webduckaniCon">
-                   <video class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
+                   <video width="200" height="200" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
+                   <video width="200" height="200" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
+                   <video width="200" height="200"  class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
+                   <video width="200" height="200" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
+                   <video width="200" height="200" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
                </div>
            </div>
@@ -492,23 +502,23 @@ $(document).ready(function () {
     
         <div class="seven_Anicontainer">
             <!-- 手機版動畫區 -->
-            <div  class="duckaniCon1"><video class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
+            <div  class="duckaniCon1"><video width="200" height="200"  class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
                     muted></video>
             </div>
 
-            <div  class="duckaniCon2"><video class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
+            <div  class="duckaniCon2"><video width="200" height="200" class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
                     muted></video>
             </div>
 
-            <div  class="duckaniCon3"><video class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
+            <div  class="duckaniCon3"><video width="200" height="200" class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
                     muted></video>
             </div>
 
-            <div  class="duckaniCon4"><video class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
+            <div  class="duckaniCon4"><video width="200" height="200" class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
                     muted></video>
             </div>
 
-            <div  class="duckaniCon5"><video class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
+            <div  class="duckaniCon5"><video width="200" height="200" class="duckAni lazyload" data-src="./images/animation/duckWalk.webm" autoplay loop
                     muted></video>
             </div>
          </div> 
@@ -1028,7 +1038,12 @@ $(document).ready(function () {
     // 印出結果頁公版容器============
 
     function showresultCon() {
-        // $('#soundContainer').css('visibility', 'visible')
+        $('#soundContainer').css('visibility', 'visible')
+        // 播放結果音樂
+        WhoisthatSongCtrl()
+        // 五秒後播放bg音樂
+        let playbg =function(){$('#bgmusic').prop('muted', false)}
+        setTimeout(playbg,5000) 
         $('.superBigWebCon').append(resultPageCon[0])
         //印出使用者輸入的姓名 
         $('#userNamePrint').html(userName)
