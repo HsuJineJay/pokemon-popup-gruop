@@ -83,11 +83,40 @@ function changeWebStatus() {
         console.log('fail:', res.innerText);
     });
 }
+function switchEditUIDisplay(display, elem) {
+    $('#editContainer').css('display', display)
+    // $('#editBlack').css('display', display)
+    $('#editBlack').fadeToggle()
+    if (elem !== undefined) {
+        // console.log(elem);
+        $(elem).css('display', display)
+    } else {
+        // console.log(elem);
+        $('#createUI').css('display', display)
+        $('#editUI').css('display', display)
+        $('#removeUI').css('display', display)
+        $('#webStatusUI').css('display', display)
+        $('#onUI').css('display', display)
+
+    }
+}
+function webStatusBN() {
+    switchEditUIDisplay('block', '#webStatusUI')
+}
 
 window.onload = function () {
     getDataCreateTable();
 
+    $('#editBlack,.UICancelBN,#webStatusUICancelBn').click(function () {
+        switchEditUIDisplay('none')
+    })
+
+
     $('#webOnline').on('click', function () {
+        webStatusBN()
+    });
+
+    $('#webStatusUISubmit').on('click', function () {
         changeWebStatus().done(function () {
             getDataCreateTable();
         });
@@ -95,24 +124,4 @@ window.onload = function () {
 
 
 
-//     $('#logout').click(async function () {
-//         console.log('Logout button clicked');
-//         let apiUrl = 'http://localhost/frontend/bigProject/root/public/backStage/login/logout.php';
-        
-//         try {
-//             let response = await $.ajax({
-//                 url: apiUrl,
-//                 method: 'GET',
-//                 dataType: 'json'
-//             });
-//             console.log(response);
-//             if (response === 'out') {
-//                 window.location.href = './login/login.html';
-//             } else {
-//                 console.log('Unexpected response:', response);
-//             }
-//         } catch (error) {
-//             console.error('AJAX request failed:', error);
-//         }
-// })
 }
