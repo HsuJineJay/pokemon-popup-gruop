@@ -11,41 +11,6 @@ $(document).ready(function(){
     });
 })
 
-// 電話格式的限制
-
-$(document).ready(function() {
-    $('#contactForm').on('submit', function(event) {
-        var telInput = $('#buyerTel');
-        var telValue = telInput.val();
-        var telPattern = /^0[9][0-9]{8}$/; // 電話號碼正則表達式
-
-        if (!telPattern.test(telValue)) {
-            event.preventDefault(); // 阻止表單提交
-            $('#telError').show(); // 顯示錯誤訊息
-        } else {
-            $('#telError').hide(); // 隱藏錯誤訊息
-        }
-    });
-
-    // 自動格式化電話號碼
-    $('#buyerTel').on('input', function() {
-        var input = $(this).val().replace(/\D/g, ''); // 移除所有非數字的字元
-        var formatted = '';
-
-        if (input.length > 0) {
-            formatted += input.substring(0, 4); // 區碼
-            if (input.length > 4) {
-                formatted += '-' + input.substring(4, 7); // 中段
-            }
-            if (input.length > 7) {
-                formatted += '-' + input.substring(7, 10); // 末段
-            }
-        }
-
-        $(this).val(formatted);
-    });
-});
-
 
 // 發票的填寫限制
 function invoiceStyles() {
