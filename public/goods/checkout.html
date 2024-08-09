@@ -177,9 +177,9 @@
                     <input type="radio" class="detailRadio" id="Supermarket" name="Delivery" value="超商取貨">
                     <label for="Supermarket" class="detailListText">超商取貨</label>
                   </div>
-                <div class="col-2 mt-5">
+                <!-- <div class="col-2 mt-5">
                   <div id="ecpay_btn" class="btn">前往綠界付款頁面</div>
-                </div>
+                </div> -->
             </div>      
     
             <!-- ============================== 付款方式 ============================== -->
@@ -207,13 +207,14 @@
                     </div>
                     <div class="form-group">
                         <label for="buyerTel" class="detailListText">電　話</label>
-                        <input type="tel" class="detailListGroupText-B" id="buyerTel" name="buyerTel" placeholder="EX:0911100100">
-                    </div>
+                        <input type="tel" class="detailListGroupText-B" id="buyerTel" name="buyerTel" 
+                        placeholder="EX:0911100100" pattern="0[9][0-9]{8}"
+                        title="格式應為 0911100100">
+                      </div>
                     <div class="form-group">
                         <label for="buyerEmail" class="detailListText">EMAIL</label>
                         <input type="email" class="detailListGroupText-B" id="buyerEmail" name="buyerEmail"  placeholder="EX:ABC@gmail.com">
                       </div>
-                      <!-- <div class="help_block"><span>聯絡電話只能輸入 8~20 碼以內的數字及 + 和 # 符號。</span></div>  -->
                       
                 </div>
                 <div class="col-md-5 col-12">
@@ -238,9 +239,9 @@
                 <div class="col-md-6 col-12">
                     <input type="radio" class="detailRadio" id="TriplicateUniformInvoice" name="receiptType" value="三聯式">
                     <label for="TriplicateUniformInvoice" class="detailListText">公司戶（三聯）發票</label><br><br>
-                    <label for="taxIDNumber" class="detailListText">統一編號</label><br>
+                    <label for="taxIDNumber" class="detailListText invoiceText">統一編號</label><br>
                     <input type="text" class="detailListGroupText-A" id="taxIDNumber" name="taxIDNumber" placeholder="請輸入8碼統一編號">
-                    <label for="companyTitle" class="detailListText">公司抬頭</label><br>
+                    <label for="companyTitle" class="detailListText invoiceText">公司抬頭</label><br>
                     <input type="text" class="detailListGroupText-A" id="companyTitle" name="companyTitle">
                 </div>
             </div>

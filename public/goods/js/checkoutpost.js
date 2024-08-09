@@ -11,11 +11,57 @@ $(document).ready(function(){
     });
 })
 
+// 電話格式的限制
+
+$(document).ready(function() {
+    $('#contactForm').on('submit', function(event) {
+        var telInput = $('#buyerTel');
+        var telValue = telInput.val();
+        var telPattern = /^0[9][0-9]{8}$/; // 電話號碼正則表達式
+
+        if (!telPattern.test(telValue)) {
+            event.preventDefault(); // 阻止表單提交
+            $('#telError').show(); // 顯示錯誤訊息
+        } else {
+            $('#telError').hide(); // 隱藏錯誤訊息
+        }
+    });
+
+    // 自動格式化電話號碼
+    $('#buyerTel').on('input', function() {
+        var input = $(this).val().replace(/\D/g, ''); // 移除所有非數字的字元
+        var formatted = '';
+
+        if (input.length > 0) {
+            formatted += input.substring(0, 4); // 區碼
+            if (input.length > 4) {
+                formatted += '-' + input.substring(4, 7); // 中段
+            }
+            if (input.length > 7) {
+                formatted += '-' + input.substring(7, 10); // 末段
+            }
+        }
+
+        $(this).val(formatted);
+    });
+});
+
+
 // 發票的填寫限制
+function invoiceStyles() {
+    document.querySelectorAll('.invoiceText').forEach(function(label) {
+        label.style.color = 'lightgray';
+    });
+    console.log('invoiceStyles()')
+
+}
+
 $(document).ready(function() {
     function toggleInputs() {
-        const isDuplicateSelected = $('#DuplicateUniformInvoice').is(':checked');
-        $('#taxIDNumber, #companyTitle').prop('disabled', isDuplicateSelected);
+        const isDuplicateSelected = $('#DuplicateUniformInvoice').is(':checked');   //當二聯式被選擇時
+        $('#taxIDNumber, #companyTitle').prop('disabled', isDuplicateSelected);     //統一編號&抬頭框不得輸入
+        $('.invoiceText').css('color', isDuplicateSelected ? 'lightgray' : '#3F3A3A');   //統一編號&抬頭字為灰色
+        
     }
 
     toggleInputs();
@@ -23,7 +69,7 @@ $(document).ready(function() {
     $('input[name="receiptType"]').on('change', toggleInputs);
 });
 
-// 綠界的前往超商按鈕
+// 綠界的前往超商按鈕-----------------------------ING---------------------------->
 $(document).ready(function(){
     $('#ecpay_btn').on('click', function(){
         console.log('123');
