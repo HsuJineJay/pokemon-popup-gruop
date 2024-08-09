@@ -7,7 +7,9 @@ header("Content-Type: application/json; charset=UTF-8");
 
 session_start();
 
-// $input = json_decode(file_get_contents('php://input'), true);
+if(isset($_POST['account'])){
+    
+}
 
 $account = $_POST['account'];
 $password = $_POST['password'];
