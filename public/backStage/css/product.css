@@ -48,10 +48,26 @@
     background-size: cover;
 }
 
+td:nth-of-type(2) {
+    /* display: block; */
+
+    text-align: center;
+}
+
+td:nth-last-of-type(4) {
+    /* display: block; */
+
+    text-align: center;
+}
 td:nth-last-of-type(3) {
     /* display: block; */
 
     text-align: center;
+}
+td:nth-last-of-type(2) {
+    /* display: block; */
+
+    text-align: left;
 }
 
 

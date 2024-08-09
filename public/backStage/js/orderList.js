@@ -1,13 +1,20 @@
 
 let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/orderList/orderList.php'
-let col = ['orderID','transactionID','productName','productQ','orderAmount','buyerName','buyerEmail','buyerTel','buyerAddr','orderDate','payment','receiptType','companyTitle','taxIDNumber','orderStatus','transportNote']
-let colTW = ['資料ID','訂單編號','商品名稱','商品數量','單品總價','買家姓名','信箱','電話','地址','訂單日期','付款方式','發票類別','公司名稱','統一編號','訂單狀態','物流備註']
+let col = ['orderID','transactionID','orderStatus','productName','productQ','orderAmount','buyerName','buyerEmail','buyerTel','buyerAddr','orderDate','payment','receiptType','companyTitle','taxIDNumber','transportNote']
+let colTW = ['資料ID','訂單編號','訂單狀態','商品名稱','商品數量','單品總價','買家姓名','信箱','電話','地址','訂單日期','付款方式','發票類別','公司名稱','統一編號','物流備註']
 let colExist = 'orderExist'
 function setUp(){
     for(i in col){
-        $('#condition').append(`
+        if(col[i] === 'orderStatus'){
+            $('#condition').append(`
+            <option class="selectOption" value=${col[i]} selected>${colTW[i]}</option>
+            `)
+        }else{
+            $('#condition').append(`
             <option class="selectOption" value=${col[i]}>${colTW[i]}</option>
-        `)
+            `)
+        }
+
     }
     for(item of colTW){
         $('#existTHead,#noExistTHead').append(`
@@ -452,7 +459,8 @@ function testCreatValueSet() {
 
 window.onload = function () {
     setUp()
-    getDataCreateTable('?orderExist=1','#existTBody');
+    // getDataCreateTable('?orderExist=1','#existTBody');
+    conditionReload()
 
     $('#editBlack,.UICancelBN,#deleteUICancelBn,#removeUICancelBn,#onUICancelBn').click(function () {
         switchEditUIDisplay('none')

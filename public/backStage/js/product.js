@@ -1,7 +1,7 @@
 //change here
 let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php'
-let col = ['productID','productName','productType','productDescribe','productPrice','productInStock','storeOnly','productMain']
-let colTW = ['商品編號','商品名稱','商品類型','商品描述','商品價格','庫存','會場限定','首頁呈現商品']
+let col = ['productID','productName','productType','productPrice','productInStock','storeOnly','productMain','productDescribe']
+let colTW = ['商品編號','商品名稱','商品類型','商品價格','庫存','會場限定','首頁呈現商品','商品描述']
 let colExist = 'productExist'
 function setUp(){
     for(i in col){
@@ -406,7 +406,8 @@ window.onload = function () {
     
     setUp()
 
-    getDataCreateTable(`?${colExist}=1`,'#existTBody');
+    // getDataCreateTable(`?${colExist}=1`,'#existTBody');
+    conditionReload()
 
     $('#editBlack,.UICancelBN,#deleteUICancelBn,#removeUICancelBn,#onUICancelBn').click(function () {
         switchEditUIDisplay('none')
