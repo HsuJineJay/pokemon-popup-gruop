@@ -11,11 +11,22 @@ $(document).ready(function(){
     });
 })
 
+
 // 發票的填寫限制
+function invoiceStyles() {
+    document.querySelectorAll('.invoiceText').forEach(function(label) {
+        label.style.color = 'lightgray';
+    });
+    console.log('invoiceStyles()')
+
+}
+
 $(document).ready(function() {
     function toggleInputs() {
-        const isDuplicateSelected = $('#DuplicateUniformInvoice').is(':checked');
-        $('#taxIDNumber, #companyTitle').prop('disabled', isDuplicateSelected);
+        const isDuplicateSelected = $('#DuplicateUniformInvoice').is(':checked');   //當二聯式被選擇時
+        $('#taxIDNumber, #companyTitle').prop('disabled', isDuplicateSelected);     //統一編號&抬頭框不得輸入
+        $('.invoiceText').css('color', isDuplicateSelected ? 'lightgray' : '#3F3A3A');   //統一編號&抬頭字為灰色
+        
     }
 
     toggleInputs();
@@ -23,7 +34,7 @@ $(document).ready(function() {
     $('input[name="receiptType"]').on('change', toggleInputs);
 });
 
-// 綠界的前往超商按鈕
+// 綠界的前往超商按鈕-----------------------------ING---------------------------->
 $(document).ready(function(){
     $('#ecpay_btn').on('click', function(){
         console.log('123');
