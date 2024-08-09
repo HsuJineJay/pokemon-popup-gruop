@@ -1635,10 +1635,10 @@ max-width: 45px;
 
 .friend_container {
     margin-top: 1vh;
-    width: 80vw;
+    width: 85vw;
     display: flex;
     justify-content: space-between;
-    max-width: 350px;
+    max-width: 380px;
 }
 
 
@@ -1649,7 +1649,7 @@ max-width: 45px;
     border-radius: 5px;
 }
 .friend_container h6 {
-    font-size: 15px;
+    font-size: 100%;
     line-height: 20px;
     font-weight: 700;
     letter-spacing: 0.75px;
@@ -1660,7 +1660,7 @@ max-width: 45px;
     height: 100%;
 }
 .friend_container p {
-    font-size: 9px;
+    font-size: 75%;
     font-weight: 700;
     color:  #3F3A3A;
     margin: 0;
@@ -1681,10 +1681,10 @@ max-width: 45px;
 }
 
 .friend_figure_container img {
-    width: 12vw;
-    height: 12vw;
-    max-width: 50px;
-    max-height: 50px;
+    width: 13vw;
+    height: 13vw;
+    max-width: 70px;
+    max-height: 70px;
 }
 
 /* ================== */
