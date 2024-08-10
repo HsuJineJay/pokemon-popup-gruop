@@ -87,6 +87,22 @@ app.post('/loginApi', function (req, res) {
                 })
         })
 })
+app.post('/loginForgetApi', function (req, res) {
+    let account = req.body.account
+
+    conn.query(`select * from userInfo where userAccount = '${account}'`,
+        [],
+        function (err, result) {
+            console.log(result[0]);
+            // console.log(password);
+            // console.log(result[0].userPassword);
+            if(result[0] !== undefined){
+                res.send(true);
+            }else{
+                res.send(false);
+            }
+        })
+})
 app.get('/check', function (req, res) {
     if(req.session.account !== undefined){
         res.send(true);

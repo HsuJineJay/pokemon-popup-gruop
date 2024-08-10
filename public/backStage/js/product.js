@@ -317,9 +317,7 @@ function switchEditUIDisplay(display, elem) {
 }
 
 
-function changeImg(elem){
-    $(elem).next().prop('src',elem.value)
-}
+
 
 
 
@@ -351,12 +349,26 @@ async function edit(elem) {
 
     let result = '';
     for (i in data.productImg){
+        // result += `
+        // <div class="UILittleDiv row">
+        //     <div class="UISpan col-3">圖片連結</div>
+        //     <div class="col-9">
+        //         <input oninput='changeImg(this)' class="UIInput TESTproductImg1 productImgEdit" type="test" id="productImg${i}Edit" value="${data.productImg[i].productImg}">
+        //         <img style='margin-top: 10px' width='50px' src='${data.productImg[i].productImg}'>
+        //     </div>
+        // </div>
+        // `
         result += `
-        <div class="UILittleDiv row">
-            <div class="UISpan col-3">圖片連結</div>
-            <div class="col-9">
-                <input oninput='changeImg(this)' class="UIInput TESTproductImg1 productImgEdit" type="test" id="productImg${i}Edit" value="${data.productImg[i].productImg}">
-                <img style='margin-top: 10px' width='50px' src='${data.productImg[i].productImg}'>
+        <div class="orderProductCreateDiv">
+            <div class="UILittleDiv row">
+                <div class="UISpan col-3">圖片連結</div>
+                <div class="col-9">
+                    <input oninput='changeImg(this)' class="UIInput  TESTorderProductID productImgEdit" type="text"  id="productImg${i}Edit" value="${data.productImg[i].productImg}">
+                    <img class="createImg" src='${data.productImg[i].productImg}' alt="">
+                </div>
+            </div>
+                <button class="plusProduct" onclick="moreDiv('#lastInput')"></button>
+                <button class="minusButtonMore" onclick="lessDiv(this)"></button>
             </div>
         </div>
         `
@@ -399,6 +411,31 @@ function testCreatValueSet() {
     $('#productImg3Create').val('./img3.png')
 
 
+}
+
+function changeImg(elem){
+    $(elem).next().prop('src',elem.value)
+}
+
+function moreDiv(place){
+    $(place).append(`
+
+        <div class="orderProductCreateDiv">
+            <div class="UILittleDiv row">
+                <div class="UISpan col-3">圖片連結</div>
+                <div class="col-9">
+                    <input oninput='changeImg(this)' class="UIInput  TESTorderProductID productImgCreate" type="text"  >
+                    <img class="createImg" src="" alt="">
+                </div>
+            </div>
+            <button class="plusProduct" onclick="moreDiv('#orderProductCreateBigDiv')"></button>
+            <button class="minusButtonMore" onclick="lessDiv(this)"></button>
+        </div>
+
+    `)
+}
+function lessDiv(elem){
+    $(elem).parent().detach()
 }
 
 
@@ -495,17 +532,17 @@ window.onload = function () {
         }
     })
 
-    $('.createImgBN').on('click',function(){
-        $('#createDiv').append(`
-        <div class="UILittleDiv row">
-            <div class="UISpan col-3">圖片連結</div>
-            <div class="col-9">
-                <input oninput='changeImg(this)' class="UIInput TESTproductImg1 productImgCreate" type="test" >
-                <img class="createImg" src="" alt="">
-            </div>
-        </div>
-        `)
-    })
+    // $('.createImgBN').on('click',function(){
+    //     $('#createDiv').append(`
+    //     <div class="UILittleDiv row">
+    //         <div class="UISpan col-3">圖片連結</div>
+    //         <div class="col-9">
+    //             <input oninput='changeImg(this)' class="UIInput TESTproductImg1 productImgCreate" type="test" >
+    //             <img class="createImg" src="" alt="">
+    //         </div>
+    //     </div>
+    //     `)
+    // })
 
     $('#createUISubmit').click(function () {
         postData()
@@ -522,6 +559,8 @@ window.onload = function () {
     // $('#deleteUISubmit').click(function () {
     //     deleteData()
     // })
-
+    $('.plusProduct').click(function(){
+        moreDiv('#orderProductCreateBigDiv');
+    })
 
 }

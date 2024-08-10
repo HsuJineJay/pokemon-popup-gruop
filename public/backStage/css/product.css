@@ -23,29 +23,31 @@
 }
 
 .createImg{
+    width: 250px;
     margin-top: 10px;
-    width: 50px;
+    /* width: 50px; */
+    border-radius: 10px;
 }
 .createImgBNDiv{
-    display: flex;
-    width: 100%;
+    /* display: flex;
+    width: 100%; */
     /* align-items: center ; */
     /* justify-content: center; */
 }
 .createImgBN{
-    font-weight: 400;
+    /* font-weight: 400;
     font-size: var(--p);
     color: var(--white);
-    margin: auto;
+    margin: auto; */
     /* margin-bottom: 10px; */
-    width : 40px;
+    /* width : 40px;
     border-radius: 60px;
     border: 0cap;
-    background-color: var(--black-l2);
+    background-color: var(--black-l2); */
 
     /* background-image: url(../image/plus-circle-fill.svg); */
-    background-repeat: no-repeat;
-    background-size: cover;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
 }
 
 td:nth-of-type(2) {
@@ -68,6 +70,65 @@ td:nth-last-of-type(2) {
     /* display: block; */
 
     text-align: left;
+}
+
+
+
+/* 新增圖片 */
+#orderProductCreateBigDiv{
+    margin-bottom: 50px;
+}
+
+.orderProductCreateDiv{
+    background-color: var(--red-l1);
+    box-shadow: 0 0 0 20px var(--red-l1);
+    border-radius: 25px;
+    /* padding-bottom: 15px; */
+    margin-top: 45px;
+    margin-bottom: 30px;
+    position: relative;
+}
+.divMore{
+    margin-top: 45px;
+}
+
+.plusProduct{
+    background-color: var(--red);
+    background-image: url(../image/plus-circle.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 35px;
+    position: absolute;
+    right: -30px;
+    /* top: 15.5px; */
+    top: 50%;
+    transform: translate(0,-50%);
+    width: 30px;
+    height: 30px;
+    /* border: 1px solid var(--black); */
+    border: 0;
+    border-radius: 25px;
+}
+
+.plusButtonMore{
+    right: -30px;
+}
+.minusButtonMore{
+    background-color: var(--red);
+    background-image: url(../image/minus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 35px;
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translate(0,-50%);
+    width: 30px;
+    height: 30px;
+    border: 0cap;
+    border-radius: 25px;
+    /* border: 1px solid var(--black); */
+
 }
 
 

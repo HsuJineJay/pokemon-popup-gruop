@@ -107,7 +107,7 @@ function webStatusBN() {
 window.onload = function () {
     getDataCreateTable();
 
-    $('#editBlack,.UICancelBN,#webStatusUICancelBn').click(function () {
+    $('#editBlack,#webStatusCancelBn,#webStatusUISubmit').click(function () {
         switchEditUIDisplay('none')
     })
 
