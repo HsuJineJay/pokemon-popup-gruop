@@ -32,6 +32,42 @@ conn.connect(function (err) {
     }
 })
 
+//nodemailer
+const nodemailer = require('nodemailer')
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'pokemonpopupstore@gmail.com',
+        pass: 'dzglimofmytoyqaz'
+    },
+    socketTimeout: 60000
+})
+
+function mailSomeone(mailAddress, mailSubject, mailText) {
+    const mailOptions = {
+        from: 'pokemonPopUpStore@gmail.com',
+        to: mailAddress,
+        subject: mailSubject,
+        text: mailText
+    }
+    return new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, function (err, info) {
+            if (err) {
+                return reject(err)
+            } else {
+                return resolve(info)
+            }
+        })
+    })
+        .then(info => {
+            // req.flash('success_message', '寄信成功!')
+            // res.redirect('back')
+            res.send(mailAddress)
+
+        })
+        .catch((err) => console.log(err))
+}
+
 
 
 // const bcrypt = require('bcrypt');
@@ -50,14 +86,28 @@ conn.connect(function (err) {
 const bcrypt = require('bcryptjs');
 
 async function verifyPassword(plainTextPassword, hashedPassword) {
-  try {
-    const match = await bcrypt.compare(plainTextPassword, hashedPassword);
-    return match;
-  } catch (error) {
-    console.error('Error verifying password:', error);
-    return false;
-  }
+    try {
+        const match = await bcrypt.compare(plainTextPassword, hashedPassword);
+        return match;
+    } catch (error) {
+        console.error('Error verifying password:', error);
+        return false;
+    }
 }
+
+function hashPasswordSync(password) {
+    try {
+        // 生成鹽值並哈希密碼,一步完成
+        const salt = bcrypt.genSaltSync(10);
+        const hashedPassword = bcrypt.hashSync(password, salt);
+        return hashedPassword;
+    } catch (error) {
+        console.error('Error hashing password:', error);
+        throw error;
+    }
+}
+
+
 
 
 app.use(express.static('./public'))
@@ -87,28 +137,84 @@ app.post('/loginApi', function (req, res) {
                 })
         })
 })
+
 app.post('/loginForgetApi', function (req, res) {
     let account = req.body.account
+    req.session.accountForget = account
 
     conn.query(`select * from userInfo where userAccount = '${account}'`,
         [],
         function (err, result) {
             console.log(result[0]);
+            let code = '';
+            for (let i = 0; i < 6; i++) {
+                code += Math.floor(Math.random() * 10)
+            }
+            let data = [{
+                userEmail: result[0].userEmail,
+                code: code
+            }]
+            req.session.code = code;
             // console.log(password);
             // console.log(result[0].userPassword);
-            if(result[0] !== undefined){
-                res.send(true);
-            }else{
+            if (result[0] !== undefined) {
+                res.send(JSON.stringify(data));
+            } else {
                 res.send(false);
             }
         })
 })
+app.post('/loginForgetCheckApi', function (req, res) {
+    let code = req.body.code
+    if (code === req.session.code) {
+        console.log('good');
+        res.send(true)
+    } else {
+        console.log('notPass');
+        res.send(false)
+    }
+
+})
+app.post('/changePWApi', function (req, res) {
+    let account = req.session.accountForget;
+    res.send(account)
+})
+app.post('/updatePWApi', function (req, res) {
+    let account = req.session.accountForget
+    let password = req.body.userPassword
+
+    let hashedPassword = hashPasswordSync(password);
+    // console.log('Hashed password:', hashedPassword);
+
+    conn.query(`UPDATE userInfo SET userPassword = '${hashedPassword}' WHERE userAccount = '${account}'`,
+        [],
+        function (err, result) {
+            if (err) {
+                res.send(false)
+                console.log(err);
+            } else {
+                res.send(true)
+                console.log(result);
+            }
+        })
+})
+
+
+
+
+app.post('/mailSomeone', function (req, res) {
+    let mail = req.body.mail
+    let subject = req.body.subject
+    let text = req.body.text
+    mailSomeone(mail, subject, text)
+
+})
 app.get('/check', function (req, res) {
-    if(req.session.account !== undefined){
+    if (req.session.account !== undefined) {
         res.send(true);
-    }else{
+    } else {
         res.send(false);
-        
+
     }
 })
 app.get('/logout', function (req, res) {

@@ -1,24 +1,24 @@
 
-let loginUrlNodejs = 'http://localhost:3000/loginForgetApi'
+let loginUrlNodejs = 'http://localhost:3000/loginForgetCheckApi'
 
 function checkAccount(){
-    let account = document.getElementById('account').value;
+    let code = document.getElementById('code').value;
     $.ajax({
         // url: loginUrl,
         url: loginUrlNodejs,
         method: 'Post',
         data: {
-            "account": account,
+            "code": code,
         },
         success: function (data) {
             // console.log(data);
             if (data) {
                 // alert('登入成功')
 
-                window.location.href = './loginForgetCheckNumber.html';
+                window.location.href = './changePW.html';
             } else {
                 // console.log(data);
-                $('#loginWrongDiv').html(`<div id="loginWrong">帳號錯誤</div>`)
+                $('#loginWrongDiv').html(`<div id="loginWrong">驗證碼錯誤</div>`)
             }
         }
     }).fail(function (res) {
@@ -30,7 +30,7 @@ function checkAccount(){
 window.addEventListener('load',function(){
     $('#backBN').click(function(){
         window.location.href = './login.html';
-        console.log('a');
+
     })
     $('#sendBN').click(function(){
         checkAccount()
