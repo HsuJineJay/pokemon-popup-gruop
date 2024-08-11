@@ -52,7 +52,6 @@ function closeNav() {
     function sc_msg() {
     $('#result_goodslist').html("");
 
-    // let apiUrl = 'http://localhost/mfee51/root/backEnd/api/product/product.php';
     let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php';
     let Exist_apiUrl = apiUrl + '?productExist=1';
 
@@ -116,33 +115,26 @@ function closeNav() {
             }
         });
     }).then(() => {
-        console.log('sc_msg');
+        // console.log('sc_msg');
     });
 }
    
 
-    // 購物車小計更新
+    // 購物車小計更新 & 帳單陣列的更新
     function sc_subtotal(){
     
             $('#subtotal').html("");
-            // console.log('1.開始執行 sc_subtotal');
+            console.log('1.開始執行 sc_subtotal');
             let total = 0; // 將 total 初始化在外面以累加所有項目的值
 
                 $('li').each(function(index, elem) {
                     let qty = parseFloat($(this).find("span[name='num']:first").text());
-                    let price = parseFloat($(this).find("span[name='productPrice']:first").text());
+                    let price = parseFloat($(this).find("span[name='productPrice']").text().replace(/,/g, ''));
                     
                     if (!isNaN(qty) && !isNaN(price)) {
                         let subtotal = qty * price;
                         total += subtotal;
                     }
-
-                    // 確保 elem.innerText 是數字並累加到 total
-                    let value = parseInt(elem.innerText);
-                    if (!isNaN(value)) {
-                        total += value;
-                    }
-                    // console.log('2.執行計算 sc_subtotal');
                 });
 
                 $('#subtotal').html(total.toLocaleString());
@@ -190,7 +182,7 @@ function closeNav() {
             var nweID = parseInt($(this).closest('li').attr('id'));
             var cartList = JSON.parse(localStorage.getItem("goods")) || [];
             var productInStock = parseInt($(this).next().text());
-            console.log(productInStock);
+            // console.log(productInStock);
         
             var existingItem = cartList.find(item => item.id === nweID);
             if (existingItem.num < productInStock) {            // 數量不超過庫存數判斷
