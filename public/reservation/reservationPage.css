@@ -355,7 +355,6 @@ button {
 
 /* -----------header 結束----------- */
 
-
 main {
   background-color: #ffffff;
   text-align: center;
@@ -405,7 +404,7 @@ main {
 
 @media only screen and (min-width: 768px) and (any-hover: hover) {
 
-  .Popup:hover {
+  .circle:hover {
     transform: scale(1.02);
     animation: swing 0.4s 1;
   }

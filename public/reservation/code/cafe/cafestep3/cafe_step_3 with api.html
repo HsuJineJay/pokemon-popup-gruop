@@ -28,7 +28,7 @@
     <header class="nav-header header d-flex align-items-center fixed-top py-4 px-3">
         <div class="container-fluid  position-relative d-flex align-items-center justify-content-between">
 
-            <a href="#" class="navbar-brand col-5 col-md-3 nav-logo ">
+            <a href="../../../../index.html" class="navbar-brand col-5 col-md-3 nav-logo ">
                 <img src="../../../../images/logo/pokemon_popup_logo.png" />
             </a>
 
@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            <div id="result"> </div>
+            <!-- <div id="result"> </div> -->
 
             <a href="../../../code/cafe/cafestep2/cafestep2.html"><button id="btn-back">上一步</button></a>
             <br>
@@ -172,7 +172,7 @@
                         });
 
 
-
+                        //先測試
                         if (Object.keys(groupedData).length > 0) {
                             for (let period in groupedData) {
                                 resultDiv.innerHTML += `<p>時間: ${period} - 已預約座位數: ${groupedData[period]} 座位</p>`;
@@ -195,7 +195,7 @@
             <div class="footer-navbar flex-fill">
 
                 <div class="footer-logo">
-                    <img src="../../../../images/logo/pokemon_popup_logo.png" />
+                    <object data="../../../../images/logo/pokemon_popup_logo.svg"></object>
                 </div>
 
                 <div class="footer-item flex-fill">

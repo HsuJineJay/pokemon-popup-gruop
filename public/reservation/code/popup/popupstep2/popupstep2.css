@@ -477,6 +477,7 @@ main {
   padding-bottom: 5vh;
   justify-content: flex-end;
   align-items: center;
+
   border-radius: 30px 30px 0px 0px;
 }
 
@@ -503,12 +504,7 @@ main {
 }
 
 .footer-logo {
-  margin-left: -40px;
-}
-
-.footer-logo img {
-  max-width: 70vmin;
-  transition: .08s ease-in-out;
+  width: 35%;
 }
 
 .footer-item {
@@ -521,6 +517,7 @@ main {
 
 .footer-social button img {
   width: 7vmin;
+  transition: 0.3s ease-out;
 }
 
 .footer-link {
@@ -572,7 +569,7 @@ main {
   }
 
   .footer-social button:hover img {
-    filter: invert(100) contrast(100);
+    filter: invert(0.6) contrast(10);
     outline: 3px;
   }
 }
@@ -596,7 +593,6 @@ main {
 
   .footer-logo {
     width: 100%;
-    padding-left: 30px;
   }
 
   .footer-item {
