@@ -18,18 +18,23 @@ function checkAccount(){
         success: function (dataStr) {
             let data = JSON.parse(dataStr);
             // console.log(typeof(dataStr) );
-            // console.log('jj');
+            console.log('jj');
             console.log(data);
-            let email = data[0].userEmail;
-            let code = data[0].code;
-            if (email) {
-                // alert('登入成功')
-                postMailApi(email, '寶可夢快閃店_驗證碼', `您的驗證碼為${code}`)
-                window.location.href = './loginForgetCheckNumber.html';
-            } else {
-                // console.log(data);
+            if(data !== undefined){
+                if (data) {
+                    let email = data[0].userEmail;
+                    let code = data[0].code;
+                    // alert('登入成功')
+                    postMailApi(email, '寶可夢快閃店_驗證碼', `您的驗證碼為${code}`)
+                    window.location.href = './loginForgetCheckNumber.html';
+                } else {
+                    // console.log(data);
+                    $('#loginWrongDiv').html(`<div id="loginWrong">帳號錯誤</div>`)
+                }
+            }else{
                 $('#loginWrongDiv').html(`<div id="loginWrong">帳號錯誤</div>`)
             }
+
         }
     }).fail(function (res) {
         console.log('fail:', res);

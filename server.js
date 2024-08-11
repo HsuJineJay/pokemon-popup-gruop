@@ -145,19 +145,19 @@ app.post('/loginForgetApi', function (req, res) {
     conn.query(`select * from userInfo where userAccount = '${account}'`,
         [],
         function (err, result) {
-            console.log(result[0]);
+            // console.log(result);
             let code = '';
             for (let i = 0; i < 6; i++) {
                 code += Math.floor(Math.random() * 10)
             }
-            let data = [{
-                userEmail: result[0].userEmail,
-                code: code
-            }]
             req.session.code = code;
             // console.log(password);
             // console.log(result[0].userPassword);
             if (result[0] !== undefined) {
+                let data = [{
+                    userEmail: result[0].userEmail,
+                    code: code
+                }]
                 res.send(JSON.stringify(data));
             } else {
                 res.send(false);

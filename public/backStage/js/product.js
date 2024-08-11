@@ -398,9 +398,9 @@ function deleteBN(elem) {
 
 function testCreatValueSet() {
     $('.TESTproductExist').val(0)
-    $('.TESTproductName').val('熊')
+    $('.TESTproductName').val('傑尼龜')
     $('.TESTproductType').val('toy')
-    $('.TESTproductDescribe').val('一隻熊')
+    $('.TESTproductDescribe').val('傑尼龜玩偶')
     $('.TESTproductPrice').val(200)
     $('.TESTproductInStock').val(50)
     $('.TESTstoreOnly').val(0)
