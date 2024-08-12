@@ -31,10 +31,12 @@ body{
         max-width: 1920px;
         margin: 0 auto;
         /* background-color:#FFE050 ; */
-        background-image: url(../images/publicImg/bg_comic.png);
+        background-image: url(../images/publicImg/bg_comic2.png);
         background-size: contain;
         
+        
     }
+    
   
  
 }
@@ -358,21 +360,9 @@ input {
     top: 0;
     left: 0;
     overflow: hidden;
-    /* animation-name: cloundAni;
-    animation-duration: 40s;
-    animation-timing-function: linear;
-    animation-iteration-count:infinite; */
+   
 }
 
-/* @keyframes cloundAni{
-    0%{
-        left: 0%;
-    }50%{
-        left: 5%;
-    }100%{
-        left: 0%;
-    }
-} */
 
 /* 雲朵定位 */
 .cloud1container {
@@ -380,8 +370,26 @@ input {
 
     top: 20%;
     left: 10%;
+    /* 動態 */
+    animation-name:cloudMove2 ;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
 
+}
 
+@keyframes cloudMove2{
+    0%{
+        left: 10%; 
+    }50%{
+        left: 3%; 
+    }75%{
+        left: 7%; 
+    }100%{
+        left: 10%; 
+    }
+    
 }
 
 .cloud2container {
@@ -389,6 +397,25 @@ input {
 
     top: 2%;
     left: 3%;
+    /* 動態 */
+    animation-name:cloudMove1 ;
+    animation-duration: 13s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+}
+
+@keyframes cloudMove1{
+    0%{
+        left: 3%; 
+    }50%{
+        left: 8%; 
+    }75%{
+        left: 5%; 
+    }100%{
+        left: 3%; 
+    }
+    
 }
 
 .cloud3container {
@@ -396,6 +423,27 @@ input {
 
     top: 28%;
     left: 65%;
+     /* 動態 */
+     animation-name:cloudMove3 ;
+     animation-duration: 14s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+     /* transition: left 3s linear 1s; */
+
+
+    
+}
+
+@keyframes cloudMove3{
+    0%{
+        left: 65%; 
+    }40%{
+        left: 56%; 
+    }75%{
+        left: 60%; 
+    }100%{
+        left: 65%; 
+    }
 }
 
 .cloud4container {
@@ -404,7 +452,27 @@ input {
 
     top: 50%;
     left: 75%;
+
+       /* 動態 */
+       animation-name:cloudMove4 ;
+       animation-duration: 14s;
+       animation-iteration-count: infinite;
+       animation-timing-function: linear;
+       animation-delay: 0.2s;
 }
+
+@keyframes cloudMove4{
+    0%{
+        left: 75%; 
+    }40%{
+        left: 84%; 
+    }75%{
+        left: 80%; 
+    }100%{
+        left: 75%; 
+    }
+}
+
 
 .cloud5container {
     transform: scaleX(-1);
@@ -412,6 +480,25 @@ input {
 
     top: 85%;
     left: 68%;
+
+     /* 動態 */
+     animation-name:cloudMove5 ;
+     animation-duration: 9s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+     animation-delay: 0.3s;
+}
+
+@keyframes cloudMove5{
+    0%{
+        left: 68%; 
+    }40%{
+        left: 74%; 
+    }75%{
+        left: 70%; 
+    }100%{
+        left: 68%; 
+    }
 }
 
 .cloud6container {
@@ -420,7 +507,27 @@ input {
 
     top: 88%;
     left: -1%;
+
+     /* 動態 */
+     animation-name:cloudMove6 ;
+     animation-duration: 9s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+     animation-delay: 0.3s;
 }
+@keyframes cloudMove6{
+    0%{
+        left: -1%; 
+    }40%{
+        left: -8%; 
+    }75%{
+        left: -5%; 
+    }100%{
+        left: -1%; 
+    }
+}
+
+
 
 .cloud7container {
 
@@ -428,6 +535,24 @@ input {
 
     top: 6%;
     left: 85%;
+
+     /* 動態 */
+     animation-name:cloudMove7 ;
+     animation-duration: 12s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+     
+}
+@keyframes cloudMove7{
+    0%{
+        left: 85%; 
+    }50%{
+        left: 77%; 
+    }75%{
+        left: 82%; 
+    }100%{
+        left: 85%; 
+    }
 }
 
 
@@ -461,24 +586,93 @@ input {
     position: absolute;
     top: 40%;
     left: -5%;
+
+    /* 動態 */
+    animation-name:cloudMove2_1 ;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes cloudMove2_1{
+    0%{
+        left: -5%;
+    }40%{
+        left: 2%; 
+    }75%{
+        left: -1%; 
+    }100%{
+        left: -5%;
+    }
 }
 
 .sec_cloud2container {
     position: absolute;
     top: 58%;
     left: 80%;
+    /* 動態 */
+    animation-name:cloudMove2_2 ;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes cloudMove2_2{
+    0%{
+        left: 80%;
+    }40%{
+        left: 87%; 
+    }75%{
+        left: 83%; 
+    }100%{
+        left: 80%;
+    }
 }
 
 .sec_cloud3container {
     position: absolute;
     top: 65%;
     left: 15%;
+     /* 動態 */
+     animation-name:cloudMove2_3 ;
+     animation-duration: 10s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+}
+
+@keyframes cloudMove2_3{
+    0%{
+        left: 15%;
+    }40%{
+        left: 5%; 
+    }75%{
+        left: 10%; 
+    }100%{
+        left: 15%;
+    }
 }
 
 .sec_cloud4container {
     position: absolute;
     top: 10%;
     left: 30%;
+
+    /* 動態 */
+    animation-name:cloudMove2_4 ;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes cloudMove2_4{
+    0%{
+        left: 30%;
+    }40%{
+        left: 41%; 
+    }75%{
+        left: 35%; 
+    }100%{
+        left: 30%;
+    }
 }
 
 /* 背景容器 */
@@ -608,6 +802,15 @@ visibility: hidden;
     font-size: 90%;
     font-weight: 600;
     letter-spacing: 0.2vw;
+    transition: 0.2s;
+}
+.btn1:hover{
+    filter: drop-shadow(4px 4px 0px #3F3A3A);
+    background-color: #FCF3E4;
+    color: #3F3A3A;
+    border: #3F3A3A solid 6px;
+    font-weight: 700;
+    transform: translate(-2px,-2px);
 }
 
 /* 寶貝球動畫容器 */
@@ -618,13 +821,43 @@ visibility: hidden;
     width: 100%;
     margin-top: 2%;
     visibility: hidden;
+   
+
+    
+    
 }
+
+    
+
 
 /* 寶貝球圖片 */
 #pokeaniImg {
+    transform: rotate(20deg)  ;
+    
     width: 35%;
     height: 35%;
-
+   animation-name: pokeballrotate;
+   animation-duration: 1.2s;
+   animation-iteration-count: infinite;
+   animation-timing-function: ease-in-out;
+}
+@keyframes pokeballrotate{
+    0%{
+        transform: rotate(20deg) ;
+    }50%{
+        transform: rotate(-20deg) ;
+        
+    }53%{
+        transform: rotate(-20deg) ;
+        
+    }
+    90%{
+        transform: rotate(19deg) ;
+    }95%{
+        transform: rotate(19deg) ;
+    }100%{
+        transform: rotate(20deg) ;
+    }
 }
 
 /* 題目選項按鈕區容器 */
@@ -724,6 +957,15 @@ visibility: hidden;
     font-size: 90%;
     font-weight: 600;
     letter-spacing: 0.4vw;
+    transition: 0.2s;
+}
+.btn2:hover{
+    filter: drop-shadow(4px 4px 0px #3F3A3A);
+    background-color: #FCF3E4;
+    color: #3F3A3A;
+    border: #3F3A3A solid 6px;
+    font-weight: 700;
+    transform: translate(-2px,-2px);
 }
 
 /* 胖丁唱歌動畫容器 */
@@ -830,6 +1072,15 @@ visibility: hidden;
 
     bottom: 12vh;
     left: 5%;
+    transition: 0.2s;
+}
+.btn3_0:hover{
+    filter: drop-shadow(5px 5px 0px #3F3A3A);
+    background-color: #FCF3E4;
+    color: #3F3A3A;
+    border: #3F3A3A solid 6px;
+    font-weight: 700;
+    transform: translate(-2px,-2px);
 }
 
 /* 按鈕2 */
@@ -848,8 +1099,17 @@ visibility: hidden;
     position: absolute;
     bottom: 17vh;
     left: 50%;
-
+    transition: 0.2s;
 }
+.btn3_1:hover{
+    filter: drop-shadow(5px 5px 0px #3F3A3A);
+    background-color: #FCF3E4;
+    color: #3F3A3A;
+    border: #3F3A3A solid 6px;
+    font-weight: 700;
+    transform: translate(-2px,-2px);
+}
+
 
 /* 按鈕3 */
 .btn3_2 {
@@ -867,7 +1127,16 @@ visibility: hidden;
     position: absolute;
     bottom: 25vh;
     left: 10%;
+    transition: 0.2s;
 }
+.btn3_2:hover{
+    filter: drop-shadow(5px 5px 0px #3F3A3A);
+    background-color: #FCF3E4;
+    color: #3F3A3A;
+    border: #3F3A3A solid 6px;
+    font-weight: 700;
+}
+
 
 /* 蛋糕背景 */
 .cakeCon {
@@ -891,11 +1160,33 @@ visibility: hidden;
     width: 100%;
     /* bottom:-15%; */
     left: 10%;
-    
+    transform:translateY(-150%)  ;
     top: 20%;
-    
+    animation-name: pikafall;
+    animation-delay: 2.5s;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
 
-
+}
+@keyframes pikafall {
+    0%{
+        transform: translateY(-150%) ;
+    }
+    15%{
+        transform: translateY(20%)  ;}
+        90%{
+            transform: translateY(-10%) ;
+        }
+        95%{
+            transform: translateY(-6%)  ;
+        }
+        99%{
+            transform: translateY(0%) ;
+        }
+    100%{
+        transform: translateY(0%) ;
+    }
 }
 
 /* 皮卡丘動態 */
@@ -1013,11 +1304,31 @@ visibility: hidden;
     max-width: 300px;
     width: 50%;
     height: 50%;
+    transform: scale(50%) translate(0%,0%) rotate(0deg);
     filter: drop-shadow(1vw 1vh 0px rgba(107, 58, 5, 0.3));
-
-
+    animation-name: meowAni;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-duration: 4.5s;
+    animation-delay: 2s;
+    opacity: 0.9;
+    
 }
-
+@keyframes meowAni{
+    0%{
+        transform: scale(50%) translate(0% ,0%) rotate(0deg);
+        opacity: 0.9;
+    }40%{
+        transform: scale(70%) translate(-2%,-3% ) rotate(2deg);
+        opacity: 0.9;
+    }65%{
+        transform: scale(85%)translate(-5%,-6%) rotate(-5deg);
+        opacity: 1;
+    }100%{
+        transform: scale(100%)translate(-8% ,-10%) rotate(1deg);
+        opacity: 1;
+    }
+}
 /* 雲朵們容器 */
 .fifth_cloudscontainer {
     width: 100%;
@@ -1033,36 +1344,144 @@ visibility: hidden;
     position: absolute;
     top: 8%;
     left: 20%;
-}
 
+     /* 動態 */
+     animation-name:cloudMove5_1 ;
+     animation-duration: 14s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+     animation-delay: 0.2s;
+}
+@keyframes cloudMove5_1{
+    0%{
+        left: 20%;
+    }40%{
+        left: 14%; 
+    }75%{
+        left: 17%; 
+    }100%{
+        left: 20%;
+    }
+}
 .fifth_cloud2container {
     position: absolute;
     top: 30%;
     left: -3%;
+
+     /* 動態 */
+     animation-name:cloudMove5_2 ;
+     animation-duration: 15s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+     animation-delay: 0.4s;
+}
+
+@keyframes cloudMove5_2{
+    0%{
+        left: -3%;
+    }40%{
+        left: 8%; 
+    }75%{
+        left: 2%; 
+    }100%{
+        left: -3%;
+    }
 }
 
 .fifth_cloud3container {
     position: absolute;
     top: 40%;
     left: 70%;
+
+     /* 動態 */
+     animation-name:cloudMove5_3 ;
+     animation-duration: 15s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+     animation-delay: 0.2s;
+}
+
+@keyframes cloudMove5_3{
+    0%{
+        left: 70%;
+    }40%{
+        left: 80%; 
+    }75%{
+        left: 74%; 
+    }100%{
+        left: 70%;
+    }
 }
 
 .fifth_cloud4container {
     position: absolute;
-    top: 60vh;
-    left: 3vw;
+    top: 60%;
+    left: 3%;
+
+      /* 動態 */
+      animation-name:cloudMove5_5 ;
+      animation-duration: 13s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-delay: 0.5s;
+}
+
+@keyframes cloudMove5_5{
+    0%{
+        left: 3%;
+    }40%{
+        left: -4%; 
+    }75%{
+        left: 0%; 
+    }100%{
+        left: 3%;
+    }
 }
 
 .fifth_cloud5container {
     position: absolute;
     top: 90%;
     left: 10%;
+     /* 動態 */
+     animation-name:cloudMove5_6 ;
+     animation-duration: 13s;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+     
+}
+@keyframes cloudMove5_6{
+    0%{
+        left: 10%;
+    }40%{
+        left: 18%; 
+    }75%{
+        left: 13%; 
+    }100%{
+        left: 10%;
+    }
 }
 
 .fifth_cloud6container {
     position: absolute;
     top: 85%;
     left: 70%;
+
+      /* 動態 */
+      animation-name:cloudMove5_7 ;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+}
+@keyframes cloudMove5_7{
+    0%{
+        left: 70%;
+    }40%{
+        left: 62%; 
+    }75%{
+        left: 66%; 
+    }100%{
+        left: 70%;
+    }
 }
 
 
@@ -1090,6 +1509,18 @@ visibility: hidden;
     /* bottom: 25vh; */
     left: 0;
     overflow: hidden;
+    opacity: 0;
+    animation-name: ghoastAni;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 2.5s;
+}
+@keyframes ghoastAni{
+    0%{
+        opacity: 0; 
+    }100%{
+        opacity: 0.7; 
+    }
 }
 .ghoastAniCon2{
     width: 100%;
@@ -1098,7 +1529,11 @@ visibility: hidden;
     /* bottom: 25vh; */
     left: 65%;
     overflow: hidden;
-    
+    opacity: 0;
+    animation-name: ghoastAni;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 2.5s;
 }
 .ghoastAniCon3{
     width: 100%;
@@ -1107,6 +1542,7 @@ visibility: hidden;
     /* bottom: 25vh; */
     left: 32.5%;
     overflow: hidden;
+    
     
 }
 
@@ -1277,6 +1713,25 @@ visibility: hidden;
     height: 105%;
     filter: drop-shadow(1vw 1vh 0px rgba(107, 58, 5, 0.3));
     max-width: 650px;
+    transform: scale(100%) translateY(0%);
+    animation-name: duckhappy;
+    animation-duration: 1.5s;
+    animation-delay: 2.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+@keyframes duckhappy {
+    0%{
+        transform: scale(100%)translateY(0%)
+    }10%{
+        transform: scale(150%)translateY(12%)
+    }90%{
+        transform: scale(150%)translateY(12%)
+    }
+    100%{
+        transform: scale(150%)translateY(12%)
+    }
+    
 }
 
 /* 動態容器 */
@@ -1692,15 +2147,15 @@ max-width: 45px;
 .backReplaybtnCon{
     margin-top: 0.5vh;
     display: flex;
-    gap: 4vw;
-    max-width: 320px;
+    gap: 2vw;
+    max-width: 300px;
 }
 
 .backReplaybtnCon button{
-    border: white 6px solid;
-    width: 30vw;
-    height: 15vw;
-    border-radius: 100%;
+    border: white 5px solid;
+    width: 35vw;
+    height: 12vw;
+    border-radius: 30px;
     background-color: #FF6542;
     color: white;
     font-family: "Fredoka","Noto Sans TC", sans-serif;
@@ -1709,7 +2164,12 @@ max-width: 45px;
     letter-spacing: 0.2vw;
     margin: 0;
     max-width: 130px;
-    max-height: 65px;
+    max-height: 50px;
+    transition: 0.2s;
+}
+.backReplaybtnCon button:hover{
+    filter: drop-shadow(4px 4px 0px #FF6542);
+    transform: translate(-2px,-2px);
 }
 
 .backReplaybtnCon button img{
@@ -1731,13 +2191,19 @@ max-width: 45px;
 
 }
 .shareAndAlert h4{
-    color:#3F3A3A;
+    color:white;
     font-family: "Noto Sans TC", sans-serif;
-    font-size:80%;
-    font-weight: 600;
+    font-size:70%;
+    font-weight: 500;
     letter-spacing: 0.2vw;
     margin: 0;
     margin: 1.5vw;
+    background-color: #3F3A3A;
+    padding:4px 10px 4px 10px;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 1;
+    
 }
 
 
@@ -1773,7 +2239,14 @@ max-width: 45px;
 
 /* ============ */
 /* logo */
+.footlogo{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
 .footlogo>img{
-    width: 35vw;
-    max-width: 90px;
+    width: 100px;
+    height:15px;
+    
 }

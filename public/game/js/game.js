@@ -12,7 +12,7 @@ $(document).ready(function () {
     let get2
     let get3
 
-    
+
 
 
     // 音樂音量
@@ -20,27 +20,24 @@ $(document).ready(function () {
     bgmusic.volume = 0.4;
     guessWhoSong.volume = 0.6;
 
+
+    
+
     //控制聲音總開關 預設關閉
-    let CtrlSound = async function () {
+    let CtrlSound =  function () {
         $('#soundContainer').on('click', function () {
-            if ($('#soundIcon').attr('src') === './images/publicImg/soundOn.svg') {
-                // 確認是否加載音樂
-                bgmusic.play().catch(e => console.log("播放失敗:", e))
-                bgmusic.muted = false
-                $('#soundIcon').attr('src', './images/publicImg/soundOff.svg')
-
+            if ($('#soundIcon').attr('src') === './images/publicImg/soundOn.svg'){
+                // 确认是否加载音乐
+                bgmusic.play().catch(e => console.log("播放失敗:", e));
+                bgmusic.muted = false;
+                $('#soundIcon').attr('src', './images/publicImg/soundOff.svg');
             } else {
-                bgmusic.muted = true
-                chubbySong.muted = true
-                guessWhoSong.muted = true
-                WhoisthatSong.muted =true
-                $('#soundIcon').attr('src', './images/publicImg/soundOn.svg')
-
+                bgmusic.muted = true;
+                guessWhoSong.muted = true;
+                WhoisthatSong.muted = true;
+                $('#soundIcon').attr('src', './images/publicImg/soundOn.svg');
             }
-
-
-
-        })
+        });
     }
 
 
@@ -56,21 +53,29 @@ $(document).ready(function () {
 
     //功能 播放猜猜我是誰音樂===========
     // #soundIcon是Off的時候 把靜音打開 然後播放音樂
-    let guessWhoSongCtrl = async function () {
+    let guessWhoSongCtrl =  function () {
         if ($('#soundIcon').attr('src') === './images/publicImg/soundOff.svg') {
-            $('#guessWhoSong').prop('muted', false)
-            guessWhoSong.play().catch(e => console.log("猜猜我是播放失敗:", e))
-
+            bgmusic.pause(); // 暂停背景音乐
+            $('#guessWhoSong').prop('muted', false);
+            guessWhoSong.play().catch(e => console.log("猜猜我是播放失敗:", e));
+            
+            // guessWhoSong.onended = function () {
+            //     bgmusic.play(); // 恢复背景音乐
+            // };
         }
+        
     }
 
-    let WhoisthatSongCtrl = async function () {
+    let WhoisthatSongCtrl =  function () {
         if ($('#soundIcon').attr('src') === './images/publicImg/soundOff.svg') {
-            $('#WhoisthatSong').prop('muted', false)
-           WhoisthatSong.play().catch(e => console.log("寶可夢結果播放失敗:", e))
-            
-          
-         }
+            bgmusic.pause(); // 暂停背景音乐
+            $('#WhoisthatSong').prop('muted', false);
+            WhoisthatSong.play().catch(e => console.log("寶可夢結果播放失敗:", e));
+    
+            // WhoisthatSong.onended = function () {
+            //     bgmusic.play(); // 恢复背景音乐
+            // };
+        }
     }
     //初始就呼叫控制音樂
     CtrlSound()
@@ -147,7 +152,7 @@ $(document).ready(function () {
             <div >
 
                 <!-- 動畫區 -->
-                <div class="pokeaniCon"><img class="lazyload" id="pokeaniImg" data-src="./images/secondPageImg/pokeballNormal.svg" alt="">
+                <div class="pokeaniCon"><img  id="pokeaniImg" src="./images/secondPageImg/pokeballNormal.svg" alt="">
                 </div>
 
             </div>
@@ -307,7 +312,7 @@ $(document).ready(function () {
                 </div>
             </div>
             <!-- 皮卡丘 -->
-            <div class="fatpikaCon"><img class="pikafatAni lazyload"  data-src="./images/fourthPageImg/fatPikaAni1.png" alt=""></div>
+            <div class="fatpikaCon"><img class="pikafatAni"  src="./images/fourthPageImg/fatPikaAni1.png" alt=""></div>
 
         </div>
 
@@ -485,15 +490,15 @@ $(document).ready(function () {
             <div style=" z-index: 1;">
                 <!-- 網頁版動畫區 -->
                 <div class="webduckaniCon">
-                   <video width="200" height="200" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
+                   <video width="350" height="350" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video width="200" height="200" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
+                   <video width="350" height="350" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video width="200" height="200"  class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
+                   <video width="350" height="350"  class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video width="200" height="200" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
+                   <video width="350" height="350" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
-                   <video width="200" height="200" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
+                   <video width="350" height="350" class="duckAniWeb lazyload"  data-src="./images/animation/duckWalk.webm" autoplay loop
                    muted></video>
                </div>
            </div>
@@ -628,9 +633,9 @@ $(document).ready(function () {
 `]
 
     // 結果頁大背景
-    const resultPageCon = [`        <section class="webBgContainerres">
+    const resultPageCon = [`        <section  id="saveResult"  class="webBgContainerres">
 
-            <div class="result_bgContainer">
+            <div  class="result_bgContainer">
 
 
 
@@ -718,12 +723,12 @@ $(document).ready(function () {
                         </div>
                         <!-- AddToAny END -->
                         <div class="shareAndAlert">
-                            <h4>長按螢幕可儲存結果圖片</h4>
+                            <h4 id="saveresultImg">點擊儲存結果圖片</h4>
                             <button id="shareIcon"><img src="./images/result_Images/ShareIcon.png" alt=""></button>
                         </div>
                         <!-- logo -->
                         <div class="footlogo">
-                            <img src="./images/publicImg/logo.svg" alt="">
+                            <img src="./images/result_Images/logo_h100.png" alt="">
                         </div>
                     </section>
                 </div>
@@ -796,22 +801,22 @@ $(document).ready(function () {
             //             }
 
 
-            
-           
+
+
 
             //迴圈長出大背景=======
             $('.superBigWebCon').append(
                 allBackground[currentQuestion]
             )
             // 控制字體大小rwd
-            if ($(window).width() < 450){
+            if ($(window).width() < 450) {
                 $('.storyText h4').css(
                     'font-size', '85%')
-                }else{
-                    $('.storyText h4').css(
-                        'font-size', '90%')
-                    }
-            
+            } else {
+                $('.storyText h4').css(
+                    'font-size', '90%')
+            }
+
             //呼叫控制bgm聲音
             CtrlSound()
             // 印出進度條============
@@ -830,46 +835,86 @@ $(document).ready(function () {
             const emptyStoryText = function () {
                 // $('.storyTextCtrl').empty()
                 //移除文字框
-                    $('.storyTextCtrlEmpty').remove()
-                }
-            
+                $('.storyTextCtrlEmpty').remove()
+            }
+
 
             setTimeout(emptyStoryText, 2100)
 
             //========= 3秒後改變問題框跟選項框動畫框visibility hidden=>visable
             const showQuestionandbutton = function () {
                 $('.chubbyaniCon,.pokeaniCon,.btnContainer,.questionContainer,.btn3Container,.cakeCon,.meowaniCon,.btnContainer2,.six_Anicontainer,.btnContainer3').css('visibility', 'visible')
-                
-                  // ============網頁版可達鴨rwd
-      function displayWebduckRWD(){
-        if ($(window).width() < 450){
-            $('.webduckaniCon').css('display', 'none')
-            }else{
-                $('.webduckaniCon').css( 'display', 'flex')
-                }
-    }
-    displayWebduckRWD()
-    
+                // =============第一題閃爍旋轉寶可夢球
+                // src裝到陣列裡
+                let pokeaniSrc = ['./images/secondPageImg/pokeBallShine.svg', './images/secondPageImg/pokeballNormal.svg']
+                //每100毫秒改變一次    
+                setInterval(function () {
+                    $('#pokeaniImg').attr('src', pokeaniSrc[Math.floor(Math.random() * pokeaniSrc.length)])
+                }, 100)
 
-    //// ============手機版可達鴨rwd
-   function  displaymbduckRWD(){
-        if ($(window).width() > 450){
-            $('.seven_Anicontainer').css('display', 'none')
-            }else{
-                $('.seven_Anicontainer').css( 'display', 'flex')
+                // =============第三題皮卡丘表情改變
+                let pikaface = ['./images/fourthPageImg/fatPikaAni1.png', './images/fourthPageImg/fatPikaAni2.png']
+                let pikaindex = 0;
+                //==========1800毫秒更改一次    
+                setInterval(function () {
+                    $('.pikafatAni').attr('src', pikaface[pikaindex])
+                    // %=0時 就可以將pikaindex歸零
+                    pikaindex = (pikaindex + 1) % pikaface.length;
+                }, 1800)
+                //===========第五題喵喵動畫
+                // let mewoAinindex = 0;
+
+                // // 定义动画变换的数组
+                // let aniArr = [
+                //     'translate(-8%,-10%)rotate(1deg)',
+                //     'translate(-8.5%,-9%)rotate(4deg)'
+                // ];
+                
+                // let moewAin = function() {
+                //     setInterval(function () {
+                //         $('#meowaniImg').css('opacity','1')
+                //         // 将当前索引对应的变换应用到 #meowaniImg 元素上
+                //         $('#meowaniImg').css('transform', aniArr[mewoAinindex]);
+                //         console.log(aniArr[mewoAinindex]);
+                //         // 更新索引，使其循环
+                //         mewoAinindex = (mewoAinindex + 1) % aniArr.length;
+                //     }, 2000);
+                // }
+                
+                // // 在 7 秒后开始执行动画
+                // setTimeout(moewAin, 7000);
+                
+
+                // ============網頁版可達鴨rwd
+                function displayWebduckRWD() {
+                    if ($(window).width() < 450) {
+                        $('.webduckaniCon').css('display', 'none')
+                    } else {
+                        $('.webduckaniCon').css('display', 'flex')
+                    }
                 }
-    }
-    
-    displaymbduckRWD();
-    // 視窗改變就呼叫執行displayWebduckRWD()
-    function resizeduck(){
-    $(window).resize(function() {
-        displayWebduckRWD();
-        displaymbduckRWD();
-     });
-   } 
-   resizeduck()
-              
+                displayWebduckRWD()
+
+
+                //// ============手機版可達鴨rwd
+                function displaymbduckRWD() {
+                    if ($(window).width() > 450) {
+                        $('.seven_Anicontainer').css('display', 'none')
+                    } else {
+                        $('.seven_Anicontainer').css('display', 'flex')
+                    }
+                }
+
+                displaymbduckRWD();
+                // 視窗改變就呼叫執行displayWebduckRWD()
+                function resizeduck() {
+                    $(window).resize(function () {
+                        displayWebduckRWD();
+                        displaymbduckRWD();
+                    });
+                }
+                resizeduck()
+
                 // =======第八頁可達鴨快樂容器透明度0=>1
                 $('.eight_cloudscontainer').css('opacity', '1')
             }
@@ -1042,19 +1087,67 @@ $(document).ready(function () {
         // 播放結果音樂
         WhoisthatSongCtrl()
         // 五秒後播放bg音樂
-        let playbg =function(){$('#bgmusic').prop('muted', false)}
-        setTimeout(playbg,5000) 
+        let playbg = function () { $('#bgmusic').prop('muted', false) }
+        setTimeout(playbg, 5000)
         $('.superBigWebCon').append(resultPageCon[0])
         //印出使用者輸入的姓名 
         $('#userNamePrint').html(userName)
         // replay按鈕綁定重新加載
-        $('#Replay').on('click',function(){
+        $('#Replay').on('click', function () {
             location.reload()
         })
         //分享按鈕綁定切換顯示與關閉分享畫面
         $('#shareIcon').on('click', function () {
             $('.ctrlShare').toggle();
         });
+
+
+
+        //  儲存圖片
+        function saveResultTopng() {
+            // 創建一個臨時的副本
+            let tempElement = $('#saveResult').clone().attr('id', 'tempSaveResult');
+            tempElement.css({
+                'position': 'absolute',
+                'left': '-9999px',
+                'overflow': 'hidden'
+            });
+            $('body').append(tempElement);
+
+            // 在副本中修改所需的元素
+            tempElement.find('.backReplaybtnCon,.ctrlShare,.shareAndAlert').remove();
+            tempElement.find('.footlogo>img').css({ 'width': '200px', 'height': '30px', 'margin-top': '10vh' });
+
+            // 使用副本生成圖片
+            html2canvas(tempElement[0], {
+                scale: 2,
+                useCORS: true
+            }).then(canvas => {
+                let imageData = canvas.toDataURL("image/png");
+                let link = document.createElement('a');
+                link.download = 'pokemon.png';
+                link.href = imageData;
+                link.click();
+
+                // 移除臨時元素
+                tempElement.remove();
+            });
+        }
+
+        $('#saveresultImg').on('click', function () {
+            $(this).prop('disabled', true);  // 禁用按鈕防止重複點擊
+
+            saveResultTopng();
+
+            setTimeout(() => {
+                $(this).prop('disabled', false);  // 啟用按鈕
+            }, 1000);  // 給予足夠的時間來生成和下載圖片
+
+            console.log('ok');
+        });
+
+
+
         //判斷各屬性得分條件
         if (get3 == 2) {
             //索引值0=======百變怪
@@ -1327,7 +1420,7 @@ $(document).ready(function () {
                             `)
             }
 
-           
+
 
             console.log('你是：火屬性')
         }
@@ -1346,6 +1439,7 @@ $(document).ready(function () {
 
             //結果加載頁播放並清空後5601毫秒後 呼叫顯示結果 
             setTimeout(showresultCon, 5601)
+
         }
 
 
