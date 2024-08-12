@@ -292,9 +292,7 @@
 
                         result += `
                         <div class="col-6 card products mt-5" style="border:0px"  >
-                            <div class="card-img-top">
-                              <img onclick="go(this)" id="${row['productID']}" src="${row['productImg'][0]['productImg']}" alt="商品說明">
-                             </div>
+                            <img onclick="go(this)" id="${row['productID']}" src="${row['productImg'][0]['productImg']}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="g-1 product_div">
                                     ${productTags}
