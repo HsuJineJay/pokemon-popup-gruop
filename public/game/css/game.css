@@ -260,6 +260,23 @@ input {
     font-weight: 500;
     letter-spacing: 0.4vw;
     margin: 0%;
+    animation-name: soundAlertShineAni;
+    opacity: 0;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    transition: 1.5s;
+}
+@keyframes soundAlertShineAni {
+    0%{
+        opacity: 0; 
+    } 25%{
+        opacity: 1; 
+    } 85%{
+        opacity: 1;  
+    }100%{
+        opacity: 0; 
+    }
 }
 
 /* 皮卡丘動畫 */
@@ -746,7 +763,8 @@ visibility: hidden;
     height: 100%;
     border: #3F3A3A 6px solid;
     background-color: #FCF3E4;
-    border-radius: 10px;
+    border-radius: 20px;
+    padding: 1% 1% 1% 1%;
     display: flex;
     flex-wrap: nowrap;
     justify-items: center;
