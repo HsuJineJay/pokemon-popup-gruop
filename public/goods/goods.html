@@ -142,7 +142,7 @@
 
             <!-- 商品類別-左側 -->
             <div class="col-md-2 categoryA">
-                <div class="categoryB" id="storeOnly=1">限量商品</div>
+                <div class="categoryB" id="productMain=1">限量商品</div>
                 <div class="categoryB">類別</div>
                 <ul>
                     <li class="category_li" id="decoration">家飾用品</li>
@@ -258,6 +258,7 @@
     $('.categoryB').click(function() {
         var productType = '&' + $(this).attr('id'); // 獲取被點擊元素的 ID
         sc_msgall(productType);
+        console.log(productType);
     })
 
     // 商品瀏覽-右側
@@ -291,7 +292,9 @@
 
                         result += `
                         <div class="col-6 card products mt-5" style="border:0px"  >
-                            <img onclick="go(this)" id="${row['productID']}" src="${row['productImg'][0]['productImg']}" class="card-img-top" alt="...">
+                            <div class="card-img-top">
+                              <img onclick="go(this)" id="${row['productID']}" src="${row['productImg'][0]['productImg']}" alt="商品說明">
+                             </div>
                             <div class="card-body">
                                 <div class="g-1 product_div">
                                     ${productTags}
