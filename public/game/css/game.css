@@ -2190,7 +2190,7 @@ max-width: 45px;
    
 
 }
-.shareAndAlert h4{
+#saveresultImg{
     color:white;
     font-family: "Noto Sans TC", sans-serif;
     font-size:70%;
@@ -2199,15 +2199,18 @@ max-width: 45px;
     margin: 0;
     margin: 1.5vw;
     background-color: #3F3A3A;
-    padding:4px 10px 4px 10px;
+    /* padding:4px 10px 4px 10px; */
     border-radius: 20px;
     text-align: center;
     z-index: 1;
-    
+    width: 40vw;
+    height: 5vw;
+    max-width: 135px;
+    max-height: 25px;
 }
 
 
-.shareAndAlert button{
+#shareIcon{
     background-color: #3F3A3A;
     border-radius: 100%;
     width: 7vw;
@@ -2225,16 +2228,21 @@ max-width: 45px;
     max-height: 20px;
 }
 
+
 .ctrlShare{
     width: fit-content;
+   
     background-color:rgba(255, 255, 255, 0.7);
     border-radius: 10px;
     padding: 1.5%;
     position: absolute;
     top: 85%;
-   
+    z-index:1000;
     border: 1px solid white;
     
+}
+.ctrlShare div{
+    display: flex;
 }
 
 /* ============ */

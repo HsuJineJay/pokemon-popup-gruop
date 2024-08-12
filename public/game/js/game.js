@@ -713,7 +713,7 @@ $(document).ready(function () {
 
                         <!-- 提醒字與分享按鈕 -->
                            <!-- AddToAny BEGIN -->
-                        <div style="display: none;" class="ctrlShare">
+                        <div style="display: none ;" class="ctrlShare">
                             <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                                 <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
                                 <a class="a2a_button_facebook"></a>
@@ -723,7 +723,7 @@ $(document).ready(function () {
                         </div>
                         <!-- AddToAny END -->
                         <div class="shareAndAlert">
-                            <h4 id="saveresultImg">點擊儲存結果圖片</h4>
+                            <button id="saveresultImg">點擊儲存結果圖片</button>
                             <button id="shareIcon"><img src="./images/result_Images/ShareIcon.png" alt=""></button>
                         </div>
                         <!-- logo -->
