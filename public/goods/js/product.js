@@ -68,7 +68,7 @@
                             <span class="Activity_tag">贈品</span><p>【全站滿$4,500 送限量貼紙】</p><br>
                         </div>
                         <div class="bg_card">
-                            <p class="bg_cardtexth3">售價$${row['productPrice'].toLocaleString()}</p>
+                            <p class="bg_cardtexth3">售價$${row['productPrice'].toLocaleString()}元</p>
                             <p style="color: #3F3A3A;">庫存 <span id="stock">${row['productInStock']}</span> 件</p>
 
                             <!-- 購物車按鈕 -->

@@ -417,6 +417,7 @@ main {
 }
 
 .form-group input {
+  font-size:small;
     width: 200px;
     /* padding: 3.5px; */
     margin-left: -15px;
@@ -445,6 +446,18 @@ main {
     margin-top: 0px;
     margin-bottom: 15px;
     justify-items: center;
+}
+
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+
+  #btn:hover {
+    background-color: var(--pika--yellow);
+    color: var(--pika--red);
+    font-size: 16.5px;
+    font-weight: bold;
+    filter:drop-shadow(3px 2px 0px var(--pika--red));
+    transform: scale(1.05) translate(-3px, -2px);
+  }
 }
 
 #btn a {

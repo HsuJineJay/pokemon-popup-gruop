@@ -384,7 +384,7 @@ main {
 }
 
 .circle {
-    border: 2px solid #FF6542;
+    border: 2px solid #FFE050;
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -397,9 +397,9 @@ main {
 
 
 .whatDay {
-    background-color: #FF6542;
+    background-color: #FFE050;
     color: #ffffff;
-    border-radius: 12px;
+    border-radius: 120px;
     margin-bottom: 15px;
     margin-top: 15px;
 }
@@ -410,12 +410,12 @@ main {
 }
 
 
-.times div {
+#timeSlotSelector button {
     background-color: #ffffff;
     border-radius: 5px;
     margin-top: 6px;
     padding: 3px;
-    font-size: 12px;
+    font-size: 20px;
 }
 
 #btn-back {
@@ -471,6 +471,11 @@ color:var(--pk--black);
 #btn a {
   text-decoration: none;
   color:var(--pk--white);
+}
+
+.fully-booked {
+  background-color:var(--pika--red);
+  color: white;
 }
 
 

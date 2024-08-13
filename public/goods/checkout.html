@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- header & footer 的引用-->
-    <script src="/public/js/public.js"></script>
-    <link rel="stylesheet" href="/public/css/public.css">
-  
-    <!-- 購物車引用 JS -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="../../public/js/shoppingCartIcon.js"></script>
-    <link rel="stylesheet" href="../../public/css/shoppingCartIcon.css">
 
-    <!-- bootstrap 引用 -->
+  
+    <link rel="stylesheet" href="../css/public.css">
+    <script src="../js/public.js"></script>
+  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+  
+    <script src="../js/jquery-3.7.1.js"></script>
+     <!-- 購物車引用 JS -->
+     <script src="../js/shoppingCartIcon.js"></script>
+     <link rel="stylesheet" href="../css/shoppingCartIcon.css">
+  
 
     <!-- checkout css 引用 -->
     <link rel="stylesheet" href="../goods/css/checkout.css">
@@ -176,9 +177,9 @@
                     <input type="radio" class="detailRadio" id="Supermarket" name="Delivery" value="超商取貨">
                     <label for="Supermarket" class="detailListText">超商取貨</label>
                   </div>
-                <div class="col-2 mt-5">
+                <!-- <div class="col-2 mt-5">
                   <div id="ecpay_btn" class="btn">前往綠界付款頁面</div>
-                </div>
+                </div> -->
             </div>      
     
             <!-- ============================== 付款方式 ============================== -->
@@ -206,13 +207,14 @@
                     </div>
                     <div class="form-group">
                         <label for="buyerTel" class="detailListText">電　話</label>
-                        <input type="tel" class="detailListGroupText-B" id="buyerTel" name="buyerTel" placeholder="EX:0911100100">
-                    </div>
+                        <input type="tel" class="detailListGroupText-B" id="buyerTel" name="buyerTel" 
+                        placeholder="EX:0911100100" pattern="0[9][0-9]{8}"
+                        title="格式應為 0911100100">
+                      </div>
                     <div class="form-group">
                         <label for="buyerEmail" class="detailListText">EMAIL</label>
                         <input type="email" class="detailListGroupText-B" id="buyerEmail" name="buyerEmail"  placeholder="EX:ABC@gmail.com">
                       </div>
-                      <!-- <div class="help_block"><span>聯絡電話只能輸入 8~20 碼以內的數字及 + 和 # 符號。</span></div>  -->
                       
                 </div>
                 <div class="col-md-5 col-12">
@@ -237,9 +239,9 @@
                 <div class="col-md-6 col-12">
                     <input type="radio" class="detailRadio" id="TriplicateUniformInvoice" name="receiptType" value="三聯式">
                     <label for="TriplicateUniformInvoice" class="detailListText">公司戶（三聯）發票</label><br><br>
-                    <label for="taxIDNumber" class="detailListText">統一編號</label><br>
+                    <label for="taxIDNumber" class="detailListText invoiceText">統一編號</label><br>
                     <input type="text" class="detailListGroupText-A" id="taxIDNumber" name="taxIDNumber" placeholder="請輸入8碼統一編號">
-                    <label for="companyTitle" class="detailListText">公司抬頭</label><br>
+                    <label for="companyTitle" class="detailListText invoiceText">公司抬頭</label><br>
                     <input type="text" class="detailListGroupText-A" id="companyTitle" name="companyTitle">
                 </div>
             </div>

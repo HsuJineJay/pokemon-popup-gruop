@@ -23,8 +23,8 @@
 
     <!-- 購物車引用 JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="../../public/js/shoppingCartIcon.js"></script>
-    <link rel="stylesheet" href="../../public/css/shoppingCartIcon.css">
+    <script src="../js/shoppingCartIcon.js"></script>
+    <link rel="stylesheet" href="../css/shoppingCartIcon.css">
 
     <link rel="stylesheet" href="../goods/css/goods.css">
 
@@ -142,7 +142,7 @@
 
             <!-- 商品類別-左側 -->
             <div class="col-md-2 categoryA">
-                <div class="categoryB" id="storeOnly=1">限量商品</div>
+                <div class="categoryB" id="productMain=1">限量商品</div>
                 <div class="categoryB">類別</div>
                 <ul>
                     <li class="category_li" id="decoration">家飾用品</li>
@@ -165,6 +165,8 @@
 
     </div>
 </div>
+
+<!-- <a href="../goods/images/Vector.svg"></a> -->
 
 <br><br><br>
 
@@ -219,53 +221,50 @@
 
 <script>
 
-    // 類別被點選時替換顏色
+  // 為點擊大小類別而有不同的選擇效果
+    // 1. 重置非被點題的類別樣式
+    function resetStyles() {
+        document.querySelectorAll('.category_li').forEach(function(li) {
+            li.style.color = 'white';
+            li.style.listStyleImage = "url('../goods/images/Vector.svg')";
+        });
+        document.querySelectorAll('.categoryB').forEach(function(div) {
+            div.style.backgroundColor = '';
+        });
+    }
+
+    // 處理 .category_li 的點擊事件
     document.querySelectorAll('.category_li').forEach(function(item) {
         item.onclick = function() {
-            // 將所有元素的字體顏色恢復為原始顏色
-            document.querySelectorAll('.category_li').forEach(function(li) {
-                li.style.color = ''; // 恢復默認顏色
-                li.style.color = 'white';
-                li.style.listStyleImage = "url('/public/goods/images/Vector.svg')";
-
-            });
-            
-            // 將點擊的元素字體顏色設置為紅色
+            resetStyles();
             this.style.color = '#FFE050';
-            this.style.listStyleImage = "url('/public/goods/images/VectorV2.svg')";
-            console.log('類別 ID: ' + this.id);
+            this.style.listStyleImage = "url('../goods/images/VectorV2.svg')";
         };
     });
+
+    // 處理 .categoryB 的點擊事件
     document.querySelectorAll('.categoryB').forEach(function(item) {
         item.onclick = function() {
-            document.querySelectorAll('.category_li').forEach(function(li) {
-                li.style.color = ''; // 恢復默認顏色
-                li.style.color = 'white';
-                li.style.listStyleImage = "url('/public/goods/images/Vector.svg')";
-
-            });
-                this.style.backgroundColor = '#FFE050';
-                console.log('類別 ID: ' + this.id);
-            };
+            resetStyles();
+            this.style.backgroundColor = '#FFE050';
+        };
     });
 
-    // 為所有的 .category_li 和 .categoryB 添加點擊事件
+    // 為所有的 .category_li 和 .categoryB 添加點擊事件, 篩選商品資料
     $('.category_li').click(function() {
         var productType = '&productType='+ $(this).attr('id'); // 獲取被點擊元素的 ID
-        console.log(productType);
         sc_msgall(productType);
     })
     $('.categoryB').click(function() {
         var productType = '&' + $(this).attr('id'); // 獲取被點擊元素的 ID
-        console.log(productType);
         sc_msgall(productType);
+        console.log(productType);
     })
 
     // 商品瀏覽-右側
     function sc_msgall(productType) {
 
             //這裡要帶入的參數名稱 都是資料庫的欄位名稱
-            // let apiUrl = 'http://localhost/frontend/bigProject/root/backEnd/api/product/product.php' //原始的
             let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php'
             let Exist_apiUrl = apiUrl + '?productExist=1' + productType//篩選條件
             $.ajax({
@@ -279,7 +278,6 @@
                     `;
 
                     for(row of data){
-                        // console.log(row);
                         var productTags = '';
                         if( row['storeOnly'] === 1 ){
                             productTags +=`
@@ -294,7 +292,9 @@
 
                         result += `
                         <div class="col-6 card products mt-5" style="border:0px"  >
-                            <img onclick="go(this)" id="${row['productID']}" src="${row['productImg'][0]['productImg']}" class="card-img-top" alt="...">
+                            <div class="card-img-top">
+                              <img onclick="go(this)" id="${row['productID']}" src="${row['productImg'][0]['productImg']}" alt="商品說明">
+                             </div>
                             <div class="card-body">
                                 <div class="g-1 product_div">
                                     ${productTags}
@@ -316,7 +316,7 @@
                     
                 }
             }).fail(function (z) {
-                    console.log('fail:', z.innerText);
+                    // console.log('fail:', z.innerText);
                 })
         }
 

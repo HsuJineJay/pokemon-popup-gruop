@@ -425,6 +425,18 @@ main {
     margin-bottom: 10px;
 }
 
+@media only screen and (min-width: 768px) and (any-hover: hover) {
+
+  #btn:hover {
+    background-color: var(--pika--yellow);
+    color: var(--pika--red);
+    font-size: 16.5px;
+    font-weight: bold;
+    filter: drop-shadow(3px 2px 0px var(--pika--red));
+    transform: scale(1.05) translate(-3px, -2px);
+  }
+}
+
 
 /* -----------footer 開始----------- */
 #footer {
