@@ -234,3 +234,10 @@
         z-index: 9998; 
     }
 
+    /* 定義寶貝球旋轉動畫 */
+    @media only screen and (min-width: 768px) and (any-hover: hover) {
+        .navbar-cart.rotate-right {
+            animation: cartRotateRight 0.25s ease-out;
+            transform-origin: center 40px;
+        }
+    }

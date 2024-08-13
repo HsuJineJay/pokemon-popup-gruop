@@ -144,5 +144,14 @@ $('#result_product').on('click', '.btn-add-to-cart', function() {
     // 將資料存回 localStorage
             localStorage.setItem("goods", JSON.stringify(cartList));
 
+    // 觸發寶貝球動畫
+    $('.navbar-cart').addClass('rotate-right');
+
+    // 當動畫完成後回復
+    setTimeout(function() {
+        $('.navbar-cart').removeClass('rotate-right');
+        console.log('動畫完成並移除 rotate-right 類');
+    }, 250);
+
         });
     })
