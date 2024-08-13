@@ -346,7 +346,7 @@ function testCreatValueSet() {
     $('.TESTbookingTimePeriod_Date').val('2024-07-30')
     $('.TESTbookingTimePeriod_Time').val('10:00:00')
     $('.TESTbookingNumber').val(4)
-    $('.TESTbookingName').val('熊')
+    $('.TESTbookingName').val('陳小熊')
     $('.TESTbookingEmail').val('bear@gmail.com')
     $('.TESTbookingTel').val('0987654321')
 
@@ -368,7 +368,7 @@ window.onload = function () {
 
 
 
-    testCreatValueSet()
+    // testCreatValueSet()
 
     $('#one').on('click', function () {
         conditionReload()
