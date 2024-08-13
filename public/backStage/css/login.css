@@ -102,3 +102,12 @@
 #sendBN{
     float: right;
 }
+
+
+/* 設定新密碼頁面 */
+#backStageChangePW{
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    border-radius: 20px;
+}

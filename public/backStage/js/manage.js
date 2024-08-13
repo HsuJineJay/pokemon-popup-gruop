@@ -21,16 +21,18 @@ window.addEventListener('load',function(){
         window.location.href = './account.html'
     })
     $('#logout').click(async function () {
-        console.log('Logout button clicked');
-        let apiUrl = 'http://localhost/pokemon-popup-gruop/public/backStage/login/logout.php';
+        // console.log('Logout button clicked');
+        // let apiUrl = 'http://localhost/pokemon-popup-gruop/public/backStage/login/logout.php';
+        let apiUrlNodejs = 'http://localhost:3000/logout';
         
         try {
             let response = await $.ajax({
-                url: apiUrl,
+                // url: apiUrl,
+                url: apiUrlNodejs,
                 method: 'GET',
-                dataType: 'json'
+                // dataType: 'json'
             });
-            console.log(response);
+            // console.log(response);
             if (response === 'out') {
                 window.location.href = './login/login.html';
             } else {
@@ -39,5 +41,6 @@ window.addEventListener('load',function(){
         } catch (error) {
             console.error('AJAX request failed:', error);
         }
+        
 })
 })

@@ -39,3 +39,77 @@ td{
     background-color: var(--red);
     border: 0cap;
 }
+
+#editContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 101vw;
+    height: 101vh;
+    background-color: rgba(0, 0, 0,50%);
+
+    z-index: 3;
+
+    display: none;
+}
+
+#editBlack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 103vw;
+    height: 103vh;
+    background-color: rgba(0, 0, 0,50%);
+
+    z-index: 4;
+
+    display: none;
+}
+#webStatusUI{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 250px;
+    background-color:  var(--yellow);
+    border-radius: 20px;
+    
+    z-index: 5;
+
+    overflow: auto;
+
+    display: none;
+}
+.UIDiv{
+    margin: 80px 40px;
+}
+.UIText{
+    text-align: center;
+    font-size: var(--h6);
+}
+
+/* delete */
+
+#webStatusBnDiv{
+    margin-top: 40px;
+}
+
+#webStatusCancelBn{
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    border: 0cap;
+    background-color: var(--black);
+    color: var(--white);
+    float: left;
+}
+#webStatusUISubmit{
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    border: 0cap;
+    background-color: var(--red);
+    color: var(--white);
+    float: right;
+}

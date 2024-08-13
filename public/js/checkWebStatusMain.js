@@ -18,4 +18,4 @@ function checkWebStatus() {
     });
 }
 checkWebStatus()
-setInterval(checkWebStatus,5000)
+setInterval(checkWebStatus,10000)

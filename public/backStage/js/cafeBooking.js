@@ -1,14 +1,34 @@
 //change here
 let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/cafeBooking/cafeBooking.php'
-let col = ['cafeBookingID','bookingDate','bookingTimePeriod','bookingNumber','bookingName','bookingEmail','bookingTel']
-let colTW = ['預定編號','下訂日期','預定時段','預定人數','預約姓名','信箱','電話']
+let col = ['cafeBookingID','bookingTimePeriod','bookingDate','bookingNumber','bookingName','bookingEmail','bookingTel']
+let colTW = ['預定編號','預定時段','下訂日期','預定人數','預約姓名','信箱','電話']
 let colExist = 'bookingExist'
 function setUp(){
     for(i in col){
-        $('#condition').append(`
+        if(col[i] === 'bookingTimePeriod'){
+            $('#condition').append(`
+            <option class="selectOption" value=${col[i]} selected>${colTW[i]}</option>
+            `)
+        }else{
+            $('#condition').append(`
             <option class="selectOption" value=${col[i]}>${colTW[i]}</option>
-        `)
+            `)
+        }
+
     }
+
+
+    const d = new Date();
+    let year = d.getFullYear()
+    let month =  d.getMonth() + 1 
+    let date = d.getDate()
+
+    let todayStr = year + '-' + (month<10?'0'+month:month) + '-' + (date<10?'0'+date:date);
+    // console.log(todayStr);
+    $('#conditionSelect1').val(todayStr) ; 
+
+
+
     for(item of colTW){
         $('#existTHead,#noExistTHead').append(`
         <td>
@@ -341,7 +361,7 @@ window.onload = function () {
     
     setUp()
 
-    getDataCreateTable(`?${colExist}=1`,'#existTBody');
+    conditionReload()
 
     $('#editBlack,.UICancelBN,#deleteUICancelBn,#removeUICancelBn,#onUICancelBn').click(function () {
         switchEditUIDisplay('none')

@@ -1,7 +1,7 @@
 //change here
 let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php'
-let col = ['productID','productName','productType','productDescribe','productPrice','productInStock','storeOnly','productMain']
-let colTW = ['商品編號','商品名稱','商品類型','商品描述','商品價格','庫存','會場限定','首頁呈現商品']
+let col = ['productID','productName','productType','productPrice','productInStock','storeOnly','productMain','productDescribe']
+let colTW = ['商品編號','商品名稱','商品類型','商品價格','庫存','會場限定','首頁呈現商品','商品描述']
 let colExist = 'productExist'
 function setUp(){
     for(i in col){
@@ -317,9 +317,7 @@ function switchEditUIDisplay(display, elem) {
 }
 
 
-function changeImg(elem){
-    $(elem).next().prop('src',elem.value)
-}
+
 
 
 
@@ -351,12 +349,26 @@ async function edit(elem) {
 
     let result = '';
     for (i in data.productImg){
+        // result += `
+        // <div class="UILittleDiv row">
+        //     <div class="UISpan col-3">圖片連結</div>
+        //     <div class="col-9">
+        //         <input oninput='changeImg(this)' class="UIInput TESTproductImg1 productImgEdit" type="test" id="productImg${i}Edit" value="${data.productImg[i].productImg}">
+        //         <img style='margin-top: 10px' width='50px' src='${data.productImg[i].productImg}'>
+        //     </div>
+        // </div>
+        // `
         result += `
-        <div class="UILittleDiv row">
-            <div class="UISpan col-3">圖片連結</div>
-            <div class="col-9">
-                <input oninput='changeImg(this)' class="UIInput TESTproductImg1 productImgEdit" type="test" id="productImg${i}Edit" value="${data.productImg[i].productImg}">
-                <img style='margin-top: 10px' width='50px' src='${data.productImg[i].productImg}'>
+        <div class="orderProductCreateDiv">
+            <div class="UILittleDiv row">
+                <div class="UISpan col-3">圖片連結</div>
+                <div class="col-9">
+                    <input oninput='changeImg(this)' class="UIInput  TESTorderProductID productImgEdit" type="text"  id="productImg${i}Edit" value="${data.productImg[i].productImg}">
+                    <img class="createImg" src='${data.productImg[i].productImg}' alt="">
+                </div>
+            </div>
+                <button class="plusProduct" onclick="moreDiv('#lastInput')"></button>
+                <button class="minusButtonMore" onclick="lessDiv(this)"></button>
             </div>
         </div>
         `
@@ -386,9 +398,9 @@ function deleteBN(elem) {
 
 function testCreatValueSet() {
     $('.TESTproductExist').val(0)
-    $('.TESTproductName').val('熊')
+    $('.TESTproductName').val('傑尼龜')
     $('.TESTproductType').val('toy')
-    $('.TESTproductDescribe').val('一隻熊')
+    $('.TESTproductDescribe').val('傑尼龜玩偶')
     $('.TESTproductPrice').val(200)
     $('.TESTproductInStock').val(50)
     $('.TESTstoreOnly').val(0)
@@ -401,12 +413,38 @@ function testCreatValueSet() {
 
 }
 
+function changeImg(elem){
+    $(elem).next().prop('src',elem.value)
+}
+
+function moreDiv(place){
+    $(place).append(`
+
+        <div class="orderProductCreateDiv">
+            <div class="UILittleDiv row">
+                <div class="UISpan col-3">圖片連結</div>
+                <div class="col-9">
+                    <input oninput='changeImg(this)' class="UIInput  TESTorderProductID productImgCreate" type="text"  >
+                    <img class="createImg" src="" alt="">
+                </div>
+            </div>
+            <button class="plusProduct" onclick="moreDiv('#orderProductCreateBigDiv')"></button>
+            <button class="minusButtonMore" onclick="lessDiv(this)"></button>
+        </div>
+
+    `)
+}
+function lessDiv(elem){
+    $(elem).parent().detach()
+}
+
 
 window.onload = function () {
     
     setUp()
 
-    getDataCreateTable(`?${colExist}=1`,'#existTBody');
+    // getDataCreateTable(`?${colExist}=1`,'#existTBody');
+    conditionReload()
 
     $('#editBlack,.UICancelBN,#deleteUICancelBn,#removeUICancelBn,#onUICancelBn').click(function () {
         switchEditUIDisplay('none')
@@ -494,17 +532,17 @@ window.onload = function () {
         }
     })
 
-    $('.createImgBN').on('click',function(){
-        $('#createDiv').append(`
-        <div class="UILittleDiv row">
-            <div class="UISpan col-3">圖片連結</div>
-            <div class="col-9">
-                <input oninput='changeImg(this)' class="UIInput TESTproductImg1 productImgCreate" type="test" >
-                <img class="createImg" src="" alt="">
-            </div>
-        </div>
-        `)
-    })
+    // $('.createImgBN').on('click',function(){
+    //     $('#createDiv').append(`
+    //     <div class="UILittleDiv row">
+    //         <div class="UISpan col-3">圖片連結</div>
+    //         <div class="col-9">
+    //             <input oninput='changeImg(this)' class="UIInput TESTproductImg1 productImgCreate" type="test" >
+    //             <img class="createImg" src="" alt="">
+    //         </div>
+    //     </div>
+    //     `)
+    // })
 
     $('#createUISubmit').click(function () {
         postData()
@@ -521,6 +559,8 @@ window.onload = function () {
     // $('#deleteUISubmit').click(function () {
     //     deleteData()
     // })
-
+    $('.plusProduct').click(function(){
+        moreDiv('#orderProductCreateBigDiv');
+    })
 
 }

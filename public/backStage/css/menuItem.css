@@ -46,6 +46,11 @@
 
 
 
+td:nth-last-of-type(2) {
+    /* display: block; */
+    text-align: left;
+}
+
 td:nth-last-of-type(4) {
     /* display: block; */
     text-align: center;
