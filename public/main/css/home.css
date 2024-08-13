@@ -978,7 +978,7 @@ a:active {
 
 .card_lg_detail p {
   /* font-size: 1.3vmin; */
-  font-size: 1.5vmin;
+  font-size: 2.5vmin;
   font-weight: 400;
   color: var(--pk--black);
   letter-spacing: 0.1vmin;
@@ -1029,7 +1029,7 @@ a:active {
 
 .card_notice li {
   /* font-size: 1.3vmin; */
-  font-size: 1.5vmin;
+  font-size: 2.5vmin;
   color: var(--pk--black);
   letter-spacing: 0.1vmin;
 }
@@ -1378,7 +1378,7 @@ a:active {
   border: 1px solid var(--pk--black);
 
   /* font-size: 1.3vmin; */
-  font-size: 1.5vmin;
+  font-size: 2.5vmin;
   color: var(--pk--black);
   letter-spacing: 0.1vmin;
 }
@@ -1715,7 +1715,7 @@ a:active {
   text-align: center;
   font-weight: 400;
   /* font-size: 1.3vmin; */
-  font-size: 1.8vmin;
+  font-size: 2.8vmin;
   letter-spacing: 0.1vmin;
   border-top: 1px dashed var(--pk--black);
   border-bottom: 1px dashed var(--pk--black);
@@ -1793,7 +1793,7 @@ a:active {
     text-align: center;
     font-weight: 400;
     /* font-size: 1.3vmin; */
-    font-size: 1.8vmin;
+    font-size: 2.8vmin;
     letter-spacing: 0.1vmin;
     border-top: 1px dashed var(--pk--black);
     border-bottom: 1px dashed var(--pk--black);
