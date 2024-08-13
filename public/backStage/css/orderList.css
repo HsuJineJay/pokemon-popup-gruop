@@ -6,6 +6,9 @@
     color: var(--white);
 }
 
+#conditionInput{
+    display: none;
+}
 #conditionSelect1{
     display: none;
 }
@@ -13,7 +16,7 @@
     display: none;
 }
 #conditionSelect3{
-    display: none;
+    /* display: none; */
 }
 
 .orderProductCreateDiv{

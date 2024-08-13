@@ -399,7 +399,8 @@ window.onload = function () {
     
     setUp()
 
-    getDataCreateTable(`?${colExist}=1`,'#existTBody');
+    // getDataCreateTable(`?${colExist}=1`,'#existTBody');
+    conditionReload()
 
     $('#editBlack,.UICancelBN,#deleteUICancelBn,#removeUICancelBn,#onUICancelBn').click(function () {
         switchEditUIDisplay('none')

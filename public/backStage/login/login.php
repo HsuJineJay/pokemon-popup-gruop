@@ -7,10 +7,14 @@ header("Content-Type: application/json; charset=UTF-8");
 
 session_start();
 
-$input = json_decode(file_get_contents('php://input'), true);
+if(isset($_POST['account'])){
+    
+}
 
-$account = $input['account'];
-$password = $input['password'];
+$account = $_POST['account'];
+$password = $_POST['password'];
+// $account = $input['account'];
+// $password = $input['password'];
 
 $mydb = new mysqli('localhost', 'root', '', 'mfeeDB');
 $mydb->set_charset('utf8');
@@ -35,6 +39,7 @@ while ($row = $result->fetch_assoc()) {
 }
 
 // 應該從資料庫中檢查用戶
+$_SESSION['account'] = $account;
 if ($check) {
     $_SESSION['account'] = $account;
     // echo $account;
@@ -45,7 +50,7 @@ if ($check) {
 }
 
 // 關閉連接
-$stmt->close();
-$mydb->close();
+// $stmt->close();
+// $mydb->close();
 
 ?>

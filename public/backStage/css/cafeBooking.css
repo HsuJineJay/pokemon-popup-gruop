@@ -6,13 +6,16 @@
     color: var(--white);
 }
 
-#conditionSelect1{
+#conditionInput{
     display: none;
+}
+#conditionSelect1{
+    /* display: none; */
 }
 #conditionSelect2{
     display: none;
 }
 #conditionSelect3{
-    display: none;
+    /* display: none; */
 }
 

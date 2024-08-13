@@ -1,7 +1,7 @@
 //change here
 let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php'
-let col = ['itemID', 'itemName', 'itemType', 'itemDescribe', 'itemMain', 'itemPrice', 'itemImg']
-let colTW = ['餐點編號', '餐點名稱', '餐點類型', '餐點描述', '首頁呈現品項', '餐點價格', '餐點圖片']
+let col = ['itemID', 'itemImg', 'itemName', 'itemType', 'itemMain', 'itemPrice', 'itemDescribe']
+let colTW = ['餐點編號', '餐點圖片', '餐點名稱', '餐點類型', '首頁呈現品項', '餐點價格', '餐點描述']
 let colExist = 'menuExist'
 /////
 function setUp() {
@@ -344,7 +344,8 @@ window.onload = function () {
 
     setUp()
 
-    getDataCreateTable(`?${colExist}=1`, '#existTBody');
+    // getDataCreateTable(`?${colExist}=1`, '#existTBody');
+    conditionReload()
 
     $('#editBlack,.UICancelBN,#deleteUICancelBn,#removeUICancelBn,#onUICancelBn').click(function () {
         switchEditUIDisplay('none')
