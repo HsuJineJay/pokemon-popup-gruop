@@ -9,6 +9,7 @@ function setUp(){
             $('#condition').append(`
             <option class="selectOption" value=${col[i]} selected>${colTW[i]}</option>
             `)
+            $('#conditionSelect3').val('1')
         }else{
             $('#condition').append(`
             <option class="selectOption" value=${col[i]}>${colTW[i]}</option>
