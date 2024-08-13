@@ -179,18 +179,25 @@ async function putData() {
 
     let userOriginPassword = $('.editUIPW').val()
 
-    let dataStrOld = await  getData(`?userAccount=${userAccountEdit}`)
+    let dataStrOld = await  getData(`?userID=${userIDEdit}`)
     let dataJsonOld = JSON.parse(dataStrOld)
     let dataOld = dataJsonOld[0]
-    console.log(dataOld);
-    // console.log('sql:',dataOld.userAccount,'/edit:',userAccountEdit);
+    // console.log(dataOld);
+    // console.log(userPasswordEdit);
+    // console.log(userOriginPassword);
 
-    if(dataOld !== undefined){
-        if(dataOld.userAccount === userAccountEdit & dataOld.userID !==userIDEdit ){
-            console.log('重複');
-            $('#accountRepeatDivEdit').html(`<div id="accountRepeat">帳號重複</div>`)
-        }else{
-            console.log('不重複');
+    if(dataOld.userAccount !== userAccountEdit){
+        ///如果有更改帳號的情況之下
+        let checkDataStr = await  getData(`?userAccount=${userAccountEdit}`);
+        let checkDataList = JSON.parse(checkDataStr);
+        let check = true;
+        console.log(checkDataStr);
+        checkDataList.forEach(element => {
+            if(element.userAccount === userAccountEdit){
+                check = false;
+            }
+        });
+        if(check){
             $.ajax({
                 url: apiUrl,
                 method: 'put',
@@ -213,8 +220,14 @@ async function putData() {
             }).fail(function (res) {
                 console.log('fail:', res.innerText);
             })
+        }else{
+            console.log('重複');
+            $('#accountRepeatDivEdit').html(`<div id="accountRepeat">帳號重複</div>`)
         }
+        
+
     }else{
+        //沒有更改帳號的情況之下
         $.ajax({
             url: apiUrl,
             method: 'put',
@@ -345,6 +358,7 @@ function add() {
 }
 async function edit(elem) {
     switchEditUIDisplay('block', '#editUI')
+    $('#accountRepeatDivEdit').html(``)
     let id = $(elem).parent().parent().find('td:nth-of-type(1)')[0].innerText;
     // $('#editUIIDEdit').val(id)
 
@@ -356,7 +370,7 @@ async function edit(elem) {
     $('.editUIID').val(data.userID)
     $('.editUIPW').val(data.userPassword)
     $('#userExistEdit').val(data.userExist)
-    $('#userName_DateEdit').val(userNameEdit)
+    $('#userNameEdit').val(data.userName)
     $('#userAccountEdit').val(data.userAccount)
     $('#userPasswordEdit').val(data.userPassword)
     $('#userTitleEdit').val(data.userTitle)
