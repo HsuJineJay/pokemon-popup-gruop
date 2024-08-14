@@ -12,6 +12,9 @@ $(document).ready(function(){
 })
 
 // 電話&EMAIL格式檢查
+
+let isValid = true      //最終驗證用
+
 $(document).ready(function() {
     var phoneTimeoutId, emailTimeoutId;
     var delay = 500; // 延遲顯示提示的時間（毫秒）
@@ -33,6 +36,7 @@ function validatePhone() {
     var $phoneError = $('#phoneError');
 
     (phonePattern.test(phoneInput)) ? $phoneError.fadeOut() : $phoneError.fadeIn();
+    isValid = (phonePattern.test(phoneInput)) ? '' : false ;
 }
 
 function validateEmail() {
@@ -41,6 +45,7 @@ function validateEmail() {
     var $mailError = $('#mailError');
 
     (emailPattern.test(emailInput)) ? $mailError.fadeOut() : $mailError.fadeIn()
+    isValid = (emailPattern.test(emailInput)) ? '' : false ;
 
 }
 
@@ -74,6 +79,7 @@ $(document).ready(function(){
         var number = $(this).val(); //使用者統編取值
 
         (check_tax_number(number)) ? $('#taxIdError').fadeOut() : $('#taxIdError').fadeIn();
+        isValid = (check_tax_number(number)) ? '' : false ;
     })
 
 });
@@ -121,7 +127,16 @@ window.map_return = function(info) {
 $(document).ready(function(){
 
     $('#submitOderList').click(async function(event){   //當訂單被送出時
-        event.preventDefault();
+        event.preventDefault();     //防止表單被默認提交
+
+        // 表單資訊的驗證
+        console.log(isValid);
+        if(isValid){
+            console.log('驗證成功')
+        }else{
+            console.log('驗證失敗!!!')
+        }
+
         
         // 收集訂單明細
         let formData = $('#orderForm').serializeArray();
