@@ -32,13 +32,13 @@ window.onload = function () {
       // 針對不同id名稱加入apiUrl的切換菜單內容
       switch($(this).attr('id')) {
         case 'selectMeal':
-          menuSwitch('?itemType=主餐');
+          menuSwitch('?itemType=主餐&menuExist=1');
           break;
         case 'selectDrinks':
-          menuSwitch('?itemType=飲品');
+          menuSwitch('?itemType=飲品&menuExist=1');
           break;
         case 'selectDersert':
-          menuSwitch('?itemType=甜點');
+          menuSwitch('?itemType=甜點&menuExist=1');
           break;
       }
     
