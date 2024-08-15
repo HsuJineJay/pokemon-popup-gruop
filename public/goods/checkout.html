@@ -203,27 +203,27 @@
                 <div class="col-md-5 col-12">
                     <div class="form-group mt-3">
                         <label for="buyerName" class="detailListText">姓　名</label>
-                        <input type="text" class="detailListGroupText-B ml-auto" id="buyerName" name="buyerName">
+                        <input type="text" class="detailListGroupText_B ml-auto" id="buyerName" name="buyerName">
                     </div>
                     <div class="form-group">
                         <label for="buyerTel" class="detailListText">電　話</label>
-                        <input type="tel" class="detailListGroupText-B" id="buyerTel" name="buyerTel" 
-                        placeholder="EX:0911100100" pattern="0[9][0-9]{8}"
-                        title="格式應為 0911100100">
+                        <input type="text" class="detailListGroupText_B" id="buyerTel" name="buyerTel" >
                       </div>
+                      <span id="phoneError" class="error-message" >請輸入正確的手機號碼格式: 0911100100</span>
                     <div class="form-group">
                         <label for="buyerEmail" class="detailListText">EMAIL</label>
-                        <input type="email" class="detailListGroupText-B" id="buyerEmail" name="buyerEmail"  placeholder="EX:ABC@gmail.com">
+                        <input type="email" class="detailListGroupText_B" id="buyerEmail" name="buyerEmail"  placeholder="EX:ABC@gmail.com">
                       </div>
+                      <span id="mailError" class="error-message" >請輸入正確的E-MAIL格式</span>
                       
                 </div>
                 <div class="col-md-5 col-12">
                     <div class="detailListText">地址</div>
                     <div id="twzipcode_ADV" class="row"></div>
                     <label for="buyerAddr" class="detailListText d-none">地址</label>
-                    <input type="text" class="detailListGroupText-B" id="buyerAddr" name="buyerAddr"><br>
+                    <input type="text" class="detailListGroupText_B" id="buyerAddr" name="buyerAddr"><br>
                     <label for="transportNote" class="detailListText">物流備註</label>
-                    <input type="text" class="detailListGroupText-C" id="transportNote" name="transportNote"><br>
+                    <input type="text" class="detailListGroupText_C" id="transportNote" name="transportNote"><br>
                 </div>
             </div>
             
@@ -240,9 +240,10 @@
                     <input type="radio" class="detailRadio" id="TriplicateUniformInvoice" name="receiptType" value="三聯式">
                     <label for="TriplicateUniformInvoice" class="detailListText">公司戶（三聯）發票</label><br><br>
                     <label for="taxIDNumber" class="detailListText invoiceText">統一編號</label><br>
-                    <input type="text" class="detailListGroupText-A" id="taxIDNumber" name="taxIDNumber" placeholder="請輸入8碼統一編號">
+                    <input type="text" class="detailListGroupText_A" id="taxIDNumber" name="taxIDNumber" placeholder="請輸入8碼統一編號">
+                    <span id="taxIdError" class="error-message taxIdError" >統一編號檢核有誤，請確認。</span><br>
                     <label for="companyTitle" class="detailListText invoiceText">公司抬頭</label><br>
-                    <input type="text" class="detailListGroupText-A" id="companyTitle" name="companyTitle">
+                    <input type="text" class="detailListGroupText_A" id="companyTitle" name="companyTitle">
                 </div>
             </div>
     

@@ -292,9 +292,7 @@
 
                         result += `
                         <div class="col-6 card products mt-5" style="border:0px"  >
-                            <div class="card-img-top">
-                              <img onclick="go(this)" id="${row['productID']}" src="${row['productImg'][0]['productImg']}" alt="商品說明">
-                             </div>
+                            <img onclick="go(this)" id="${row['productID']}" src="${row['productImg'][0]['productImg']}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="g-1 product_div">
                                     ${productTags}
@@ -347,7 +345,16 @@
     // 將資料存回 localStorage
         localStorage.setItem("goods", JSON.stringify(cartList));
 
-        console.log(cartList)
+    // 觸發寶貝球動畫
+    $('.navbar-cart').addClass('rotate-right');
+  
+    // 當動畫完成後回復
+    setTimeout(function() {
+        $('.navbar-cart').removeClass('rotate-right');
+        console.log('動畫完成並移除 rotate-right 類');
+    }, 250);
+
+
     });
 
 </script>
