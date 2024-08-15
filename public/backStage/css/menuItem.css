@@ -20,7 +20,8 @@
 
 .createImg{
     margin-top: 10px;
-    width: 50px;
+    width: 250px;
+    border-radius: 20px;
 }
 .createImgBNDiv{
     display: flex;
@@ -46,6 +47,9 @@
 
 
 
+td:nth-of-type(2)>img {
+    border-radius: 20px;
+}
 td:nth-last-of-type(2) {
     /* display: block; */
     text-align: left;

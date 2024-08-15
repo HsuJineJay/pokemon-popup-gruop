@@ -196,10 +196,23 @@ app.post('/updatePWApi', function (req, res) {
                 res.send(true)
                 console.log(result);
             }
-        })
+    })
 })
 
+app.get('/checkUserAuthority', function(req, res){
+    let account = req.session.account
 
+    conn.query(`SELECT * FROM userInfo INNER JOIN userAuthority INNER JOIN page on userInfo.userID = userAuthority.authorityUserID AND userAuthority.authorityPageID = page.pageID WHERE userAccount = '${account}'`,
+        [],
+        function (err, result) {
+            if (err) {
+                res.send(false)
+                console.log(err);
+            } else {
+                res.send(result)
+            }
+    })
+})
 
 
 app.post('/mailSomeone', function (req, res) {
@@ -211,7 +224,8 @@ app.post('/mailSomeone', function (req, res) {
 })
 app.get('/check', function (req, res) {
     if (req.session.account !== undefined) {
-        res.send(true);
+        // res.send(true);
+        res.send(req.session.account);
     } else {
         res.send(false);
 
@@ -221,3 +235,4 @@ app.get('/logout', function (req, res) {
     delete req.session.account;
     res.send('out')
 })
+
