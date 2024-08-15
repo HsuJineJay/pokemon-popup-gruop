@@ -117,24 +117,33 @@ app.post('/loginApi', function (req, res) {
     let account = req.body.account
     let password = req.body.password
 
-    conn.query(`select * from userInfo where userAccount = '${account}'`,
+    conn.query(`select * from userInfo where userExist = 1 AND userAccount = '${account}'`,
         [],
         function (err, result) {
             // console.log(result);
             // console.log(password);
             // console.log(result[0].userPassword);
-            verifyPassword(password, result[0].userPassword)
-                .then(function (check) {
-                    if (check) {
-                        //存入session
-                        req.session.account = req.body.account;
-                        res.send(true);
-                        // res.redirect('/login'); //重新導向
-
-                    } else {
-                        res.send(false);
-                    }
-                })
+            if(!err){
+                // console.log('good');
+                if(result[0]!==undefined){
+                    verifyPassword(password, result[0].userPassword)
+                        .then(function (check) {
+                            if (check) {
+                                //存入session
+                                req.session.account = req.body.account;
+                                res.send(true);
+        
+                            } else {
+                                res.send(false);
+                            }
+                        })
+                }else{
+                    res.send(false);
+                }
+            }else{
+                console.log(err);
+                // res.send(err)
+            }
         })
 })
 
