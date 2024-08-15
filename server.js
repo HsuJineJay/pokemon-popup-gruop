@@ -224,7 +224,8 @@ app.post('/mailSomeone', function (req, res) {
 })
 app.get('/check', function (req, res) {
     if (req.session.account !== undefined) {
-        res.send(true);
+        // res.send(true);
+        res.send(req.session.account);
     } else {
         res.send(false);
 

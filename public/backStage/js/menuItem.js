@@ -328,13 +328,13 @@ function deleteBN(elem) {
 
 
 function testCreatValueSet() {
-    $('.TESTmenuExist').val(0)
-    $('.TESTitemName').val('皮卡丘肉')
-    $('.TESTitemType').val('主餐')
-    $('.TESTitemDescribe').val('皮卡丘黃色的肉')
-    $('.TESTitemMain').val(1)
-    $('.TESTitemPrice').val(100)
-    $('.TESTitemImg').val('https://fastly.picsum.photos/id/427/300/200.jpg?hmac=wC7nAsoL5JtV3mCgglww3EYamaBxslLXuIZ3_qweYM4')
+    $('.TESTmenuExist').val(1)
+    $('.TESTitemName').val('寶可夢拿鐵')
+    $('.TESTitemType').val('飲品')
+    $('.TESTitemDescribe').val('每一杯寶可夢拿鐵都充滿驚喜，選擇你的最愛，讓冒險從咖啡開始！')
+    $('.TESTitemMain').val(0)
+    $('.TESTitemPrice').val(150)
+    $('.TESTitemImg').val('https://www.pokemoncenter-online.com/cafe/common/img/menu/2024/photo_special11.jpg')
 
 
 }
@@ -353,7 +353,7 @@ window.onload = function () {
 
 
 
-    testCreatValueSet()
+    // testCreatValueSet()
 
     $('#one').on('click', function () {
         conditionReload()
