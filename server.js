@@ -70,6 +70,7 @@ function mailSomeone(mailAddress, mailSubject, mailText) {
 
 
 
+
 // const bcrypt = require('bcrypt');
 // async function verifyPassword(plainTextPassword, hashedPassword) {
 //     try {
@@ -146,6 +147,24 @@ app.post('/loginApi', function (req, res) {
             }
         })
 })
+app.get('/getITAccount',function(req, res){
+    conn.query(`select * from userInfo where userTitle = 'IT'`,
+        [],
+        function (err, result) {
+            // console.log(result);
+            
+            if (result[0] !== undefined) {
+                let data = [{
+                    userAccount : result[0].userAccount,
+                    userName : result[0].userName,
+                    userEmail : result[0].userEmail,
+                }]
+                res.send(JSON.stringify(data));
+            } else {
+                res.send(false);
+            }
+        })
+})
 
 app.post('/loginForgetApi', function (req, res) {
     let account = req.body.account
@@ -164,6 +183,7 @@ app.post('/loginForgetApi', function (req, res) {
             // console.log(result[0].userPassword);
             if (result[0] !== undefined) {
                 let data = [{
+                    userAccount : result[0].userAccount,
                     userEmail: result[0].userEmail,
                     code: code
                 }]
@@ -244,4 +264,9 @@ app.get('/logout', function (req, res) {
     delete req.session.account;
     res.send('out')
 })
+
+app.use((req, res, next) => {
+    console.log(`404 Error: ${req.originalUrl}`);
+    res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));
+});
 

@@ -1,4 +1,8 @@
 
+
+
+
+
 let loginUrlNodejs = 'http://localhost:3000/loginForgetApi'
 let loginUrlMail = 'http://localhost:3000/mailSomeone'
 
@@ -14,33 +18,22 @@ function checkAccount(){
         success: function (dataStr) {
             let data = JSON.parse(dataStr);
             // console.log(typeof(dataStr) );
-            // console.log('jj');
-            // console.log(data);
+            console.log('jj');
+            console.log(data);
+            if(data !== undefined){
                 if (data) {
-                    let account = data[0].userAccount;
-                    fetch('http://localhost:3000/getITAccount')
-                    .then(function(response){
-                        return response.json();
-                        // console.log(response);
-                    })
-                    .then(function(ITdata){
-                        let ITEmail = ITdata[0].userEmail;
-                        // console.log(data);
-                        // console.log(ITAccount);
-                        console.log(ITdata);
-                        postMailApi(ITEmail, '職員申請修改密碼', `申請人帳號：${account}`)
-                        window.location.href = './loginForgetSuccess.html';
-                        // alert('已寄出密碼重設申請至IT人員')
-                    })
-                    
-                    // let email = data[0].userEmail;
-                    // let code = data[0].code;
+                    let email = data[0].userEmail;
+                    let code = data[0].code;
                     // alert('登入成功')
-                    
+                    postMailApi(email, '寶可夢快閃店_驗證碼', `您的驗證碼為${code}`)
+                    window.location.href = './loginForgetCheckNumber.html';
                 } else {
                     // console.log(data);
                     $('#loginWrongDiv').html(`<div id="loginWrong">帳號錯誤</div>`)
                 }
+            }else{
+                $('#loginWrongDiv').html(`<div id="loginWrong">帳號錯誤</div>`)
+            }
 
         }
     }).fail(function (res) {
