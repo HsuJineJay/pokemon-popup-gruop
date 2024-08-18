@@ -1,0 +1,117 @@
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: var(--white);
+    /* background-image: url('../images/pika.svg'); */
+    /* background-size: 50px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* 防止滾動條出現 */
+}
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300%;
+    height: 300%; /* 高度設為200%以便於動畫 */
+    background-image: url('../images/errorIcon/ball.svg');
+    background-size: 70px;
+    animation: flow 20s linear infinite;
+    z-index: -1; /* 確保背景在其他內容之後 */
+}
+
+@keyframes flow {
+    0% {
+        transform: translateX(0);
+        transform: translateY(0);
+    }
+    100% {
+        /* transform: translateY(-50%); */
+        /* transform: translateX(-50%); */
+        transform: translate(-50%,-50%);
+    }
+}
+
+
+.maintenance-container {
+    text-align: center;
+    background-color: var(--yellow);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1; /* 確保內容在背景之上 */
+}
+
+
+.logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: var(--black);
+}
+
+p {
+    color: var(--black-l1);
+    margin: 20px 0;
+}
+
+.highlight {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.pokemon-animation {
+    margin-top: 30px;
+}
+
+.pokeball {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+    border: 3px solid #000;
+    animation: shake 1.25s cubic-bezier(.36,.07,.19,.97) infinite;
+}
+
+.pokeball::before,
+.pokeball::after {
+    content: '';
+    position: absolute;
+}
+
+.pokeball::before {
+    background-color: red;
+    width: 110%;
+    height: 50%;
+    border-radius: 60px 60px 0 0;
+    top: -3px;
+    left: -3px;
+    border: 3px solid #000;
+}
+
+.pokeball::after {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #000;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0) rotate(0); }
+    20% { transform: translate(-10px, 0) rotate(-20deg); }
+    30% { transform: translate(10px, 0) rotate(20deg); }
+    50% { transform: translate(-10px, 0) rotate(-10deg); }
+    60% { transform: translate(10px, 0) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+}

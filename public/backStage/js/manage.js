@@ -25,7 +25,9 @@ window.addEventListener('load',function(){
                     result += '<div class="navTextDiv noto-sans-tc_r" id="navAccount">帳號管理</div>'
                 }
             });
+
             result += '<button id="logout">LOGOUT</button>';
+            
             $('.navList').html(result)
             $('#navOverAll').on('click',function(){
                 window.location.href = './overAll.html'

@@ -70,6 +70,7 @@ function mailSomeone(mailAddress, mailSubject, mailText) {
 
 
 
+
 // const bcrypt = require('bcrypt');
 // async function verifyPassword(plainTextPassword, hashedPassword) {
 //     try {
@@ -117,24 +118,51 @@ app.post('/loginApi', function (req, res) {
     let account = req.body.account
     let password = req.body.password
 
-    conn.query(`select * from userInfo where userAccount = '${account}'`,
+    conn.query(`select * from userInfo where userExist = 1 AND userAccount = '${account}'`,
         [],
         function (err, result) {
             // console.log(result);
             // console.log(password);
             // console.log(result[0].userPassword);
-            verifyPassword(password, result[0].userPassword)
-                .then(function (check) {
-                    if (check) {
-                        //存入session
-                        req.session.account = req.body.account;
-                        res.send(true);
-                        // res.redirect('/login'); //重新導向
-
-                    } else {
-                        res.send(false);
-                    }
-                })
+            if(!err){
+                // console.log('good');
+                if(result[0]!==undefined){
+                    verifyPassword(password, result[0].userPassword)
+                        .then(function (check) {
+                            if (check) {
+                                //存入session
+                                req.session.account = req.body.account;
+                                res.send(true);
+        
+                            } else {
+                                res.send(false);
+                            }
+                        })
+                }else{
+                    res.send(false);
+                }
+            }else{
+                console.log(err);
+                // res.send(err)
+            }
+        })
+})
+app.get('/getITAccount',function(req, res){
+    conn.query(`select * from userInfo where userTitle = 'IT'`,
+        [],
+        function (err, result) {
+            // console.log(result);
+            
+            if (result[0] !== undefined) {
+                let data = [{
+                    userAccount : result[0].userAccount,
+                    userName : result[0].userName,
+                    userEmail : result[0].userEmail,
+                }]
+                res.send(JSON.stringify(data));
+            } else {
+                res.send(false);
+            }
         })
 })
 
@@ -155,6 +183,7 @@ app.post('/loginForgetApi', function (req, res) {
             // console.log(result[0].userPassword);
             if (result[0] !== undefined) {
                 let data = [{
+                    userAccount : result[0].userAccount,
                     userEmail: result[0].userEmail,
                     code: code
                 }]
@@ -235,4 +264,9 @@ app.get('/logout', function (req, res) {
     delete req.session.account;
     res.send('out')
 })
+
+app.use((req, res, next) => {
+    console.log(`404 Error: ${req.originalUrl}`);
+    res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));
+});
 

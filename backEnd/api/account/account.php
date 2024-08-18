@@ -67,7 +67,7 @@ switch ($method) {
         }
         if ($userEmail!=null) {
             $conditions[] = "userEmail LIKE ?";
-            $params[] = $userEmail;
+            $params[] = "%" . $userEmail. "%";
             $types .= "s";
         }
 

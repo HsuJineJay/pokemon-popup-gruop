@@ -59,17 +59,20 @@ function getDataCreateTable(condition, place) {
                     result += `
                         <td>
                             <button title='編輯資料' class="edit tableBn" onclick='edit(this)'></button>
-                            <button title='改成無效資料' class='remove tableBn' onclick='removeBN(this)'></button>
-                        </td>
-                    `;
+                        `
+                    result +=  account==='HR'?"<button title='改成無效資料' class='remove tableBn' onclick='removeBN(this)'></button>":''
+                    
+                    result += `</td>`
+                    
 
                 }else{
                     result += `
                         <td>
-                            <button title='編輯資料' class='edit tableBn' onclick='edit(this)'></button>
-                            <button title='改成有效資料' class='on tableBn' onclick='on(this)'></button>
-                        </td>
-                    `;
+                            <button title='編輯資料' class="edit tableBn" onclick='edit(this)'></button>
+                        `
+                    result +=  account==='HR'?"<button title='改成有效資料' class='on tableBn' onclick='on(this)'></button>":''
+                    
+                    result += `</td>`
                     
                 }
             }
@@ -302,23 +305,56 @@ function deleteData(){
     })
 }
 
+function getAccount(){
+    let getAccountApiUrl = 'http://localhost:3000/check';
+    // let account;
+    return $.ajax({
+        url: getAccountApiUrl,
+        method: 'get',
+        success: function (data) {
+
+        }
+    }).fail(function (res) {
+        console.log('fail:', res.innerText);
+    })
+
+}
 
 function setCondition() {
     let exist = $('#one').prop('checked')? '1':'0';
     let condition;
     //change here
-    condition = `?${colExist}=` + exist + '&' + $('#condition').val() + '=' + $('#conditionInput').val()
+    // console.log($('#conditionInput').val());
+    if($('#conditionInput').val() !=='' ){
+        condition = `?${colExist}=` + exist + '&' + $('#condition').val() + '=' + $('#conditionInput').val()
+    }else{
+        condition = `?${colExist}=` + exist
+    }
     // console.log(condition);
     /////
     return condition;
 }
-function conditionReload(){
+async function conditionReload(){
+    let accountCondition;
+    if(account === 'HR'){
+        accountCondition = '';
+    }else{
+        $('#condition').css('display','none')
+        $('#conditionInput').css('display','none')
+        $('.addDiv').css('display','none')
+        accountCondition = `&userAccount=${account}`
+    }
+
     if ($('#one').prop('checked')) {
         let condition = setCondition()
+        // console.log(condition);
+        condition +=  accountCondition
         // console.log(condition);
         getDataCreateTable(condition, '#existTBody')
     } else if ($('#two').prop('checked')) {
         let condition = setCondition()
+        // console.log(condition);
+        condition +=  accountCondition
         // console.log(condition);
         getDataCreateTable(condition, '#noExistTBody')
     }
@@ -409,8 +445,10 @@ function testCreatValueSet() {
 }
 
 
-window.onload = function () {
-    
+window.onload = async function () {
+    account = await getAccount();
+    account ==='maryliu'?account='HR':account;
+
     setUp()
 
     // getDataCreateTable(`?${colExist}=1`,'#existTBody');
@@ -433,35 +471,35 @@ window.onload = function () {
 
     $('#condition').on('change', function () {
         //change here
-        if ($('#condition').val() == 'bookingDate'){
-            $('#conditionInput').css('display','none')
-            $('#conditionSelect1').fadeIn()
-            $('#conditionSelect2').fadeIn()
-            $('#conditionSelect3').css('display','none')
+        // if ($('#condition').val() == 'bookingDate'){
+        //     $('#conditionInput').css('display','none')
+        //     $('#conditionSelect1').fadeIn()
+        //     $('#conditionSelect2').fadeIn()
+        //     $('#conditionSelect3').css('display','none')
             
-            $('#conditionSelect1').val('')
-            $('#conditionSelect2').val('')
-            $('#conditionSelect3').val('')
-        }else if($('#condition').val() == 'userName'){
-            $('#conditionInput').css('display','none')
-            $('#conditionSelect1').fadeIn()
-            $('#conditionSelect2').css('display','none')
-            $('#conditionSelect3').fadeIn()
+        //     $('#conditionSelect1').val('')
+        //     $('#conditionSelect2').val('')
+        //     $('#conditionSelect3').val('')
+        // }else if($('#condition').val() == 'userName'){
+        //     $('#conditionInput').css('display','none')
+        //     $('#conditionSelect1').fadeIn()
+        //     $('#conditionSelect2').css('display','none')
+        //     $('#conditionSelect3').fadeIn()
             
-            $('#conditionSelect1').val('')
-            $('#conditionSelect2').val('')
-            $('#conditionSelect3').val('')
-        }else{
-            // $('#conditionInput').css('display','block')
-            $('#conditionInput').fadeIn()
-            $('#conditionSelect1').css('display','none')
-            $('#conditionSelect2').css('display','none')
-            $('#conditionSelect3').css('display','none')
+        //     $('#conditionSelect1').val('')
+        //     $('#conditionSelect2').val('')
+        //     $('#conditionSelect3').val('')
+        // }else{
+        //     // $('#conditionInput').css('display','block')
+        //     $('#conditionInput').fadeIn()
+        //     $('#conditionSelect1').css('display','none')
+        //     $('#conditionSelect2').css('display','none')
+        //     $('#conditionSelect3').css('display','none')
 
-            $('#conditionSelect1').val('')
-            $('#conditionSelect2').val('')
-            $('#conditionSelect3').val('')
-        }
+        //     $('#conditionSelect1').val('')
+        //     $('#conditionSelect2').val('')
+        //     $('#conditionSelect3').val('')
+        // }
         /////
 
         if ($('#conditionInput').val() != '') {
