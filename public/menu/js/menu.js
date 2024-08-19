@@ -7,7 +7,7 @@ window.onload = function () {
   // >>>>>>>>>>撈資料<<<<<<<<<<<<<
 
   //一載入就顯示全部內容
-  menuSwitch("")
+  menuSwitch("menuExist=1")
 
 
   //點擊來切換menu的類別
@@ -21,7 +21,7 @@ window.onload = function () {
       //如果現在點選的li裡面的a有.active的話就移除.active
       $(this).find('a').removeClass('active');
       //顯示所有的菜單內容
-      menuSwitch("");
+      menuSwitch("menuExist=1");
 
     } else { //切換個別類別的菜單內容
 
