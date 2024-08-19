@@ -52,6 +52,7 @@ $(document).ready(function () {
            
             //控制bgmusic打開
             let crtl= function(){
+            $('#bgmusic').prop('muted', false)    
             bgmusic.play().catch(e => console.log("bg播放失敗:", e))
            } 
            setTimeout(crtl,8200)
