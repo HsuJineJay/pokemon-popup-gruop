@@ -67,7 +67,7 @@ switch ($method) {
         }
         if ($userEmail!=null) {
             $conditions[] = "userEmail LIKE ?";
-            $params[] = $userEmail;
+            $params[] = "%" . $userEmail. "%";
             $types .= "s";
         }
 
@@ -159,7 +159,7 @@ switch ($method) {
         $userAccount = $output['userAccount'];
         $userPassword = $output['userPassword'];
         $userOriginPassword = $output['userOriginPassword'];
-        $userNewPassword = password_hash($userOriginPassword, PASSWORD_DEFAULT);
+        $userNewPassword = password_hash($userPassword, PASSWORD_DEFAULT);
         $userTitle = $output['userTitle'];
         $userEmail = $output['userEmail'];
 

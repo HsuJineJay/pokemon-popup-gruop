@@ -72,7 +72,7 @@
     }
 
     .card-body{
-        padding: 25px 10px 30px;
+        padding: 15px 10px 30px;
         border-radius: 0px 0px 15px 15px;
         background-color: #3F3A3A;
         color: white;
@@ -84,6 +84,8 @@
         border-radius: 15px 15px 0px 0px;
         object-fit: cover;
     }
+
+
 
     /* 特殊標籤 */
     .product_div{

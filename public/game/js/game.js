@@ -45,6 +45,7 @@ $(document).ready(function () {
     // 題目索引為1並且#soundIcon是Off的時候 把靜音打開 然後播放音樂
     let chubbysongCtrl = async function () {
         if (currentQuestion === 1 && $('#soundIcon').attr('src') === './images/publicImg/soundOff.svg') {
+            bgmusic.pause(); // 暂停背景音乐
             $('#chubbySong').prop('muted', false)
             chubbySong.play().catch(e => console.log("胖丁播放失敗:", e))
 

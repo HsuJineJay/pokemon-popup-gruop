@@ -11,6 +11,45 @@ $(document).ready(function(){
     });
 })
 
+// 電話&EMAIL格式檢查
+
+let isValid = true      //最終驗證用
+
+$(document).ready(function() {
+    var phoneTimeoutId, emailTimeoutId;
+    var delay = 500; // 延遲顯示提示的時間（毫秒）
+
+    $('#buyerTel').on('input', function() {
+        clearTimeout(phoneTimeoutId);
+        phoneTimeoutId = setTimeout(validatePhone, delay);
+    });
+
+    $('#buyerEmail').on('input', function() {
+        clearTimeout(emailTimeoutId); 
+        emailTimeoutId = setTimeout(validateEmail, delay); 
+    });
+});
+
+function validatePhone() {
+    var phoneInput = $('#buyerTel').val();
+    var phonePattern = /^09\d{8}$/; // 電話格式，共10位數字
+    var $phoneError = $('#phoneError');
+
+    (phonePattern.test(phoneInput)) ? $phoneError.fadeOut() : $phoneError.fadeIn();
+    isValid = (phonePattern.test(phoneInput)) ? '' : false ;
+}
+
+function validateEmail() {
+    var emailInput = $('#buyerEmail').val();
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // E-MAIL 格式驗證
+    var $mailError = $('#mailError');
+
+    (emailPattern.test(emailInput)) ? $mailError.fadeOut() : $mailError.fadeIn()
+    isValid = (emailPattern.test(emailInput)) ? '' : false ;
+
+}
+
+
 
 // 發票的填寫限制
 function invoiceStyles() {
@@ -34,7 +73,41 @@ $(document).ready(function() {
     $('input[name="receiptType"]').on('change', toggleInputs);
 });
 
-// 綠界的前往超商按鈕-----------------------------ING---------------------------->
+// 發票統一編號的驗證
+$(document).ready(function(){
+    $("#taxIDNumber").on('input', function(){
+        var number = $(this).val(); //使用者統編取值
+
+        (check_tax_number(number)) ? $('#taxIdError').fadeOut() : $('#taxIdError').fadeIn();
+        isValid = (check_tax_number(number)) ? '' : false ;
+    })
+
+});
+
+// 營利事業統一編號驗證 
+function check_tax_number(number) {
+    // 檢查統一編號是否為8位數字
+    if (number.length !== 8 || !/^\d{8}$/.test(number)) {
+        return false;
+    }
+
+    // 計算校驗碼
+    let weights = [1, 2, 1, 2, 1, 2, 4, 1];
+    let total = 0;
+
+    for (let i = 0; i < 8; i++) {
+        let digit = parseInt(number.charAt(i), 10);
+        let weightedDigit = digit * weights[i];
+        total += Math.floor(weightedDigit / 10) + (weightedDigit % 10);
+    }
+
+    // 如果總和是5的倍數，則統一編號有效
+    return total % 5 === 0;
+    
+}
+
+
+// 綠界的前往超商按鈕 開始-----------------------------ING---------------------------->
 $(document).ready(function(){
     $('#ecpay_btn').on('click', function(){
         console.log('123');
@@ -47,13 +120,23 @@ window.map_return = function(info) {
     info = JSON.parse(info); // 我們預期傳進來的參數會是被json_encode的超商資訊
     $("#cvs_title").value(info.CVSStore);
 };
+// 綠界的前往超商按鈕 結束-----------------------------ING---------------------------->
 
 
 //------------------------交易明細------------------------
 $(document).ready(function(){
 
-    $('#submitOderList').click(async function(event){
-        event.preventDefault();
+    $('#submitOderList').click(async function(event){   //當訂單被送出時
+        event.preventDefault();     //防止表單被默認提交
+
+        // 表單資訊的驗證
+        console.log(isValid);
+        if(isValid){
+            console.log('驗證成功')
+        }else{
+            console.log('驗證失敗!!!')
+        }
+
         
         // 收集訂單明細
         let formData = $('#orderForm').serializeArray();
@@ -175,6 +258,7 @@ $(document).ready(function(){
             console.log(response);
             // localStorage.removeItem("goods");        // 結帳送出後清空購物車
             // window.location.href = 'goods.html';     // 結帳送出後回到商品頁面
+
         } catch (error) {
             // 失敗處理
             console.error('錯誤訊息:', error);
