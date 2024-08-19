@@ -30,6 +30,7 @@ $(document).ready(function () {
                 // 确认是否加载音乐
                 bgmusic.play().catch(e => console.log("播放失敗:", e));
                 bgmusic.muted = false;
+                
                 $('#soundIcon').attr('src', './images/publicImg/soundOff.svg');
             } else {
                 bgmusic.muted = true;
@@ -48,7 +49,12 @@ $(document).ready(function () {
             bgmusic.pause(); // 暂停背景音乐
             $('#chubbySong').prop('muted', false)
             chubbySong.play().catch(e => console.log("胖丁播放失敗:", e))
-
+           
+            //控制bgmusic打開
+            let crtl= function(){
+            bgmusic.play().catch(e => console.log("bg播放失敗:", e))
+           } 
+           setTimeout(crtl,8200)
         }
     }
 
@@ -73,9 +79,13 @@ $(document).ready(function () {
             $('#WhoisthatSong').prop('muted', false);
             WhoisthatSong.play().catch(e => console.log("寶可夢結果播放失敗:", e));
     
-            // WhoisthatSong.onended = function () {
-            //     bgmusic.play(); // 恢复背景音乐
-            // };
+            // 控制bgmusic打開
+               let crtl= function(){
+                $('#bgmusic').prop('muted', false)
+                bgmusic.play().catch(e => console.log("bg播放失敗:", e))
+               } 
+               setTimeout(crtl,5500)   
+            
         }
     }
     //初始就呼叫控制音樂
@@ -830,7 +840,7 @@ $(document).ready(function () {
             //功能 播放胖丁音樂===========
             CtrlSound()
             chubbysongCtrl()
-
+           
 
             // 3.5秒後清空旁白文字框=====
             const emptyStoryText = function () {
@@ -862,28 +872,6 @@ $(document).ready(function () {
                     // %=0時 就可以將pikaindex歸零
                     pikaindex = (pikaindex + 1) % pikaface.length;
                 }, 1800)
-                //===========第五題喵喵動畫
-                // let mewoAinindex = 0;
-
-                // // 定义动画变换的数组
-                // let aniArr = [
-                //     'translate(-8%,-10%)rotate(1deg)',
-                //     'translate(-8.5%,-9%)rotate(4deg)'
-                // ];
-                
-                // let moewAin = function() {
-                //     setInterval(function () {
-                //         $('#meowaniImg').css('opacity','1')
-                //         // 将当前索引对应的变换应用到 #meowaniImg 元素上
-                //         $('#meowaniImg').css('transform', aniArr[mewoAinindex]);
-                //         console.log(aniArr[mewoAinindex]);
-                //         // 更新索引，使其循环
-                //         mewoAinindex = (mewoAinindex + 1) % aniArr.length;
-                //     }, 2000);
-                // }
-                
-                // // 在 7 秒后开始执行动画
-                // setTimeout(moewAin, 7000);
                 
 
                 // ============網頁版可達鴨rwd
@@ -1087,9 +1075,6 @@ $(document).ready(function () {
         $('#soundContainer').css('visibility', 'visible')
         // 播放結果音樂
         WhoisthatSongCtrl()
-        // 五秒後播放bg音樂
-        let playbg = function () { $('#bgmusic').prop('muted', false) }
-        setTimeout(playbg, 5000)
         $('.superBigWebCon').append(resultPageCon[0])
         //印出使用者輸入的姓名 
         $('#userNamePrint').html(userName)
