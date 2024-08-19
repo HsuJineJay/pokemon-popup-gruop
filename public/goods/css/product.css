@@ -25,6 +25,7 @@
 
         opacity: 0.8;
         cursor: pointer;
+        object-fit:cover
     }
 
     /* 商品說明頁縮圖 - 效果 */
@@ -194,3 +195,24 @@
         text-transform: uppercase;
     }
 
+
+    @media only screen and (max-width: 768px) {
+        /* 手機 - 重新設定版面的垂直順序 */
+        .container {
+            flex-direction: column; 
+        }
+    
+        .MainProduct {              /* 主圖區塊 */
+            order: 1; 
+        }
+        .column {                   /* 縮圖區塊 */
+            order: 2; 
+        }
+        .ProductDescription {       /* 商品說明區塊 */
+            order: 3; 
+        }
+
+
+    }
+
+      

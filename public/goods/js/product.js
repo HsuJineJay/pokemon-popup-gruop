@@ -12,7 +12,6 @@
     urlStr = location.href;
     url = new URL(urlStr);
     let productID = url.searchParams.get('id')? url.searchParams.get('id') : 1 ;     // 商品 ID, 預設ID=1
-    // let apiUrl = 'http://localhost/mfee51/root/backEnd/api/product/product.php';
     let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php'
     let Exist_apiUrl = apiUrl + '?productID=' + productID;
 
@@ -155,3 +154,4 @@ $('#result_product').on('click', '.btn-add-to-cart', function() {
 
         });
     })
+   
