@@ -8,7 +8,7 @@ app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 const { Pool } = require('pg');
 const path = require('path'); // 引入 path 模組
-
+const port = process.env.DB_PORT || 5432; //port號
 
 //連線prorgresSQL 使用.env的資料
 const pool = new Pool({
@@ -313,3 +313,39 @@ process.on('SIGINT', () => {
         process.exit(0);
     });
 });
+
+// menuItem的路由
+app.get('/backEnd/api/menuItem/menuItem', async (req, res) => {
+    try {
+      const itemMain = req.query.itemMain;
+      const menuExist = req.query.menuExist;
+  
+      // 构建 SQL 查询语句
+      let sql = 'SELECT * FROM menuItem WHERE 1 = 1';
+      let params = [];
+  
+      if (itemMain !== undefined) {
+        sql += ' AND itemMain = $1';
+        params.push(itemMain);
+      }
+  
+      if (menuExist !== undefined) {
+        sql += ' AND menuExist = $2';
+        params.push(menuExist);
+      }
+  
+      // 执行查询
+      const result = await pool.query(sql, params);
+  
+      // 返回 JSON 格式的数据
+      res.json(result.rows);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error fetching data' });
+    }
+  });
+
+//   確認一下port號是多少
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+  });

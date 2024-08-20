@@ -195,17 +195,17 @@ window.onload = function () {
 
     //新增透明度為1的class
     videoContainer.classList.add('show_overlay');
-    
-    
+
+
     setTimeout(() => {
-        //新增漸變並移除透明度1的class
-        videoContainer.classList.add('fade_overlay');
-        videoContainer.classList.remove('show_overlay');
-        
-        //移除漸變class
-        setTimeout(() => {
-            videoContainer.classList.remove('fade_overlay');
-        }, 300); 
+      //新增漸變並移除透明度1的class
+      videoContainer.classList.add('fade_overlay');
+      videoContainer.classList.remove('show_overlay');
+
+      //移除漸變class
+      setTimeout(() => {
+        videoContainer.classList.remove('fade_overlay');
+      }, 300);
     }, 0);
 
     // 如果現在是走路動畫就設定成開心動畫
@@ -325,20 +325,20 @@ window.onload = function () {
   }
 
 
-    // >>>>>>切換資訊按鈕點擊後資訊卡片向上動畫<<<<<<
-    function cardMoveUp(){
-      // console.log(12345);
+  // >>>>>>切換資訊按鈕點擊後資訊卡片向上動畫<<<<<<
+  function cardMoveUp() {
+    // console.log(12345);
 
-      // 每次執行的時候都歸零動畫屬性
-      $('.card_date, .card_reservation, .card_location').css('animation', 'none')
-      // 個別加入動畫並造成時差
-      setTimeout(function() {
-        $('.card_date').css('animation', 'infoCardMoveUp 0.2s ease-in-out')
-        $('.card_reservation').css('animation', 'infoCardMoveUp 0.3s ease-in-out')
-        $('.card_location').css('animation', 'infoCardMoveUp 0.4s ease-in-out')
-      }, 10)
+    // 每次執行的時候都歸零動畫屬性
+    $('.card_date, .card_reservation, .card_location').css('animation', 'none')
+    // 個別加入動畫並造成時差
+    setTimeout(function () {
+      $('.card_date').css('animation', 'infoCardMoveUp 0.2s ease-in-out')
+      $('.card_reservation').css('animation', 'infoCardMoveUp 0.3s ease-in-out')
+      $('.card_location').css('animation', 'infoCardMoveUp 0.4s ease-in-out')
+    }, 10)
 
-    }
+  }
 
 
 
@@ -754,8 +754,8 @@ function allRotateFunction() {
   let rotateContain = document.querySelector('.rotate_card')
   let productItems = document.querySelectorAll('.carousel_item .product_card')
 
-    // ver2 點擊右下角按鈕旋轉
-    let rotateButton = document.querySelectorAll('.rotateButton')
+  // ver2 點擊右下角按鈕旋轉
+  let rotateButton = document.querySelectorAll('.rotateButton')
 
   const totalItems = productItems.length;
   let rotateIndex = 0
@@ -839,17 +839,12 @@ function allRotateFunction() {
 
 
 
-
-
-//>>>>>>餐點菜單api<<<<<<
 function menuSwitch() {
-  // let apiUrl = `http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1`;
-  let apiUrl = `https://pokemon-popup-gruop.onrender.com/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1`;
+  let apiUrl = `https://pokemon-popup-gruop.onrender.com/backEnd/api/menuItem/menuItem?itemMain=1&menuExist=1`;
   $.ajax({
     url: apiUrl,
     method: 'GET',
-    success: function (dataStr) {
-      data = JSON.parse(dataStr);
+    success: function (data) {
       result = "";
       // console.log("data===>>" , data);
 
@@ -859,11 +854,11 @@ function menuSwitch() {
         result += `
                   <div class="menu_card d-flex flex-column flex-fill justify-content-center align-items-center gap-3">
                       <h3 class="font-eng m-0"> TOP${index + 1}</h3>
-                      <figure><img src="${row['itemImg']}"></figure>
-                      <div class="menu_card_detail d-flex flex-fill flex-column justify-content-center align-items-center">
-                          <h4 class="font-chin">${row['itemName']}</h4>
-                          <h5 class="font-chin">${row['itemPrice']}元</h5>
-                          <p class="font-chin m-0">${row['itemDescribe']}</p>
+                      <figure><img src="<span class="math-inline">\{row\['itemImg'\]\}"\></figure\>
+<div class\="menu\_card\_detail d\-flex flex\-fill flex\-column justify\-content\-center align\-items\-center"\>
+<h4 class\="font\-chin"\></span>{row['itemName']}</h4>
+                          <h5 class="font-chin"><span class="math-inline">\{row\['itemPrice'\]\}元</h5\>
+<p class\="font\-chin m\-0"\></span>{row['itemDescribe']}</p>
                       </div>
                   </div>`;
       })
@@ -873,92 +868,127 @@ function menuSwitch() {
       // 在這裡使用所有卡片的事件
       allCardsFunction();
     }
-  }).fail(function (z) {
-    console.log('fail:', z.innerText);
-  });
+  })
 }
 
+  //>>>>>>餐點菜單api<<<<<<
+  /* function menuSwitch() {
+    // let apiUrl = `http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1`;
+    let apiUrl = `https://pokemon-popup-gruop.onrender.com/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1`;
+    $.ajax({
+      url: apiUrl,
+      method: 'GET',
+      success: function (dataStr) {
+        data = JSON.parse(dataStr);
+        result = "";
+        // console.log("data===>>" , data);
 
+        data.forEach((row, index) => {
+          // console.log("row--->>" , row);
+          // console.log("index--->>" , index);
+          result += `
+                  <div class="menu_card d-flex flex-column flex-fill justify-content-center align-items-center gap-3">
+                      <h3 class="font-eng m-0"> TOP${index + 1}</h3>
+                      <figure><img src="${row['itemImg']}"></figure>
+                      <div class="menu_card_detail d-flex flex-fill flex-column justify-content-center align-items-center">
+                          <h4 class="font-chin">${row['itemName']}</h4>
+                          <h5 class="font-chin">${row['itemPrice']}元</h5>
+                          <p class="font-chin m-0">${row['itemDescribe']}</p>
+                      </div>
+                  </div>`;
+        })
 
-// 所有卡片的事件打包
-function allCardsFunction() {
-  let cardContain = document.querySelector('.menu_card_group');
-  let menuPrev = document.getElementById("menuPrev");
-  let menuNext = document.getElementById("menuNext");
-  let menuCardAll = document.querySelectorAll(".menu_card");
-  let currentIndex = 0;
+        $('#menuCardContainer').html(result);
 
-  // 至少有一个卡片存在的話才使用前後按鈕
-  if (menuCardAll.length > 0) {
-    let cardWidth = menuCardAll[0].offsetWidth;
-    let cardGap = parseInt(window.getComputedStyle(menuCardAll[0]).gap);
-    let moveDistance = cardWidth + cardGap;
-
-    function showNextCard() {
-      console.log("下面一位");
-
-      // 往點擊右滑功能
-      if (currentIndex < menuCardAll.length - 1) {
-        currentIndex++;
-        cardContain.scrollTo({
-          left: cardContain.scrollLeft + moveDistance,
-          behavior: 'smooth'
-        });
-        moveCard();
+        // 在這裡使用所有卡片的事件
+        allCardsFunction();
       }
-    }
+    }).fail(function (z) {
+      console.log('fail:', z.innerText);
+    });
+  } */
 
-    function showPrevCard() {
-      console.log("上一位");
 
-      //點擊往左滑功能
-      if (currentIndex > 0) {
-        currentIndex--;
-        cardContain.scrollTo({
-          left: cardContain.scrollLeft - moveDistance,
-          behavior: 'smooth'
-        });
-        moveCard();
+
+  // 所有卡片的事件打包
+  function allCardsFunction() {
+    let cardContain = document.querySelector('.menu_card_group');
+    let menuPrev = document.getElementById("menuPrev");
+    let menuNext = document.getElementById("menuNext");
+    let menuCardAll = document.querySelectorAll(".menu_card");
+    let currentIndex = 0;
+
+    // 至少有一个卡片存在的話才使用前後按鈕
+    if (menuCardAll.length > 0) {
+      let cardWidth = menuCardAll[0].offsetWidth;
+      let cardGap = parseInt(window.getComputedStyle(menuCardAll[0]).gap);
+      let moveDistance = cardWidth + cardGap;
+
+      function showNextCard() {
+        console.log("下面一位");
+
+        // 往點擊右滑功能
+        if (currentIndex < menuCardAll.length - 1) {
+          currentIndex++;
+          cardContain.scrollTo({
+            left: cardContain.scrollLeft + moveDistance,
+            behavior: 'smooth'
+          });
+          moveCard();
+        }
       }
-    }
 
-    // 移動卡片功能
-    function moveCard() {
-      // 只要有移動卡片就恢復透明度
-      menuCardAll.forEach((card) => {
-        card.style.opacity = `1`;
+      function showPrevCard() {
+        console.log("上一位");
+
+        //點擊往左滑功能
+        if (currentIndex > 0) {
+          currentIndex--;
+          cardContain.scrollTo({
+            left: cardContain.scrollLeft - moveDistance,
+            behavior: 'smooth'
+          });
+          moveCard();
+        }
+      }
+
+      // 移動卡片功能
+      function moveCard() {
+        // 只要有移動卡片就恢復透明度
+        menuCardAll.forEach((card) => {
+          card.style.opacity = `1`;
+        });
+
+        //如果在最左或最右的話就隱藏各自的按鈕
+        menuPrev.style.visibility = currentIndex === 0 ? "hidden" : "visible";
+        menuNext.style.visibility = currentIndex === menuCardAll.length - 1 ? "hidden" : "visible";
+      }
+
+      // 绑定事件到按钮
+      menuPrev.addEventListener('click', showPrevCard);
+      menuNext.addEventListener('click', showNextCard);
+
+      // scroll卡片事件
+      cardContain.addEventListener('scroll', function () {
+        //只要有移動卡片就恢復透明度
+        menuCardAll.forEach((card) => {
+          card.style.opacity = `1`;
+        });
+
+        //只要有移動就恢復往前按鈕的透明度
+        menuPrev.style.visibility = "visible";
       });
 
-      //如果在最左或最右的話就隱藏各自的按鈕
-      menuPrev.style.visibility = currentIndex === 0 ? "hidden" : "visible";
-      menuNext.style.visibility = currentIndex === menuCardAll.length - 1 ? "hidden" : "visible";
-    }
 
-    // 绑定事件到按钮
-    menuPrev.addEventListener('click', showPrevCard);
-    menuNext.addEventListener('click', showNextCard);
+      // 初始化卡片
+      moveCard();
 
-    // scroll卡片事件
-    cardContain.addEventListener('scroll', function () {
-      //只要有移動卡片就恢復透明度
-      menuCardAll.forEach((card) => {
-        card.style.opacity = `1`;
+      //初始卡片以後再把透明度漸變透明
+      menuCardAll.forEach((card, index) => {
+        card.style.opacity = `${(((currentIndex - index + 0.2) * 0.5) + 1)}`;
       });
-
-      //只要有移動就恢復往前按鈕的透明度
-      menuPrev.style.visibility = "visible";
-    });
-
-
-    // 初始化卡片
-    moveCard();
-
-    //初始卡片以後再把透明度漸變透明
-    menuCardAll.forEach((card, index) => {
-      card.style.opacity = `${(((currentIndex - index + 0.2) * 0.5) + 1)}`;
-    });
+    }
   }
-}
 
 
 
