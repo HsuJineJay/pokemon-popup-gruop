@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var app = express();
 app.listen(3000);
@@ -5,16 +6,39 @@ app.listen(3000);
 var bp = require('body-parser');
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
+const { Pool } = require('pg');
+
+
+//連線prorgresSQL 使用.env的資料
+const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT || 5432, // PostgreSQL 默認端口是 5432
+    ssl: { rejectUnauthorized: false }, // 启用 SSL 模式 (根据需要调整 rejectUnauthorized)
+});
+// 測試連接
+pool.query('SELECT NOW()', (err, res) => {
+    if (err) {
+        console.error('連線prorgresSQL失敗', err);
+    } else {
+        console.log('成功連線prorgresSQL');
+    }
+});
+
 
 //導入express-session 以儲存各網頁互傳時的資料
 var session = require('express-session');
 app.use(session({
-    secret: "password",
+    // secret: "password",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
 }))
 
 //sql
+/* 
 var myspl = require('mysql');
 var conn = myspl.createConnection({
     user: "root",
@@ -30,15 +54,17 @@ conn.connect(function (err) {
     } else {
         console.log(err);
     }
-})
+}) */
 
 //nodemailer
 const nodemailer = require('nodemailer')
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'pokemonpopupstore@gmail.com',
-        pass: 'dzglimofmytoyqaz'
+        // user: 'pokemonpopupstore@gmail.com',
+        // pass: 'dzglimofmytoyqaz'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     },
     socketTimeout: 60000
 })
@@ -124,40 +150,40 @@ app.post('/loginApi', function (req, res) {
             // console.log(result);
             // console.log(password);
             // console.log(result[0].userPassword);
-            if(!err){
+            if (!err) {
                 // console.log('good');
-                if(result[0]!==undefined){
+                if (result[0] !== undefined) {
                     verifyPassword(password, result[0].userPassword)
                         .then(function (check) {
                             if (check) {
                                 //存入session
                                 req.session.account = req.body.account;
                                 res.send(true);
-        
+
                             } else {
                                 res.send(false);
                             }
                         })
-                }else{
+                } else {
                     res.send(false);
                 }
-            }else{
+            } else {
                 console.log(err);
                 // res.send(err)
             }
         })
 })
-app.get('/getITAccount',function(req, res){
+app.get('/getITAccount', function (req, res) {
     conn.query(`select * from userInfo where userTitle = 'IT'`,
         [],
         function (err, result) {
             // console.log(result);
-            
+
             if (result[0] !== undefined) {
                 let data = [{
-                    userAccount : result[0].userAccount,
-                    userName : result[0].userName,
-                    userEmail : result[0].userEmail,
+                    userAccount: result[0].userAccount,
+                    userName: result[0].userName,
+                    userEmail: result[0].userEmail,
                 }]
                 res.send(JSON.stringify(data));
             } else {
@@ -183,7 +209,7 @@ app.post('/loginForgetApi', function (req, res) {
             // console.log(result[0].userPassword);
             if (result[0] !== undefined) {
                 let data = [{
-                    userAccount : result[0].userAccount,
+                    userAccount: result[0].userAccount,
                     userEmail: result[0].userEmail,
                     code: code
                 }]
@@ -225,10 +251,10 @@ app.post('/updatePWApi', function (req, res) {
                 res.send(true)
                 console.log(result);
             }
-    })
+        })
 })
 
-app.get('/checkUserAuthority', function(req, res){
+app.get('/checkUserAuthority', function (req, res) {
     let account = req.session.account
 
     conn.query(`SELECT * FROM userInfo INNER JOIN userAuthority INNER JOIN page on userInfo.userID = userAuthority.authorityUserID AND userAuthority.authorityPageID = page.pageID WHERE userAccount = '${account}'`,
@@ -240,7 +266,7 @@ app.get('/checkUserAuthority', function(req, res){
             } else {
                 res.send(result)
             }
-    })
+        })
 })
 
 
@@ -270,3 +296,19 @@ app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));
 });
 
+
+//測試porgresSQL連線
+app.get('/example', (req, res) => {
+    pool.query('SELECT * menuitem', (error, results) => {
+        if (error) {
+            throw error;
+        }
+        res.status(200).json(results.rows);
+    });
+});
+process.on('SIGINT', () => {
+    pool.end(() => {
+        console.log('Database pool closed');
+        process.exit(0);
+    });
+});
