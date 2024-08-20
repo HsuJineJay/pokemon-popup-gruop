@@ -7,6 +7,7 @@ var bp = require('body-parser');
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 const { Pool } = require('pg');
+const path = require('path'); // 引入 path 模組
 
 
 //連線prorgresSQL 使用.env的資料
@@ -137,7 +138,7 @@ function hashPasswordSync(password) {
 
 
 
-app.use(express.static('./public'))
+app.use(express.static('./public'));
 
 
 app.post('/loginApi', function (req, res) {

@@ -611,8 +611,8 @@ window.onload = function () {
   //>>>>>>餐點菜單api<<<<<<
   /* function menuSwitch() {
     //這裡要帶入的參數名稱 都是資料庫的欄位名稱
-    // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1'//以這個例子來說 以itemMain=1（主打商品）和menuExist=1（上架商品）為篩選條件 篩出資料
-    let apiUrl = `http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1`//以這個例子來說 以itemMain=1（主打商品）和menuExist=1（上架商品）為篩選條件 篩出資料
+    // let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1'//以這個例子來說 以itemMain=1（主打商品）和menuExist=1（上架商品）為篩選條件 篩出資料
+    let apiUrl = `https://pokemon-popup-gruop.onrender.com/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1`//以這個例子來說 以itemMain=1（主打商品）和menuExist=1（上架商品）為篩選條件 篩出資料
     // console.log('apiUrl:::::::' , apiUrl);
     $.ajax({
       url: apiUrl,
@@ -676,7 +676,8 @@ document.addEventListener('DOMContentLoaded', function () {
 //>>>>>>商品資料api<<<<<<
 function productGetData() {
   //這裡要帶入的參數名稱 都是資料庫的欄位名稱
-  let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php?storeOnly=1&productExist=1' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
+  // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php?storeOnly=1&productExist=1' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
+  let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/product/product.php?storeOnly=1&productExist=1' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
   $.ajax({
     url: apiUrl,
     method: 'GET',
@@ -842,7 +843,8 @@ function allRotateFunction() {
 
 //>>>>>>餐點菜單api<<<<<<
 function menuSwitch() {
-  let apiUrl = `http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1`;
+  // let apiUrl = `http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1`;
+  let apiUrl = `https://pokemon-popup-gruop.onrender.com/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1`;
   $.ajax({
     url: apiUrl,
     method: 'GET',
