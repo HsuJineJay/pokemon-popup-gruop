@@ -846,19 +846,19 @@ function menuSwitch() {
     method: 'GET',
     success: function (data) {
       result = "";
-      // console.log("data===>>" , data);
+      console.log("menuItem data===>>" , data);
 
       data.forEach((row, index) => {
-        // console.log("row--->>" , row);
-        // console.log("index--->>" , index);
+        console.log("menuItem row--->>" , row);
+        console.log("menuItem index--->>" , index);
         result += `
                   <div class="menu_card d-flex flex-column flex-fill justify-content-center align-items-center gap-3">
                       <h3 class="font-eng m-0"> TOP${index + 1}</h3>
-                      <figure><img src="<span class="math-inline">\{row\['itemImg'\]\}"\></figure\>
-<div class\="menu\_card\_detail d\-flex flex\-fill flex\-column justify\-content\-center align\-items\-center"\>
-<h4 class\="font\-chin"\></span>{row['itemName']}</h4>
-                          <h5 class="font-chin"><span class="math-inline">\{row\['itemPrice'\]\}元</h5\>
-<p class\="font\-chin m\-0"\></span>{row['itemDescribe']}</p>
+                      <figure><img src="<span class="math-inline">\  {row\['itemimg'\]\}   "\></figure\>
+                      <div class\="menu\_card\_detail d\-flex flex\-fill flex\-column justify\-content\-center align\-items\-center"\>
+                        <h4 class\="font\-chin"\></span>  {row['itemname']}  </h4>
+                        <h5 class="font-chin"><span class="math-inline">\  {row\['itemprice'\]\}  元</h5\>
+                        <p class\="font\-chin m\-0"\></span>  {row['itemdescribe']}  </p>
                       </div>
                   </div>`;
       })
