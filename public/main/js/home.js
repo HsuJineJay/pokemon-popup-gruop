@@ -852,15 +852,17 @@ function menuSwitch() {
         console.log("menuItem row--->>" , row);
         console.log("menuItem index--->>" , index);
         result += `
-                  <div class="menu_card d-flex flex-column flex-fill justify-content-center align-items-center gap-3">
-                      <h3 class="font-eng m-0"> TOP${index + 1}</h3>
-                      <figure><img src="<span class="math-inline">\  {row\['itemimg'\]\}   "\></figure\>
-                      <div class\="menu\_card\_detail d\-flex flex\-fill flex\-column justify\-content\-center align\-items\-center"\>
-                        <h4 class\="font\-chin"\></span>  {row['itemname']}  </h4>
-                        <h5 class="font-chin"><span class="math-inline">\  {row\['itemprice'\]\}  元</h5\>
-                        <p class\="font\-chin m\-0"\></span>  {row['itemdescribe']}  </p>
-                      </div>
-                  </div>`;
+                <div class="menu_card d-flex flex-column flex-fill justify-content-center align-items-center gap-3">
+                  <h3 class="font-eng m-0"> TOP${index + 1}</h3>
+                  <figure><img src="${row['itemImg']}"></figure>
+                  <figure><img src="${row.itemImg}"></figure>
+                  <figure><img src="${row.itemimg}"></figure>
+                  <div class="menu_card_detail d-flex flex-fill flex-column justify-content-center align-items-center">
+                      <h4 class="font-chin">${row['itemName']}</h4>
+                      <h5 class="font-chin">${row['itemPrice']}元</h5>
+                      <p class="font-chin m-0">${row['itemDescribe']}</p>
+                  </div>
+                </div>`;
       })
 
       $('#menuCardContainer').html(result);
