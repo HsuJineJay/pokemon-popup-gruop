@@ -9,6 +9,7 @@ app.use(bp.json());
 const { Pool } = require('pg');
 const path = require('path'); // 引入 path 模組
 const port = process.env.DB_PORT ; //port號
+const cors = require("cors"); //導入cors解決跨域存取問題
 
 //連線prorgresSQL 使用.env的資料
 const pool = new Pool({
@@ -347,6 +348,12 @@ app.get('/backEnd/api/menuItem/menuItem', async (req, res) => {
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
   });
+
+  app.use(cors());
+  
+//   app.use(cors({
+//     origin: 'http://localhost:5432' // 允许的前端源
+// }));
 
 
   app.use((req, res, next) => {
