@@ -1,7 +1,7 @@
 window.onload = function () {
     let loginUrl = 'http://localhost/pokemon-popup-gruop/public/backStage/login/login.php'
     // let loginUrlNodejs = 'http://localhost:3000/loginApi'
-    let loginUrlNodejs = 'https://pokemon-popup-gruop.onrender.com//loginApi'
+    let loginUrlNodejs = 'https://pokemon-popup-gruop.onrender.com/loginApi'
 
     $('#forgetBN').click(function () {
         window.location.href = './loginForget.html';
