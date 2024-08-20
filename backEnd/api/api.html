@@ -39,7 +39,8 @@
     <script>
         //------------------------商品------------------------
         $('#pGetAll').click(function () {
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php'
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php'
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/product/product.php'
            
             $.ajax({
                 url: apiUrl,
@@ -89,7 +90,8 @@
 
         $('#pGetWhere').click(function () {
             //這裡要帶入的參數名稱 都是資料庫的欄位名稱
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/product/product.php' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
             let apiUrl2 = apiUrl + `?productType=toy`
             $.ajax({
                 url: apiUrl2,
@@ -138,7 +140,8 @@
         })
 
         $('#pPatch').click(function () {
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php' 
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/product/product.php' 
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php' 
             $.ajax({
                 url: apiUrl,
                 method: 'Patch',
@@ -158,7 +161,8 @@
 
         //------------------------交易明細------------------------
         $('#oPostInsert').click(function () {
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/orderList/orderList.php' 
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/orderList/orderList.php' 
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/orderList/orderList.php' 
             $.ajax({
                 url: apiUrl,
                 method: 'Post',
@@ -189,7 +193,8 @@
 
         //------------------------餐點------------------------
         $('#mGetAll').click(function () {
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php'
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/menuItem/menuItem.php'
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php'
             $.ajax({
                 url: apiUrl,
                 method: 'GET',
@@ -233,7 +238,8 @@
         })
         $('#mGetWhere').click(function () {
              //這裡要帶入的參數名稱 都是資料庫的欄位名稱
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1'//以這個例子來說 以itemMain=1（主打商品）和menuExist=1（上架商品）為篩選條件 篩出資料
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1'//以這個例子來說 以itemMain=1（主打商品）和menuExist=1（上架商品）為篩選條件 篩出資料
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1'//以這個例子來說 以itemMain=1（主打商品）和menuExist=1（上架商品）為篩選條件 篩出資料
             $.ajax({
                 url: apiUrl,
                 method: 'GET',
@@ -278,7 +284,8 @@
 
         //------------------------咖啡廳預定------------------------
         $('#cGetAll').click(function () {
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/cafeBooking/cafeBooking.php'
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/cafeBooking/cafeBooking.php'
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/cafeBooking/cafeBooking.php'
             $.ajax({
                 url: apiUrl,
                 method: 'GET',
@@ -323,7 +330,8 @@
                 })
         })
         $('#cGetWhere').click(function () {
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/cafeBooking/cafeBooking.php?bookingExist=1' //以bookingExist（有效預定）篩出資料 
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/cafeBooking/cafeBooking.php?bookingExist=1' //以bookingExist（有效預定）篩出資料 
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/cafeBooking/cafeBooking.php?bookingExist=1' //以bookingExist（有效預定）篩出資料 
             $.ajax({
                 url: apiUrl,
                 method: 'GET',
@@ -368,7 +376,8 @@
                 })
         })
         $('#cPostInsert').click(function () {
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/cafeBooking/cafeBooking.php' //以bookingExist（有效預定）篩出資料 
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/cafeBooking/cafeBooking.php' //以bookingExist（有效預定）篩出資料 
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/cafeBooking/cafeBooking.php' //以bookingExist（有效預定）篩出資料 
             $.ajax({
                 url: apiUrl,
                 method: 'Post',
@@ -393,7 +402,8 @@
         //------------------------快閃店預定------------------------
 
         $('#sGetAll').click(function () {
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/storeBooking/storeBooking.php'
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/storeBooking/storeBooking.php'
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/storeBooking/storeBooking.php'
             $.ajax({
                 url: apiUrl,
                 method: 'GET',
@@ -438,7 +448,8 @@
                 })
         })
         $('#sGetWhere').click(function () {
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/storeBooking/storeBooking.php?storeBookingExist=1' //以bookingExist（有效預定）篩出資料 
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/storeBooking/storeBooking.php?storeBookingExist=1' //以bookingExist（有效預定）篩出資料 
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/storeBooking/storeBooking.php?storeBookingExist=1' //以bookingExist（有效預定）篩出資料 
             $.ajax({
                 url: apiUrl,
                 method: 'GET',
@@ -483,7 +494,8 @@
                 })
         })
         $('#sPostInsert').click(function () {
-            let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/storeBooking/storeBooking.php' //以bookingExist（有效預定）篩出資料 
+            let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/storeBooking/storeBooking.php' //以bookingExist（有效預定）篩出資料 
+            // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/storeBooking/storeBooking.php' //以bookingExist（有效預定）篩出資料 
             $.ajax({
                 url: apiUrl,
                 method: 'Post',
