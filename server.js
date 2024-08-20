@@ -8,7 +8,7 @@ app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 const { Pool } = require('pg');
 const path = require('path'); // 引入 path 模組
-const port = process.env.DB_PORT || 5432; //port號
+const port = process.env.DB_PORT ; //port號
 
 //連線prorgresSQL 使用.env的資料
 const pool = new Pool({
@@ -16,7 +16,7 @@ const pool = new Pool({
     host: process.env.DB_HOST,
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT || 5432, // PostgreSQL 默認端口是 5432
+    port: process.env.DB_PORT, // PostgreSQL 默認端口是 5432
     ssl: { rejectUnauthorized: false }, // 启用 SSL 模式 (根据需要调整 rejectUnauthorized)
 });
 // 測試連接
