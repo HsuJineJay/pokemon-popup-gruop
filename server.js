@@ -9,6 +9,7 @@ app.use(bp.json());
 const { Pool } = require('pg');
 const path = require('path'); // 引入 path 模組
 const port = process.env.DB_PORT ; //port號
+const cors = require("cors"); //導入cors解決跨域存取問題
 
 //連線prorgresSQL 使用.env的資料
 const pool = new Pool({
@@ -292,10 +293,7 @@ app.get('/logout', function (req, res) {
     res.send('out')
 })
 
-// app.use((req, res, next) => {
-//     console.log(`404 Error: ${req.originalUrl}`);
-//     res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));
-// });
+
 
 
 //測試porgresSQL連線
@@ -345,7 +343,20 @@ app.get('/backEnd/api/menuItem/menuItem', async (req, res) => {
     }
   });
 
+
 //   確認一下port號是多少
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
   });
+
+  app.use(cors());
+  
+//   app.use(cors({
+//     origin: 'http://localhost:5432' // 允许的前端源
+// }));
+
+
+  app.use((req, res, next) => {
+    console.log(`404 Error: ${req.originalUrl}`);
+    res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));
+});
