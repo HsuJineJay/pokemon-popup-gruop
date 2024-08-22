@@ -199,7 +199,7 @@ app.use(express.static('./public'));
 //             }
 //         })
 // })
-router.post('/loginApi', async (req, res) => {
+app.post('/loginApi', async (req, res) => {
     const { account, password } = req.body;
   
     try {
@@ -226,7 +226,7 @@ router.post('/loginApi', async (req, res) => {
       res.status(500).send('Internal Server Error');
     }
   });
-  
+
 app.get('/getITAccount', function (req, res) {
     conn.query(`select * from userInfo where userTitle = 'IT'`,
         [],
