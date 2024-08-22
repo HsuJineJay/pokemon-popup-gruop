@@ -320,7 +320,7 @@ app.get('/logout', function (req, res) {
 
 
 // menuItem的路由
-app.get('/api/menuItem', async (req, res) => {
+/* app.get('/api/menuItem', async (req, res) => {
     try {
         const itemMain = req.query.itemMain;
         const menuExist = req.query.menuExist;
@@ -349,7 +349,7 @@ app.get('/api/menuItem', async (req, res) => {
         res.status(500).json({ message: 'menuItem資料庫查詢錯誤' });
     }
 });
-
+ */
 // product的路由
 app.use('/api/product', productRoutes);
 
