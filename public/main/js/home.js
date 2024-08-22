@@ -677,19 +677,19 @@ document.addEventListener('DOMContentLoaded', function () {
 function productGetData() {
   //這裡要帶入的參數名稱 都是資料庫的欄位名稱
   // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php?storeOnly=1&productExist=1' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
-  let apiUrl = 'https://pokemon-popup-gruop.onrender.com/api/product.php?storeOnly=1&productExist=1' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
+  let apiUrl = 'https://pokemon-popup-gruop.onrender.com/api/product?storeOnly=1&productExist=1' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
   $.ajax({
     url: apiUrl,
     method: 'GET',
     success: function (dataStr) {
       data = JSON.parse(dataStr);
-      // console.log(data[0]['productImg'][0]);
+      console.log(data);
       result = "";
 
 
       data.forEach((row, index) => {
 
-        // console.log(row['productImg'][0].productImg);
+        console.log(row.productImg[0].productImg);
         result += `
                   <div class="carousel_item item${index + 1}">
                     <div class="product_card d-flex flex-column gap-3">
@@ -699,7 +699,7 @@ function productGetData() {
                       <a href="./goods/goods.html" >
 
                         <!-- 圖片 -->
-                        <img src="${row['productImg'][0].productImg}">
+                        <img src="${row.productImg[0].productImg}">
                         <!-- 內容 -->
                         <div class="d-flex flex-column gap-2">
                           <div class="product_tag d-flex">
@@ -707,8 +707,8 @@ function productGetData() {
                           </div>
 
                           <div class="d-flex flex-column text-start gap-0">
-                            <h4 class="font-chin m-0">${row['productName']}</h4>
-                            <h5 class="font-chin my-1">${row['productPrice']}元</h5>
+                            <h4 class="font-chin m-0">${row.productName}</h4>
+                            <h5 class="font-chin my-1">${row.productPrice}元</h5>
                           </div>
                         </div>
 
