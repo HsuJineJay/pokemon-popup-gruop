@@ -10,6 +10,7 @@ const { Pool } = require('pg');
 const path = require('path'); // 引入 path 模組
 const port = process.env.DB_PORT || 5432; //port號
 const cors = require("cors"); //導入cors解決跨域存取問題
+const productRoutes = require('./productRoutes'); //導入productRoutes.js處理產品有關路由
 
 //cors解決跨域存取問題，目前是設定開放所有的來源
 // app.use(cors());
@@ -349,6 +350,8 @@ app.get('/api/menuItem', async (req, res) => {
 });
 
 
+app.use('/api/product', productRoutes);
+/* 
 app.get('/api/product', async (req, res) => {
     try {
         const productExist = req.query.productExist;
@@ -426,7 +429,7 @@ app.get('/api/product', async (req, res) => {
         res.status(500).json({ message: '資料庫查詢錯誤' });
     }
 });
-
+ */
 
 // 處理找不到的路由404錯誤
 app.use((req, res, next) => {
