@@ -840,17 +840,23 @@ function allRotateFunction() {
 
 
 function menuSwitch() {
-  let apiUrl = `https://pokemon-popup-gruop.onrender.com/backEnd/api/menuItem/menuItem?itemMain=1&menuExist=1`;
+  let apiUrl = `https://pokemon-popup-gruop.onrender.com/api/menuItem?itemMain=1&menuExist=1`;
   $.ajax({
     url: apiUrl,
     method: 'GET',
     success: function (data) {
       result = "";
-      console.log("menuItem data===>>" , data);
+      // console.log("menuItem data===>>" , data);
 
       data.forEach((row, index) => {
-        console.log("menuItem row--->>" , row);
-        console.log("menuItem index--->>" , index);
+        // console.log("menuItem row--->>" , row);
+        // console.log("menuItem index--->>" , index);
+
+        // 將\n的轉成換行符號(原先是mysql現在postrgesql語法有差異)
+        let itemDescribe = row.itemdescribe.replace(/\\n/g, '\n');
+        // console.log("itemDescribe--->>" , itemDescribe);
+
+        //前端卡片顯示html
         result += `
                 <div class="menu_card d-flex flex-column flex-fill justify-content-center align-items-center gap-3">
                   <h3 class="font-eng m-0"> TOP${index + 1}</h3>
@@ -858,7 +864,7 @@ function menuSwitch() {
                   <div class="menu_card_detail d-flex flex-fill flex-column justify-content-center align-items-center">
                       <h4 class="font-chin">${row.itemname}</h4>
                       <h5 class="font-chin">${row.itemprice}元</h5>
-                      <p class="font-chin m-0">${row.itemdescribe}</p>
+                      <p class="font-chin m-0">${itemDescribe}</p>
                   </div>
                 </div>`;
       })

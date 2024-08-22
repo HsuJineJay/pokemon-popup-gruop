@@ -8,7 +8,7 @@ app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 const { Pool } = require('pg');
 const path = require('path'); // 引入 path 模組
-const port = process.env.DB_PORT || 5432 ; //port號
+const port = process.env.DB_PORT || 5432; //port號
 const cors = require("cors"); //導入cors解決跨域存取問題
 
 //cors解決跨域存取問題，目前是設定開放所有的來源
@@ -19,7 +19,7 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
-  }));
+}));
 
 
 //連線prorgresSQL 使用.env的資料
@@ -31,13 +31,19 @@ const pool = new Pool({
     port: process.env.DB_PORT, // PostgreSQL 默認端口是 5432
     ssl: { rejectUnauthorized: false }, // 启用 SSL 模式 (根据需要调整 rejectUnauthorized)
 });
-// 測試連接
+
+// 連接postrgeSQL資料庫
 pool.query('SELECT NOW()', (err, res) => {
     if (err) {
-        console.error('連線prorgresSQL失敗', err);
+        console.error('連線postrgeSQL失敗', err);
     } else {
-        console.log('成功連線prorgresSQL');
+        console.log('成功連線postrgeSQL');
     }
+});
+
+// 確認一下port號是多少
+app.listen(port, () => {
+    console.log(`伺服器port號是 ${port}`);
 });
 
 
@@ -50,7 +56,8 @@ app.use(session({
     saveUninitialized: true,
 }))
 
-//sql
+
+// 連接MySQL資料庫
 /* 
 var myspl = require('mysql');
 var conn = myspl.createConnection({
@@ -68,6 +75,7 @@ conn.connect(function (err) {
         console.log(err);
     }
 }) */
+
 
 //nodemailer
 const nodemailer = require('nodemailer')
@@ -324,49 +332,37 @@ process.on('SIGINT', () => {
 });
 
 // menuItem的路由
-app.get('/backEnd/api/menuItem/menuItem', async (req, res) => {
+app.get('/api/menuItem', async (req, res) => {
     try {
-      const itemMain = req.query.itemMain;
-      const menuExist = req.query.menuExist;
-  
-      // 构建 SQL 查询语句
-      let sql = 'SELECT * FROM menuItem WHERE 1 = 1';
-      let params = [];
-  
-      if (itemMain !== undefined) {
-        sql += ' AND itemMain = $1';
-        params.push(itemMain);
-      }
-  
-      if (menuExist !== undefined) {
-        sql += ' AND menuExist = $2';
-        params.push(menuExist);
-      }
-  
-      // 执行查询
-      const result = await pool.query(sql, params);
-  
-      // 返回 JSON 格式的数据
-      res.json(result.rows);
+        const itemMain = req.query.itemMain;
+        const menuExist = req.query.menuExist;
+
+        // SQL查詢資料語法 
+        let sql = 'SELECT * FROM menuItem WHERE 1 = 1';
+        let params = [];
+
+        if (itemMain !== undefined) {
+            sql += ' AND itemMain = $1';
+            params.push(itemMain);
+        }
+
+        if (menuExist !== undefined) {
+            sql += ' AND menuExist = $2';
+            params.push(menuExist);
+        }
+
+        // 查詢資料執行
+        const result = await pool.query(sql, params);
+
+        // 接收資料(JSON格式)
+        res.json(result.rows);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Error fetching data' });
+        console.error(error);
+        res.status(500).json({ message: 'Error fetching data' });
     }
-  });
+});
 
-
-//   確認一下port號是多少
-  app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-  });
-
-
-//   app.use(cors({
-//     origin: 'http://localhost:5432' // 允许的前端源
-// }));
-
-
-//   app.use((req, res, next) => {
-//     console.log(`404 Error: ${req.originalUrl}`);
-//     res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));
-// });
+app.use((req, res, next) => {
+    console.log(`404 Error: ${req.originalUrl}`);
+    res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));
+});
