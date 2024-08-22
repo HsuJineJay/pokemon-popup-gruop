@@ -11,6 +11,17 @@ const path = require('path'); // 引入 path 模組
 const port = process.env.DB_PORT || 5432 ; //port號
 const cors = require("cors"); //導入cors解決跨域存取問題
 
+//cors解決跨域存取問題，目前是設定開放所有的來源
+// app.use(cors());
+
+app.use(cors({
+    origin: ['http://localhost:5432', 'http://0.0.0.0:5432'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+  }));
+
+
 //連線prorgresSQL 使用.env的資料
 const pool = new Pool({
     user: process.env.DB_USER,
@@ -345,23 +356,14 @@ app.get('/backEnd/api/menuItem/menuItem', async (req, res) => {
 
 
 //   確認一下port號是多少
-  app.listen(port, '0.0.0.0', () => {
+  app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
   });
 
-  app.use(cors());
 
 //   app.use(cors({
 //     origin: 'http://localhost:5432' // 允许的前端源
 // }));
-
-
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5432");
-    res.setHeader("Access-Control-Allow-Origin", "http://0.0.0.0:5432");
-    next();
-  });
-
 
 
 //   app.use((req, res, next) => {
