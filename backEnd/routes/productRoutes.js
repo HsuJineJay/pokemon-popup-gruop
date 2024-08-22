@@ -27,39 +27,39 @@ router.get('/', async (req, res) => {
 
     // 添加篩選條件
     if (req.query.productID) {
-      conditions.push(`productid = $${paramIndex++}`);
+      query += ` AND productid = $${paramIndex++}`;
       params.push(req.query.productID);
     }
     if (req.query.productExist) {
-      conditions.push(`productexist = $${paramIndex++}`);
+      query += ` AND productexist = $${paramIndex++}`;
       params.push(req.query.productExist);
     }
     if (req.query.productName) {
-      conditions.push(`productname = $${paramIndex++}`);
+      query += ` AND productname = $${paramIndex++}`;
       params.push(req.query.productName);
     }
     if (req.query.productType) {
-      conditions.push(`producttype = $${paramIndex++}`);
+      query += ` AND producttype = $${paramIndex++}`;
       params.push(req.query.productType);
     }
     if (req.query.productDescribe) {
-      conditions.push(`productdescribe = $${paramIndex++}`);
+      query += ` AND productdescribe = $${paramIndex++}`;
       params.push(req.query.productDescribe);
     }
     if (req.query.productPrice) {
-      conditions.push(`productprice = $${paramIndex++}`);
+      query += ` AND productprice = $${paramIndex++}`;
       params.push(req.query.productPrice);
     }
     if (req.query.productInStock) {
-      conditions.push(`productinStock = $${paramIndex++}`);
+      query += ` AND productinStock = $${paramIndex++}`;
       params.push(req.query.productInStock);
     }
     if (req.query.storeOnly) {
-      conditions.push(`storeonly = $${paramIndex++}`);
+      query += ` AND storeonly = $${paramIndex++}`;
       params.push(req.query.storeOnly);
     }
     if (req.query.productMain) {
-      conditions.push(`productmain = $${paramIndex++}`);
+      query += ` AND productmain = $${paramIndex++}`;
       params.push(req.query.productMain);
     }
 

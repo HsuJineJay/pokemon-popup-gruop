@@ -42,3 +42,5 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: 'menuItem資料庫查詢錯誤' });
     }
 });
+
+module.exports = router;
