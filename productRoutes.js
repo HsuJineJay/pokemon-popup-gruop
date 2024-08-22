@@ -34,7 +34,34 @@ router.get('/', async (req, res) => {
       conditions.push(`productexist = $${paramIndex++}`);
       params.push(req.query.productExist);
     }
-    // 以此類推添加其他條件...
+    if (req.query.productName) {
+      conditions.push(`productname = $${paramIndex++}`);
+      params.push(req.query.productName);
+    }
+    if (req.query.productType) {
+      conditions.push(`producttype = $${paramIndex++}`);
+      params.push(req.query.productType);
+    }
+    if (req.query.productDescribe) {
+      conditions.push(`productdescribe = $${paramIndex++}`);
+      params.push(req.query.productDescribe);
+    }
+    if (req.query.productPrice) {
+      conditions.push(`productprice = $${paramIndex++}`);
+      params.push(req.query.productPrice);
+    }
+    if (req.query.productInStock) {
+      conditions.push(`productinStock = $${paramIndex++}`);
+      params.push(req.query.productInStock);
+    }
+    if (req.query.storeOnly) {
+      conditions.push(`storeonly = $${paramIndex++}`);
+      params.push(req.query.storeOnly);
+    }
+    if (req.query.productMain) {
+      conditions.push(`productmain = $${paramIndex++}`);
+      params.push(req.query.productMain);
+    }
 
     if (conditions.length > 0) {
       query += " AND " + conditions.join(" AND ");
