@@ -10,7 +10,8 @@ const { Pool } = require('pg');
 const path = require('path'); // 引入 path 模組
 const port = process.env.DB_PORT || 5432; //port號
 const cors = require("cors"); //導入cors解決跨域存取問題
-const productRoutes = require('./productRoutes'); //導入productRoutes.js處理產品有關路由
+const productRoutes = require('./backEnd/routes/productRoutes'); //導入productRoutes.js處理產品有關路由
+const menuItemRoutes = require('./backEnd/routes/menuItemRoutes'); //導入productRoutes.js處理產品有關路由
 
 //cors解決跨域存取問題，目前是設定開放所有的來源
 // app.use(cors());
@@ -349,8 +350,12 @@ app.get('/api/menuItem', async (req, res) => {
     }
 });
 
-
+// product的路由
 app.use('/api/product', productRoutes);
+
+// menuitem的路由
+app.use('/api/menuItem', menuItemRoutes);
+
 /* 
 app.get('/api/product', async (req, res) => {
     try {

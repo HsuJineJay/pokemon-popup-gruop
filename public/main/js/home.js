@@ -681,8 +681,8 @@ function productGetData() {
   $.ajax({
     url: apiUrl,
     method: 'GET',
-    success: function (dataStr) {
-      data = JSON.parse(dataStr);
+    success: function (data) {
+      // data = JSON.parse(dataStr);
       console.log(data);
       result = "";
 
