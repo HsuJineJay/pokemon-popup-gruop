@@ -315,21 +315,7 @@ app.get('/logout', function (req, res) {
 
 
 
-//測試porgresSQL連線
-app.get('/example', (req, res) => {
-    pool.query('SELECT * menuitem', (error, results) => {
-        if (error) {
-            throw error;
-        }
-        res.status(200).json(results.rows);
-    });
-});
-process.on('SIGINT', () => {
-    pool.end(() => {
-        console.log('Database pool closed');
-        process.exit(0);
-    });
-});
+
 
 // menuItem的路由
 app.get('/api/menuItem', async (req, res) => {
@@ -358,10 +344,94 @@ app.get('/api/menuItem', async (req, res) => {
         res.json(result.rows);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error fetching data' });
+        res.status(500).json({ message: 'menuItem資料庫查詢錯誤' });
     }
 });
 
+
+app.get('/api/product', async (req, res) => {
+    try {
+        const productID = req.query.productID;
+        const productExist = req.query.productExist;
+        const productName = req.query.productName;
+        const productType = req.query.productType;
+        const productDescribe = req.query.productDescribe;
+        const productPrice = req.query.productPrice;
+        const productInStock = req.query.productInStock;
+        const storeOnly = req.query.storeOnly;
+        const productMain = req.query.productMain;
+
+        // 構建 SQL 查詢
+        let sql = 'SELECT * FROM product LEFT JOIN productImg ON product.productID = productImg.imgProductID WHERE 1 = 1';
+        const params = [];
+
+        // 添加篩選條件
+        if (productID !== undefined) {
+            sql += ' AND productID = $1';
+            params.push(productID);
+        }
+        if (productExist !== undefined) {
+            sql += ' AND productExist = $2';
+            params.push(productExist);
+        }
+        if (productName !== undefined) {
+            sql += ' AND productName ILIKE $3';
+            params.push(`%${productName}%`);
+        }
+        if (productType !== undefined) {
+            sql += ' AND productType ILIKE $4';
+            params.push(`%${productType}%`);
+        }
+        if (productDescribe !== undefined) {
+            sql += ' AND productDescribe ILIKE $5';
+            params.push(`%${productDescribe}%`);
+        }
+        if (productPrice !== undefined) {
+            sql += ' AND productPrice = $6';
+            params.push(productPrice);
+        }
+        if (productInStock !== undefined) {
+            sql += ' AND productInStock = $7';
+            params.push(productInStock);
+        }
+        if (storeOnly !== undefined) {
+            sql += ' AND storeOnly = $8';
+            params.push(storeOnly);
+        }
+        if (productMain !== undefined) {
+            sql += ' AND productMain = $9';
+            params.push(productMain);
+        }
+
+
+        // 執行查詢
+        const result = await pool.query(sql, params);
+
+        // 格式化資料
+        const formattedData = result.rows.reduce((acc, row) => {
+            const productId = row.productID;
+            if (!acc[productId]) {
+                acc[productId] = {
+                    ...row,
+                    productImg: []
+                };
+            }
+            acc[productId].productImg.push({
+                imgId: row.imgId,
+                productImg: row.productImg
+            });
+            return acc;
+        }, {});
+
+        res.json(formattedData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: '資料庫查詢錯誤' });
+    }
+});
+
+
+// 處理找不到的路由404錯誤
 app.use((req, res, next) => {
     console.log(`404 Error: ${req.originalUrl}`);
     res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));

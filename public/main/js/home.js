@@ -677,7 +677,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function productGetData() {
   //這裡要帶入的參數名稱 都是資料庫的欄位名稱
   // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/product/product.php?storeOnly=1&productExist=1' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
-  let apiUrl = 'https://pokemon-popup-gruop.onrender.com/backEnd/api/product/product.php?storeOnly=1&productExist=1' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
+  let apiUrl = 'https://pokemon-popup-gruop.onrender.com/api/product.php?storeOnly=1&productExist=1' //以這個例子來說 以productMain=1（主打商品）和productExist=1（上架商品）為篩選條件 篩出資料
   $.ajax({
     url: apiUrl,
     method: 'GET',
