@@ -135,14 +135,17 @@ function mailSomeone(mailAddress, mailSubject, mailText) {
 // }
 const bcrypt = require('bcryptjs');
 
-async function verifyPassword(plainTextPassword, hashedPassword) {
-    try {
-        const match = await bcrypt.compare(plainTextPassword, hashedPassword);
-        return match;
-    } catch (error) {
-        console.error('Error verifying password:', error);
-        return false;
-    }
+// async function verifyPassword(plainTextPassword, hashedPassword) {
+//     try {
+//         const match = await bcrypt.compare(plainTextPassword, hashedPassword);
+//         return match;
+//     } catch (error) {
+//         console.error('Error verifying password:', error);
+//         return false;
+//     }
+// }
+async function verifyPassword(plainPassword, hashedPassword) {
+    return bcrypt.compare(plainPassword, hashedPassword);
 }
 
 function hashPasswordSync(password) {
@@ -163,39 +166,67 @@ function hashPasswordSync(password) {
 app.use(express.static('./public'));
 
 
-app.post('/loginApi', function (req, res) {
-    let account = req.body.account
-    let password = req.body.password
+// app.post('/loginApi', function (req, res) {
+//     let account = req.body.account
+//     let password = req.body.password
 
-    conn.query(`select * from userInfo where userExist = 1 AND userAccount = '${account}'`,
-        [],
-        function (err, result) {
-            // console.log(result);
-            // console.log(password);
-            // console.log(result[0].userPassword);
-            if (!err) {
-                // console.log('good');
-                if (result[0] !== undefined) {
-                    verifyPassword(password, result[0].userPassword)
-                        .then(function (check) {
-                            if (check) {
-                                //存入session
-                                req.session.account = req.body.account;
-                                res.send(true);
+//     conn.query(`select * from userInfo where userExist = 1 AND userAccount = '${account}'`,
+//         [],
+//         function (err, result) {
+//             // console.log(result);
+//             // console.log(password);
+//             // console.log(result[0].userPassword);
+//             if (!err) {
+//                 // console.log('good');
+//                 if (result[0] !== undefined) {
+//                     verifyPassword(password, result[0].userPassword)
+//                         .then(function (check) {
+//                             if (check) {
+//                                 //存入session
+//                                 req.session.account = req.body.account;
+//                                 res.send(true);
 
-                            } else {
-                                res.send(false);
-                            }
-                        })
-                } else {
-                    res.send(false);
-                }
-            } else {
-                console.log(err);
-                // res.send(err)
-            }
-        })
-})
+//                             } else {
+//                                 res.send(false);
+//                             }
+//                         })
+//                 } else {
+//                     res.send(false);
+//                 }
+//             } else {
+//                 console.log(err);
+//                 // res.send(err)
+//             }
+//         })
+// })
+router.post('/loginApi', async (req, res) => {
+    const { account, password } = req.body;
+  
+    try {
+      // 使用参数化查询以避免 SQL 注入
+      const sql = 'SELECT * FROM userInfo WHERE userExist = 1 AND userAccount = $1';
+      const result = await pool.query(sql, [account]);
+  
+      if (result.rows.length > 0) {
+        const user = result.rows[0];
+        const passwordMatch = await verifyPassword(password, user.userPassword);
+  
+        if (passwordMatch) {
+          // 存入 session
+          req.session.account = account;
+          res.send(true);
+        } else {
+          res.send(false);
+        }
+      } else {
+        res.send(false);
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
 app.get('/getITAccount', function (req, res) {
     conn.query(`select * from userInfo where userTitle = 'IT'`,
         [],
