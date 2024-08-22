@@ -351,18 +351,12 @@ app.get('/api/menuItem', async (req, res) => {
 
 app.get('/api/product', async (req, res) => {
     try {
-        const productID = req.query.productID;
         const productExist = req.query.productExist;
-        const productName = req.query.productName;
-        const productType = req.query.productType;
-        const productDescribe = req.query.productDescribe;
-        const productPrice = req.query.productPrice;
-        const productInStock = req.query.productInStock;
         const storeOnly = req.query.storeOnly;
-        const productMain = req.query.productMain;
 
         // 構建 SQL 查詢
-        let sql = 'SELECT * FROM product LEFT JOIN productImg ON product.productID = productImg.imgProductID WHERE 1 = 1';
+        // let sql = 'SELECT * FROM product LEFT JOIN productImg ON product.productID = productImg.imgProductID WHERE 1 = 1';
+        let sql = 'SELECT * FROM product WHERE 1 = 1';
         const params = [];
 
         // 添加篩選條件
@@ -408,22 +402,25 @@ app.get('/api/product', async (req, res) => {
         const result = await pool.query(sql, params);
 
         // 格式化資料
-        const formattedData = result.rows.reduce((acc, row) => {
-            const productId = row.productID;
-            if (!acc[productId]) {
-                acc[productId] = {
-                    ...row,
-                    productImg: []
-                };
-            }
-            acc[productId].productImg.push({
-                imgId: row.imgId,
-                productImg: row.productImg
-            });
-            return acc;
-        }, {});
+        // const formattedData = result.rows.reduce((acc, row) => {
+        //     const productId = row.productID;
+        //     if (!acc[productId]) {
+        //         acc[productId] = {
+        //             ...row,
+        //             productImg: []
+        //         };
+        //     }
+        //     acc[productId].productImg.push({
+        //         imgId: row.imgId,
+        //         productImg: row.productImg
+        //     });
+        //     return acc;
+        // }, {});
 
-        res.json(formattedData);
+        // res.json(formattedData);
+
+                // 接收資料(JSON格式)
+        res.json(result.rows);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: '資料庫查詢錯誤' });
