@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     let protectedUrl = 'http://localhost/pokemon-popup-gruop/public/backStage/login/protected.php';
-    let protectedUrlNodeJs = 'http://localhost:3000/check';
+    let protectedUrlNodeJs = 'http://localhost:5432/check';
 
     $.ajax({
         // url: protectedUrl,

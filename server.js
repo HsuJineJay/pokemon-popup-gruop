@@ -182,60 +182,27 @@ function hashPasswordSync(password) {
 app.use(express.static('./public'));
 
 
-// app.post('/loginApi', function (req, res) {
-//     let account = req.body.account
-//     let password = req.body.password
-
-//     conn.query(`select * from userInfo where userExist = 1 AND userAccount = '${account}'`,
-//         [],
-//         function (err, result) {
-//             // console.log(result);
-//             // console.log(password);
-//             // console.log(result[0].userPassword);
-//             if (!err) {
-//                 // console.log('good');
-//                 if (result[0] !== undefined) {
-//                     verifyPassword(password, result[0].userPassword)
-//                         .then(function (check) {
-//                             if (check) {
-//                                 //存入session
-//                                 req.session.account = req.body.account;
-//                                 res.send(true);
-
-//                             } else {
-//                                 res.send(false);
-//                             }
-//                         })
-//                 } else {
-//                     res.send(false);
-//                 }
-//             } else {
-//                 console.log(err);
-//                 // res.send(err)
-//             }
-//         })
-// })
 app.post('/loginApi', async (req, res) => {
     // const { account, password } = req.body;
     let account = req.body.account
     let password = req.body.password
-    console.log('inAPI');
+    // console.log('inAPI');
     try {
         // 使用参数化查询以避免 SQL 注入
         const sql = 'SELECT * FROM userInfo WHERE userExist = 1 AND userAccount = $1';
         const result = await pool.query(sql, [account]);
-        console.log(account);
-        console.log(password);
+        // console.log(account);
+        // console.log(password);
         if (result.rows.length > 0) {
             const user = result.rows[0];
-            console.log(user);
+            // console.log(user);
             const passwordMatch = await verifyPassword(password, user.userpassword);
-            console.log(passwordMatch);
+            // console.log(passwordMatch);
             if (passwordMatch) {
                 // 存入 session
                 req.session.account = account;
                 res.send(true);
-                console.error('k');
+                // console.error('k');
             } else {
                 res.send(false);
                 console.error('error1');
@@ -251,30 +218,41 @@ app.post('/loginApi', async (req, res) => {
 });
 
 app.get('/getITAccount', function (req, res) {
-    conn.query(`select * from userInfo where userTitle = 'IT'`,
+    
+    pool.query(
+        `SELECT * FROM userInfo WHERE userTitle = 'IT'`,
+        // `SELECT * FROM userInfo`,
         [],
         function (err, result) {
+            if (err) {
+                console.error('Database query error:', err);
+                res.status(500).send('Database error');
+                return;
+            }
             // console.log(result);
-
-            if (result[0] !== undefined) {
+            // let user = result.rows[0];
+            // console.log(result.rows);
+            // console.log(typeof(result.row));
+            if (result.rows !== undefined) {
                 let data = [{
-                    userAccount: result[0].userAccount,
-                    userName: result[0].userName,
-                    userEmail: result[0].userEmail,
-                }]
+                    userAccount: result.rows[0].useraccount,
+                    userName: result.rows[0].username,
+                    userEmail: result.rows[0].useremail,
+                }];
                 res.send(JSON.stringify(data));
             } else {
                 res.send(false);
             }
-        })
+        }
+    );
 })
 
 app.post('/loginForgetApi', function (req, res) {
     let account = req.body.account
     req.session.accountForget = account
 
-    conn.query(`select * from userInfo where userAccount = '${account}'`,
-        [],
+    pool.query(`select * from userInfo where userAccount = $1`,
+        [account],
         function (err, result) {
             // console.log(result);
             let code = '';
@@ -284,10 +262,10 @@ app.post('/loginForgetApi', function (req, res) {
             req.session.code = code;
             // console.log(password);
             // console.log(result[0].userPassword);
-            if (result[0] !== undefined) {
+            if (result.rows !== undefined) {
                 let data = [{
-                    userAccount: result[0].userAccount,
-                    userEmail: result[0].userEmail,
+                    userAccount: result.rows[0].useraccount,
+                    userEmail: result.rows[0].useremail,
                     code: code
                 }]
                 res.send(JSON.stringify(data));
@@ -295,6 +273,7 @@ app.post('/loginForgetApi', function (req, res) {
                 res.send(false);
             }
         })
+    
 })
 app.post('/loginForgetCheckApi', function (req, res) {
     let code = req.body.code
@@ -318,8 +297,8 @@ app.post('/updatePWApi', function (req, res) {
     let hashedPassword = hashPasswordSync(password);
     // console.log('Hashed password:', hashedPassword);
 
-    conn.query(`UPDATE userInfo SET userPassword = '${hashedPassword}' WHERE userAccount = '${account}'`,
-        [],
+    pool.query(`UPDATE userInfo SET userPassword = $1 WHERE userAccount = $2`,
+        [hashedPassword,account],
         function (err, result) {
             if (err) {
                 res.send(false)
@@ -329,13 +308,21 @@ app.post('/updatePWApi', function (req, res) {
                 console.log(result);
             }
         })
+    
 })
 
 app.get('/checkUserAuthority', function (req, res) {
     let account = req.session.account
 
-    conn.query(`SELECT * FROM userInfo INNER JOIN userAuthority INNER JOIN page on userInfo.userID = userAuthority.authorityUserID AND userAuthority.authorityPageID = page.pageID WHERE userAccount = '${account}'`,
-        [],
+    pool.query(
+        `
+        SELECT * 
+        FROM userInfo 
+        INNER JOIN userAuthority ON userInfo.userID = userAuthority.authorityUserID 
+        INNER JOIN page ON userAuthority.authorityPageID = page.pageID 
+        WHERE userInfo.userAccount = $1;
+        `,
+        [account],
         function (err, result) {
             if (err) {
                 res.send(false)
@@ -343,7 +330,17 @@ app.get('/checkUserAuthority', function (req, res) {
             } else {
                 res.send(result)
             }
-        })
+    })
+    // conn.query(`SELECT * FROM userInfo INNER JOIN userAuthority INNER JOIN page on userInfo.userID = userAuthority.authorityUserID AND userAuthority.authorityPageID = page.pageID WHERE userAccount = '${account}'`,
+    //     [],
+    //     function (err, result) {
+    //         if (err) {
+    //             res.send(false)
+    //             console.log(err);
+    //         } else {
+    //             res.send(result)
+    //         }
+    // })
 })
 
 
@@ -373,122 +370,11 @@ app.get('/logout', function (req, res) {
 
 
 
-// menuItem的路由
-/* app.get('/api/menuItem', async (req, res) => {
-    try {
-        const itemMain = req.query.itemMain;
-        const menuExist = req.query.menuExist;
-
-        // SQL查詢資料語法 
-        let sql = 'SELECT * FROM menuItem WHERE 1 = 1';
-        let params = [];
-
-        if (itemMain !== undefined) {
-            sql += ' AND itemMain = $1';
-            params.push(itemMain);
-        }
-
-        if (menuExist !== undefined) {
-            sql += ' AND menuExist = $2';
-            params.push(menuExist);
-        }
-
-        // 查詢資料執行
-        const result = await pool.query(sql, params);
-
-        // 接收資料(JSON格式)
-        res.json(result.rows);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'menuItem資料庫查詢錯誤' });
-    }
-});
- */
 // product的路由
 app.use('/api/product', productRoutes);
 
 // menuitem的路由
 app.use('/api/menuItem', menuItemRoutes);
-
-/* 
-app.get('/api/product', async (req, res) => {
-    try {
-        const productExist = req.query.productExist;
-        const storeOnly = req.query.storeOnly;
-
-        // 構建 SQL 查詢
-        // let sql = 'SELECT * FROM product LEFT JOIN productImg ON product.productID = productImg.imgProductID WHERE 1 = 1';
-        let sql = 'SELECT * FROM product WHERE 1 = 1';
-        const params = [];
-
-        // 添加篩選條件
-        if (productID !== undefined) {
-            sql += ' AND productID = $1';
-            params.push(productID);
-        }
-        if (productExist !== undefined) {
-            sql += ' AND productExist = $2';
-            params.push(productExist);
-        }
-        if (productName !== undefined) {
-            sql += ' AND productName ILIKE $3';
-            params.push(`%${productName}%`);
-        }
-        if (productType !== undefined) {
-            sql += ' AND productType ILIKE $4';
-            params.push(`%${productType}%`);
-        }
-        if (productDescribe !== undefined) {
-            sql += ' AND productDescribe ILIKE $5';
-            params.push(`%${productDescribe}%`);
-        }
-        if (productPrice !== undefined) {
-            sql += ' AND productPrice = $6';
-            params.push(productPrice);
-        }
-        if (productInStock !== undefined) {
-            sql += ' AND productInStock = $7';
-            params.push(productInStock);
-        }
-        if (storeOnly !== undefined) {
-            sql += ' AND storeOnly = $8';
-            params.push(storeOnly);
-        }
-        if (productMain !== undefined) {
-            sql += ' AND productMain = $9';
-            params.push(productMain);
-        }
-
-
-        // 執行查詢
-        const result = await pool.query(sql, params);
-
-        // 格式化資料
-        // const formattedData = result.rows.reduce((acc, row) => {
-        //     const productId = row.productID;
-        //     if (!acc[productId]) {
-        //         acc[productId] = {
-        //             ...row,
-        //             productImg: []
-        //         };
-        //     }
-        //     acc[productId].productImg.push({
-        //         imgId: row.imgId,
-        //         productImg: row.productImg
-        //     });
-        //     return acc;
-        // }, {});
-
-        // res.json(formattedData);
-
-                // 接收資料(JSON格式)
-        res.json(result.rows);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: '資料庫查詢錯誤' });
-    }
-});
- */
 
 // 處理找不到的路由404錯誤
 app.use((req, res, next) => {

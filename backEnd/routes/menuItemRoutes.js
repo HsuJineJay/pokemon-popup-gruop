@@ -171,6 +171,7 @@ router.get('/', async (req, res) => {
         }
 
         const result = await pool.query(sql, params);
+        // console.log(result.rows);
         res.json(result.rows);
 
     } catch (error) {

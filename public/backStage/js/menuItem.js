@@ -1,12 +1,13 @@
 //change here
-let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php'
-let col = ['itemID', 'itemImg', 'itemName', 'itemType', 'itemMain', 'itemPrice', 'itemDescribe']
+let apiUrl = 'http://localhost:5432/api/menuItem'
+// let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php'
+let col = ['itemid', 'itemimg', 'itemname', 'itemtype', 'itemmain', 'itemprice', 'itemdescribe']
 let colTW = ['餐點編號', '餐點圖片', '餐點名稱', '餐點類型', '首頁呈現品項', '餐點價格', '餐點描述']
 let colExist = 'menuExist'
 /////
 function setUp() {
     for (i in col) {
-        if (col[i] != 'itemImg') {
+        if (col[i] != 'itemimg') {
             $('#condition').append(`
                 <option class="selectOption" value=${col[i]}>${colTW[i]}</option>
             `)
@@ -33,7 +34,9 @@ function getDataCreateTable(condition, place) {
         url: apiUrl2,
         method: 'GET',
         success: function (dataStr) {
-            let data = JSON.parse(dataStr);
+            console.log(dataStr);
+            data = dataStr
+            // let data = JSON.parse(dataStr);
             // console.log(data);
             let result = '';
             for (item of data) {
@@ -41,11 +44,11 @@ function getDataCreateTable(condition, place) {
                 result += `<tr>`
                 for (key of col) {
                     //change here
-                    if (key == 'itemMain') {
+                    if (key == 'itemmain') {
                         result += `
                         <td>${item[key] == 1 ? 'V' : 'X'}</td>
                         `
-                    } else if (key == 'itemImg') {
+                    } else if (key == 'itemimg') {
                         result += `
                         <td><img width='100px' src=${item[key]}></td>
                         `
@@ -227,9 +230,9 @@ function setCondition() {
     let exist = $('#one').prop('checked') ? '1' : '0';
     let condition;
     //change here
-    if ($('#condition').val() == 'itemType') {
+    if ($('#condition').val() == 'itemtype') {
         condition = `?${colExist}=` + exist + '&' + $('#condition').val() + '=' + $('#conditionSelect1').val()
-    } else if ($('#condition').val() == 'itemMain') {
+    } else if ($('#condition').val() == 'itemmain') {
         condition = `?${colExist}=` + exist + '&' + $('#condition').val() + '=' + $('#conditionSelect2').val()
     } else {
         condition = `?${colExist}=` + exist + '&' + $('#condition').val() + '=' + $('#conditionInput').val()
@@ -292,18 +295,19 @@ async function edit(elem) {
 
 
     let dataStr = await getData(`?itemID=${id}`)
-    let dataJson = JSON.parse(dataStr)
-    let data = dataJson[0]
+    // let dataJson = JSON.parse(dataStr)
+    // let data = dataJson[0]
+    let data = dataStr[0]
     // console.log(data);
-    $('.editUIID').val(data.itemID)
-    $('#menuExistEdit').val(data.menuExist)
-    $('#itemNameEdit').val(data.itemName)
-    $('#itemTypeEdit').val(data.itemType)
-    $('#itemDescribeEdit').val(data.itemDescribe)
-    $('#itemMainEdit').val(data.itemMain)
-    $('#itemPriceEdit').val(data.itemPrice)
-    $('#itemImgEdit').val(data.itemImg)
-    $('#itemImgEdit+img').prop('src', data.itemImg)
+    $('.editUIID').val(data.itemid)
+    $('#menuExistEdit').val(data.menuexist)
+    $('#itemNameEdit').val(data.itemname)
+    $('#itemTypeEdit').val(data.itemtype)
+    $('#itemDescribeEdit').val(data.itemdescribe)
+    $('#itemMainEdit').val(data.itemmain)
+    $('#itemPriceEdit').val(data.itemprice)
+    $('#itemImgEdit').val(data.itemimg)
+    $('#itemImgEdit+img').prop('src', data.itemimg)
 
 }
 function on(elem) {
@@ -353,7 +357,7 @@ window.onload = function () {
 
 
 
-    // testCreatValueSet()
+    testCreatValueSet()
 
     $('#one').on('click', function () {
         conditionReload()
@@ -364,13 +368,13 @@ window.onload = function () {
 
     $('#condition').on('change', function () {
         //change here
-        if ($('#condition').val() == 'itemType') {
+        if ($('#condition').val() == 'itemtype') {
             $('#conditionInput').css('display', 'none')
             $('#conditionSelect1').fadeIn()
             $('#conditionSelect2').css('display', 'none')
 
             $('#conditionSelect1').val('')
-        } else if ($('#condition').val() == 'itemMain') {
+        } else if ($('#condition').val() == 'itemmain') {
             $('#conditionInput').css('display', 'none')
             $('#conditionSelect1').css('display', 'none')
             $('#conditionSelect2').fadeIn()

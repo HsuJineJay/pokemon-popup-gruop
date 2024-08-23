@@ -306,7 +306,7 @@ function deleteData(){
 }
 
 function getAccount(){
-    let getAccountApiUrl = 'http://localhost:3000/check';
+    let getAccountApiUrl = 'http://localhost:5432/check';
     // let account;
     return $.ajax({
         url: getAccountApiUrl,

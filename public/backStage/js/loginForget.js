@@ -1,6 +1,8 @@
 
-let loginUrlNodejs = 'http://localhost:3000/loginForgetApi'
-let loginUrlMail = 'http://localhost:3000/mailSomeone'
+// let loginUrlNodejs = 'http://localhost:3000/loginForgetApi'
+// let loginUrlMail = 'http://localhost:3000/mailSomeone'
+let loginUrlNodejs = 'http://localhost:5432/loginForgetApi'
+let loginUrlMail = 'http://localhost:5432/mailSomeone'
 
 function checkAccount(){
     let account = document.getElementById('account').value;
@@ -18,7 +20,7 @@ function checkAccount(){
             // console.log(data);
                 if (data) {
                     let account = data[0].userAccount;
-                    fetch('http://localhost:3000/getITAccount')
+                    fetch('http://localhost:5432/getITAccount')
                     .then(function(response){
                         return response.json();
                         // console.log(response);
