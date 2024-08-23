@@ -2,6 +2,7 @@ window.onload = function () {
     let loginUrl = 'http://localhost/pokemon-popup-gruop/public/backStage/login/login.php'
     // let loginUrlNodejs = 'http://localhost:3000/loginApi'
     let loginUrlNodejs = 'https://pokemon-popup-gruopbruce.onrender.com/loginApi'
+    // let loginUrlNodejs = 'http://localhost:5432/loginApi'
 
     $('#forgetBN').click(function () {
         window.location.href = './loginForget.html';
@@ -22,7 +23,7 @@ window.onload = function () {
                 "password": password,
             },
             success: function (data) {
-                // console.log(data);
+                console.log(data);
                 if (data) {
                     // alert('登入成功')
 

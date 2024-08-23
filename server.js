@@ -2,15 +2,22 @@ require('dotenv').config();
 var express = require('express');
 var app = express();
 // app.listen(3000);
+
 //導入body-parser 以處理post
 var bp = require('body-parser');
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
+
 const { Pool } = require('pg');
+
 const path = require('path'); // 引入 path 模組
+
 const port = process.env.DB_PORT || 5432; //port號
+
 const cors = require("cors"); //導入cors解決跨域存取問題
+
 const productRoutes = require('./backEnd/routes/productRoutes'); //導入productRoutes.js處理產品有關路由
+
 const menuItemRoutes = require('./backEnd/routes/menuItemRoutes'); //導入productRoutes.js處理產品有關路由
 
 //cors解決跨域存取問題，目前是設定開放所有的來源
@@ -32,6 +39,7 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT, // PostgreSQL 默認端口是 5432
     ssl: { rejectUnauthorized: false }, // 启用 SSL 模式 (根据需要调整 rejectUnauthorized)
+    // ssl: false,
 });
 
 // 連接postrgeSQL資料庫
@@ -134,6 +142,7 @@ function mailSomeone(mailAddress, mailSubject, mailText) {
 //     }
 // }
 const bcrypt = require('bcryptjs');
+const { log } = require('console');
 
 // async function verifyPassword(plainTextPassword, hashedPassword) {
 //     try {
@@ -145,7 +154,14 @@ const bcrypt = require('bcryptjs');
 //     }
 // }
 async function verifyPassword(plainPassword, hashedPassword) {
-    return bcrypt.compare(plainPassword, hashedPassword);
+    // return bcrypt.compare(plainPassword, hashedPassword);
+    try {
+        const match = await bcrypt.compare(plainPassword, hashedPassword);
+        return match;
+    } catch (error) {
+        console.error('Error verifying password:', error);
+        return false;
+    }
 }
 
 function hashPasswordSync(password) {
@@ -200,32 +216,39 @@ app.use(express.static('./public'));
 //         })
 // })
 app.post('/loginApi', async (req, res) => {
-    const { account, password } = req.body;
-  
+    // const { account, password } = req.body;
+    let account = req.body.account
+    let password = req.body.password
+    console.log('inAPI');
     try {
-      // 使用参数化查询以避免 SQL 注入
-      const sql = 'SELECT * FROM userInfo WHERE userExist = 1 AND userAccount = $1';
-      const result = await pool.query(sql, [account]);
-  
-      if (result.rows.length > 0) {
-        const user = result.rows[0];
-        const passwordMatch = await verifyPassword(password, user.userPassword);
-  
-        if (passwordMatch) {
-          // 存入 session
-          req.session.account = account;
-          res.send(true);
+        // 使用参数化查询以避免 SQL 注入
+        const sql = 'SELECT * FROM userInfo WHERE userExist = 1 AND userAccount = $1';
+        const result = await pool.query(sql, [account]);
+        console.log(account);
+        console.log(password);
+        if (result.rows.length > 0) {
+            const user = result.rows[0];
+            console.log(user);
+            const passwordMatch = await verifyPassword(password, user.userpassword);
+            console.log(passwordMatch);
+            if (passwordMatch) {
+                // 存入 session
+                req.session.account = account;
+                res.send(true);
+                console.error('k');
+            } else {
+                res.send(false);
+                console.error('error1');
+            }
         } else {
-          res.send(false);
+            res.send(false);
+            console.error('error2');
         }
-      } else {
-        res.send(false);
-      }
     } catch (err) {
-      console.error(err);
-      res.status(500).send('Internal Server Error');
+        console.error(err);
+        res.status(500).send('Internal Server Error');
     }
-  });
+});
 
 app.get('/getITAccount', function (req, res) {
     conn.query(`select * from userInfo where userTitle = 'IT'`,
