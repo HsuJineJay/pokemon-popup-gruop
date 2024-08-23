@@ -56,7 +56,7 @@ window.onload = function () {
   function menuSwitch(menuName) {
     //這裡要帶入的參數名稱 都是資料庫的欄位名稱
     // let apiUrl = 'http://localhost/pokemon-popup-gruop/backEnd/api/menuItem/menuItem.php?itemMain=1&menuExist=1'//以這個例子來說 以itemMain=1（主打商品）和menuExist=1（上架商品）為篩選條件 篩出資料
-    let apiUrl = `https://pokemon-popup-gruop.onrender.com/backEnd/api/menuItem/menuItem.php${menuName}`//以這個例子來說 以itemMain=1（主打商品）和menuExist=1（上架商品）為篩選條件 篩出資料
+    let apiUrl = `https://pokemon-popup-gruop.onrender.com/api/menuItem${menuName}`//以這個例子來說 以itemMain=1（主打商品）和menuExist=1（上架商品）為篩選條件 篩出資料
     // console.log('apiUrl:::::::' , apiUrl);
     $.ajax({
       url: apiUrl,
