@@ -62,11 +62,11 @@ window.onload = function () {
       url: apiUrl,
       method: 'GET',
       success: function (dataStr) {
-        data = JSON.parse(dataStr);
-        // console.log(data);
+        // data = JSON.parse(dataStr);
+        console.log(data);
         result = ""
-        for (row of data) {
-          // console.log(row);
+        for (row of dataStr) {
+          console.log(row);
           result += `
                     <div class="menu_card d-flex flex-column justify-content-center align-items-center gap-3">
                       <figure><img src="${row.itemImg}" ></figure>
