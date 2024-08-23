@@ -69,12 +69,12 @@ window.onload = function () {
           // console.log(row);
           result += `
                     <div class="menu_card d-flex flex-column justify-content-center align-items-center gap-3">
-                      <figure><img src="${row['itemImg']}" ></figure>
+                      <figure><img src="${row.itemImg}" ></figure>
                       <div class="menu_card_detail d-flex flex-fill flex-column justify-content-center align-items-center">
-                        <h4 class="font-chin">${row['itemName']}</h4>
-                        <h5 class="font-chin">${row['itemPrice']}元</h5>
+                        <h4 class="font-chin">${row.itemName}</h4>
+                        <h5 class="font-chin">${row.itemPrice}元</h5>
                         <p class="font-chin m-0">
-                            ${row['itemDescribe']}
+                            ${row.itemDescribe}
                         </p>
                       </div>
                     </div>
