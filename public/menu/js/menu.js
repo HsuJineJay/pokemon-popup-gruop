@@ -63,7 +63,7 @@ window.onload = function () {
       method: 'GET',
       success: function (dataStr) {
         // data = JSON.parse(dataStr);
-        console.log(data);
+        console.log(dataStr);
         result = ""
         for (row of dataStr) {
           console.log(row);
